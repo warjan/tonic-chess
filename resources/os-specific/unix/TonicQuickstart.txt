@@ -1,0 +1,52 @@
+Welcome, thanks for trying Tonic.
+This help file is for *nix users.
+
+1.Conventions
+-------------
+
+user#: <- Stands for command prompt.
+this_line_is_not_to_be_taken_exactly_as_it_is_written <- Understood? ;)
+
+2.Starting
+-------------
+
+The easiest way is to use tonic script - just issue in Tonic installation directory:
+
+user#:./tonic
+
+If you want make your life even a litte bit easier you can create link to this file:
+
+user#:ln -s path_to_Tonic_installation_dir/tonic /home/user/path_to_some_dir/
+
+And from now on you can start Tonic from deskbar applet, mini commander, etcetera.
+
+--
+
+You can always start Tonic the hard way. For example if you want to use some nonstandard Java runtime.
+I'd like to here about your experiences. I can recommend Java 1.5.0. 
+To do so go to the Tonic installation directory and issue command:
+
+user#:path_to_java_bin/java -Djava.library.path=./libs -your_java_options -jar tonic.jar
+
+If you want to experiment with Java 6 aka Mustang. You don't have to supply -Djava.library.path switch.
+Mustang have icon tray functionality built in the core. If you get error: 
+
+Error: Couldn't find per display information
+More about this error: http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4934232
+
+Move tray.jar plugin's file out of plugins folder in Tonic's directory.
+ 
+
+--
+
+If you know how you can always create a desktop shortcut. I supplied Tonic's icon for you. :)
+
+  ____________________________________________________
+ //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//
+//  __________                                     // 
+   /___   ___/  _____   __    __   __    ______
+      /  /    /  .   / /  '  /  / /  / /  ____/
+     /  /    /  //  / /    '/  / /  / /  /
+    /  /    |   '  / /  /'    / /  /  |  |___.
+   /--      /----'  /--'  '--' /--'   '------/ 
+

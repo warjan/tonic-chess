@@ -1,0 +1,716 @@
+<project name="tonic" default="build">
+    
+    <!-- If needed you can set following propeties on command line with -Dproperty.name=property.value ant switch
+         release.platform - may be one of: windows, unix, macosx, applet
+         release.jtarget - may be one of: pretiger, tiger, mustang -->
+ 
+
+
+    <path id="compile.class.path">
+		<fileset dir="resources/libs">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="resources/libs/icc">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="resources/libs/fics">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+
+	<!-- Initializes stuff -->
+	<target name="init">
+		<tstamp>
+			<format property="date" pattern="dd.MM.yyyy" />
+		</tstamp>
+		<property name="build.dir" value="build" />
+		<property name="build.compiler" value="modern" />
+		<!--<property name="build.target" value="${java.specification.version}" />-->
+                <property name="build.target" value="1.4" />
+		<property name="build.compress" value="no" />
+		<property name="build.manifest" value="manifest.txt" />
+		
+		<property name="source.dir" value="src" />
+		<property name="classes.dir" value="classes" /> 
+		<property name="res.dir" value="resources" /> 
+		<property name="libs.dir" value="${build.dir}/libs" />	
+		<property name="servers.dir" value="${build.dir}/servers" />	
+		<property name="plugins.dir" value="${build.dir}/plugins" />
+		<property name="actions.dir" value="${build.dir}/actions" />
+		<property name="resources.dir" value="${build.dir}/resources" />	
+		<property name="lnfs.dir" value="${build.dir}/lnfs" />
+		
+		<property file="${source.dir}/free/jin/resources/app.props" prefix="jin" />
+		<property name="release.name" value="Tonic" />
+		<property name="release.version" value="build-${date}" />
+                
+                
+
+                <property name="tonic.classpath" value=".:${build.dir}/tonic.jar:${build.dir}/util.jar:${build.dir}/chess.jar:${libs.dir}/flexdock-0.4.0.jar:${libs.dir}/bsh-core-2.0b4.jar" />
+                <property name="launch4j.dir" value="/home/whp/var/sfw/launch4j" />
+                
+                <condition property="buildForMustang">
+                    <equals arg1="1.6" arg2="${java.specification.version}" />
+                </condition>
+        
+                
+    </target>
+
+
+
+	<!-- Removes things done by build -->
+
+	<target name="clean" depends="init">
+		<delete dir="${classes.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+
+
+
+	<!-- This is just to compile everything, without jarring
+			 or placing things at appropriate locations -->
+	<target name="compile" depends="init">
+		<mkdir dir="${classes.dir}" />
+		<echo message="COMPILER: ${build.compiler}" />
+                <echo message="JAVA VERSION: ${java.specification.version}" />
+		<javac srcdir="${source.dir}"
+		       destdir="${classes.dir}"
+		       includes="**"
+                       excludes="tonic/**"
+		       classpathref="compile.class.path">
+			<compilerarg compiler="modern" line="-target ${build.target}" />
+			<compilerarg compiler="modern" line="-source 1.4" />
+		</javac>
+	</target>
+	
+	<!-- Compiles a single piece set -->
+	<target name="compilePieceSet">
+		<mkdir dir="${classes.dir}/pieces/${piece-set-id}" />
+		<javac srcdir="${res.dir}/pieces/${piece-set-id}"
+		       destdir="${classes.dir}/pieces/${piece-set-id}"
+		       includes="**"
+		       classpath="${classes.dir}">
+			<compilerarg compiler="modern" line="-target ${build.target}" />
+			<compilerarg compiler="modern" line="-source ${build.target}" />
+		</javac>
+	</target>
+
+	<!-- After compiling, this jars everything properly
+			 and puts it where it belongs. -->
+	<target name="build" depends="init, compile">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${libs.dir}" />
+		<mkdir dir="${servers.dir}" />
+		<mkdir dir="${plugins.dir}" />
+		<mkdir dir="${plugins.dir}/fics" />
+		<mkdir dir="${plugins.dir}/icc" />
+		<mkdir dir="${actions.dir}" />
+		<mkdir dir="${actions.dir}/fics" />
+		<mkdir dir="${actions.dir}/icc" />
+		<mkdir dir="${lnfs.dir}" />
+		
+		
+		<!-- Copy libs -->
+		<copy todir="${libs.dir}">
+			<fileset dir="resources/libs" includes="**/*" >                         
+			</fileset>
+		</copy>
+
+		
+		<!-- Copy Look and Feels -->
+		<copy todir="${lnfs.dir}">
+			<fileset dir="resources/lnfs" />
+		</copy>
+
+		<!-- Check whether Unix (but not Mac OS X) -->		
+		<condition property="unix">
+			
+                        <and>
+				<os family="unix"/>
+                                
+				<not>
+					<os family="mac"/>
+				</not>
+			</and>
+		</condition>
+
+		<!-- Check whether Windows -->
+		<condition property="windows">
+			<os family="windows" />
+                        
+		</condition>
+		
+		<!-- Check whether Mac OS X -->
+		<condition property="macosx">
+			<and>
+				<os family="unix"/>
+				<os family="mac"/>
+			</and>
+		</condition>
+		
+		
+		<condition property="buildingForUnix">
+			<or>
+				<and>
+					<not>
+						<isset property="release.platform" />
+					</not>
+					<isset property="unix" />
+				</and>
+				<and>
+					<isset property="release.platform" />
+					<equals arg1="unix" arg2="${release.platform}" />
+				</and>
+			</or>
+		</condition>
+
+		<condition property="buildingForWindows">
+			<or>
+				<and>
+					<not>
+						<isset property="release.platform" />
+					</not>
+					<isset property="windows" />
+				</and>
+				<and>
+					<isset property="release.platform" />
+					<equals arg1="windows" arg2="${release.platform}" />
+				</and>
+			</or>
+		</condition>
+		
+		<condition property="buildingForMacOSX">
+			<or>
+				<and>
+					<not>
+						<isset property="release.platform" />
+					</not>
+					<isset property="macosx" />
+				</and>
+				<and>
+					<isset property="release.platform" />
+					<equals arg1="macosx" arg2="${release.platform}" />
+				</and>
+			</or>
+		</condition>
+		
+		<condition property="buildingApplet">
+			<or>
+				<isset property="applet" />
+				<and>
+					<isset property="release.platform" />
+					<equals arg1="applet" arg2="${release.platform}" />
+				</and>
+			</or>
+		</condition>
+		
+
+		<!-- Copy Java resources -->
+		<copy todir="${classes.dir}">
+			<fileset dir="${source.dir}" excludes="**/*.java **/*.html" />
+		</copy>
+		
+		
+		<!-- Call the tasks that do platform specific stuff -->
+		
+		<antcall target="doMacOSXStuff" />
+		<antcall target="doAppletStuff" />
+
+		
+		<!-- Set application name and version -->
+		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
+			<entry key="app.name" value="${release.name}" />
+			<entry key="app.version" value="${release.version}" />
+		</propertyfile>
+		
+		
+		<!-- Utility library: free.util.* and free.workarounds.* -->
+		<jar jarfile="${build.dir}/util.jar"
+		     basedir="${classes.dir}"
+		     includes="free/util/** free/workarounds/**"
+		     compress="${build.compress}"
+		/>
+
+
+		<!-- Chess library: free.chess.* -->
+		<jar jarfile="${build.dir}/chess.jar"
+		     basedir="${classes.dir}"
+		     includes="free/chess/**"
+		     compress="${build.compress}"
+		/>
+
+
+		<!-- Fix CRLF in manifest.txt (for windows) -->
+		<fixcrlf srcdir="${user.dir}" includes="${manifest}" />
+    
+
+		<!-- Tonic classes -->
+		<jar jarfile="${build.dir}/tonic.jar"
+		     basedir="${classes.dir}"
+		     includes="free/jin/* free/jin/ui/** free/jin/event/** free/jin/legal/** free/jin/plugin/** free/jin/action/* free/jin/resources/**"
+		     compress="${build.compress}"
+		     manifest="${build.manifest}"
+		/>
+
+
+		
+		<!-- Free Internet Chess Server support -->
+		<jar jarfile="${servers.dir}/freechess.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/freechess/** free/freechess/**"
+			         excludes="free/jin/freechess/definition" />
+			<fileset dir="${classes.dir}/free/jin/freechess"
+			         includes="definition" />
+		</jar>
+
+		<!-- Internet Chess Club support -->
+		<jar jarfile="${servers.dir}/chessclub.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/chessclub/** free/chessclub/**" 
+			         excludes="free/jin/chessclub/definition" />
+			<fileset dir="${classes.dir}/free/jin/chessclub"
+			         includes="definition" />
+		</jar>
+
+		
+
+		<!-- Console plugin library -->
+		<jar jarfile="${libs.dir}/console.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/console/**"
+			         excludes="free/jin/console/icc/** free/jin/console/fics/**" />
+		</jar>
+
+		<!-- Console plugin for ICC -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="icc" />
+			<param name="plugin.id" value="console" />
+		</antcall>
+
+		<!-- Console plugin for FICS -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="fics" />
+			<param name="plugin.id" value="console" />
+		</antcall>
+
+
+		
+		<!-- Sound plugin library -->
+		<jar jarfile="${libs.dir}/sound.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/sound/**"
+			         excludes="free/jin/sound/icc/** free/jin/sound/fics/**" />
+		</jar>
+
+		<!-- Sound plugin for ICC -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="icc" />
+			<param name="plugin.id" value="sound" />
+		</antcall>
+
+		<!-- Sound plugin for FICS -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="fics" />
+			<param name="plugin.id" value="sound" />
+		</antcall>
+
+		
+
+		<!-- Seek Graph plugin library -->
+		<jar jarfile="${libs.dir}/seek.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/seek/**"
+			         excludes="free/jin/seek/icc/** free/jin/seek/fics/**" />
+		</jar>
+
+		<!-- Seek Graph plugin for ICC -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="icc" />
+			<param name="plugin.id" value="seek" />
+		</antcall>
+
+		<!-- Seek Graph plugin for FICS -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="fics" />
+			<param name="plugin.id" value="seek" />
+		</antcall>
+
+		
+
+		<!-- Board plugin library -->
+		<jar jarfile="${libs.dir}/board.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/board/**"
+			         excludes="free/jin/board/icc/** free/jin/board/fics/**" />
+		</jar>
+
+		<!-- Board plugin for ICC -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="icc" />
+			<param name="plugin.id" value="board" />
+		</antcall>
+
+		<!-- Board plugin for FICS -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="fics" />
+			<param name="plugin.id" value="board" />
+		</antcall>
+
+
+		
+		<!-- Game Logger plugin -->
+		<antcall target="buildPlugin">
+			<param name="plugin.id" value="gamelogger" />
+		</antcall>
+
+
+		
+		<!-- Scripter plugin library -->
+		<jar jarfile="${libs.dir}/scripter.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/scripter/**"
+			         excludes="free/jin/scripter/icc/** free/jin/scripter/fics/**" />
+		</jar>
+
+		<!-- Scripter plugin for ICC -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="icc" />
+			<param name="plugin.id" value="scripter" />
+		</antcall>
+
+		<!-- Scripter plugin for FICS -->
+		<antcall target="buildPlugin">
+			<param name="server.id" value="fics" />
+			<param name="plugin.id" value="scripter" />
+		</antcall>
+		
+		
+		
+		<!-- Actions plugin -->
+		<antcall target="buildPlugin">
+			<param name="plugin.id" value="actions" />
+		</antcall>
+		
+		<!-- Channels Manager plugin -->
+                <antcall target="buildPlugin">
+                        <param name="plugin.id" value="channels" />
+                </antcall>
+                
+                
+                
+		
+
+
+		<!-- Get Server Help action -->
+		<antcall target="buildAction">
+			<param name="action.id" value="getserverhelp" />
+		</antcall>
+ 		
+		<!-- Ask a Question action -->
+		<antcall target="buildAction">
+			<param name="action.id" value="askquestion" />
+		</antcall>
+		
+		<!-- Seek action -->
+		<antcall target="buildAction">
+			<param name="action.id" value="seek" />
+		</antcall>
+                
+                <!-- Send message action -->
+		<antcall target="buildAction">
+                        <param name="action.id" value="sendmessage" />
+		</antcall>
+                
+                 <!-- Show rating graph -->
+		<!--<antcall target="buildAction">
+                        <param name="action.id" value="showratinggraph" />
+		</antcall>-->
+
+                <!-- Flip board -->
+                <antcall target="buildAction">
+                    <param name="action.id" value="flipboard" />
+                </antcall>
+    
+    
+		<!-- Resources -->
+		<mkdir dir="${resources.dir}" />
+		
+		<!-- Copy over piece sets and board patterns -->
+		<copy todir="${resources.dir}">
+			<fileset dir="${res.dir}" includes="pieces/**/*.jar pieces/**/*.zip" />
+			<fileset dir="${res.dir}" includes="boards/**/.jar boards/**/*.zip" />
+		</copy>
+                
+                <antcall target="doUnixStuff" />
+		<antcall target="doWindowsStuff" />
+                <antcall target="doMustangStuff" />
+
+	</target>
+  
+  
+	<!-- Creates a single plugin
+	     Parameters: server.id (optional, for server specific plugins}, plugin.id
+	-->
+	<target name="buildPlugin">
+		<property name="server.id" value="" />
+		<jar jarfile="${plugins.dir}/${server.id}/${plugin.id}.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/${plugin.id}/${server.id}/**"
+			         excludes="free/jin/${plugin.id}/${server.id}/definition" />
+			<fileset dir="${classes.dir}/free/jin/${plugin.id}/${server.id}"
+			         includes="definition" />
+		</jar>
+	</target>
+  
+
+	<!-- Creates a single action.
+	     Parameters: server.id (optional, for server specific actions), action.id
+	-->
+	<target name="buildAction">
+		<property name="server.id" value="" />
+		<jar jarfile="${actions.dir}/${server.id}/${action.id}.jar" compress="${build.compress}">
+			<fileset dir="${classes.dir}"
+			         includes="free/jin/action/${action.id}/* free/jin/action/${action.id}/${server.id}/**"
+			         excludes="free/jin/action/${action.id}/${server.id}/definition" />
+			<fileset dir="${classes.dir}/free/jin/action/${action.id}/${server.id}"
+			         includes="definition" />
+		</jar>
+	</target>
+        
+        
+        <!-- If the property buildingForMustang is set, does things required for Mustang -->
+        
+        <target name="doMustangStuff" if="buildForMustang">
+                
+                 <!-- MustangTray plugin -->
+                <antcall target="buildPlugin">
+                    <param name="plugin.id" value="mustangtray" />
+                </antcall>
+                <delete>
+                    <fileset dir="${plugins.dir}">
+                        <include name="tray.jar" />
+                    </fileset>
+                    <fileset dir="${libs.dir}">
+                        <include name="tray.so" />
+                    </fileset>
+                    <fileset dir="${build.dir}">
+                        <include name="tray.dll"/>
+                    </fileset>
+                    
+                </delete>
+                
+                
+
+               
+            
+        </target>
+	
+	
+	<!-- If the property buildingForUnix is set, does things required for Unix -->
+	<target name="doUnixStuff" if="buildingForUnix">
+		<copy todir="${build.dir}">
+			<fileset dir="resources/os-specific/unix" includes="tonic" />
+            <fileset dir="resources/os-specific/unix" includes="TonicQuickstart.txt" />
+            <fileset dir="resources/os-specific/unix" includes="tonic.png"/>
+        </copy>
+                
+		<chmod file="${build.dir}/tonic" perm="a+x" />
+	
+		<!-- Check whether x86 -->
+		<condition property="x86">
+			<or>
+				<equals arg1="x86" arg2="${os.arch}" />
+				<equals arg1="i386" arg2="${os.arch}" />
+				<equals arg1="i486" arg2="${os.arch}" />
+				<equals arg1="i586" arg2="${os.arch}" />
+				<equals arg1="i686" arg2="${os.arch}" />
+			</or>
+		</condition>
+		<antcall target="doUnixOnx86Stuff" /> 
+		
+	</target>
+
+	<!-- If the property x86 is set, does things required for unix on x86 -->
+	<target name="doUnixOnx86Stuff" if="x86">
+		<!-- Tray Manager plugin -->
+                    <antcall target="buildPlugin">
+                        <param name="plugin.id" value="tray" />
+                    </antcall>
+                <copy todir="${libs.dir}">
+                                    
+                                    <fileset dir="resources/os-specific/unix">
+                                        <include name="*.so" />
+                                        <include name ="*.jar" />
+                                    </fileset>
+                                    
+                </copy>
+                
+		<!--
+		<copy todir="${build.dir}">
+			<fileset dir="resources/os-specific/unix/x86" />
+		</copy>
+		<chmod file="${build.dir}/sox" perm="a+x" />
+		<chmod file="${build.dir}/play" perm="a+x" />
+		-->
+	</target>
+
+
+	<!-- If the property buildingForWindows is set, does things required for Windows -->
+	<target name="doWindowsStuff" if="buildingForWindows">
+		<!-- Tray Manager plugin -->
+                    <antcall target="buildPlugin">
+                        <param name="plugin.id" value="tray" />
+                    </antcall>
+		<copy todir="${build.dir}">
+			<fileset dir="resources/os-specific/windows">
+                            <exclude name="*.jar" />
+   			</fileset>
+		</copy>
+                <copy todir="${libs.dir}">
+                                    
+                                    <fileset dir="resources/os-specific/windows">
+                                        <include name="*.jar" />
+                                    </fileset>
+                                    
+                </copy>
+        <antcall target="exe"/>
+    </target>
+	
+	
+	<!-- If the property buildingForMacOSX is set, does things required for Mac OS X -->
+	<target name="doMacOSXStuff" if="buildingForMacOSX">
+		<javac srcdir="resources/os-specific/macosx"
+		       destdir="${classes.dir}"
+		       includes="free/jin/MacOSXSpecific.java">
+			<compilerarg compiler="modern" line="-target ${build.target}" />
+			<compilerarg compiler="modern" line="-source 1.2" />
+			<classpath>
+				<pathelement location="resources/os-specific/macosx/ui.jar"/>
+				<pathelement path="${classes.dir}"/>
+			</classpath>
+		</javac>
+        
+    </target>
+	
+
+	<!-- If the property buildingApplet is set, does things required for Applets -->
+	<target name="doAppletStuff" if="buildingApplet">
+		<javac srcdir="resources/os-specific/applet"
+		       destdir="${build.dir}"
+		       includes="DetectJava.java">
+			<compilerarg compiler="modern" line="-target ${build.target}" />
+			<compilerarg compiler="modern" line="-source 1.2" />
+		</javac>
+		
+		<copy todir="${build.dir}">
+			<fileset file="resources/os-specific/applet/**" excludes="**.java"/>
+		</copy>
+		
+ 		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
+			<entry key="lf.extra.count" value="0" />
+		</propertyfile>
+	</target>
+
+    <!-- To pack bits a little using Retroguard from Retrologic -->
+    <target name="packbits" depends="build">
+       <taskdef name="RetroGuardTask" classname="COM.rl.ant.RetroGuardTask" classpath="retroguard.jar:${tonic.classpath}"/>
+       <RetroGuardTask infile="${build.dir}/tonic.jar" outfile="${build.dir}/tonic_obf.jar" rgsfile="./script.txt"  />
+       <RetroGuardTask infile="${build.dir}/util.jar" outfile="${build.dir}/util_obf.jar" rgsfile="./script.txt"  />
+       <RetroGuardTask infile="${build.dir}/chess.jar" outfile="${build.dir}/chess_obf.jar" rgsfile="./script.txt"  />
+
+        <RetroGuardTask infile="${servers.dir}/freechess.jar" outfile="${servers.dir}/freechess_obf.jar" rgsfile="./script.txt"  />
+        <RetroGuardTask infile="${servers.dir}/chessclub.jar" outfile="${servers.dir}/chessclub_obf.jar" rgsfile="./script.txt"/>
+
+        <RetroGuardTask infile="${libs.dir}/board.jar" outfile="${libs.dir}/board_obf.jar" rgsfile="./script.txt"/>
+        <RetroGuardTask infile="${libs.dir}/console.jar" outfile="${libs.dir}/console_obf.jar" rgsfile="./script.txt"/>
+        <RetroGuardTask infile="${libs.dir}/scripter.jar" outfile="${libs.dir}/scripter_obf.jar" rgsfile="./script.txt"/>
+        <RetroGuardTask infile="${libs.dir}/seek.jar" outfile="${libs.dir}/seek_obf.jar" rgsfile="./script.txt"/>
+        <RetroGuardTask infile="${libs.dir}/sound.jar" outfile="${libs.dir}/sound_obf.jar" rgsfile="./script.txt"/>
+
+        <RetroGuardTask infile="${libs.dir}/bsh-core-2.0b4.jar" outfile="${libs.dir}/bsh-core-2.0b4_obf.jar" rgsfile="./script.txt" />
+        <RetroGuardTask infile="${libs.dir}/flexdock-0.4.0.jar" outfile="${libs.dir}/flexdock-0.4.0_obf.jar" rgsfile="./script.txt" />
+        <RetroGuardTask infile="${libs.dir}/jdic.jar" outfile="${libs.dir}/jdic_obf.jar" rgsfile="./script.txt" />
+        <RetroGuardTask infile="${libs.dir}/jdic_stub.jar" outfile="${libs.dir}/jdic_stub_obf.jar" rgsfile="./script.txt" />
+
+        <!--<RetroGuardTask infile="${lnfs.dir}/ilf-gpl.jar" outfile="${lnfs.dir}/ilf-gpl_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/kunststoff.jar" outfile="${lnfs.dir}/kunstoff_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/liquid.jar" outfile="${lnfs.dir}/liquid_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/looks-2.0.2.jar" outfile="${lnfs.dir}/looks-2.0.2_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/metouia.jar" outfile="${lnfs.dir}/metouia_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/PgsLookAndFeel.jar" outfile="${lnfs.dir}/PgsLookAndFeel_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/squareness.jar" outfile="${lnfs.dir}/squareness_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/substance.jar" outfile="${lnfs.dir}/substance_obf.jar" rgsfile=".script.txt" />
+        <RetroGuardTask infile="${lnfs.dir}/synthetica.jar" outfile="${lnfs.dir}/synthetica_obf.jar" rgsfile=".script.txt" />
+-->
+
+        <!-- Deletes all nonobfuscated jars -->
+        <delete>
+
+            <fileset dir="${build.dir}" >
+                <include name="*.jar"/>
+                <exclude name="*_obf.jar"/>
+            </fileset>
+
+            <fileset dir="${servers.dir}" >
+                <include name="*.jar"/>
+                <exclude name="*_obf.jar"/>
+            </fileset>
+
+            <fileset dir="${libs.dir}">
+               <!-- <include name="board.jar"/>
+                <include name="console.jar"/>
+                <include name="s*.jar" />-->
+                <include name="*.jar" />
+                <exclude name="*_obf.jar"/>
+            </fileset>
+
+            <!--<fileset dir="${lnfs.dir}">
+                <include name="*.jar"/>
+                <exclude name="*_obf.jar"/>
+            </fileset>-->
+
+        </delete>
+
+        <!-- Renames obfuscated jars to their orginal names -->
+        <move file="${build.dir}/tonic_obf.jar" tofile="${build.dir}/tonic.jar"/>
+        <move file="${build.dir}/util_obf.jar" tofile="${build.dir}/util.jar"/>
+        <move file="${build.dir}/chess_obf.jar" tofile="${build.dir}/chess.jar"/>
+
+        <move file="${servers.dir}/freechess_obf.jar" tofile="${servers.dir}/freechess.jar"/>
+        <move file="${servers.dir}/chessclub_obf.jar" tofile="${servers.dir}/chessclub.jar"/>
+
+        <move file="${libs.dir}/board_obf.jar" tofile="${libs.dir}/board.jar"/>
+        <move file="${libs.dir}/console_obf.jar" tofile="${libs.dir}/console.jar"/>
+        <move file="${libs.dir}/scripter_obf.jar" tofile="${libs.dir}/scripter.jar"/>
+        <move file="${libs.dir}/seek_obf.jar" tofile="${libs.dir}/seek.jar"/>
+        <move file="${libs.dir}/sound_obf.jar" tofile="${libs.dir}/sound.jar"/>
+
+        <move file="${libs.dir}/bsh-core-2.0b4_obf.jar" tofile="${libs.dir}/bsh-core-2.0b4.jar" />
+        <move file="${libs.dir}/flexdock-0.4.0_obf.jar" tofile="${libs.dir}/flexdock-0.4.0.jar" />
+        <move file="${libs.dir}/jdic_obf.jar" tofile="${libs.dir}/jdic.jar" />
+        <move file="${libs.dir}/jdic_stub_obf.jar" tofile="${libs.dir}/jdic_stub.jar" />
+
+        <!--<move todir="${lnfs.dir}">
+            <fileset dir="${lnfs.dir}">
+                <include name="*.jar" />
+            </fileset>
+            <mapper type="glob" from="*_obf.jar" to="*.jar" />
+        </move>-->
+
+    </target>
+    <target name="createexe" depends="init">
+		<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
+		    :${launch4j.dir}/lib/xstream.jar" />
+		<launch4j configFile="./l4j/Tonic.xml" />
+	</target>
+	<target name="run" depends="build">
+		
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true">
+			
+			<arg value="-Djava.library.path=./libs"/>
+		
+		</java>
+	</target>
+	
+</project>

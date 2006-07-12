@@ -1,0 +1,327 @@
+# If this log is to be used for incremental obfuscation / patch generation, 
+# add any '.class', '.method', '.field' and '.attribute' restrictions here:
+
+
+#-DO-NOT-EDIT-BELOW-THIS-LINE------------------DO-NOT-EDIT-BELOW-THIS-LINE--
+#
+# RetroGuard v2.2.0, by Retrologic Systems - www.retrologic.com
+#
+# Logfile created on Wed Jun 28 10:47:30 GMT 2006
+#
+# Jar file to be obfuscated:           jdic_stub.jar
+# Target Jar file for obfuscated code: jdic_stub_obf.jar
+# RetroGuard Script file used:         script.txt
+#
+#
+# WARNING - Methods are called which may unavoidably break in obfuscated
+# version at runtime. Please review your source code to ensure that these
+# methods are not intended to act on classes within the obfuscated Jar file.
+#      Your class org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService uses '.class' or calls java/lang/Class.forName(Ljava/lang/String;)Ljava/lang/Class;
+#      Your class org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService uses '.class' or calls java/lang/Class.forName(Ljava/lang/String;)Ljava/lang/Class;
+#
+# Memory in use after class data structure built: 10734784 bytes
+# Total memory available                        : 19226624 bytes
+#
+#
+# Obfuscated name overloading frequency:
+#
+# Names reserved from obfuscation:
+#
+.class org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper
+.field org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/GNOME_VFS_MIME_DEFAULT_KEY_ICON_FILENAME Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/GNOME_VFS_MIME_KEY_DESCRIPTION Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_mime_get_key_list (Ljava/lang/String;)[Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_mime_get_icon (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_mime_get_description (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_mime_get_default_application_command (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_mime_get_extensions_list (Ljava/lang/String;)[Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_mime_get_value (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_get_mime_type (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/getenv (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeVfsWrapper/gnome_vfs_get_registered_mime_types ()[Ljava/lang/String;
+.class org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil
+.field org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/GNOME_VFS_MIME_KEY_ICON_FILENAME Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/GNOME_VFS_MIME_KEY_DESCRIPTION Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getDescriptionByMimeType (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getIconFileNameByMimeType (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getEnv (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getMimeTypeByURL (Ljava/net/URL;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/isMimeTypeExist (Ljava/lang/String;)Z
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getMimeTypeByFileExt (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getActionListByMimeType (Ljava/lang/String;)Ljava/util/List;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/isFileExtExist (Ljava/lang/String;)Z
+.method org/jdesktop/jdic/filetypes/internal/GnomeAssociationUtil/getFileExtListByMimeType (Ljava/lang/String;)Ljava/util/List;
+.class org/jdesktop/jdic/filetypes/internal/AppAssociationReaderFactory
+.method org/jdesktop/jdic/filetypes/internal/AppAssociationReaderFactory/newInstance ()Lorg/jdesktop/jdic/filetypes/internal/AppAssociationReader;
+.class org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_LINUX_SYSTEM_SHARE_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/MIME_SUFFIX Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_USER_MIME_INFO_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/OSNAME Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/defaultAppID Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOMEDIR_VALUE Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_SYSTEM_APPLICATION_REGISTRY_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_LINUX_SYSTEM_MIME_INFO_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/defaultAppCommand Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/KEYS_SUFFIX Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_SYSTEM_MIME_INFO_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_SOLARIS_SYSTEM_SHARE_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_LINUX_SYSTEM_APPLICATION_REGISTRY_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_USER_APPLICATION_INFO_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_SOLARIS_SYSTEM_APPLICATION_REGISTRY_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/GNOME_SOLARIS_SYSTEM_MIME_INFO_DIR Ljava/lang/String;
+.field org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/APPLICATIONS_SUFFIX Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/registerAssociation (Lorg/jdesktop/jdic/filetypes/Association;I)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/isAssociationExist (Lorg/jdesktop/jdic/filetypes/Association;I)Z
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/getUserDotMimeFilePath (Lorg/jdesktop/jdic/filetypes/Association;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/checkAssociationValidForUnregistration (Lorg/jdesktop/jdic/filetypes/Association;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/writeDotKeysFile (Lorg/jdesktop/jdic/filetypes/Association;Ljava/lang/String;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/writeDotApplicationsFile (Lorg/jdesktop/jdic/filetypes/Association;Ljava/lang/String;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/checkSystemMIMEDatabase ()V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/checkUserMIMEDatabase ()V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/fileExtListToString (Ljava/util/List;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/createFile (Ljava/lang/String;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/parseOpenAction (Lorg/jdesktop/jdic/filetypes/Association;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/getSystemDotApplicationsFilePath (Lorg/jdesktop/jdic/filetypes/Association;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/unregisterAssociation (Lorg/jdesktop/jdic/filetypes/Association;I)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/getUserDotApplicationsFilePath (Lorg/jdesktop/jdic/filetypes/Association;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/getSystemDotKeysFilePath (Lorg/jdesktop/jdic/filetypes/Association;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/writeDotMimeFile (Lorg/jdesktop/jdic/filetypes/Association;Ljava/lang/String;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/getUserDotKeysFilePath (Lorg/jdesktop/jdic/filetypes/Association;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/dotMimeFileContainsMimeType (Ljava/io/File;Ljava/lang/String;)Z
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/checkAssociationValidForRegistration (Lorg/jdesktop/jdic/filetypes/Association;)V
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationWriter/getSystemDotMimeFilePath (Lorg/jdesktop/jdic/filetypes/Association;)Ljava/lang/String;
+.class org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getActionListByFileExt (Ljava/lang/String;)Ljava/util/List;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getDescriptionByMimeType (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getIconFileNameByMimeType (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getMimeTypeByURL (Ljava/net/URL;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/isMimeTypeExist (Ljava/lang/String;)Z
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getMimeTypeByFileExt (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getIconFileNameByFileExt (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getDescriptionByFileExt (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/isFileExtExist (Ljava/lang/String;)Z
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getActionListByMimeType (Ljava/lang/String;)Ljava/util/List;
+.method org/jdesktop/jdic/filetypes/internal/GnomeAppAssociationReader/getFileExtListByMimeType (Ljava/lang/String;)Ljava/util/List;
+.class org/jdesktop/jdic/filetypes/internal/AppAssociationWriterFactory
+.method org/jdesktop/jdic/filetypes/internal/AppAssociationWriterFactory/newInstance ()Lorg/jdesktop/jdic/filetypes/internal/AppAssociationWriter;
+.class org/jdesktop/jdic/tray/internal/impl/ServiceManagerStub
+.method org/jdesktop/jdic/tray/internal/impl/ServiceManagerStub/getService (Ljava/lang/String;)Ljava/lang/Object;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService$1/run ()V
+.class org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/panel Ljava/awt/Panel;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/width I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/frame Lsun/awt/EmbeddedFrame;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/peer Ljava/awt/peer/ComponentPeer;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/y I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/winMap Ljava/util/HashMap;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/x I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/height I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/window_id J
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/dispose (J)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/configureNotify (JIIII)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/reshape (IIII)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/getFrame ()Lsun/awt/EmbeddedFrame;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/getPeer ()Ljava/awt/peer/ComponentPeer;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/getGraphics ()Ljava/awt/Graphics;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/createEmbeddedFrame (J)Lsun/awt/EmbeddedFrame;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/setVisible (Z)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/remove ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/getAppletSize ()Ljava/awt/Dimension;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/getWidget (JIIII)J
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/createAppletWindow ()J
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/init ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/getWindow ()J
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/configureWindow (IIII)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/add (Ljava/awt/Component;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService/adjustSizeHints (JII)V
+.class org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip/font Ljava/awt/Font;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip/label Ljavax/swing/JToolTip;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip/show (II)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip/setCaption (Ljava/lang/String;)V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$6/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$6/run ()V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$5/val$caption Ljava/lang/String;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$5/val$type I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$5/val$text Ljava/lang/String;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$5/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$5/run ()V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$4/val$caption Ljava/lang/String;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$4/val$type I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$4/val$text Ljava/lang/String;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$4/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$4/run ()V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$3/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$3/actionPerformed (Ljava/awt/event/ActionEvent;)V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$2/val$this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$2/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$2/mouseClicked (Ljava/awt/event/MouseEvent;)V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$1/val$this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$1/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$1/actionPerformed (Ljava/awt/event/ActionEvent;)V
+.class org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/pixel I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/p Ljava/awt/Point;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/captionLabel Ljavax/swing/JLabel;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/pp Ljava/awt/Point;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/hideTimer Ljavax/swing/Timer;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/textLabel Ljavax/swing/JLabel;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/hideAction Ljava/awt/event/ActionListener;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/delay I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/d Ljava/awt/Dimension;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/sd Ljava/awt/Dimension;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/pd Ljava/awt/Dimension;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/timeout I
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/showThread Ljava/lang/Thread;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/downToup Z
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/hideThread Ljava/lang/Thread;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1600 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;)I
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1200 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;)Ljava/lang/Thread;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1202 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;Ljava/lang/Thread;)Ljava/lang/Thread;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$900 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;)Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/doShowMessageWindow (Ljava/lang/String;Ljava/lang/String;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/doShow (Ljava/lang/String;Ljava/lang/String;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1100 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/doHide ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/showBalloonMessage (Ljava/lang/String;Ljava/lang/String;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1400 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;Ljava/lang/String;Ljava/lang/String;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1500 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;)I
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1300 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;Ljava/lang/String;Ljava/lang/String;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$1702 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;Ljava/lang/Thread;)Ljava/lang/Thread;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/access$800 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow/hideCurrentMessageWindowImmediately ()V
+.class org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel/img Ljava/awt/Image;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel/imageUpdate (Ljava/awt/Image;IIIII)Z
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel/paintComponent (Ljava/awt/Graphics;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel/doesIconReferenceImage (Ljavax/swing/Icon;Ljava/awt/Image;)Z
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$6/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$6/val$i Ljavax/swing/Icon;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$6/run ()V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$5/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$5/windowGainedFocus (Ljava/awt/event/WindowEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$5/windowLostFocus (Ljava/awt/event/WindowEvent;)V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$4/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$4/popupMenuWillBecomeInvisible (Ljavax/swing/event/PopupMenuEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$4/popupMenuWillBecomeVisible (Ljavax/swing/event/PopupMenuEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$4/popupMenuCanceled (Ljavax/swing/event/PopupMenuEvent;)V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$3/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$3/mouseExited (Ljava/awt/event/MouseEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$3/mouseEntered (Ljava/awt/event/MouseEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$3/mousePressed (Ljava/awt/event/MouseEvent;)V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2$1/this$1 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2$1/run ()V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2/val$e Ljava/awt/event/MouseEvent;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2/access$200 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2;)Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2/access$400 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2;)Ljava/awt/event/MouseEvent;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2/run ()V
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$1/this$0 Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$1/val$p Ljava/awt/Point;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$1/run ()V
+.class org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/class$org$jdesktop$jdic$tray$internal$impl$GnomeTrayIconService Ljava/lang/Class;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/menu Ljavax/swing/JPopupMenu;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/actionList Ljava/util/LinkedList;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/balloonListeners Ljava/util/LinkedList;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/bmw Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/autoSize Z
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/iconPanel Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/icon Ljavax/swing/Icon;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/popupMenuParent Ljavax/swing/JDialog;
+.field org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/tooltip Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$HWToolTip;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/showBalloonMessage (Ljava/lang/String;Ljava/lang/String;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$600 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/setCaption (Ljava/lang/String;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$700 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Z
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/setIcon (Ljavax/swing/Icon;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$502 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;Ljavax/swing/Icon;)Ljavax/swing/Icon;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/setPopupMenu (Ljavax/swing/JPopupMenu;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/removeActionListener (Ljava/awt/event/ActionListener;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/setIconAutoSize (Z)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$602 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel;)Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$IconPanel;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$000 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Ljavax/swing/JDialog;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/removeBalloonActionListener (Ljava/awt/event/ActionListener;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/mouseExited (Ljava/awt/event/MouseEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/initListeners ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/mousePressed (Ljava/awt/event/MouseEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/class$ (Ljava/lang/String;)Ljava/lang/Class;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$500 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Ljavax/swing/Icon;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/getLocationOnScreen ()Ljava/awt/Point;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$300 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Ljava/util/LinkedList;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/initFrame ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$1000 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Ljava/util/LinkedList;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/addBalloonActionListener (Ljava/awt/event/ActionListener;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/access$100 (Lorg/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService;)Ljavax/swing/JPopupMenu;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/addNotify ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/mouseEntered (Ljava/awt/event/MouseEvent;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService/addActionListener (Ljava/awt/event/ActionListener;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService$1/run ()V
+.class org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService
+.field org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/display_thread Ljava/lang/Thread;
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/initNative (Ljava/lang/String;)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/locateSystemTray ()Z
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/addNotify ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/removeTrayIcon (Lorg/jdesktop/jdic/tray/TrayIcon;Lorg/jdesktop/jdic/tray/internal/TrayIconService;I)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/dockWindow (J)V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/eventLoop ()V
+.method org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService/addTrayIcon (Lorg/jdesktop/jdic/tray/TrayIcon;Lorg/jdesktop/jdic/tray/internal/TrayIconService;I)V
+.class org/jdesktop/jdic/desktop/internal/impl/GnomeUtility
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeUtility/getMozillaVersionNumber (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeUtility/nativeGetDefaultMailerPath ()Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeUtility/getDefaultMailerPath ()Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeUtility/getPropFilePath (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeUtility/isMozillaRunning (Ljava/lang/String;)Z
+.class org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer
+.field org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer/mozLocation Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer/parseSubject (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer/constructArgs (Ljava/util/Iterator;Ljava/util/Iterator;Ljava/util/Iterator;Ljava/lang/String;Ljava/lang/String;Ljava/util/Iterator;)Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer/open (Lorg/jdesktop/jdic/desktop/Message;)V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer/open ()V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeMozMailer/parseBody (Ljava/lang/String;)Ljava/lang/String;
+.class org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/nativeOpenFile (Ljava/lang/String;)Z
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/isPrintable (Ljava/io/File;)Z
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/edit (Ljava/io/File;)V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/resolveLinkFile (Ljava/io/File;)Ljava/io/File;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/open (Ljava/io/File;)V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/print (Ljava/io/File;)V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeLaunchService/isEditable (Ljava/io/File;)Z
+.class org/jdesktop/jdic/desktop/internal/impl/ServiceManagerStub
+.method org/jdesktop/jdic/desktop/internal/impl/ServiceManagerStub/getService (Ljava/lang/String;)Ljava/lang/Object;
+.class org/jdesktop/jdic/desktop/internal/impl/GnomeEvoMailer
+.field org/jdesktop/jdic/desktop/internal/impl/GnomeEvoMailer/evoLocation Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeEvoMailer/open (Lorg/jdesktop/jdic/desktop/Message;)V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeEvoMailer/open ()V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeEvoMailer/constructMailto (Ljava/util/Iterator;Ljava/util/Iterator;Ljava/util/Iterator;Ljava/lang/String;Ljava/lang/String;Ljava/util/Iterator;)Ljava/lang/String;
+.class org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService
+.field org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/MOZILLA_NAME_PATTERN Ljava/lang/String;
+.field org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/RESERVED_TARGET_NAMES [Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/nativeBrowseURL (Ljava/lang/String;)Z
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/browseURLInMozilla (Ljava/lang/String;Ljava/net/URL;Ljava/lang/String;)Z
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/show (Ljava/net/URL;)V
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/convertTargetName (Ljava/lang/String;)Ljava/lang/String;
+.method org/jdesktop/jdic/desktop/internal/impl/GnomeBrowserService/show (Ljava/net/URL;Ljava/lang/String;)V
+#
+#
+# Obfuscated name mappings (some of these may be unchanged due to polymorphism constraints):
+#
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayAppletService$1 1
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$6 6
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$5 5
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$4 4
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$3 3
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$2 2
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$BalloonMessageWindow$1 1
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$6 6
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$5 5
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$4 4
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$3 3
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2$1 1
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$2 2
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeTrayIconService$1 1
+.class_map org/jdesktop/jdic/tray/internal/impl/GnomeSystemTrayService$1 1
