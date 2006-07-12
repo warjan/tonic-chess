@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: free.jin.JinApplication
+Class-Path: util.jar chess.jar lnfs/kunststoff.jar lnfs/metouia.jar lnfs/liquid.jar lnfs/looks-2.0.2.jar lnfs/substance.jar lnfs/PgsLookAndFeel.jar lnfs/ilf-gpl.jar lnfs/synthetica.jar lnfs/squareness.jar libs/jdic.jar libs/jdic_stub.jar libs/flexdock-0.4.0.jar
+

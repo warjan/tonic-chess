@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Follow links
+filename=`readlink -f $0`
+if [ -z "$filename" ]
+then
+  filename=$0
+fi
+
+# Change to Tonic's directory - Tonic needs to be run from its directory
+cd `dirname $filename`
+
+# Run Tonic. JAVA_OPTS may set earlier with your shell.
+java -Djava.library.path=./libs $JAVA_OPTS -jar tonic.jar $*
