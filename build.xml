@@ -2,7 +2,7 @@
     
     <!-- If needed you can set following propeties on command line with -Dproperty.name=property.value ant switch
          release.platform - may be one of: windows, unix, macosx, applet
-         release.jtarget - may be one of: pretiger, tiger, mustang -->
+         release.jtarget - may be one of: pretiger, tiger, mustang - this one does not work for now -->
  
 
 
@@ -77,7 +77,7 @@
 		<javac srcdir="${source.dir}"
 		       destdir="${classes.dir}"
 		       includes="**"
-                       excludes="tonic/**"
+                       excludes="tonic/**,free/jin/mustangtray/**"
 		       classpathref="compile.class.path">
 			<compilerarg compiler="modern" line="-target ${build.target}" />
 			<compilerarg compiler="modern" line="-source 1.4" />
@@ -441,9 +441,9 @@
 			<fileset dir="${res.dir}" includes="pieces/**/*.jar pieces/**/*.zip" />
 			<fileset dir="${res.dir}" includes="boards/**/.jar boards/**/*.zip" />
 		</copy>
-                
+                <!-- Calling os and Java specific targets -->
                 <antcall target="doUnixStuff" />
-		<antcall target="doWindowsStuff" />
+		        <antcall target="doWindowsStuff" />
                 <antcall target="doMustangStuff" />
 
 	</target>
@@ -479,10 +479,20 @@
 	</target>
         
         
-        <!-- If the property buildingForMustang is set, does things required for Mustang -->
+        <!-- If the property buildingForMustang is set, does things required for Mustang,
+        like building classes that use Mustang API -->
         
         <target name="doMustangStuff" if="buildForMustang">
                 
+            <!-- Compiles source files for MustangTray plugin -->
+            <javac srcdir="${source.dir}"
+		       destdir="${classes.dir}"
+		       includes="free/jin/mustangtray/**"
+                       excludes="**"
+		               classpathref="compile.class.path">
+			        <compilerarg compiler="modern" line="-target ${build.target}" />
+			        <compilerarg compiler="modern" line="-source 1.4" />
+		       </javac>
                  <!-- MustangTray plugin -->
                 <antcall target="buildPlugin">
                     <param name="plugin.id" value="mustangtray" />
@@ -533,11 +543,14 @@
 
 	<!-- If the property x86 is set, does things required for unix on x86 -->
 	<target name="doUnixOnx86Stuff" if="x86">
-		<!-- Tray Manager plugin -->
+
+        <!-- Tray Manager plugin -->
                     <antcall target="buildPlugin">
                         <param name="plugin.id" value="tray" />
                     </antcall>
-                <copy todir="${libs.dir}">
+
+            <!-- Copies os specific libraries for JDIC tray implementation -->
+            <copy todir="${libs.dir}">
                                     
                                     <fileset dir="resources/os-specific/unix">
                                         <include name="*.so" />
@@ -562,11 +575,12 @@
                     <antcall target="buildPlugin">
                         <param name="plugin.id" value="tray" />
                     </antcall>
-		<copy todir="${build.dir}">
-			<fileset dir="resources/os-specific/windows">
-                            <exclude name="*.jar" />
-   			</fileset>
-		</copy>
+		 <!-- Copies os specific libraries for JDIC tray implementation -->
+            <copy todir="${build.dir}">
+                <fileset dir="resources/os-specific/windows">
+                                <exclude name="*.jar" />
+                </fileset>
+            </copy>
                 <copy todir="${libs.dir}">
                                     
                                     <fileset dir="resources/os-specific/windows">
@@ -574,6 +588,8 @@
                                     </fileset>
                                     
                 </copy>
+
+        <!-- Calls a target that creates .exe file -->
         <antcall target="exe"/>
     </target>
 	
@@ -704,11 +720,13 @@
 		    :${launch4j.dir}/lib/xstream.jar" />
 		<launch4j configFile="./l4j/Tonic.xml" />
 	</target>
-	<target name="run" depends="build">
+
+    <!-- Do not use it - it doesn't work for now -->
+    <target name="run" depends="build">
 		
 		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true">
 			
-			<arg value="-Djava.library.path=./libs"/>
+			<jvmarg value="-Djava.library.path=${build.dir}/libs"/>
 		
 		</java>
 	</target>
