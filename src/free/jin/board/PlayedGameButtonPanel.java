@@ -524,7 +524,10 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
     //creates getgameButton when connected to fics. whp 2006
     getgameButton = (conn.getConnectionName() == "FreechessConnection") ? createButton("getgame.png", 'g') : null;
       //getgameButton = (conn instanceof JinFreechessConnection) ? createButton("getgame.png", 'g') : null;
-      getgameButton.setToolTipText("Get a game filtered by formule");
+
+      if (getgameButton != null){
+        getgameButton.setToolTipText("Get a game filtered by formule");
+      }
   }
 
 

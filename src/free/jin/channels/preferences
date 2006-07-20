@@ -1,0 +1,8 @@
+#have tabs got a close icon?
+tabs.closeable = boolean;true
+
+#should we display date in front of tell lines?
+date.display = boolean;true
+
+#has this plugin preferences?
+preferences.show = boolean;true

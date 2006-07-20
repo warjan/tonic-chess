@@ -62,33 +62,8 @@ public class FreechessConsoleManager extends ConsoleManager{
 
     protected JButton getNewConsoleButton(){
         JButton button = new JButton("New console");
-        button.addActionListener(new ActionListener(){
-          public void actionPerformed(ActionEvent evt){
-              if (
-                      ((String)newConsoleSpec.getSelectedItem()).equals("Specific channel") && !(chanGameNumberInput.getText().matches("\\d{1,3}"))){
-                  OptionPanel.error(console, "Channel number error", "Type a number from 1 to 255, please.");
-              }
-
-              if (((String)newConsoleSpec.getSelectedItem()).equals("Specific game") && !(chanGameNumberInput.getText().matches("\\d{1,4}"))){
-                  OptionPanel.error(console, "Game number error", "Type a number from 1 to 255, please.");
-              }
-              else{
-              if (((String)newConsoleSpec.getSelectedItem()).equals("Private tells")){
-
-                  openNewConsole("tell " + chanGameNumberInput.getText() + " ");
-              }
-              /*if (((String)newConsoleSpec.getSelectedItem()).matches("(Kibitzes)|(Whispers)")){
-
-              } */
-
-                  else{
-                  //System.out.println("EQUALS!!! " + chanGameNumberInput.getText() + "<->" +newConsoleSpec.getSelectedItem());
-                openNewConsole();
-                }
-              }
-          }
-      }
-      );
+        button.addActionListener(new NewConsoleListener()
+        );
         return button;
     }
 
@@ -122,14 +97,14 @@ public class FreechessConsoleManager extends ConsoleManager{
             case 1: type = "qtell"; break;
             case 2: type = "channel-tell " + chanGameNumberInput.getText(); break;
             case 3: type = "cshout"; break;
-            case 4: type = "kibitz " + chanGameNumberInput.getText(); break;
+            case 4: type = "kibitz " + chanGameNumberInput.getText().toLowerCase(); break;
             case 5: type = "say " + chanGameNumberInput.getText().toLowerCase(); break;
             case 6: type = "ptell"; break;
             case 7: type = "tell " + chanGameNumberInput.getText().toLowerCase(); break;
             case 8: type = "shout"; break;
             case 9: type = "ishout"; break;
             case 10: type = "tshout"; break;
-            case 11: type = "whisper " + chanGameNumberInput.getText(); break;
+            case 11: type = "whisper " + chanGameNumberInput.getText().toLowerCase(); break;
             case 12: type = chanGameNumberInput.getText(); break;
 
         }
@@ -165,6 +140,10 @@ public class FreechessConsoleManager extends ConsoleManager{
 
           return name;
       }
+
+    /*public void setConsoleName(String name){
+        this.na
+    } */
 
 
 
@@ -237,6 +216,12 @@ public class FreechessConsoleManager extends ConsoleManager{
     return evt.toString();
   }
 
+    protected JTextField getChanGameNrInput(){
+        JTextField jtf = new JTextField("", 10);
+        jtf.addActionListener(new NewConsoleListener());
+        return jtf;
+    }
+
 
 
   /**
@@ -246,7 +231,32 @@ public class FreechessConsoleManager extends ConsoleManager{
   public PreferencesPanel getPreferencesUI(){
     return new FreechessConsolePrefsPanel(this);
   }
-  
 
 
+    private class NewConsoleListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt){
+            if (
+                    ((String)newConsoleSpec.getSelectedItem()).equals("Specific channel") && !(chanGameNumberInput.getText().matches("\\d{1,3}"))){
+                OptionPanel.error(console, "Channel number error", "Type a number from 1 to 255, please.");
+            }
+
+            if (((String)newConsoleSpec.getSelectedItem()).equals("Specific game") && !(chanGameNumberInput.getText().matches("\\d{1,4}"))){
+                OptionPanel.error(console, "Game number error", "Type a number from 1 to 255, please.");
+            }
+            else{
+            if (((String)newConsoleSpec.getSelectedItem()).equals("Private tells")){
+
+                openNewConsole("tell " + chanGameNumberInput.getText());
+            }
+            /*if (((String)newConsoleSpec.getSelectedItem()).matches("(Kibitzes)|(Whispers)")){
+
+            } */
+
+                else{
+                //System.out.println("EQUALS!!! " + chanGameNumberInput.getText() + "<->" +newConsoleSpec.getSelectedItem());
+              openNewConsole();
+              }
+            }
+        }
+    }
 }

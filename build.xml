@@ -27,7 +27,7 @@
 		<property name="build.dir" value="build" />
 		<property name="build.compiler" value="modern" />
 		<!--<property name="build.target" value="${java.specification.version}" />-->
-                <property name="build.target" value="1.4" />
+                <property name="build.target" value="1.5" />
 		<property name="build.compress" value="no" />
 		<property name="build.manifest" value="manifest.txt" />
 		
@@ -80,7 +80,7 @@
                        excludes="tonic/**,free/jin/mustangtray/**"
 		       classpathref="compile.class.path">
 			<compilerarg compiler="modern" line="-target ${build.target}" />
-			<compilerarg compiler="modern" line="-source 1.4" />
+			<compilerarg compiler="modern" line="-source 1.5" />
 		</javac>
 	</target>
 	
@@ -225,10 +225,10 @@
 		</propertyfile>
 		
 		
-		<!-- Utility library: free.util.* and free.workarounds.* -->
+		<!-- Utility library: free.util.* and free.workarounds.* and org.tonic.ui.swing-->
 		<jar jarfile="${build.dir}/util.jar"
 		     basedir="${classes.dir}"
-		     includes="free/util/** free/workarounds/**"
+		     includes="free/util/**,free/workarounds/**,org/tonic/ui/swing/**"
 		     compress="${build.compress}"
 		/>
 
@@ -724,9 +724,9 @@
     <!-- Do not use it - it doesn't work for now -->
     <target name="run" depends="build">
 		
-		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true">
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Djava.library.path=./libs">
 			
-			<jvmarg value="-Djava.library.path=${build.dir}/libs"/>
+			<!--<jvmarg value="-Djava.library.path=libs"/>-->
 		
 		</java>
 	</target>

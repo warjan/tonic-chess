@@ -30,6 +30,7 @@ import free.jin.plugin.Plugin;
 import free.jin.ui.MdiUiProvider;
 import free.util.PlatformUtils;
 import java.awt.Frame;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -121,6 +122,7 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
     private JMenuItem minimize;
 
     private ConnectionDetails lastDetails;
+    private ImageIcon nullIcon;
 
     /** Creates a new instance of TrayManager */
     public TrayManager() {
@@ -199,7 +201,8 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
         
         //this is the icon for connectionFailed event        
         connFailIcon = getIconsEasy("connfail.gif");
-        
+
+        nullIcon = new ImageIcon(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB));
         
     }
 
@@ -218,21 +221,21 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
 
     private void initTrayMenu() {
         menu = new JPopupMenu();
-        quickQuit = new JMenuItem("QuickQuit");
+        quickQuit = new JMenuItem("QuickQuit", nullIcon);
         quickQuit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Jin.getInstance().quit(false);
             }
         });
         
-        unseek = new JMenuItem("Cancel seeks");
+        unseek = new JMenuItem("Cancel seeks", nullIcon);
         unseek.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 getConn().sendCommand("unseek");
             }
         });
         if (Jin.getInstance().getUIProvider() instanceof MdiUiProvider){
-            minimize = new JMenuItem("Minimize to tray");
+            minimize = new JMenuItem("Minimize", nullIcon);
             minimize.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 

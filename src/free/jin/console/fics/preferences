@@ -149,6 +149,10 @@ foreground.channel-tell.85 = color;cd9ce2
 foreground.kibitz = color;c0c0c0
 foreground.whisper = color;c0c0c0
 
+#indentation
+
+indent.channel-tell.106 = float;6.0
+
 # Input properties
 input-background = color;ffffff
 input-foreground = color;000000
@@ -210,3 +214,10 @@ preferences.categories.15.ids = info
 
 preferences.categories.16.name = Special information
 preferences.categories.16.ids = special
+
+#preferences for new consoles
+newconsole-height = integer;300
+newconsole-width = integer;400
+
+#preferences for new consoles panel at the top of main console
+newconsole-panel-visible = integer;1

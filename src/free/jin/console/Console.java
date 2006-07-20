@@ -34,6 +34,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Vector;
+import java.util.Calendar;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -68,7 +69,7 @@ import java.util.regex.PatternSyntaxException;
  * is a component that can be used by various plugins - it's mainly used by
  * free.jin.console.ConsoleManager.
  */
-
+//TODO: create setter for server command instead of contructor to ease creation of new consoles.
 public class Console extends JPanel implements KeyListener, ContainerListener{
 
 
@@ -808,7 +809,8 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
   protected void addToOutputImpl(String text, String textType) throws BadLocationException{
     StyledDocument document = outputComponent.getStyledDocument();
     int oldTextLength = document.getLength();
-    document.insertString(document.getLength(),text+"\n", attributesForTextType(textType));
+    document.insertString(document.getLength(), text+"\n", attributesForTextType(textType));
+    
 
     AttributeSet urlAttributes = attributesForTextType("link.url");
     AttributeSet emailAttributes = attributesForTextType("link.email");
@@ -889,8 +891,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
 
 
 
-
-  /**
+    /**
    * Returns the size of the output area.
    */
 
@@ -1037,8 +1038,10 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
 
   protected AttributeSet attributesForTextType(String textType){
     AttributeSet attributes = (AttributeSet)attributesCache.get(textType);
-    if (attributes != null)
-      return attributes;
+    if (attributes != null){
+        
+        return attributes;
+    }
 
     String fontFamily = (String)prefs.lookup("font-family." + textType, "Monospaced");
     Integer fontSize = (Integer)prefs.lookup("font-size." + textType, new Integer(14));
@@ -1046,6 +1049,10 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
     Boolean italic = (Boolean)prefs.lookup("font-italic." + textType, Boolean.FALSE);
     Boolean underline = (Boolean)prefs.lookup("font-underlined." + textType, Boolean.FALSE);
     Color foreground = (Color)prefs.lookup("foreground." + textType, Color.white);
+    Float indent = (Float)prefs.lookup("indent." + textType, new Float(6.0));
+    //System.out.println("[*]Indent value = " + indent);
+
+   
 
     SimpleAttributeSet mAttributes = new SimpleAttributeSet();
     mAttributes.addAttribute(StyleConstants.FontFamily, fontFamily);
@@ -1054,6 +1061,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
     mAttributes.addAttribute(StyleConstants.Italic, italic);
     mAttributes.addAttribute(StyleConstants.Underline, underline);
     mAttributes.addAttribute(StyleConstants.Foreground, foreground);
+    mAttributes.addAttribute(StyleConstants.FirstLineIndent, indent);
 //    StyleConstants.setFontFamily(mAttributes, fontFamily);
 //    StyleConstants.setFontSize(mAttributes, fontSize);
 //    StyleConstants.setBold(mAttributes, bold);

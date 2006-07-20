@@ -28,6 +28,7 @@ import java.awt.GridLayout;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -74,7 +75,7 @@ public class TextPrefsPanel extends PreferencesPanel{
    * A list of panels to be displayed. The items in the list are CategoryPanels.
    */
 
-  private final Vector categoryPanels = new Vector();
+  private final ArrayList categoryPanels = new ArrayList();
 
 
 
@@ -140,7 +141,7 @@ public class TextPrefsPanel extends PreferencesPanel{
    */
 
   protected void addCategoryPanel(CategoryPanel panel){
-    categoryPanels.addElement(panel);
+    categoryPanels.add(panel);
     
     TextStyleChooserPanel textStyleChooser = panel.getTextStyleChooser();
     if (textStyleChooser != null)
@@ -236,7 +237,7 @@ public class TextPrefsPanel extends PreferencesPanel{
     boolean antialias = prefs.getBool("output-text.antialias", false);
 
     for (int i = 0; i < categoryPanels.size(); i++){
-      CategoryPanel panel = (CategoryPanel)categoryPanels.elementAt(i);
+      CategoryPanel panel = (CategoryPanel)categoryPanels.get(i);
       TextStyleChooserPanel textStyleChooser = panel.getTextStyleChooser();
       if (textStyleChooser == null)
         continue;
@@ -395,7 +396,7 @@ public class TextPrefsPanel extends PreferencesPanel{
   protected void createLayout(){
     setLayout(new BorderLayout(10, 10));
 
-    final JList categoryList = new JList(categoryPanels);
+    final JList categoryList = new JList(categoryPanels.toArray());
     categoryList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     JScrollPane scrollPane = new JScrollPane(categoryList);
 

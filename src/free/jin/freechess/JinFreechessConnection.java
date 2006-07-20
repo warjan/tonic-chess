@@ -551,6 +551,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
             this.userChannelListNext = true;
             
         }
+        else{
+            this.userChannelListNext = false;
+        }
         if (!this.fromPlugin){
             return false;
         }
@@ -582,13 +585,13 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
             listenerManager.fireChannelsEvent(new ChannelsEvent(this, ChannelsEvent.USER_CHANNEL_LIST_RECEIVED, channelNumber, channels));
             
-            this.userChannelListNext = false;
+            //this.userChannelListNext = false;
         }
-        if (!this.fromPlugin){
+        if (this.fromPlugin == false){
             return false;
         }
         else {
-        	this.fromPlugin = false;
+
             return true;
         }
    }

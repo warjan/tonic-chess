@@ -21,6 +21,8 @@
 
 package free.chess;
 
+import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 
@@ -71,9 +73,11 @@ public class PlainBoardPainter extends AbstractColoredBoardPainter{
 
   public void paintBoard(Graphics g, Component component, int x, int y, int width, int height){
 
+      JBoard board = (JBoard)component;
+      Rectangle boardRect = board.getBoardRect(null);
     Graphics2D g2 = (Graphics2D)g.create();
-    int squareWidth = width/8;
-    int squareHeight = height/8;
+    int squareWidth = boardRect.width/8;
+    int squareHeight = boardRect.height/8;
     Color lightColor = getLightColor();
     Color darkColor = getDarkColor();
     
@@ -87,11 +91,32 @@ public class PlainBoardPainter extends AbstractColoredBoardPainter{
         g2.fillRect(x+i*squareWidth, y+j*squareHeight, squareWidth, squareHeight);
 
       }
+      /*int borderWidth;
+      int borderHeight;
+      int coordsHeight = 0;
+      int coordsWidth = 0;
+
+      if (board.getBorder() != null){
+      Insets borderInsets = board.getBorder().getBorderInsets(component);
+        borderWidth = borderInsets.left;
+        borderHeight = borderInsets.top;
+      }else{
+          borderWidth = 0;
+          borderHeight = 0;
+      }
+
+      if (board.getTextHeight() != 0){
+          coordsHeight = board.getTextHeight();
+          coordsWidth = board.getTextWidth();
+
+      } */
+
+
       g2.setColor(Color.black);
       g2.setStroke(new BasicStroke(1f));
       for (int i = 1; i < 8; i++){
-          g2.drawLine(i*squareWidth+1, 0, i*squareWidth+1, height);
-          g2.drawLine( 0,i*squareHeight+1, width, i*squareHeight+1);
+          g2.drawLine(i*squareWidth + boardRect.x, boardRect.y, i*squareWidth + boardRect.x, height + boardRect.y);
+          g2.drawLine( boardRect.x,i*squareHeight+boardRect.y, width + boardRect.x, i*squareHeight+boardRect.y);
 
       }
       g2.dispose();

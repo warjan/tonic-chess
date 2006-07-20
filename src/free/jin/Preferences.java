@@ -377,6 +377,8 @@ public abstract class Preferences{
 
   /**
    * Sets the value of the specified boolean preference.
+   * @param prefName the name of preference
+   * @param prefValue the value of preference
    */
 
   public void setBool(String prefName, boolean prefValue){
@@ -657,6 +659,8 @@ public abstract class Preferences{
       return new Integer(s.substring("integer;".length()));
     else if (s.startsWith("double;"))
       return new Double(s.substring("double;".length()));
+    else if (s.startsWith("float;"))
+        return new Float(s.substring("float;".length()));
     else if (s.startsWith("string;"))
       return StringParser.parseString(s.substring("string;".length()));
     else if (s.startsWith("intlist;"))
@@ -697,6 +701,8 @@ public abstract class Preferences{
       return "rect.int;" + StringEncoder.encodeRectangle((Rectangle)prefValue);
     else if (prefValue instanceof RectDouble)
       return "rect.double;" + StringEncoder.encodeRectDouble((RectDouble)prefValue);
+    else if (prefValue instanceof Float)
+        return "float;" + prefValue;
     else
       throw new IllegalArgumentException("Unsupported preference type: " +
         prefValue.getClass().getName());

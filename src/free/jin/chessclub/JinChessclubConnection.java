@@ -50,40 +50,11 @@ import free.chessclub.ChessclubConstants;
 import free.chessclub.level2.Datagram;
 import free.chessclub.level2.DatagramEvent;
 import free.chessclub.level2.DatagramListener;
-import free.jin.Connection;
-import free.jin.Game;
-import free.jin.GameListConnection;
-import free.jin.GameListItem;
-import free.jin.HistoryListItem;
-import free.jin.Jin;
-import free.jin.LibListItem;
-import free.jin.PGNConnection;
-import free.jin.SearchListItem;
-import free.jin.Seek;
-import free.jin.SeekConnection;
-import free.jin.StoredListItem;
-import free.jin.UserSeek;
+import free.jin.*;
 import free.jin.chessclub.event.ArrowEvent;
 import free.jin.chessclub.event.ChessEventEvent;
 import free.jin.chessclub.event.CircleEvent;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ChatEvent;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameEvent;
-import free.jin.event.GameListEvent;
-import free.jin.event.GameListListenerManager;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.ListenerManager;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PlainTextEvent;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.SeekEvent;
-import free.jin.event.SeekListener;
-import free.jin.event.SeekListenerManager;
-import free.jin.event.TakebackEvent;
+import free.jin.event.*;
 import free.util.Pair;
 import free.util.Utilities;
 
@@ -95,7 +66,7 @@ import free.util.Utilities;
  */
 
 public class JinChessclubConnection extends ChessclubConnection implements DatagramListener,
-    Connection, SeekConnection, GameListConnection, PGNConnection{
+    Connection, SeekConnection, GameListConnection, PGNConnection, ChannelsConnection {
 
 
    /**
@@ -2298,10 +2269,25 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
   public void sendHelpQuestion(String question){
     sendCommand("tell 1 * " + question);    
   }
-  
+
+    public ChannelsListenerManager getChannelsListenerManager() {
+        return getChessclubListenerManager();
+    }
+
+    public void addChannel(int channelNumber) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public void removeChannel(int channelNumber) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public void updateChannelsList() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 
 
-  /**
+    /**
    * A container for various game information, such as the Game object, the current
    * Position and a list of made moves.
    */
