@@ -227,8 +227,12 @@ public class JBoard extends JComponent{
    */
 
   private Position positionCopy;
-  
-  
+
+    /**
+     * Coordinate's font size.
+      */
+
+   // private int
   
 
   /**
@@ -443,9 +447,36 @@ public class JBoard extends JComponent{
 
   private boolean isShowingModalDialog = false;
 
+    /**
+     * Method for getting coordinate's text width.
+     * @return outside coordinate text width
+     */
 
 
-  /**
+
+    public int getTextWidth() {
+        return textWidth;
+    }
+
+
+    /**
+     * Method for getting coordinate's text height.
+     * @return outside coordinate text height
+     */
+
+    public int getTextHeight() {
+        return textHeight;
+    }
+
+    /**
+     * Dimensions of outside coordinate's text. Default to zero.
+     */
+
+    private int textWidth = 0;
+    private int textHeight = 0;
+
+
+    /**
    * Creates a new JBoard with the specified position and BoardPainter and
    * PiecePainter.
    */
@@ -1295,10 +1326,10 @@ public class JBoard extends JComponent{
     Rectangle clipRect = g.getClipBounds();
     
     // IMPORTANT: If you modify this, you need to modify getBoardRect too
-    int textWidth = squareWidth/3;
-    int textHeight = squareHeight/3;
-    
-    int fontSize = Math.max(Math.min(textWidth, textHeight), 8);
+      textWidth = squareWidth/4;
+      textHeight = squareHeight/4;
+
+      int fontSize = Math.max(Math.min(textWidth, textHeight), 8);
     Font font = new Font(COORDS_FONT.getName(), COORDS_FONT.getStyle(), fontSize);
     g.setFont(font);
     

@@ -57,6 +57,8 @@ import javax.swing.text.Utilities;
 import free.util.GraphicsUtilities;
 import free.util.PlatformUtils;
 import free.workarounds.FixedJTextPane;
+import free.jin.Jin;
+import free.jin.plugin.Plugin;
 
 
 /**
@@ -114,6 +116,12 @@ public class ConsoleTextPane extends FixedJTextPane{
    */
 
   private Link curLink = null;
+
+    /**
+     * The current selection under cursor.
+     */
+
+    private String selection;
 
 
 
@@ -260,6 +268,7 @@ public class ConsoleTextPane extends FixedJTextPane{
    * for details.
    */
 
+  @Override
   public void reshape(int x, int y, int width, int height){
     if ((height > Short.MAX_VALUE) && SHOULD_USE_16_BIT_GRAPHICS_HACK){
       try{
@@ -324,7 +333,7 @@ public class ConsoleTextPane extends FixedJTextPane{
    */
 
   protected JPopupMenu getPopupMenu(MouseEvent evt){
-    String selection = getSelectedText();
+    selection = getSelectedText();
     int selectionStart = getSelectionStart();
     int selectionEnd = getSelectionEnd();
 
@@ -392,6 +401,10 @@ public class ConsoleTextPane extends FixedJTextPane{
         });
         defaultPopupMenu.add(menuItem);
       }
+        JMenuItem talkTo = new JMenuItem("Talk with");
+
+        talkTo.addActionListener(new TalkToListener());
+        defaultPopupMenu.add(talkTo, 0);
 
       defaultPopupMenu.setSize(defaultPopupMenu.getPreferredSize());
     }
@@ -399,10 +412,14 @@ public class ConsoleTextPane extends FixedJTextPane{
     return defaultPopupMenu;
   }
 
+    private void talkTo(String selection) {
+        Plugin consolePlugin = Jin.getInstance().getConnManager().getSession().getPluginById("console");
+
+                ((ConsoleManager) consolePlugin).openNewConsole(("tell " + selection), ("Private tells from " + selection), ("tell " + selection.toLowerCase()));
+    }
 
 
-
-  /**
+    /**
    * Returns the start of the word at the specified location.
    */
 
@@ -512,7 +529,7 @@ public class ConsoleTextPane extends FixedJTextPane{
    * <UL>
    *   <LI> copy - copies the current ConsoleTextPane's selection to the clipboard.
    *   <LI> execute - executes the currently selected text as a command.
-   *   <LI> url - Treats the currently selected text as a URL and displays the URL
+   *   <LI> url -k Treats the currently selected text as a URL and displays the URL
    *        in a browser.
    *   <LI> expurgate - Replaces all none-whitespace characters in the current
    *        selection with asterisks.
@@ -913,4 +930,10 @@ public class ConsoleTextPane extends FixedJTextPane{
     return metrics.getHeight();
   }
 
+     class TalkToListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            talkTo(selection);
+        }
+    }
 }

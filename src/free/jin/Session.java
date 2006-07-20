@@ -248,6 +248,24 @@ public class Session{
   public synchronized Plugin [] getPlugins(){
     return (plugins == null) ? null : (Plugin [])plugins.clone();
   }
+
+    /**
+     * Returns a plugin with specified id.
+     * @return plugin with id == @param s
+     */
+
+    public synchronized Plugin getPluginById(String id){
+
+        Plugin[] plugins = this.getPlugins();
+        Plugin returnplugin = null;
+        for (Plugin plugin: plugins){
+            if (plugin.getId().equals(id)){
+                returnplugin = plugin;
+                break;
+            }
+        }
+        return returnplugin;
+    }
   
   
   

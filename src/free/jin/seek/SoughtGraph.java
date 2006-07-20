@@ -79,7 +79,7 @@ public class SoughtGraph extends JComponent{
    * The total amount of rating (vertical) slots.
    */
 
-  protected static final int RATING_SLOTS = 36;
+  protected static final int RATING_SLOTS = 39;
 
 
 
@@ -510,17 +510,19 @@ public class SoughtGraph extends JComponent{
 
     Preferences prefs = plugin.getPrefs();
 
+     int fontSize = prefs.getInt("category-font.size", 12);
     // The "Bullet", "Blitz" and "Standard" strings.    
     String bulletString = prefs.getString("fast-category.name");
     String blitzString = prefs.getString("medium-category.name");
     String standardString = prefs.getString("slow-category.name");
     int timeStringHeight = (height-(graphY+graphHeight));
-    
+
     if (timeStringFont == null){
       int bulletFontSize = GraphicsUtilities.getMaxFittingFontSize(g, originalFont, bulletString, bulletWidth, timeStringHeight);
       int blitzFontSize = GraphicsUtilities.getMaxFittingFontSize(g, originalFont, blitzString, blitzWidth, timeStringHeight);
       int standardFontSize = GraphicsUtilities.getMaxFittingFontSize(g, originalFont, standardString, standardWidth, timeStringHeight);
-      int fontSize = Math.min(Math.min(bulletFontSize, blitzFontSize), standardFontSize);
+      //int fontSize = Math.min(Math.min(bulletFontSize, blitzFontSize), standardFontSize);
+
       timeStringFont = new Font(originalFont.getName(), originalFont.getStyle(), fontSize);
       timeStringFontMetrics = g.getFontMetrics(timeStringFont);
     }
@@ -663,14 +665,14 @@ public class SoughtGraph extends JComponent{
 
   protected void drawSeek(Graphics g, Seek seek, Rectangle seekBounds){
     Image seekImage = getSeekImage(seekBounds, seek);
-
+    Graphics2D g2d = (Graphics2D)g.create();
     if (seekImage == null){
-      g.setColor(Color.black);
-      g.drawOval(seekBounds.x, seekBounds.y, seekBounds.width-1, seekBounds.height-1);
+      g2d.setColor(Color.black);
+      g2d.drawOval(seekBounds.x, seekBounds.y, seekBounds.width-1, seekBounds.height-1);
       return;
     }
 
-    g.drawImage(seekImage, seekBounds.x, seekBounds.y, null);
+    g2d.drawImage(seekImage, seekBounds.x, seekBounds.y, null);
 
     /*
     Color color = StringParser.parseColor(plugin.lookupProperty("color."+seek.getVariant().getName()));
@@ -700,6 +702,9 @@ public class SoughtGraph extends JComponent{
       g.fillRect(seekBounds.x+xDiff, seekBounds.y+yDiff, smallWidth, smallHeight);
     }
     */
+
+      g2d.dispose();
+
   }
 
 

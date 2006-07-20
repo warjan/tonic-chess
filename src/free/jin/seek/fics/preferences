@@ -13,5 +13,6 @@ seek-image.unrated.computer.Chess = unrated_comp.gif
 fast-category.name = Lightning
 medium-category.name = Blitz
 slow-category.name = Standard
+category-font.size = integer;12
 
 background.image = background.gif

@@ -385,6 +385,7 @@ public class FreechessConnection extends Connection{
    
   public void sendCommand(String command){
     sendCommand(command, true);
+      this.fromPlugin = false;
   }
   
   
@@ -415,8 +416,9 @@ public class FreechessConnection extends Connection{
    */
   
   public void sendCommFromPlugin(String command){
-      this.fromPlugin = true;
+
       sendCommand(command, true);
+      this.fromPlugin = true;
   }
   
   //TODO: do we need a getter for fromPlugin boolean?
