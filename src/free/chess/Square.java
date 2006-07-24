@@ -46,7 +46,7 @@ public class Square{
    * The file of the square.
    */
   
-  private final int file;
+  private int file;
 
 
 
@@ -54,7 +54,7 @@ public class Square{
    * The rank of the square.
    */
 
-  private final int rank;
+  private int rank;
 
 
 
@@ -69,9 +69,17 @@ public class Square{
     this.rank = (byte)rank;
   }
 
+    /**
+     * Fake Square object creates only for supporting Bughouse and Crazyhouse in Tonic
+     */
+
+    public Square(){
+
+    }
 
 
-  /** 
+
+  /**
    * Returns an instance of Square representing the given
    * coordinates. Valid values lie in the range [0-7].
    * 

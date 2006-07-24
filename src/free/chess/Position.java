@@ -21,15 +21,14 @@
 
 package free.chess;
 
-import java.util.StringTokenizer;
+import free.chess.event.MoveEvent;
+import free.chess.event.MoveListener;
+import free.util.Utilities;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.EventListenerList;
-
-import free.chess.event.MoveEvent;
-import free.chess.event.MoveListener;
-import free.util.Utilities;
+import java.util.StringTokenizer;
 
 
 /**
@@ -443,6 +442,7 @@ public final class Position{
 
   public void makeMove(Move move){
     variant.makeMove(move, this, modifier);
+      System.out.println("POSITION VARIANT = " + variant.toString());
     fireMoveMade(move);
     fireStateChanged();
   }
@@ -731,6 +731,14 @@ public final class Position{
     public void setCurrentPlayer(Player player){
       position.setCurrentPlayerImpl(player);
     }
+
+      /**
+       * Sets the given piece at the given Square, but also calls fireStateChange() method
+       */
+
+      public void dropPiece(Piece piece, Square square){
+          position.setPieceAt(piece, square);
+      }
 
 
   }
