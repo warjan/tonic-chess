@@ -21,62 +21,7 @@
 
 package free.jin.board;
 
-import free.jin.ui.PreferencesPanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JToggleButton;
-import javax.swing.KeyStroke;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
-import free.chess.AbstractChessClock;
-import free.chess.ChessMove;
-import free.chess.JChessClock;
-import free.chess.Move;
-import free.chess.Player;
-import free.chess.Position;
+import free.chess.*;
 import free.chess.event.MoveEvent;
 import free.chess.event.MoveListener;
 import free.jin.Game;
@@ -84,16 +29,7 @@ import free.jin.Jin;
 import free.jin.Session;
 import free.jin.board.event.UserMoveEvent;
 import free.jin.board.event.UserMoveListener;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameListener;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.TakebackEvent;
+import free.jin.event.*;
 import free.jin.plugin.Plugin;
 import free.jin.ui.PrefsDialog;
 import free.util.AWTUtilities;
@@ -105,6 +41,17 @@ import free.util.swing.FullscreenPanel;
 import free.util.swing.NonEditableTableModel;
 import free.workarounds.FixedJPanel;
 import free.workarounds.FixedJTable;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import java.awt.*;
+import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 /**
  * A panel which displays a chess board and all related information, such
@@ -1271,10 +1218,10 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
       this.setLayout(null); // See the doLayout() method
       //JPanel boardPanel = new JPanel();
       //boardPanel.setLayout(new BorderLayout());
-      Border loweredBevelBorder = BorderFactory.createLoweredBevelBorder();
+      /*Border loweredBevelBorder = BorderFactory.createLoweredBevelBorder();
       Border emptyBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-      Border compoundBorder = new CompoundBorder(loweredBevelBorder, emptyBorder);
-      board.setBorder(loweredBevelBorder);
+      Border compoundBorder = new CompoundBorder(emptyBorder, loweredBevelBorder);
+      board.setBorder(compoundBorder);*/
       //boardPanel.add(board, BorderLayout.CENTER);
       this.add(board);
 

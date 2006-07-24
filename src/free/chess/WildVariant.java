@@ -168,7 +168,17 @@ public interface WildVariant{
    * Returns the name of this WildVariant.
    */
 
-  String getName();  
-  
+  String getName();
 
+    /**
+     * This method is created for supporting Bughouse and Crazyhouse in Tonic.
+     * @param position
+     * @param dropPiece
+     * @param toSquare
+     * @param promotionPiece
+     * @param moveSAN
+     * @return move
+     */
+
+    Move createMove(Position position, Piece dropPiece, Square toSquare, Piece promotionPiece, String moveSAN);
 }

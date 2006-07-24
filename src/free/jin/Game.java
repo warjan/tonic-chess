@@ -26,6 +26,7 @@ import java.beans.PropertyChangeListener;
 import free.chess.Player;
 import free.chess.Position;
 import free.chess.WildVariant;
+import free.chess.variants.bughouse.Bughouse;
 import free.util.BeanProperties;
 
 
@@ -335,7 +336,9 @@ public class Game{
    */
 
   public WildVariant getVariant(){
+
     return ((Position)props.getProperty("initialPosition")).getVariant();
+      
   }
 
 

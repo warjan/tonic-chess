@@ -590,7 +590,7 @@
                 </copy>
 
         <!-- Calls a target that creates .exe file -->
-        <antcall target="exe"/>
+        <antcall target="createexe"/>
     </target>
 	
 	

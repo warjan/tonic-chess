@@ -21,70 +21,30 @@
 
 package free.jin.freechess;
 
-import bsh.This;
-import free.jin.ChannelsConnection;
-import free.jin.event.ChannelsEvent;
-import free.jin.event.ChannelsListenerManager;
-import java.io.IOException;
-import java.net.Socket;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.swing.SwingUtilities;
-
-
-import free.chess.Chess;
-import free.chess.ChessMove;
-import free.chess.ChessPiece;
-import free.chess.ChesslikeGenericVariant;
-import free.chess.Move;
-import free.chess.Piece;
-import free.chess.Player;
-import free.chess.Position;
-import free.chess.Square;
-import free.chess.WildVariant;
+import free.chess.*;
 import free.chess.variants.BothSidesCastlingVariant;
 import free.chess.variants.NoCastlingVariant;
+import free.chess.variants.bughouse.Bughouse;
 import free.chess.variants.atomic.Atomic;
 import free.chess.variants.fischerrandom.FischerRandom;
 import free.chess.variants.suicide.Suicide;
 import free.chessclub.ChessclubConnection;
-import free.freechess.DeltaBoardStruct;
-import free.freechess.FreechessConnection;
-import free.freechess.GameInfoStruct;
-import free.freechess.Ivar;
-import free.freechess.SeekInfoStruct;
-import free.freechess.Style12Struct;
-import free.jin.Connection;
-import free.jin.Game;
-import free.jin.Jin;
-import free.jin.MessagesConnection;
-import free.jin.PGNConnection;
-import free.jin.Seek;
-import free.jin.SeekConnection;
-import free.jin.UserSeek;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ChatEvent;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.ListenerManager;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PlainTextEvent;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.SeekEvent;
-import free.jin.event.SeekListener;
-import free.jin.event.SeekListenerManager;
-import free.jin.event.TakebackEvent;
+import free.freechess.*;
+import free.jin.*;
+import free.jin.event.*;
 import free.jin.freechess.event.IvarStateChangeEvent;
 import free.util.Pair;
 import free.util.TextUtilities;
+
+import javax.swing.*;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -105,6 +65,42 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     public String getConnectionName(){
         return "FreechessConnection";
     }
+
+    /**
+     * Boolean indicating whether this connection's method waits for game info from
+     * processing line about examined game.
+     */
+
+    private boolean waiting = false;
+
+    /**
+     * The examined game Style12Struct.
+     */
+
+    private Style12Struct examinedGameBoardData;
+
+    /**
+     * The number of examined game we are willing to gather information about.
+     */
+
+    private int examinedGameId;
+
+    /**
+     * The variant of examined game.
+     */
+
+    private String  examinedGameVariant;
+
+    /**
+     * Boolean telling whether examined game is rated.
+     */
+    private boolean isExaminedRated;
+
+    /**
+     * Boolean telling whether examined game is private.
+     */
+
+    private boolean isExaminedPrivate;
 
   /**
    * Our listener manager.
@@ -638,12 +634,17 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       else if (wildId.equals("fr"))
         return FischerRandom.getInstance();
     }
+    else if (categoryName.equals("pawns/pawns-only"))
+        return new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, categoryName);
     else if (categoryName.equals("suicide"))
       return Suicide.getInstance();
     else if (categoryName.equals("losers"))
       return new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, categoryName);
     else if (categoryName.equals("atomic"))
       return Atomic.getInstance();
+    else if (categoryName.equals("bughouse") || categoryName.equals("crazyhouse")){
+        return Bughouse.getInstance();
+    }
 
     // This means it's a fake variant we're using because the server hasn't told us the real one.
     else if (categoryName.equals("Unknown variant"))
@@ -869,6 +870,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * Fires an appropriate GameEvent depending on the situation.
    */
 
+  @Override
   protected boolean processStyle12(Style12Struct boardData){
     Integer gameNumber = new Integer(boardData.getGameNumber());
     InternalGameData gameData = (InternalGameData)ongoingGamesData.get(gameNumber);
@@ -912,14 +914,22 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       // Currently happens if you start examining a game (26.08.2002), or
       // doing "refresh <game>" (04.07.2004).
 
+        //TODO: Implement getting info for starting examined game
+        this.waiting = true;
+        askForMoreGameInfo(boardData.getGameNumber(), boardData);
       // We have no choice but to fake the data, since the server simply doesn't
       // send us this information.
-      GameInfoStruct fakeGameInfo = new GameInfoStruct(boardData.getGameNumber(),
-        false, "Unknown variant", false, false, false, boardData.getInitialTime(),
-        boardData.getIncrement(), boardData.getInitialTime(), boardData.getIncrement(),
-        0, -1, ' ', -1, ' ', false, false);
 
-      gameData = startGame(fakeGameInfo, boardData);
+
+
+
+
+
+
+
+
+
+
     }
 
     if (gameData != null)
@@ -927,10 +937,114 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
     return true;
   }
-  
-  
-  
-  /**
+
+    /**
+     * Method that process info about examined game.
+     * @param gameNr
+     * @param gameCategory
+     * @return
+     */
+
+    protected boolean processExaminedGameInfo(int gameNr, String gameCategory) {
+        Style12Struct boardData = this.examinedGameBoardData;
+        InternalGameData gameData = (InternalGameData)ongoingGamesData.get(gameNr);
+        if (this.examinedGameId == gameNr){
+
+              String[] category = parseExaminedGameCategory(gameCategory);
+              System.out.println("CATEGORY STRING = " + category[0]);
+
+              this.examinedGameVariant = category[0];
+              if (category[1].equals("rated")){
+                    this.isExaminedRated = true;
+              }else{
+                    this.isExaminedRated = false;
+                }
+              System.out.println("RATED? = " + this.isExaminedRated);
+              System.out.println("THIRD IN CATEGORY = " + category[2]);
+              if (category[2].length() != 0){
+                  this.isExaminedPrivate = true;
+              }
+                        GameInfoStruct fakeGameInfo = new GameInfoStruct(boardData.getGameNumber(),
+        this.isExaminedPrivate, this.examinedGameVariant, this.isExaminedRated, false, false, boardData.getInitialTime(),
+        boardData.getIncrement(), boardData.getInitialTime(), boardData.getIncrement(),
+        0, -1, ' ', -1, ' ', false, false);
+
+      gameData = startGame(fakeGameInfo, boardData);
+               if (gameData != null){
+                    updateGame(gameData, boardData);
+               }
+
+               this.waiting = false;
+
+
+          }
+
+
+
+           return false;
+    }
+
+    /**
+     * Method that parses through category string of examined game.
+     * @param s
+     * @return array of strings that is further processed
+     */
+
+
+    private String[] parseExaminedGameCategory(String s) {
+        String[] categories = new String[3];
+
+            switch(s.charAt(s.length()-1)){
+                case 'r': categories[1] = "rated";
+                    break;
+                case 'u': categories[1] = "unrated";
+                    break;
+            }
+            switch(s.charAt(s.length()-2)){
+                case 's': categories[0] = "standard";
+                    break;
+                case 'b': categories[0] = "blitz";
+                    break;
+                case 'l': categories[0] = "lightning";
+                    break;
+                case 'w': categories[0] = "wild";
+                    break;
+                case 'x': categories[0] = "atomic";
+                    break;
+                case 'B': categories[0] = "bughouse";
+                    break;
+                case 'z': categories[0] = "crazyhouse";
+                    break;
+                case 'L': categories[0] = "losers";
+                    break;
+                case 'S': categories[0] = "suicide";
+                    break;
+                default: categories[0] = "unknown";
+            }
+
+        if (s.length()>2){
+              categories[2] = "private";
+        }else {
+            categories[2] = "";
+        }
+
+
+
+        return categories;
+    }
+
+    /**
+     * Method that sends to server question for more info about game with specified number.
+     */
+
+    private void askForMoreGameInfo(int gameNumber, Style12Struct boardData) {
+        this.examinedGameId = gameNumber;
+        this.examinedGameBoardData = boardData;
+        this.sendCommFromPlugin("games " + String.valueOf(gameNumber));
+    }
+
+
+    /**
    * Processes a delta-board. Instead of actually handing the delta-board, this
    * method, instead, creates a Style12Struct object and then asks
    * <code>processStyle12</code> to handle it.
@@ -1430,6 +1544,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
   private InternalGameData startGame(GameInfoStruct gameInfo, Style12Struct boardData){
     String categoryName = gameInfo.getGameCategory();
     WildVariant variant = getVariant(categoryName);
+
     if (variant == null){
       String starsPad = TextUtilities.padStart("", '*', categoryName.length()+2);
       String spacePad = TextUtilities.padStart("", ' ', categoryName.length()+1) + '*';
@@ -1545,6 +1660,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
     String currentPlayerName = boardData.getMovingPlayerName();
     WildVariant variant = game.getVariant();
+
     Position position = new Position(variant);
     position.setLexigraphic(oldBoardData.getBoardLexigraphic());
     Player currentPlayer = playerForString(oldBoardData.getCurrentPlayer());
@@ -1553,10 +1669,26 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     Move move;
     Square fromSquare, toSquare;
     Piece promotionPiece = null;
+
+      //TODO: Start implementing bughouse and crazyhouse support from here. Look at second else if.
+      Piece dropPiece = null;
     if (moveVerbose.equals("o-o"))
       move = variant.createShortCastling(position);
     else if (moveVerbose.equals("o-o-o"))
       move = variant.createLongCastling(position);
+    else if (moveVerbose.indexOf('@') != -1){
+
+        toSquare = Square.parseSquare(moveVerbose.substring(5,7));
+        String dropPieceString = String.valueOf(moveVerbose.charAt(0));
+        if (currentPlayer.isBlack()){
+            dropPieceString = dropPieceString.toLowerCase();
+
+        }
+        dropPiece = variant.parsePiece(dropPieceString);
+
+
+        move = variant.createMove(position, dropPiece, toSquare, promotionPiece, moveSAN);
+    }
     else{
       fromSquare = Square.parseSquare(moveVerbose.substring(2, 4));
       toSquare = Square.parseSquare(moveVerbose.substring(5, 7));
@@ -1711,10 +1843,13 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       Position newPos = game.getInitialPosition();
       newPos.setFEN(boardData.getBoardFEN());
 
-      if (newPos.equals(oldPos))
+      if (newPos.equals(oldPos)){
         issueTakeback(gameData, boardData);
-      else
+      }else if (gameData.game.getVariant() instanceof Bughouse){
+          issueTakeback(gameData, boardData);
+      }else{
         changePosition(gameData, boardData);
+      }
     }
   }
 

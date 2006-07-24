@@ -21,7 +21,6 @@
 
 package free.chess;
 
-
 /**
  * <P>Implements WildVariant for chesslike variants. Subclasses must only define
  * the initial position and the name of the variant. Although this class is not
@@ -496,13 +495,18 @@ public class ChesslikeGenericVariant implements WildVariant{
 
   public Move createMove(Position pos, Move move){
     checkPosition(pos);
+    //TODO: Fix this ugly hack
+      if (move instanceof ChessMove) {
 
-    if (!(move instanceof ChessMove))
-      throw new IllegalArgumentException("Wrong move type: "+move.getClass());
 
-    ChessMove cmove = (ChessMove)move;
-    return createMove(pos, cmove.getStartingSquare(), cmove.getEndingSquare(),
-      cmove.getPromotionTarget(), cmove.getStringRepresentation());
+          ChessMove cmove = (ChessMove) move;
+          return createMove(pos, cmove.getStartingSquare(), cmove.getEndingSquare(),
+                  cmove.getPromotionTarget(), cmove.getStringRepresentation());
+      } else {
+          throw new IllegalArgumentException("Wrong move type: " + move.getClass());
+      }
+
+
   }
 
 
@@ -567,12 +571,16 @@ public class ChesslikeGenericVariant implements WildVariant{
                         // method except a method in the Position class, which will
                         // be of this wild variant anyway.
 
-    if (!(move instanceof ChessMove))
+      //TODO: Fix this hack
+      if (!(move instanceof ChessMove))
       throw new IllegalArgumentException("Wrong move type: "+move.getClass());
 
-    ChessMove cmove = (ChessMove)move;
+    if (move instanceof ChessMove){
+      ChessMove cmove = (ChessMove)move;
+
 
     makeChessMove(cmove, pos, modifier);
+    }
   }
 
 
@@ -720,10 +728,12 @@ public class ChesslikeGenericVariant implements WildVariant{
     return variantName;
   }
 
+    public Move createMove(Position position, Piece dropPiece, Square toSquare, Piece promotionPiece, String moveSAN) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
 
-
-  /**
+    /**
    * Returns a textual representation of this wild variant.
    */
 

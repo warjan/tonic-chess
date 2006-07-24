@@ -59,7 +59,11 @@ public abstract class Move{
 
   private final String stringRepresentation;
 
+    /**
+     * The droping piece - for Bughouse and crazyhouse.
+     */
 
+ private final Piece dropingPiece;
 
 
   /**
@@ -82,12 +86,19 @@ public abstract class Move{
     this.endingSquare = endingSquare;
     this.player = player;
     this.stringRepresentation = stringRepresentation;
+      this.dropingPiece = null;
   }
 
+    public Move(Piece dropingPiece, Square endingSquare, Player movingPlayer, String moveSAN) {
+        this.endingSquare = endingSquare;
+        this.player = movingPlayer;
+        this.stringRepresentation = moveSAN;
+        this.startingSquare = null;
+        this.dropingPiece = dropingPiece;
+    }
 
 
-
-  /**
+    /**
    * Returns the initial square of the moving piece or <code>null</code> if
    * unknown.
    */

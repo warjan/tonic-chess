@@ -22,23 +22,14 @@
 
 package free.freechess;
 
-import free.jin.Jin;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.PushbackInputStream;
+import free.util.Connection;
+
+import java.io.*;
 import java.util.BitSet;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.StringTokenizer;
-
-//import jregex.Matcher;
-//import jregex.Pattern;
-import free.util.Connection;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -518,6 +509,8 @@ public class FreechessConnection extends Connection{
     
     if (handleGameInfo(line))
       return;
+    if (handleExaminedGameInfo(line))
+        return;
     if (handleStyle12(line))
       return;
     if (handleDeltaBoard(line))
@@ -1282,6 +1275,39 @@ public class FreechessConnection extends Connection{
 
   protected boolean processGameInfo(GameInfoStruct data){return false;}
 
+    /**
+     * Regular expression indicating that give line of text is examined game info.
+     */
+    private static final Pattern EXAMINED_GAME_INFO = Pattern.compile( "^\\s{0,2}(\\d{1,3}) (\\(Exam\\.)\\s{1,4}\\d{1,4} (\\w*)\\s*(\\d{1,4}) (\\w*) {0,}\\) \\[\\s{0,1}(\\w{2,3})\\s*(\\d*)\\s*(\\d*)\\] (\\w)\\:\\s*(\\d*)");
+
+    /**
+     * Called to determine whether the given line of text is a examined game info and to further
+     * process it if it is.
+     */
+
+    protected boolean handleExaminedGameInfo(String line){
+        Matcher matcher = EXAMINED_GAME_INFO.matcher(line);
+        if (matcher.matches() == false){
+            return false;
+        }
+
+        int examinedGameNr = Integer.parseInt(matcher.group(1));
+        String examinedGameCategory = matcher.group(6);
+
+        if (processExaminedGameInfo(examinedGameNr, examinedGameCategory) == false){
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * Processes info from line containing information about examined game.
+     * @param gameNr
+     * @param gameCategory
+     * @return
+     */
+
+    protected boolean processExaminedGameInfo(int gameNr, String gameCategory){return false;}
 
 
 
@@ -2362,7 +2388,7 @@ public class FreechessConnection extends Connection{
      */
 
     //private static final java.util.regex.Pattern USERS_CHANNEL_LIST_ARRIVES = java.util.regex.Pattern.compile("^(\\b[0-9]{1,3}\\b)((\\s){3,4}(\\b[0-9]{1,3}\\b)){1,19}");
-    private static final java.util.regex.Pattern USERS_CHANNEL_LIST_ARRIVES = java.util.regex.Pattern.compile("^(\\b[0-9]{1,3}\\b)\\s{1,4}.*");
+    private static final java.util.regex.Pattern USERS_CHANNEL_LIST_ARRIVES = java.util.regex.Pattern.compile("^(\\d{1,3})[0-9\\s]*");
     /**
      * Method that handles lines containing channel list.
      */
