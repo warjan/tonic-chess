@@ -21,20 +21,14 @@
 
 package free.jin.console;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
-
-import javax.swing.*;
-
 import free.jin.Preferences;
 import free.workarounds.FixUtils;
 import free.workarounds.FixedJTextField;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
 
 
 /**
@@ -270,14 +264,14 @@ public class ConsoleTextField extends FixedJTextField{
           
           if ((modifiers&Command.BLANKED_MASK)==0){
             history.remove(command);
-            history.add(0,command);
+            history.add(0,command.trim());
           }
 
           typedInString = "";
           setText(typedInString);
           currentHistoryIndex = -1;
 
-          console.issueCommand(new Command(command, modifiers));
+          console.issueCommand(new Command(command.trim(), modifiers));
           break;
         case KeyEvent.VK_ESCAPE:
           if (evt.getModifiers() == 0){

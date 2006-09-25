@@ -10,33 +10,22 @@
 package free.jin.tray;
 
 import free.jin.Connection;
-import free.jin.Jin;
 import free.jin.ConnectionDetails;
-import free.jin.event.BasicListenerManager;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ChatEvent;
-import free.jin.event.ChatListener;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.ConnectionListener;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameListener;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.TakebackEvent;
+import free.jin.Jin;
+import free.jin.event.*;
 import free.jin.plugin.Plugin;
+import free.jin.tray.prefs.TrayPrefsPanel;
 import free.jin.ui.MdiUiProvider;
-import free.util.PlatformUtils;
-import java.awt.Frame;
+import free.jin.ui.PreferencesPanel;
+import org.jdesktop.jdic.tray.SystemTray;
+import org.jdesktop.jdic.tray.TrayIcon;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.*;
-
-import org.jdesktop.jdic.tray.*;
 
 /**
  *
@@ -152,13 +141,30 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
 
     public void start(){
 
-            registerListeners();
-            initTrayMenu();
-            createIcons();
-            firstTime = true;
+            if (getPrefs().getBool("display.tray") == true){
+                registerListeners();
+                initTrayMenu();
+                createIcons();
+                firstTime = true;
+            }
 
 
 
+    }
+
+    /**
+     * Overrides <code>hasPreverencesUI</code> to return whether the plugin
+     * will display a preferences UI (the setting is taken from the
+     * <pre>"preferences.show"</pre> property.
+     * @return boolean value indicating whether this plugin have ui for setting preferences
+     */
+
+    public boolean hasPreferencesUI() {
+        return getPrefs().getBool("preferences.show", true);
+    }
+
+        public PreferencesPanel getPreferencesUI() {
+        return new TrayPrefsPanel(this);
     }
     
     /**
@@ -363,8 +369,10 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
         listenerManager.addChatListener(this);
     }
     public void stop(){
+        if (tray != null){
         unregisterListeners();
         removeTrayIcon();
+        }
     }
 
     private void removeTrayIcon() {
