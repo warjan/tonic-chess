@@ -21,33 +21,17 @@
 
 package free.chess;
 
-import java.awt.AWTEvent;
-import java.awt.Color;
-import java.awt.Composite;
-import java.awt.CompositeContext;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.event.MouseEvent;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.util.ArrayList;
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import free.chess.event.MoveProgressEvent;
 import free.chess.event.MoveProgressListener;
 import free.util.PaintHook;
 import free.util.Utilities;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
 /**
@@ -228,13 +212,8 @@ public class JBoard extends JComponent{
 
   private Position positionCopy;
 
-    /**
-     * Coordinate's font size.
-      */
 
-   // private int
   
-
   /**
    * The ChangeListener to the Position.
    */
@@ -446,35 +425,6 @@ public class JBoard extends JComponent{
    */
 
   private boolean isShowingModalDialog = false;
-
-    /**
-     * Method for getting coordinate's text width.
-     * @return outside coordinate text width
-     */
-
-
-
-    public int getTextWidth() {
-        return textWidth;
-    }
-
-
-    /**
-     * Method for getting coordinate's text height.
-     * @return outside coordinate text height
-     */
-
-    public int getTextHeight() {
-        return textHeight;
-    }
-
-    /**
-     * Dimensions of outside coordinate's text. Default to zero.
-     */
-
-    private int textWidth = 0;
-    private int textHeight = 0;
-
 
     /**
    * Creates a new JBoard with the specified position and BoardPainter and
@@ -703,7 +653,6 @@ public class JBoard extends JComponent{
   }
 
 
-
   /**
    * Returns <code>true</code> if the board is editable, i.e. the pieces can at
    * all be moved.
@@ -712,8 +661,6 @@ public class JBoard extends JComponent{
   public boolean isEditable(){
     return isEditable;
   }
-
-
 
   /**
    * Sets whether the moved piece follows the mouse cursor while a move is being
@@ -1166,8 +1113,15 @@ public class JBoard extends JComponent{
     // Paint the board
     boardPainter.paintBoard(g, this, rect.x, rect.y, rect.width, rect.height);
 
-    // Paint the stationary pieces
-    for (int file = 0; file < 8; file++)
+
+      //rect = g.getClipBounds();
+      //g.setClip(originalClip);
+
+      //g.setClip(rect);
+
+
+      // Paint the stationary pieces
+    for (int file = 0; file < 8; file++){
       for (int rank = 0; rank < 8; rank++){
         Square curSquare = Square.getInstance(file, rank);
 
@@ -1184,6 +1138,11 @@ public class JBoard extends JComponent{
 
         piecePainter.paintPiece(piece, g, this, rect, isShaded(curSquare));
       }
+    }
+
+
+
+
 
     // Paint move highlighting
     if ((moveHighlightingStyle != NO_MOVE_HIGHLIGHTING) && (highlightedMove != null)){
@@ -1211,9 +1170,11 @@ public class JBoard extends JComponent{
     // usual clip rectangle.
     rect = g.getClipBounds();
     g.setClip(originalClip);
+
     drawCoords(graphics);
+
     g.setClip(rect);
-    
+
     // Allow PaintHooks to paint
     callPaintHooks(g);
 
@@ -1237,10 +1198,12 @@ public class JBoard extends JComponent{
       }
     }
   }
-  
 
 
-  /**
+
+
+
+    /**
    * The font we use for drawing coordinates. The size might be different in the
    * actual drawing though.
    */
@@ -1326,8 +1289,8 @@ public class JBoard extends JComponent{
     Rectangle clipRect = g.getClipBounds();
     
     // IMPORTANT: If you modify this, you need to modify getBoardRect too
-      textWidth = squareWidth/4;
-      textHeight = squareHeight/4;
+      int textWidth = squareWidth/4;
+      int textHeight = squareHeight/4;
 
       int fontSize = Math.max(Math.min(textWidth, textHeight), 8);
     Font font = new Font(COORDS_FONT.getName(), COORDS_FONT.getStyle(), fontSize);
@@ -1356,7 +1319,7 @@ public class JBoard extends JComponent{
       for (int i = 0; i < 8; i++){
         g.drawString(String.valueOf(col),
           boardRect.x + i*squareWidth + (squareWidth - fontWidth)/2,
-          boardRect.y + boardRect.height + (bottomBorderHeight + fm.getAscent())/2 - 1); 
+          boardRect.y + boardRect.height + (bottomBorderHeight + fm.getAscent())/2 - 1);
         col -= dir;
       }
     }
@@ -1586,6 +1549,7 @@ public class JBoard extends JComponent{
     if (getCoordsDisplayStyle() == OUTSIDE_COORDS){
       int w = rect.width/30;
       int h = rect.height/30;
+
       
       rect.x += w;
       rect.width -= w;

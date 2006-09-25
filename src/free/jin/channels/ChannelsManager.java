@@ -9,46 +9,31 @@
 package free.jin.channels;
 
 import free.freechess.FreechessConnection;
-
 import free.jin.Connection;
 import free.jin.Jin;
 import free.jin.Preferences;
 import free.jin.channels.prefs.ChannelsManagerPrefsPanel;
-
 import free.jin.console.Console;
-
-import free.jin.event.BasicListenerManager;
-import free.jin.event.ChannelsEvent;
-import free.jin.event.ChannelsListener;
-import free.jin.event.ChatEvent;
-import free.jin.event.ChatListener;
-import free.jin.event.ConnectionListener;
-
+import free.jin.event.*;
 import free.jin.plugin.Plugin;
 import free.jin.plugin.PluginUIContainer;
-
-import free.jin.ui.UIProvider;
 import free.jin.ui.PreferencesPanel;
+import free.jin.ui.UIProvider;
+import org.tonic.ui.swing.CloseTabAction;
+import org.tonic.ui.swing.CloseableTabbedPane;
 
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-
 import java.net.URL;
-
 import java.util.*;
 import static java.util.Calendar.*;
-
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import org.tonic.ui.swing.CloseableTabbedPane;
-import org.tonic.ui.swing.CloseableTabbedPaneUI;
-import org.tonic.ui.swing.CloseTabAction;
 
 
 /**
@@ -208,7 +193,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
         return getPrefs().getBool("preferences.show", true);
     }
 
-        public PreferencesPanel getPreferencesUI() {
+    public PreferencesPanel getPreferencesUI() {
         return new ChannelsManagerPrefsPanel(this);
     }
 
