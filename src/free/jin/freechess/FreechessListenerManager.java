@@ -24,6 +24,8 @@ package free.jin.freechess;
 import free.freechess.Ivar;
 import free.jin.event.BasicListenerManager;
 import free.jin.event.SeekListener;
+import free.jin.event.BughouseListener;
+import free.jin.event.BughouseEvent;
 import free.jin.freechess.event.IvarStateChangeEvent;
 import free.jin.freechess.event.IvarStateChangeListener;
 
@@ -130,7 +132,37 @@ public class FreechessListenerManager extends BasicListenerManager{
       }
     }
   }
-  
-  
 
+
+    /**
+     * Adds the specified BughouseListener to the list of listeners receiving
+     * notification of changes in lists of pieces available for dropping.
+     * @param l
+     */
+    public void addBughouseListener(BughouseListener l) {
+        listenerList.add(BughouseListener.class, l);
+    }
+
+    /**
+     * Remove the specified BughouseListener to the list of listeners receiving
+     * notification of changes in lists of pieces available for dropping.
+     * @param l
+     */
+    public void removeBughouseListener(BughouseListener l) {
+        listenerList.remove(BughouseListener.class, l);
+    }
+
+    /**
+     * Notifies all registered BughouseListeners of the specified BughouseEvent.
+     * @param e
+     */
+    public void fireBughouseEvent(BughouseEvent e) {
+        Object [] listeners = listenerList.getListenerList();
+        for (int i = 0; i < listeners.length; i += 2){
+            if (listeners[i] == BughouseListener.class){
+                BughouseListener listener = (BughouseListener)listeners[i+1];
+                listener.bughousePiecesUpdate(e);
+            }
+        }
+    }
 }

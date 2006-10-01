@@ -53,7 +53,7 @@ import java.util.regex.Pattern;
  */
 
 public class JinFreechessConnection extends FreechessConnection implements Connection,
-    SeekConnection, PGNConnection, ChannelsConnection, MessagesConnection{
+    SeekConnection, PGNConnection, ChannelsConnection, MessagesConnection, BughouseConnection{
 
 //TODO add implementation of FreechessChannelsConnection.
 //TODO add methods and regular expressions to handle channel list events.
@@ -1465,6 +1465,20 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
   }
 
 
+    /**
+     * Method that processes information about available pieces for players in Bughouse game.
+     * Eventually it fire apopriate BughouseEvent
+     * @param gameNumber
+     * @param whiteAvailablePieces
+     * @param blackAvailablePieces
+     * @return
+     */
+
+    protected boolean processBughouseHoldings(int gameNumber, String whiteAvailablePieces, String blackAvailablePieces) {
+      listenerManager.fireBughouseEvent(new BughouseEvent(this, gameNumber, whiteAvailablePieces, blackAvailablePieces));
+      return false;
+
+    }
 
 
 

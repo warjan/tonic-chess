@@ -255,7 +255,8 @@ public class ConsoleTextField extends FixedJTextField{
     if (evt.getID() == KeyEvent.KEY_PRESSED){
       switch (evt.getKeyCode()){
         case KeyEvent.VK_ENTER:
-          String command = getCommandPrefix() + " " + getText();
+            String commandPrefix = getCommandPrefix();
+          String command = commandPrefix + " " + getText();
           long modifiers = 0;
           if (isShiftDown)
             modifiers |= Command.BLANKED_MASK;
@@ -264,7 +265,7 @@ public class ConsoleTextField extends FixedJTextField{
           
           if ((modifiers&Command.BLANKED_MASK)==0){
             history.remove(command);
-            history.add(0,command.trim());
+            history.add(0,command.trim().replaceFirst(commandPrefix,"").trim());
           }
 
           typedInString = "";

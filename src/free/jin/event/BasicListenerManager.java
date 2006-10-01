@@ -36,7 +36,7 @@ import free.util.EventListenerList;
  */
 
 public class BasicListenerManager implements ListenerManager, SeekListenerManager,
-    GameListListenerManager, FriendsListenerManager, ChannelsListenerManager{
+    GameListListenerManager, FriendsListenerManager, ChannelsListenerManager, BughouseListenerManager{
 
 
 

@@ -1371,6 +1371,11 @@ public class FreechessConnection extends Connection{
 
   protected boolean processDeltaBoard(DeltaBoardStruct data){return false;}
 
+    /**
+     * Pattern for handling bughouse holdings.
+     */
+
+    private static final Pattern BUGHOUSE_HOLDINGS = Pattern.compile("^<b1> game (\\d{1,4}) white \\[(\\w{0,12})\\] black \\[(\\w{0,12})\\].*");
 
 
   /**
@@ -1381,16 +1386,36 @@ public class FreechessConnection extends Connection{
   private boolean handleBughouseHoldings(String line){
     if (!line.startsWith("<b1> "))
       return false;
-    
-    // Implement real handling.
+
+      Matcher matcher = BUGHOUSE_HOLDINGS.matcher(line);
+      if (!matcher.matches()){
+          return false;
+      }
+
+      int gameNumber = Integer.parseInt(matcher.group(1));
+      String whiteAvailablePieces = matcher.group(2);
+      String blackAvailablePieces = matcher.group(3);
+
+      System.out.println("BUGHOUSE INFO = " + gameNumber + " " + whiteAvailablePieces + " " + blackAvailablePieces);
+
+
+      if (processBughouseHoldings(gameNumber, whiteAvailablePieces, blackAvailablePieces)==false){
+
+          processLine(line);
+
+      }
     
     return true;
   }
 
+    protected boolean processBughouseHoldings(int gameNumber, String whiteAvailablePieces, String blackAvailablePieces) {
+
+        return false;
+
+    }
 
 
-
-  /**
+    /**
    * The regular expression matching game end lines, like the following:<br>
    * {Game 6 (Strakh vs. Svag) Strakh forfeits on time} 0-1.
    */
