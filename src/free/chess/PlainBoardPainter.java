@@ -21,8 +21,6 @@
 
 package free.chess;
 
-import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 
@@ -111,7 +109,7 @@ public class PlainBoardPainter extends AbstractColoredBoardPainter{
 
       } */
 
-
+      /* Draws lines between squeres */
       g2.setColor(Color.black);
       g2.setStroke(new BasicStroke(1f));
       for (int i = 1; i < 8; i++){
