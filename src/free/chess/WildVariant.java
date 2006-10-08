@@ -180,5 +180,15 @@ public interface WildVariant{
      * @return move
      */
 
-    Move createMove(Position position, Piece dropPiece, Square toSquare, Piece promotionPiece, String moveSAN);
+
+    /**
+     * Makes move in the given position. It is ment for fixing ambigous call to createMove methods.
+     * @param position
+     * @param dropPiece
+     * @param toSquare
+     * @param promotionPiece
+     * @param moveSAN
+     * @return
+     */
+    Move createMove(Position position, Piece dropPiece, Square startSquare, Square toSquare, Piece promotionPiece, String moveSAN);
 }

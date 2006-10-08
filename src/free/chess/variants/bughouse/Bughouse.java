@@ -56,7 +56,7 @@ public class Bughouse extends ChesslikeGenericVariant {
     }
 
 
-    public Move createMove(Position pos, Piece dropedPiece, Square endingSquare,
+    public Move createMove(Position pos, Piece dropedPiece, Square startingSquare, Square endingSquare,
                            Piece promotionTarget, String moveSAN) {
 
         checkPosition(pos);
@@ -69,6 +69,6 @@ public class Bughouse extends ChesslikeGenericVariant {
         Player movingPlayer = dropedPiece.getPlayer();
 
 
-        return new BughouseMove(dropingPiece, endingSquare, movingPlayer, moveSAN);
+        return new BughouseMove(dropingPiece, startingSquare, endingSquare, movingPlayer, moveSAN);
   }
 }

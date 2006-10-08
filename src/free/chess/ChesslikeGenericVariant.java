@@ -728,7 +728,7 @@ public class ChesslikeGenericVariant implements WildVariant{
     return variantName;
   }
 
-    public Move createMove(Position position, Piece dropPiece, Square toSquare, Piece promotionPiece, String moveSAN) {
+    public Move createMove(Position position, Piece dropPiece, Square startSquer, Square toSquare, Piece promotionPiece, String moveSAN) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

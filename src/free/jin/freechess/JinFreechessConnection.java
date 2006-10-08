@@ -1475,8 +1475,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
      */
 
     protected boolean processBughouseHoldings(int gameNumber, String whiteAvailablePieces, String blackAvailablePieces) {
+        //System.out.println(">>>BUGHOUSE event occured with data: " + gameNumber + whiteAvailablePieces + blackAvailablePieces);
       listenerManager.fireBughouseEvent(new BughouseEvent(this, gameNumber, whiteAvailablePieces, blackAvailablePieces));
-      return false;
+      return true;
 
     }
 
@@ -1701,7 +1702,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
         dropPiece = variant.parsePiece(dropPieceString);
 
 
-        move = variant.createMove(position, dropPiece, toSquare, promotionPiece, moveSAN);
+        move = variant.createMove(position, dropPiece,null, toSquare, promotionPiece, moveSAN);
     }
     else{
       fromSquare = Square.parseSquare(moveVerbose.substring(2, 4));

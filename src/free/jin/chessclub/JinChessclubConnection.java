@@ -1507,15 +1507,17 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
   private Move parseWarrenSmith(String moveSmith, Position position, String moveString){
     WildVariant variant = position.getVariant();
-    
+    //TODO: Find a solutin for method ambiguity!
     // Handle Kriegspiel
     if (variant.equals(Kriegspiel.getInstance()) && (moveSmith.indexOf("?") != -1)){
       if (moveSmith.equals("?")){ // Completely hidden
         return variant.createMove(position, null, null, null, moveString);
+
       }
       else{
         Square endSquare = Square.parseSquare(moveSmith.substring(2, 4));
         return variant.createMove(position, null, endSquare, null, moveString);
+          
       }
     }
     else

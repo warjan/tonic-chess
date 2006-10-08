@@ -303,11 +303,23 @@ public class Kriegspiel implements WildVariant{
 
   public String getName(){
     return "Kriegspiel";
-  } 
+  }
+
+    /**
+     * This method is just for making Tonic to compile with changes made for Bughouse/Crazyhouse support.
+     * @param position
+     * @param dropPiece
+     * @param toSquare
+     * @param promotionPiece
+     * @param moveSAN
+     * @return
+     */
+    public Move createMove(Position position, Piece dropPiece, Square startSquare, Square toSquare, Piece promotionPiece, String moveSAN) {
+        return null;
+    }
 
 
-
-  /**
+    /**
    * Returns a textual representation of this WildVariant.
    */
 
