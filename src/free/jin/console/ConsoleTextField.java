@@ -123,6 +123,8 @@ public class ConsoleTextField extends FixedJTextField{
 
 
 
+
+
     /**
    * Creates a new ConsoleTextField for the given Console.
    */

@@ -21,11 +21,7 @@
 
 package free.jin.event;
 
-import free.jin.ChannelsConnection;
-import free.jin.Connection;
-import free.jin.FriendsConnection;
-import free.jin.GameListConnection;
-import free.jin.SeekConnection;
+import free.jin.*;
 import free.util.EventListenerList;
 
 
@@ -634,4 +630,19 @@ public class BasicListenerManager implements ListenerManager, SeekListenerManage
     }
 
 
+    public void addBughouseListener(BughouseListener l) {
+        if (!(source instanceof BughouseConnection)){
+            throw new free.util.UnsupportedOperationException("The source connection is not an instance of BughouseConnection");
+        }
+
+        listenerList.add(BughouseListener.class, l);
+    }
+
+    public void removeBughouseListener(BughouseListener l) {
+        if (!(source instanceof BughouseConnection)){
+            throw new free.util.UnsupportedOperationException("The source connection is not an instance of BughouseConnection");
+        }
+
+        listenerList.remove(BughouseListener.class, l);
+    }
 }

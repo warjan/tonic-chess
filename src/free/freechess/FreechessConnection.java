@@ -130,9 +130,15 @@ public class FreechessConnection extends Connection{
   
   protected boolean fromPlugin;
 
+    /**
+     * Number that hold the limit of characters that can be send to server. Otherwise server disconnects user.
+     * I consider this a bug.
+     */
+    private int characterLimit = 200;
 
 
-  /**
+
+    /**
    * Creates a new <code>FreechessConnection</code> with the given requested 
    * username, password and optional log stream. Note that the actual
    * username is assigned by the server and is not known until after the
@@ -392,14 +398,215 @@ public class FreechessConnection extends Connection{
     if (echo)
       System.out.println("SENDING COMMAND: " + command);
 
+    if (command.length() > this.characterLimit && isLoggedIn()){
+        System.out.println("Too many character in your command!");    
+    }else{
+
     try{
       OutputStream out = getOutputStream();
-      out.write(command.getBytes());
+        for (int i = 0; i < command.length(); i++){
+            char ch = command.charAt(i);
+            if (ch > 127){
+                switch(ch){
+                    case '\u017A': command = command.replace(ch, '\u007A'); break;
+                    case '\u017C': command = command.replace(ch, '\u007A'); break;
+                    case '\u017E': command = command.replace(ch, '\u007A'); break;
+                    case '\u00F2': command = command.replace(ch, '\u006F'); break;
+                    case '\u00F3': command = command.replace(ch, '\u006F'); break;
+                    case '\u00F4': command = command.replace(ch, '\u006F'); break;
+                    case '\u00F5': command = command.replace(ch, '\u006F'); break;
+                    case '\u00F6': command = command.replace(ch, '\u006F'); break;
+                    case '\u00F8': command = command.replace(ch, '\u006F'); break;
+                    case '\u014D': command = command.replace(ch, '\u006F'); break;
+                    case '\u014F': command = command.replace(ch, '\u006F'); break;
+                    case '\u0151': command = command.replace(ch, '\u006F'); break;
+                    case '\u00DD': command = command.replace(ch, '\u0059'); break;
+                    case '\u0176': command = command.replace(ch, '\u0059'); break;
+                    case '\u0178': command = command.replace(ch, '\u0059'); break;
+                    case '\u015A': command = command.replace(ch, '\u0053'); break;
+                    case '\u015C': command = command.replace(ch, '\u0053'); break;
+                    case '\u015E': command = command.replace(ch, '\u0053'); break;
+                    case '\u0160': command = command.replace(ch, '\u0053'); break;
+                    case '\u0154': command = command.replace(ch, '\u0052'); break;
+                    case '\u0156': command = command.replace(ch, '\u0052'); break;
+                    case '\u0158': command = command.replace(ch, '\u0052'); break;
+                    case '\u0174': command = command.replace(ch, '\u0057'); break;
+                    case '\u00D9': command = command.replace(ch, '\u0055'); break;
+                    case '\u00DA': command = command.replace(ch, '\u0055'); break;
+                    case '\u00DB': command = command.replace(ch, '\u0055'); break;
+                    case '\u00DC': command = command.replace(ch, '\u0055'); break;
+                    case '\u0168': command = command.replace(ch, '\u0055'); break;
+                    case '\u016A': command = command.replace(ch, '\u0055'); break;
+                    case '\u016C': command = command.replace(ch, '\u0055'); break;
+                    case '\u016E': command = command.replace(ch, '\u0055'); break;
+                    case '\u0170': command = command.replace(ch, '\u0055'); break;
+                    case '\u0172': command = command.replace(ch, '\u0055'); break;
+                    case '\u00DE': command = command.replace(ch, '\u0054'); break;
+                    case '\u0162': command = command.replace(ch, '\u0054'); break;
+                    case '\u0164': command = command.replace(ch, '\u0054'); break;
+                    case '\u0166': command = command.replace(ch, '\u0054'); break;
+                    case '\u011D': command = command.replace(ch, '\u0067'); break;
+                    case '\u011F': command = command.replace(ch, '\u0067'); break;
+                    case '\u0121': command = command.replace(ch, '\u0067'); break;
+                    case '\u0123': command = command.replace(ch, '\u0067'); break;
+                    case '\u010F': command = command.replace(ch, '\u0064'); break;
+                    case '\u0111': command = command.replace(ch, '\u0064'); break;
+                    case '\u0131': command = command.replace(ch, '\u0064'); break;
+                    case '\u00E8': command = command.replace(ch, '\u0065'); break;
+                    case '\u00E9': command = command.replace(ch, '\u0065'); break;
+                    case '\u00EA': command = command.replace(ch, '\u0065'); break;
+                    case '\u00EB': command = command.replace(ch, '\u0065'); break;
+                    case '\u0113': command = command.replace(ch, '\u0065'); break;
+                    case '\u0115': command = command.replace(ch, '\u0065'); break;
+                    case '\u0117': command = command.replace(ch, '\u0065'); break;
+                    case '\u0119': command = command.replace(ch, '\u0065'); break;
+                    case '\u011B': command = command.replace(ch, '\u0065'); break;
+                    case '\u00E7': command = command.replace(ch, '\u0063'); break;
+                    case '\u0107': command = command.replace(ch, '\u0063'); break;
+                    case '\u0109': command = command.replace(ch, '\u0063'); break;
+                    case '\u010B': command = command.replace(ch, '\u0063'); break;
+                    case '\u010D': command = command.replace(ch, '\u0063'); break;
+                    case '\u00E0': command = command.replace(ch, '\u0061'); break;
+                    case '\u00E1': command = command.replace(ch, '\u0061'); break;
+                    case '\u00E2': command = command.replace(ch, '\u0061'); break;
+                    case '\u00E3': command = command.replace(ch, '\u0061'); break;
+                    case '\u00E4': command = command.replace(ch, '\u0061'); break;
+                    case '\u00E5': command = command.replace(ch, '\u0061'); break;
+                    case '\u0101': command = command.replace(ch, '\u0061'); break;
+                    case '\u0103': command = command.replace(ch, '\u0061'); break;
+                    case '\u0105': command = command.replace(ch, '\u0061'); break;
+                    case '\u0134': command = command.replace(ch, '\u004A'); break;
+                    case '\u0136': command = command.replace(ch, '\u004B'); break;
+                    case '\u0139': command = command.replace(ch, '\u004C'); break;
+                    case '\u013B': command = command.replace(ch, '\u004C'); break;
+                    case '\u013D': command = command.replace(ch, '\u004C'); break;
+                    case '\u013F': command = command.replace(ch, '\u004C'); break;
+                    case '\u0141': command = command.replace(ch, '\u004C'); break;
+                    case '\u00D1': command = command.replace(ch, '\u004E'); break;
+                    case '\u0143': command = command.replace(ch, '\u004E'); break;
+                    case '\u0145': command = command.replace(ch, '\u004E'); break;
+                    case '\u0147': command = command.replace(ch, '\u004E'); break;
+                    case '\u00D2': command = command.replace(ch, '\u004F'); break;
+                    case '\u00D3': command = command.replace(ch, '\u004F'); break;
+                    case '\u00D4': command = command.replace(ch, '\u004F'); break;
+                    case '\u00D5': command = command.replace(ch, '\u004F'); break;
+                    case '\u00D6': command = command.replace(ch, '\u004F'); break;
+                    case '\u00D8': command = command.replace(ch, '\u004F'); break;
+                    case '\u014C': command = command.replace(ch, '\u004F'); break;
+                    case '\u014E': command = command.replace(ch, '\u004F'); break;
+                    case '\u0150': command = command.replace(ch, '\u004F'); break;
+                    case '\u00EC': command = command.replace(ch, '\u0069'); break;
+                    case '\u00ED': command = command.replace(ch, '\u0069'); break;
+                    case '\u00EE': command = command.replace(ch, '\u0069'); break;
+                    case '\u00EF': command = command.replace(ch, '\u0069'); break;
+                    case '\u0129': command = command.replace(ch, '\u0069'); break;
+                    case '\u012B': command = command.replace(ch, '\u0069'); break;
+                    case '\u012D': command = command.replace(ch, '\u0069'); break;
+                    case '\u012F': command = command.replace(ch, '\u0069'); break;
+                    case '\u0124': command = command.replace(ch, '\u0048'); break;
+                    case '\u0126': command = command.replace(ch, '\u0048'); break;
+                    case '\u00CC': command = command.replace(ch, '\u0049'); break;
+                    case '\u00CD': command = command.replace(ch, '\u0049'); break;
+                    case '\u00CE': command = command.replace(ch, '\u0049'); break;
+                    case '\u00CF': command = command.replace(ch, '\u0049'); break;
+                    case '\u0128': command = command.replace(ch, '\u0049'); break;
+                    case '\u012A': command = command.replace(ch, '\u0049'); break;
+                    case '\u012C': command = command.replace(ch, '\u0049'); break;
+                    case '\u012E': command = command.replace(ch, '\u0049'); break;
+                    case '\u0130': command = command.replace(ch, '\u0049'); break;
+                    case '\u00F1': command = command.replace(ch, '\u006E'); break;
+                    case '\u0144': command = command.replace(ch, '\u006E'); break;
+                    case '\u0146': command = command.replace(ch, '\u006E'); break;
+                    case '\u0148': command = command.replace(ch, '\u006E'); break;
+                    case '\u0149': command = command.replace(ch, '\u006E'); break;
+                    case '\u0137': command = command.replace(ch, '\u006B'); break;
+                    case '\u013A': command = command.replace(ch, '\u006C'); break;
+                    case '\u013C': command = command.replace(ch, '\u006C'); break;
+                    case '\u013E': command = command.replace(ch, '\u006C'); break;
+                    case '\u0140': command = command.replace(ch, '\u006C'); break;
+                    case '\u0142': command = command.replace(ch, '\u006C'); break;
+                    case '\u017F': command = command.replace(ch, '\u006C'); break;
+                    case '\u0135': command = command.replace(ch, '\u006A'); break;
+                    case '\u00C0': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C1': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C2': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C3': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C4': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C5': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C6': command = command.replace(ch, '\u0041'); break;
+                    case '\u0100': command = command.replace(ch, '\u0041'); break;
+                    case '\u0102': command = command.replace(ch, '\u0041'); break;
+                    case '\u0104': command = command.replace(ch, '\u0041'); break;
+                    case '\u00C7': command = command.replace(ch, '\u0043'); break;
+                    case '\u0106': command = command.replace(ch, '\u0043'); break;
+                    case '\u0108': command = command.replace(ch, '\u0043'); break;
+                    case '\u010A': command = command.replace(ch, '\u0043'); break;
+                    case '\u010C': command = command.replace(ch, '\u0043'); break;
+                    case '\u010E': command = command.replace(ch, '\u0044'); break;
+                    case '\u0110': command = command.replace(ch, '\u0044'); break;
+                    case '\u00C8': command = command.replace(ch, '\u0045'); break;
+                    case '\u00C9': command = command.replace(ch, '\u0045'); break;
+                    case '\u00CA': command = command.replace(ch, '\u0045'); break;
+                    case '\u00CB': command = command.replace(ch, '\u0045'); break;
+                    case '\u00D0': command = command.replace(ch, '\u0045'); break;
+                    case '\u0112': command = command.replace(ch, '\u0045'); break;
+                    case '\u0114': command = command.replace(ch, '\u0045'); break;
+                    case '\u0116': command = command.replace(ch, '\u0045'); break;
+                    case '\u0118': command = command.replace(ch, '\u0045'); break;
+                    case '\u011A': command = command.replace(ch, '\u0045'); break;
+                    case '\u014A': command = command.replace(ch, '\u0045'); break;
+                    case '\u011C': command = command.replace(ch, '\u0047'); break;
+                    case '\u011E': command = command.replace(ch, '\u0047'); break;
+                    case '\u0120': command = command.replace(ch, '\u0047'); break;
+                    case '\u0122': command = command.replace(ch, '\u0047'); break;
+                    case '\u00FE': command = command.replace(ch, '\u0074'); break;
+                    case '\u0163': command = command.replace(ch, '\u0074'); break;
+                    case '\u0165': command = command.replace(ch, '\u0074'); break;
+                    case '\u0167': command = command.replace(ch, '\u0074'); break;
+                    case '\u00DF': command = command.replace(ch, '\u0073'); break;
+                    case '\u015B': command = command.replace(ch, '\u0073'); break;
+                    case '\u015D': command = command.replace(ch, '\u0073'); break;
+                    case '\u015F': command = command.replace(ch, '\u0073'); break;
+                    case '\u0161': command = command.replace(ch, '\u0073'); break;
+                    case '\u0155': command = command.replace(ch, '\u0072'); break;
+                    case '\u0157': command = command.replace(ch, '\u0072'); break;
+                    case '\u0159': command = command.replace(ch, '\u0072'); break;
+                    case '\u00F9': command = command.replace(ch, '\u0075'); break;
+                    case '\u00FA': command = command.replace(ch, '\u0075'); break;
+                    case '\u00FB': command = command.replace(ch, '\u0075'); break;
+                    case '\u00FC': command = command.replace(ch, '\u0075'); break;
+                    case '\u0169': command = command.replace(ch, '\u0075'); break;
+                    case '\u016B': command = command.replace(ch, '\u0075'); break;
+                    case '\u016D': command = command.replace(ch, '\u0075'); break;
+                    case '\u016F': command = command.replace(ch, '\u0075'); break;
+                    case '\u0171': command = command.replace(ch, '\u0075'); break;
+                    case '\u0173': command = command.replace(ch, '\u0075'); break;
+                    case '\u0125': command = command.replace(ch, '\u0068'); break;
+                    case '\u0127': command = command.replace(ch, '\u0068'); break;
+                    case '\u0175': command = command.replace(ch, '\u0077'); break;
+                    case '\u00FD': command = command.replace(ch, '\u0079'); break;
+                    case '\u00FF': command = command.replace(ch, '\u0079'); break;
+                    case '\u0177': command = command.replace(ch, '\u0079'); break;
+                    case '\u0179': command = command.replace(ch, '\u005A'); break;
+                    case '\u017B': command = command.replace(ch, '\u005A'); break;
+                    case '\u017D': command = command.replace(ch, '\u005A'); break;
+                    
+                }
+
+            }else {}
+
+         }
+        System.out.println(command);
+
+      byte[] commandsBytes = command.getBytes("US-ASCII");
+      //out.write(command.getBytes());
+        out.write(commandsBytes);
       out.write('\n');
       out.flush();
     } catch (IOException e){
         connectionInterrupted(e);
       }
+    }
   }
   
   /**
@@ -673,6 +880,18 @@ public class FreechessConnection extends Connection{
     Matcher matcher = LOGIN_REGEX.matcher(line);
     if ((!isLoggedIn()) && matcher.matches()){
       loginSucceeded(matcher.group(1));
+
+        String usersServerRole = matcher.group(2);
+        if (usersServerRole == null){
+            this.characterLimit = 400;
+        }else if (usersServerRole.equals("(U)")){
+            this.characterLimit = 200;
+        }else if (usersServerRole.equals("(*)") || usersServerRole.equals("(SR)")){
+            this.characterLimit = 1024;
+        }else{
+            this.characterLimit = 400;
+        }
+        System.out.println("Server character limit = " + this.characterLimit);
 
       processLine(line);
 
@@ -1392,18 +1611,20 @@ public class FreechessConnection extends Connection{
           return false;
       }
 
+
       int gameNumber = Integer.parseInt(matcher.group(1));
       String whiteAvailablePieces = matcher.group(2);
       String blackAvailablePieces = matcher.group(3);
 
       System.out.println("BUGHOUSE INFO = " + gameNumber + " " + whiteAvailablePieces + " " + blackAvailablePieces);
 
+       //This makes this connection to process this line further only when some piece is added to pieces pool.
 
-      if (processBughouseHoldings(gameNumber, whiteAvailablePieces, blackAvailablePieces)==false){
+        if (!processBughouseHoldings(gameNumber, whiteAvailablePieces, blackAvailablePieces)){
 
           processLine(line);
-
-      }
+        
+       }
     
     return true;
   }

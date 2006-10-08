@@ -18,9 +18,9 @@ public class BughouseMove extends Move {
 
 
 
-    public BughouseMove(Piece dropingPiece, Square endingSquare, Player movingPlayer, String moveSAN) {
+    public BughouseMove(Piece dropingPiece, Square startingSquare, Square endingSquare, Player movingPlayer, String moveSAN) {
 
-        super(dropingPiece, endingSquare, movingPlayer, moveSAN);
+        super(dropingPiece, startingSquare, endingSquare, movingPlayer, moveSAN);
         this.dropingPiece = dropingPiece;
 
     }

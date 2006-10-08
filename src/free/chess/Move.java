@@ -89,11 +89,11 @@ public abstract class Move{
       this.dropingPiece = null;
   }
 
-    public Move(Piece dropingPiece, Square endingSquare, Player movingPlayer, String moveSAN) {
+    public Move(Piece dropingPiece, Square startingSquare, Square endingSquare, Player movingPlayer, String moveSAN) {
         this.endingSquare = endingSquare;
         this.player = movingPlayer;
         this.stringRepresentation = moveSAN;
-        this.startingSquare = null;
+        this.startingSquare = startingSquare;
         this.dropingPiece = dropingPiece;
     }
 
