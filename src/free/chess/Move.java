@@ -89,6 +89,15 @@ public abstract class Move{
       this.dropingPiece = null;
   }
 
+    /**
+     * This constructor is here for Bughouse/Crazyhouse support.
+     * @param dropingPiece - this is the piece that is dropped on the board
+     * @param startingSquare - should always be null if dropingPiece is not null
+     * @param endingSquare - the square where the piece was dropped
+     * @param movingPlayer - the player that dropped the piece
+     * @param moveSAN - simple algebric notation? of this move
+     */
+
     public Move(Piece dropingPiece, Square startingSquare, Square endingSquare, Player movingPlayer, String moveSAN) {
         this.endingSquare = endingSquare;
         this.player = movingPlayer;
