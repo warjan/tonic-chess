@@ -842,9 +842,7 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
   
     protected JButton createPrefsButton(){
       JButton button = new JButton(new ImageIcon(BoardPanel.class.getResource("images/prefs.png")));
-      
-      
-      //JButton button = new JButton("Prefs");
+
       button.setMargin(new Insets(0, 0, 0, 0));
       button.setToolTipText("Displays board preferences panel");
       button.addActionListener(prefsAction);

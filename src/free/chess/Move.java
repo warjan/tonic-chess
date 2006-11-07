@@ -90,6 +90,14 @@ public abstract class Move{
   }
 
     /**
+     * Returns dropped piece instance of Move
+     * @return droping piece instance
+     */
+    public Piece getDropingPiece() {
+        return dropingPiece;
+    }
+
+    /**
      * This constructor is here for Bughouse/Crazyhouse support.
      * @param dropingPiece - this is the piece that is dropped on the board
      * @param startingSquare - should always be null if dropingPiece is not null
@@ -197,6 +205,11 @@ public abstract class Move{
 
     return variant.createMove(position, startSquare, endSquare, promotionTarget, moveString);
   }
+
+    /**
+     *
+     */
+
   
 
 

@@ -442,7 +442,6 @@ public final class Position{
 
   public void makeMove(Move move){
     variant.makeMove(move, this, modifier);
-      System.out.println("POSITION VARIANT = " + variant.toString());
     fireMoveMade(move);
     fireStateChanged();
   }

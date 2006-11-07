@@ -79,10 +79,15 @@
 		       includes="**"
                        excludes="tonic/**,free/jin/mustangtray/**"
 		       classpathref="compile.class.path">
-			<compilerarg compiler="modern" line="-target ${build.target}" />
+
+
+            <compilerarg compiler="modern" line="-target ${build.target}" />
 			<compilerarg compiler="modern" line="-source 1.5" />
 		</javac>
-	</target>
+             
+
+
+    </target>
 	
 	<!-- Compiles a single piece set -->
 	<target name="compilePieceSet">
@@ -487,8 +492,8 @@
             <!-- Compiles source files for MustangTray plugin -->
             <javac srcdir="${source.dir}"
 		       destdir="${classes.dir}"
-		       includes="free/jin/mustangtray/**"
-                       excludes="**"
+		       includes="**"
+               excludes="tonic/**"
 		               classpathref="compile.class.path">
 			        <compilerarg compiler="modern" line="-target ${build.target}" />
 			        <compilerarg compiler="modern" line="-source 1.4" />

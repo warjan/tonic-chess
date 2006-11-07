@@ -37,12 +37,13 @@ import static java.util.Calendar.*;
 
 
 /**
+ * This plugin lets user see channel and shouts in tabs.
  * @author whp
  */
 
 //TODO write javadoc for this class. Make it possible to choose between using JTabbedPane and PluginContainers. But first try to use PluginContainers for consoles.
 //TODO make shout tabs aware of channel tabs changes
-public class ChannelsManager extends Plugin implements ChannelsListener, ConnectionListener, ChatListener, ChangeListener {
+public class ChannelsManager extends Plugin implements ChannelsListener, ConnectionListener, ChatListener, ChangeListener, PlainTextListener {
     /**
      * The container for this plugin's ui.
      */
@@ -193,12 +194,17 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
         return getPrefs().getBool("preferences.show", true);
     }
 
+    /**
+     * This method returns preferences UI for this plugin.
+     * @return instance of ChannelsManagerPrefsPanel
+     */
+
     public PreferencesPanel getPreferencesUI() {
         return new ChannelsManagerPrefsPanel(this);
     }
 
     /**
-     * Method that readies all icons need for this plugin.
+     * Method that readies all icons needed for this plugin.
      */
     private void createIcons() {
         newChatIcon = getIconsEasy("newChatEvent.png");
@@ -243,6 +249,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
         listenerManager.addChannelsListener(this);
         listenerManager.addConnectionListener(this);
         listenerManager.addChatListener(this);
+        listenerManager.addPlainTextListener(this);
         mainPane.addChangeListener(this);
     }
 
@@ -350,24 +357,27 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
             for (int i = 0; i < channels.length; i++) {
                 Console chatConsole = new Console(getConn(), consolePreferences, ("tell " + channels[i]));
                 chatConsoles.put(new Integer(channels[i]), chatConsole);
-                channelSet.add(new Integer(channels[i]));
-                //chatTabs.put(chatConsole, new Integer(i));
                 mainPane.addTab(Integer.toString(channels[i]), nullIcon, chatConsole);
-
+                channelSet.add(new Integer(channels[i]));
 
             }
 
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 3; j++) {
                 if (j == 0) {
                     Console chatConsole = new Console(getConn(), consolePreferences, "shout");
                     chatConsoles.put(new Integer(500), chatConsole);
                     //chatTabs.put(chatConsole, new Integer(chatConsoles.size() - 1));
                     mainPane.addTab("shouts", nullIcon, chatConsole);
-                } else {
+                } else if (j == 1) {
                     Console chatConsole = new Console(getConn(), consolePreferences, "cshout");
                     chatConsoles.put(new Integer(501), chatConsole);
                     //chatTabs.put(chatConsole, new Integer(chatConsoles.size() - 1));
                     mainPane.addTab("cshouts", nullIcon, chatConsole);
+                } else{
+                    Console chatConsole = new Console(getConn(), consolePreferences, "plain");
+                    chatConsoles.put(new Integer(502), chatConsole);
+                    //chatTabs.put(chatConsole, new Integer(chatConsoles.size() - 1));
+                    mainPane.addTab("plain text", nullIcon, chatConsole);
                 }
             }
 
@@ -429,8 +439,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      */
     public void chatMessageReceived(ChatEvent evt) {
         String chatType = evt.getType();
-        //System.out.println(chatType);
-        //System.out.println(chatType.matches("(shout)|(ishout)|(cshout)"));
+
 
         Object channelNumber = evt.getForum();
 
@@ -461,7 +470,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
             if (!receivingConsole.equals(selectedConsole)) {
                 Integer index = null;
                 //Integer index = (Integer) chatTabs.get(receivingConsole);
-                if (chatType.matches("(shout)|(ishout)") == true) {
+                if (chatType.matches("(shout)|(ishout)")) {
                     //System.out.println("CHAT TYPE = " + chatType);
                     index = new Integer((mainPane.getTabCount() - 2));
 
@@ -650,6 +659,11 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
         }
 
                  return time;
+    }
+
+    public void plainTextReceived(PlainTextEvent evt) {
+        Console receivingConsole = (Console)chatConsoles.get(502);
+        receivingConsole.addToOutput(evt.getText(),"plain");
     }
 
     /**

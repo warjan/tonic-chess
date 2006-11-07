@@ -10,39 +10,21 @@
 package free.jin.mustangtray;
 
 import free.jin.Connection;
-import free.jin.Jin;
 import free.jin.ConnectionDetails;
-import free.jin.event.BasicListenerManager;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ChatEvent;
-import free.jin.event.ChatListener;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.ConnectionListener;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameListener;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.TakebackEvent;
+import free.jin.Jin;
+import free.jin.event.*;
 import free.jin.plugin.Plugin;
 import free.jin.ui.MdiUiProvider;
-import java.awt.AWTException;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * This class is just a tray manager for Java 6 implementation.
@@ -186,11 +168,12 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
         //Learnt thanks to: http://weblogs.java.net/blog/ixmal/archive/2006/05/using_jpopupmen.html article
         trayIcon.addMouseListener(new MouseAdapter() {
         public void mouseReleased(MouseEvent e) {
-            if (e.isPopupTrigger()) {
+            
+
                 menu.setLocation(e.getX(), e.getY());
                 menu.setInvoker(menu);
                 menu.setVisible(true);
-            }
+            
         }
     });
         trayIcon.addActionListener(new ActionListener() {

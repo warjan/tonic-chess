@@ -1,8 +1,8 @@
 <!--
 
   This file is not meant to be used by anyone who isn't the official source of
-  Jin releases. It depends on a specific environment and will not work without
-  it. If you have a strong urge to build Jin releases, I suggest a cold shower.
+  Tonic releases. It depends on a specific environment and will not work without
+  it. If you have a strong urge to build Tonic releases, I suggest a cold shower.
   If nevertheless you decide to ignore this wise advice (and have tried
   the shower solution), here is a partial list of things you need to know:
 
@@ -16,6 +16,8 @@
      Note that JET does not support cross compiling, so this buildfile creates
      a Linux release when run on Linux and a Windows release when run on Windows.
 
+     NOTE: Tonic is not meant to be compiled with JET nor there is no applet release planned as of 2006.
+
 -->
 
 <project name="Tonic Release" default="release">
@@ -25,11 +27,11 @@
 	
 
 	<target name="init">
-		<dirname property="jin.dir" file="." />
-		<property name="build.dir" value="${jin.dir}/build" />
-		<property name="source.dir" value="${jin.dir}/src" />
+		<dirname property="tonic.dir" file="." />
+		<property name="build.dir" value="${tonic.dir}/build" />
+		<property name="source.dir" value="${tonic.dir}/src" />
 
-		<!-- Ask for Jin version -->
+		<!-- Ask for Tonic version -->
 		<input message="Please specify the release version:" addproperty="release.version" />
 		
 		<property name="release.dir" value="tonic-${release.version}" />
@@ -40,9 +42,9 @@
 
 	<!-- Rebuilds for a specific platform -->
 	<target name="rebuild">
-		<echo message="Rebuilding Jin for ${release.platform}" />
-		<ant target="clean" dir="${jin.dir}" />
-		<ant target="build" dir="${jin.dir}">
+		<echo message="Rebuilding Tonic for ${release.platform}" />
+		<ant target="clean" dir="${tonic.dir}" />
+		<ant target="build" dir="${tonic.dir}">
 			<property name="build.target" value="1.5" />
 		</ant>
 	</target>
@@ -75,14 +77,14 @@
 		</copy>
 		
 		<property name="unix-tar" value="${release.unix.dir}/tonic-${release.version}-unix.tar" />
-		<property name="unix-gz" value="${unix-tar}.gz" />
+		<property name="unix-gz" value="${unix-tar}.bz2" />
 		
 		<tar destfile="${unix-tar}">
 			<tarfileset dir="${unix-dir-to-tar}" excludes="*/jin" />
 			<tarfileset dir="${unix-dir-to-tar}" includes="*/jin" mode="755" />
 		</tar>
 		
-		<gzip src="${unix-tar}" zipfile="${unix-gz}" />
+		<bzip2 src="${unix-tar}" zipfile="${unix-gz}" />
 		
 		<delete dir="${unix-dir-to-tar}" />
 		<delete file="${unix-tar}" />
@@ -98,7 +100,7 @@
 	<target name="windows" depends="init" description="Builds a release for Windows">
 		<echo message="Creating windows release" />
 
-		<input message="Specify the NSIS executable" addproperty="win.setup.maker" />
+		<!--<input message="Specify the NSIS executable" addproperty="win.setup.maker" />-->
 		<property name="release.win.dir" value="${release.dir}/win" />
     
 		<delete dir="${release.win.dir}" />
@@ -109,8 +111,8 @@
 		</antcall>
 
 		<property name="dir-to-inst" value="${release.win.dir}/files" />
-		<property name="win-install" value="${release.win.dir}/jin-${release.version}-win.exe" />
-		<property name="win-archive" value="${release.win.dir}/jin-${release.version}-win.zip" />
+		<property name="win-install" value="${release.win.dir}/tonic-${release.version}-win.exe" />
+		<property name="win-archive" value="${release.win.dir}/tonic-${release.version}-win.zip" />
 
 		<!-- Build the release -->
 		<mkdir dir="${dir-to-inst}" />
@@ -139,14 +141,14 @@
 		<condition property="nsis-prefix" value="/" else="-">
 			<os family="windows"/>
 		</condition>
-		<exec dir="." executable="${win.setup.maker}" failonerror="yes">
-			<arg value="${nsis-prefix}NOCD" /> <!-- Don't change into the .nsi file's directory -->
-			<arg value="${nsis-prefix}V2" /> <!-- Low verbosity --> 
-			<arg value="${nsis-prefix}Ddir=${target-dir}${file.separator}" /> <!-- The directory whose contents to install -->
-			<arg value="${nsis-prefix}Dfile=${exe}" /> <!-- The installer file -->
-			<arg value="${nsis-prefix}Dver=${release.version}" /> <!-- The Jin version -->
+		<!--<exec dir="." executable="${win.setup.maker}" failonerror="yes">
+			<arg value="${nsis-prefix}NOCD" /> --><!-- Don't change into the .nsi file's directory --><!--
+			<arg value="${nsis-prefix}V2" /> --><!-- Low verbosity --><!--
+			<arg value="${nsis-prefix}Ddir=${target-dir}${file.separator}" /> --><!-- The directory whose contents to install --><!--
+			<arg value="${nsis-prefix}Dfile=${exe}" /> --><!-- The installer file --><!--
+			<arg value="${nsis-prefix}Dver=${release.version}" /> --><!-- The Jin version --><!--
 			<arg value="win${file.separator}installer.nsi" />
-		</exec>
+		</exec>-->
 		<zip destfile="${zip}" basedir="${dir-to-inst}" />
 	</target>
 	
@@ -163,7 +165,7 @@
 		<antcall target="rebuild">
 			<param name="release.platform" value="macosx" />
 		</antcall>
-		<property name="app-dir.name" value="Jin.app" />
+		<property name="app-dir.name" value="Tonic.app" />
 		<property name="app-dir" value="${release.osx.dir}/${app-dir.name}" />
 		<mkdir dir="${app-dir}/Contents/Resources/Java" />
 		<copy todir="${app-dir}">
@@ -183,11 +185,11 @@
 		<copy todir="${app-dir}/Contents/MacOS" file="osx/JavaApplicationStub" />
 		
 		<antcall target="osx-package">
-			<param name="release.name" value="jin-${release.version}-osx" />
+			<param name="release.name" value="tonic-${release.version}-osx" />
 		</antcall>
 		
 		<delete dir="${app-dir}" />
-		<property name="osx-install" value="jin-${release.version}-osx.dmg" />
+		<property name="osx-install" value="tonic-${release.version}-osx.dmg" />
 	</target>
 	
 	
@@ -198,7 +200,7 @@
 			<arg line="if=/dev/zero of=${dmg-filename} bs=1M count=30" />
 		</exec>
 		<exec executable="hformat" dir="${release.osx.dir}" failonerror="yes">
-			<arg line="-l Jin-${release.version} ${dmg-filename}" />
+			<arg line="-l Tonic-${release.version} ${dmg-filename}" />
 		</exec>
 		<exec executable="${basedir}/osx/hcp" dir="${release.osx.dir}" failonerror="yes">
 			<arg line="${app-dir.name}" />
@@ -320,11 +322,11 @@
 		<mkdir dir="${release.src.dir}" />
 		
 		<property name="src-archive-dir" value="${release.src.dir}/tmp" />
-		<property name="src-archive-files" value="${src-archive-dir}/jin-${release.version}" />
+		<property name="src-archive-files" value="${src-archive-dir}/tonic-${release.version}" />
 		<mkdir dir="${src-archive-dir}" />
 		<mkdir dir="${src-archive-files}" />		
 		<copy todir="${src-archive-files}">
-			<fileset dir="${jin.dir}" includes="src/** resources/** build.xml manifest.txt" />
+			<fileset dir="${tonic.dir}" includes="src/** resources/** build.xml manifest.txt" />
 			<fileset dir="." includes="changelog.txt copyright.txt gpl.txt" />
 			<fileset dir="src" includes="COMPILING" />
 		</copy>
@@ -333,7 +335,7 @@
 			<entry key="app.version" value="${release.version}" />
 		</propertyfile>
 		
-		<property name="src-tar" value="${release.src.dir}/jin-${release.version}-src.tar" />
+		<property name="src-tar" value="${release.src.dir}/tonic-${release.version}-src.tar" />
 		<property name="src-archive" value="${src-tar}.gz" />
 		<tar destfile="${src-tar}">
 			<tarfileset dir="${src-archive-dir}" />

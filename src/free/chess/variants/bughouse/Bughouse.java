@@ -15,7 +15,7 @@ public class Bughouse extends ChesslikeGenericVariant {
      */
     private Bughouse() {
         super(Chess.INITIAL_POSITION_FEN, "Bughouse");
-        System.out.println("BUGHOUSE VARIANT RULES!!!");
+
     }
 
     public static Bughouse getInstance() {
@@ -41,7 +41,6 @@ public class Bughouse extends ChesslikeGenericVariant {
         if (move.getStartingSquare() == null) {
             BughouseMove bmove = (BughouseMove) move;
             dropingPiece = bmove.getDropingPiece();
-            System.out.println("PIECE TO DROP = " + dropingPiece.toString());
             endingSquare = bmove.getEndingSquare();
             modifier.dropPiece(dropingPiece, endingSquare);
         }
@@ -55,8 +54,18 @@ public class Bughouse extends ChesslikeGenericVariant {
 
     }
 
-
-    public Move createMove(Position pos, Piece dropedPiece, Square startingSquare, Square endingSquare,
+    /**
+     * This method creates a move from given parameters. The startingSquare parameter is
+     * here to make this method unambigous with Kriegspiel createMove method.
+     * @param pos - the position in which move is created
+     * @param droppedPiece - the piece being dropped on the board in this move
+     * @param startingSquare - this is null when we drop a piece
+     * @param endingSquare - the square we drop piece on
+     * @param promotionTarget - this is null when piece is dropped
+     * @param moveSAN - simple algebric notation of the move (P@a5 for dropping pawn on a5 sqaure).
+     * @return BughouseMove
+     */
+    public Move createMove(Position pos, Piece droppedPiece, Square startingSquare, Square endingSquare,
                            Piece promotionTarget, String moveSAN) {
 
         checkPosition(pos);
@@ -64,9 +73,9 @@ public class Bughouse extends ChesslikeGenericVariant {
         if ((promotionTarget != null) && !(promotionTarget instanceof ChessPiece))
             throw new IllegalArgumentException("Wrong promotion target type: " + promotionTarget.getClass());
 
-        Piece dropingPiece = dropedPiece;
+        Piece dropingPiece = droppedPiece;
 
-        Player movingPlayer = dropedPiece.getPlayer();
+        Player movingPlayer = droppedPiece.getPlayer();
 
 
         return new BughouseMove(dropingPiece, startingSquare, endingSquare, movingPlayer, moveSAN);
