@@ -21,44 +21,23 @@
 
 package free.jin.console;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
+import free.jin.Jin;
+import free.jin.plugin.Plugin;
+import free.util.GraphicsUtilities;
+import free.util.PlatformUtils;
+import free.workarounds.FixedJTextPane;
+
+import javax.swing.*;
+import javax.swing.text.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Vector;
-
-import javax.swing.AbstractButton;
-import javax.swing.Action;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.ToolTipManager;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultEditorKit;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
-import javax.swing.text.Keymap;
-import javax.swing.text.Utilities;
-
-import free.util.GraphicsUtilities;
-import free.util.PlatformUtils;
-import free.workarounds.FixedJTextPane;
-import free.jin.Jin;
-import free.jin.plugin.Plugin;
 
 
 /**
@@ -97,7 +76,7 @@ public class ConsoleTextPane extends FixedJTextPane{
    * We keep the links here.
    */
 
-  private Vector links = new Vector();
+  private ArrayList links = new ArrayList();
 
 
 
@@ -587,7 +566,7 @@ public class ConsoleTextPane extends FixedJTextPane{
    */
 
   public void addLink(Link link){
-    links.addElement(link);
+    links.add(link);
   }
 
 
@@ -598,7 +577,7 @@ public class ConsoleTextPane extends FixedJTextPane{
    */
 
   public void removeLinks(){
-    links.removeAllElements();
+    links.clear();
   }
 
 
@@ -780,7 +759,7 @@ public class ConsoleTextPane extends FixedJTextPane{
   protected Link getLink(int x, int y){
     int numLinks = links.size();
     for (int i = 0; i < numLinks; i++){
-      Link link = (Link)links.elementAt(i);
+      Link link = (Link)links.get(i);
       int linkStart = link.getStartPosition().getOffset();
       int linkEnd = link.getEndPosition().getOffset();
 

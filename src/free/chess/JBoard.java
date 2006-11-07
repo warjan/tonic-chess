@@ -745,6 +745,7 @@ public class JBoard extends JComponent{
   /**
    * Sets the currently highlighted move, or <code>null</code> if no move
    * should be highlighted.
+   * @param move - move to be highlighted
    */
 
   public void setHighlightedMove(Move move){
@@ -767,20 +768,29 @@ public class JBoard extends JComponent{
     if ((moveHighlightingStyle == NO_MOVE_HIGHLIGHTING) || (highlightedMove == null))
       return;
 
-    Square from = highlightedMove.getStartingSquare();
+      Piece droppedPiece = highlightedMove.getDropingPiece();
+      Square from = highlightedMove.getStartingSquare();
     Square to = highlightedMove.getEndingSquare();
 
-    if ((from == null) || (to == null))
+    if ((from == null && droppedPiece == null) || (to == null))
       return;
 
     if (moveHighlightingStyle == TARGET_SQUARE_MOVE_HIGHLIGHTING)
       repaint(squareToRect(to, null));
     if (moveHighlightingStyle == BOTH_SQUARES_MOVE_HIGHLIGHTING){
+     if (from != null){
       repaint(squareToRect(from, null));
+     }
       repaint(squareToRect(to, null));
     }
-    else if (moveHighlightingStyle == ARROW_MOVE_HIGHLIGHTING)
+    else if (moveHighlightingStyle == ARROW_MOVE_HIGHLIGHTING){
+     if (from != null){
       repaint(squareToRect(from, null).union(squareToRect(to, null)));
+     } else {
+         repaint(squareToRect(to, null));
+     }
+
+    }
   }
   
   
@@ -1148,6 +1158,7 @@ public class JBoard extends JComponent{
     if ((moveHighlightingStyle != NO_MOVE_HIGHLIGHTING) && (highlightedMove != null)){
       Square from = highlightedMove.getStartingSquare();
       Square to = highlightedMove.getEndingSquare();
+        Piece droppedPiece = highlightedMove.getDropingPiece();
       
       squareToRect(Square.getInstance(0, 0), rect); // Just a sample square
       int highlightSize = Math.max(2, Math.min(rect.width, rect.height)/12);
@@ -1159,6 +1170,9 @@ public class JBoard extends JComponent{
         else if (moveHighlightingStyle == ARROW_MOVE_HIGHLIGHTING){
           drawArrow(g, from, to, highlightSize+1, getMoveHighlightingColor());
         }
+      }
+      if ((to != null && droppedPiece != null)){
+          drawSquare(g, to, highlightSize, getMoveHighlightingColor());
       }
       if ((to != null) && (moveHighlightingStyle == TARGET_SQUARE_MOVE_HIGHLIGHTING)){
         drawSquare(g, to, highlightSize, getMoveHighlightingColor());
