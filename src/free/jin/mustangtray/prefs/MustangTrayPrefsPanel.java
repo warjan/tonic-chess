@@ -1,8 +1,8 @@
-package free.jin.tray.prefs;
+package free.jin.mustangtray.prefs;
 
 import free.jin.ui.PreferencesPanel;
-import free.jin.tray.TrayManager;
 import free.jin.BadChangesException;
+import free.jin.mustangtray.MustangTray;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -10,27 +10,28 @@ import java.awt.event.ActionEvent;
 import java.awt.*;
 
 /**
- * This is a class for setting TrayManager plugin preferences.
+ * Created by IntelliJ IDEA.
+ * User: whp
+ * Date: 2006-11-08
+ * This is the class creating a dialog for setting
+ * various preferences for MustangTray plugin.
  */
-public class TrayPrefsPanel extends PreferencesPanel {
+public class MustangTrayPrefsPanel extends PreferencesPanel {
 
-    private TrayManager trayManager;
+    private MustangTray mustangTray;
 
     private JCheckBox displayTray;
 
-    public TrayPrefsPanel(TrayManager trayManager) {
-        this.trayManager = trayManager;
+    public MustangTrayPrefsPanel(MustangTray mustangTray){
+        this.mustangTray = mustangTray;
         displayTray = new JCheckBox("Display tray icon?");
         displayTray.addActionListener(new PrefsActionListener());
-        displayTray.setSelected(trayManager.getPrefs().getBool("display.tray", true));
+        displayTray.setSelected(mustangTray.getPrefs().getBool("display.tray", true));
         createUI();
+
     }
 
-    /**
-     * Creates UI for setting preferences for TrayManager.
-     */
     private void createUI() {
-
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -46,15 +47,23 @@ public class TrayPrefsPanel extends PreferencesPanel {
         c.weighty = 0.5;
         panel.add(displayTray, c);
         add(panel, c);
-
-
     }
+
+    /**
+     * Applies the changes done by the user.
+     *
+     * @throws free.jin.BadChangesException if the changes done by the user are invalid.
+     */
 
     public void applyChanges() throws BadChangesException {
-        trayManager.getPrefs().setBool("display.tray", displayTray.isSelected());
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    private class PrefsActionListener implements ActionListener {
+    private class PrefsActionListener implements ActionListener{
+
+        /**
+     * Invoked when an action occurs.
+         */
         public void actionPerformed(ActionEvent e) {
             fireStateChanged();
         }

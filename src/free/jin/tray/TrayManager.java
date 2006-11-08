@@ -121,7 +121,7 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
      * Overriden from <code>free.jin.Plugin</code>.
      * @return id simple non-whitespace String.
      */
-
+    @Override
     public String getId() {
         return "tray";
     }
@@ -130,7 +130,7 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
      * Overriden from <code>free.jin.Plugin</code>.
      * @return name normal String.
      */
-    
+    @Override
     public String getName() {
         return "Tray Manager";
     }
@@ -138,18 +138,14 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
     /**
      * Starts the plugin first registering listeners and then creating tray and some icons.
      */
-
+    @Override
     public void start(){
-
             if (getPrefs().getBool("display.tray") == true){
                 registerListeners();
                 initTrayMenu();
                 createIcons();
                 firstTime = true;
             }
-
-
-
     }
 
     /**
@@ -158,12 +154,16 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
      * <pre>"preferences.show"</pre> property.
      * @return boolean value indicating whether this plugin have ui for setting preferences
      */
-
+    @Override
     public boolean hasPreferencesUI() {
         return getPrefs().getBool("preferences.show", true);
     }
 
-        public PreferencesPanel getPreferencesUI() {
+    /**
+     * Returns preferences panel in which user can set preferences for this plugin.
+     * @return PrefencesPanel - panel with preferences for TrayManager
+     */
+    public PreferencesPanel getPreferencesUI() {
         return new TrayPrefsPanel(this);
     }
     
@@ -368,6 +368,11 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
         listenerManager.addConnectionListener(this);
         listenerManager.addChatListener(this);
     }
+
+    /**
+     * This method stops the plugin uregistering all listeners and removing icons.
+     */
+    @Override
     public void stop(){
         if (tray != null){
         unregisterListeners();
@@ -375,10 +380,16 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
         }
     }
 
+    /**
+     * Removes tray icon from system tray/notification area.
+     */
     private void removeTrayIcon() {
         tray.removeTrayIcon(trayIcon);
     }
 
+    /**
+     * Unregisters all listeners.
+     */
     private void unregisterListeners() {
     Connection conn = getConn();
     BasicListenerManager listenerManager = (BasicListenerManager)conn.getListenerManager();

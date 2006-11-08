@@ -1,0 +1,5 @@
+#has this plugin preferences?
+preferences.show = boolean;true
+
+#display tray icon?
+display.tray = boolean;true
