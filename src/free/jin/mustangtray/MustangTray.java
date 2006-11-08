@@ -12,9 +12,11 @@ package free.jin.mustangtray;
 import free.jin.Connection;
 import free.jin.ConnectionDetails;
 import free.jin.Jin;
+import free.jin.mustangtray.prefs.MustangTrayPrefsPanel;
 import free.jin.event.*;
 import free.jin.plugin.Plugin;
 import free.jin.ui.MdiUiProvider;
+import free.jin.ui.PreferencesPanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -118,7 +120,7 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
      * Overriden from <code>free.jin.Plugin</code>.
      * @return id simple non-whitespace String.
      */
-
+    @Override
     public String getId() {
         return "mustangtray";
     }
@@ -127,7 +129,7 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
      * Overriden from <code>free.jin.Plugin</code>.
      * @return name normal String.
      */
-    
+    @Override
     public String getName() {
         return "Mustang Tray Manager";
     }
@@ -135,9 +137,9 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
     /**
      * Starts the plugin first registering listeners and then creating tray and some icons.
      */
-
+    @Override
     public void start(){
-        if (SystemTray.isSupported()){
+        if (SystemTray.isSupported() && getPrefs().getBool("display.tray") == true){
             registerListeners();
             initTrayMenu();
             createIcons();
@@ -148,7 +150,32 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
         }
 
     }
-    
+
+
+    /**
+     * Returns whether this plugin has a preferences panel it wants to be
+     * displayed to the user. The default implementation returns
+     * <code>false</code>.
+     */
+
+    @Override
+    public boolean hasPreferencesUI() {
+        return getPrefs().getBool("preferences.show", true); 
+    }
+
+
+    /**
+     * Return a PreferencesPanel for changing the plugin's preferences. This
+     * method will never be called if <code>hasPreferencesUI</code> returns false.
+     * The default implementation throws an <code>IllegalStateException</code>,
+     * since it's not supposed to be called.
+     */
+
+    @Override
+    public PreferencesPanel getPreferencesUI() {
+        return new MustangTrayPrefsPanel(this);
+    }
+
     /**
      * Creates icon used later in tray.
      */

@@ -82,7 +82,7 @@
 
 
             <compilerarg compiler="modern" line="-target ${build.target}" />
-			<compilerarg compiler="modern" line="-source 1.5" />
+			<compilerarg compiler="modern" line="-source 5" />
 		</javac>
              
 
@@ -496,7 +496,7 @@
                excludes="tonic/**"
 		               classpathref="compile.class.path">
 			        <compilerarg compiler="modern" line="-target ${build.target}" />
-			        <compilerarg compiler="modern" line="-source 1.4" />
+			        <compilerarg compiler="modern" line="-source 5" />
 		       </javac>
                  <!-- MustangTray plugin -->
                 <antcall target="buildPlugin">

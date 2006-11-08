@@ -21,17 +21,14 @@
 
 package free.jin.board;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.util.Vector;
-
 import free.chess.JBoard;
 import free.chess.Position;
 import free.chess.Square;
 import free.jin.board.event.ArrowCircleListener;
 import free.util.PaintHook;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 
 /**
@@ -52,7 +49,7 @@ public class JinBoard extends JBoard implements PaintHook{
    * A Vector holding the arrows of the board (instances of Arrow).
    */
 
-  private final Vector arrows = new Vector(3);
+  private final ArrayList arrows = new ArrayList(3);
 
 
 
@@ -60,7 +57,7 @@ public class JinBoard extends JBoard implements PaintHook{
    * A Vector holding the circles of the board (instances of Circle).
    */
 
-  private final Vector circles = new Vector(2);
+  private final ArrayList circles = new ArrayList(2);
 
 
 
@@ -300,13 +297,13 @@ public class JinBoard extends JBoard implements PaintHook{
 
     int arrowCount = arrows.size();
     for (int i = 0; i < arrowCount; i++){
-      Arrow arrow = (Arrow)arrows.elementAt(i); 
+      Arrow arrow = (Arrow)arrows.get(i);
       drawArrow(g, arrow.getFrom(), arrow.getTo(), arrowSize, arrow.getColor());
     }
 
     int circleCount = circles.size();
     for (int i = 0; i < circleCount; i++){
-      Circle circle = (Circle)circles.elementAt(i);
+      Circle circle = (Circle)circles.get(i);
       drawSquare(g, circle.getSquare(), circleSize, circle.getColor());
     }
   }
@@ -319,7 +316,7 @@ public class JinBoard extends JBoard implements PaintHook{
    */
 
   public void addArrow(Arrow arrow){
-    arrows.addElement(arrow);
+    arrows.add(arrow);
     
     fireArrowAdded(arrow);
 
@@ -335,10 +332,10 @@ public class JinBoard extends JBoard implements PaintHook{
 
   public void removeArrowsAt(Square from, Square to){
     for (int i = arrows.size() - 1; i >= 0; i--){
-      Arrow arrow = (Arrow)arrows.elementAt(i);
+      Arrow arrow = (Arrow)arrows.get(i);
 
       if (arrow.getFrom().equals(from) && arrow.getTo().equals(to)){
-        arrows.removeElementAt(i);
+        arrows.remove(i);
         fireArrowRemoved(arrow);
       }
     }
@@ -354,7 +351,7 @@ public class JinBoard extends JBoard implements PaintHook{
    
   public boolean areArrowsAt(Square from, Square to){
     for (int i = 0; i < arrows.size(); i++){
-      Arrow arrow = (Arrow)arrows.elementAt(i);
+      Arrow arrow = (Arrow)arrows.get(i);
       if (arrow.getFrom().equals(from) && arrow.getTo().equals(to))
         return true;
     }
@@ -370,8 +367,8 @@ public class JinBoard extends JBoard implements PaintHook{
 
   public void removeAllArrows(){
     for (int i = arrows.size() - 1; i >= 0; i--){
-      Arrow arrow = (Arrow)arrows.elementAt(i);
-      arrows.removeElementAt(i);
+      Arrow arrow = (Arrow)arrows.get(i);
+      arrows.remove(i);
       fireArrowRemoved(arrow);
     }
 
@@ -386,7 +383,7 @@ public class JinBoard extends JBoard implements PaintHook{
    */
 
   public void addCircle(Circle circle){
-    circles.addElement(circle);
+    circles.add(circle);
     fireCircleAdded(circle);
 
     repaint();
@@ -402,10 +399,10 @@ public class JinBoard extends JBoard implements PaintHook{
 
   public void removeCirclesAt(Square circleSquare){
     for (int i = circles.size() - 1; i >= 0; i--){
-      Circle circle = (Circle)circles.elementAt(i);
+      Circle circle = (Circle)circles.get(i);
 
       if (circle.getSquare().equals(circleSquare)){
-        circles.removeElementAt(i);
+        circles.remove(i);
         fireCircleRemoved(circle);
       }
     }
@@ -421,7 +418,7 @@ public class JinBoard extends JBoard implements PaintHook{
    
   public boolean areCirclesAt(Square square){
     for (int i = 0; i < circles.size(); i++){
-      Circle circle = (Circle)circles.elementAt(i);
+      Circle circle = (Circle)circles.get(i);
       if (circle.getSquare().equals(square))
         return true;
     }
@@ -437,8 +434,8 @@ public class JinBoard extends JBoard implements PaintHook{
 
   public void removeAllCircles(){
     for (int i = circles.size() - 1; i >= 0; i--){
-      Circle circle = (Circle)circles.elementAt(i);
-      circles.removeElementAt(i);
+      Circle circle = (Circle)circles.get(i);
+      circles.remove(i);
       fireCircleRemoved(circle);
     }
   }

@@ -961,7 +961,7 @@ public class JBoard extends JComponent{
   public Color getMoveHighlightingColor(){
     return moveHighlightingColor;
   }
-  
+ 
   
   
   /**
