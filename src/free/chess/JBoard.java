@@ -19,6 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+
 package free.chess;
 
 import free.chess.event.MoveProgressEvent;
@@ -31,7 +32,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 
 /**
@@ -446,6 +451,7 @@ public class JBoard extends JComponent{
     setOpaque(true);
     enableEvents(MouseEvent.MOUSE_EVENT_MASK |
                  MouseEvent.MOUSE_MOTION_EVENT_MASK);
+   
   }
 
 
@@ -1946,13 +1952,54 @@ public class JBoard extends JComponent{
     frame.addWindowListener(new free.util.AppKiller());
     frame.getContentPane().setLayout(new java.awt.BorderLayout());
     final JBoard board = new JBoard();
+    final JBughousePiecesPanel jbpp = new JBughousePiecesPanel(board);
+      jbpp.setOpaque(true);
+
+      board.addPropertyChangeListener(new PropertyChangeListener() {
+
+          public void propertyChange(PropertyChangeEvent evt) {
+              System.out.println(evt);
+              if (evt.getSource().equals(board)){
+                  if (evt.getPropertyName().equals("flipped")){
+                      jbpp.setFlipped((Boolean)evt.getNewValue());
+                  }
+              }
+          }
+      });
+    final JButton flipButton = new JButton("Flip board");
+      flipButton.addActionListener(new ActionListener(){
+
+          /**
+     * Invoked when an action occurs.
+           */
+          public void actionPerformed(ActionEvent e) {
+              if (!board.isFlipped()){
+                board.setFlipped(true);
+                  System.out.println("Board SHOULD BE flipped!");
+              } else {
+                  board.setFlipped(false);
+              }
+
+
+          }
+      });
     board.setBorder(new javax.swing.border.MatteBorder(30, 40, 50, 60, Color.red));
     board.setMoveInputStyle(CLICK_N_CLICK);
-    board.setFlipped(true);
+
     board.setCoordsDisplayStyle(RIM_COORDS);
+  /*  Position ps = board.getPosition();
+    Piece piece = ps.getPieceAt(5,5);
+    String sps = piece.toString();
+    System.out.print(sps);
+    System.out.println("Ale co chodzi?");*/
     frame.getContentPane().add(board, java.awt.BorderLayout.CENTER);
-    frame.setBounds(50, 50, 400, 400);
+    frame.getContentPane().add(jbpp, java.awt.BorderLayout.EAST);
+      frame.getContentPane().add(flipButton, java.awt.BorderLayout.SOUTH);
+//    frame.setBounds(50, 50, 400, 400);
+      frame.setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()));
+
     frame.setVisible(true);
+      jbpp.setPreferredSize(new Dimension(board.getHeight()/5, board.getHeight()));
   }
 
 

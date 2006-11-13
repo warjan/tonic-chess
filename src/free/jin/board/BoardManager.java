@@ -21,59 +21,29 @@
 
 package free.jin.board;
 
-import free.jin.ui.DialogPanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Frame;
-import java.awt.Toolkit;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
-
-import free.chess.BoardPainter;
-import free.chess.ColoredBoardPainter;
-import free.chess.ColoredPiecePainter;
-import free.chess.JBoard;
-import free.chess.PiecePainter;
-import free.chess.Player;
-import free.chess.Position;
+import free.chess.*;
 import free.jin.Connection;
 import free.jin.Game;
 import free.jin.Preferences;
 import free.jin.board.event.UserMoveEvent;
 import free.jin.board.event.UserMoveListener;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.ConnectionListener;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameListener;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.ListenerManager;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.TakebackEvent;
-import free.jin.plugin.Plugin;
-import free.jin.plugin.PluginStartException;
-import free.jin.plugin.PluginUIContainer;
-import free.jin.plugin.PluginUIEvent;
-import free.jin.plugin.PluginUIListener;
+import free.jin.event.*;
+import free.jin.plugin.*;
 import free.jin.ui.OptionPanel;
 import free.jin.ui.PreferencesPanel;
 import free.jin.ui.UIProvider;
 import free.util.BeanProperties;
 
+import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.ArrayList;
-
-import javax.swing.JDialog;
-import javax.swing.JLabel;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Vector;
 
 
 /**
@@ -677,7 +647,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    * Sets whether promotable pieces are promoted automatically to the default
    * promotion piece.
    *
-   * @param autoPromote <code>true</code> if promotion should be automatic.
+   * @param isAutoPromote <code>true</code> if promotion should be automatic.
    */
 
   public void setAutoPromote(boolean isAutoPromote){

@@ -88,9 +88,6 @@ public final class Position{
   private String positionFEN;
 
 
-
-
-
   /**
    * Only one ChangeEvent is needed per model instance since the
    * event's only (read-only) state is the source property.  The source

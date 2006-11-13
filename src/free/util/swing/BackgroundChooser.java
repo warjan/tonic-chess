@@ -21,32 +21,18 @@
 
 package free.util.swing;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.Image;
+import free.util.AWTUtilities;
+import free.util.PlatformUtils;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JSeparator;
-import javax.swing.UIManager;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import free.util.AWTUtilities;
-import free.util.PlatformUtils;
 
 
 /**
@@ -250,7 +236,7 @@ public class BackgroundChooser extends JDialog{
         };
 
         JDialog dialog = JColorChooser.createDialog(BackgroundChooser.this, "Choose background color", true, colorChooser, okListener, cancelListener);
-        dialog.show();
+        dialog.setVisible(true);
       }
 
     });

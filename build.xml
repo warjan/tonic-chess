@@ -83,7 +83,9 @@
 
             <compilerarg compiler="modern" line="-target ${build.target}" />
 			<compilerarg compiler="modern" line="-source 5" />
-		</javac>
+            <compilerarg compiler="modern" line="-g:lines,source,vars" />
+            <compilerarg compiler="modern" line="-Xlint:deprecation" />
+        </javac>
              
 
 
