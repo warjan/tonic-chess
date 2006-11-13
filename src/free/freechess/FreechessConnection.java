@@ -51,7 +51,7 @@ import java.util.regex.Pattern;
  * use for printing the output to the screen or a file.
  */
 
-//TODO Make all regular expression operations use standard java platform library.
+
 
 public class FreechessConnection extends Connection{
 
@@ -194,7 +194,7 @@ public class FreechessConnection extends Connection{
    * when trying to set an essential datagram off.
    *
    * @see #isEssentialIvar(Ivar)
-   * @see #getIvarState(int)
+   * @see #getIvarState(Ivar)
    */
 
   public final synchronized boolean setIvarState(Ivar ivar, boolean state){

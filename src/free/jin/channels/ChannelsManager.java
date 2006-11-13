@@ -41,8 +41,6 @@ import static java.util.Calendar.*;
  * @author whp
  */
 
-//TODO write javadoc for this class. Make it possible to choose between using JTabbedPane and PluginContainers. But first try to use PluginContainers for consoles.
-//TODO make shout tabs aware of channel tabs changes
 public class ChannelsManager extends Plugin implements ChannelsListener, ConnectionListener, ChatListener, ChangeListener, PlainTextListener {
     /**
      * The container for this plugin's ui.
@@ -79,7 +77,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     /**
      * Map of chatConsoles. Channels' numbers are the keys.
      */
-    private Map chatConsoles;
+    private Map<Integer, Console> chatConsoles;
 
     /**
      * Map of chatConsoles in mainPane. Values are indices of tabs in it.
@@ -106,7 +104,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * Set that holds all channel numbers - helps sorting and managing channels.
      */
 
-    private Set channelSet;
+    private Set<Integer> channelSet;
 
     /**
      * Pop menu for each tab.
@@ -142,8 +140,8 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * Starts the plugin.
      */
     public void start() {
-        chatConsoles = Collections.synchronizedMap(new TreeMap());
-        channelSet = Collections.synchronizedSet(new TreeSet());
+        chatConsoles = Collections.synchronizedMap(new TreeMap<Integer, Console>());
+        channelSet = Collections.synchronizedSet(new TreeSet<Integer>());
         //chatTabs = new HashMap();
 
         ui = getPluginUIContainer();
@@ -271,22 +269,22 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * @param channelNumber number of channel to be added or removed
      */
     private synchronized void updateChannelsView(boolean remove, int channelNumber) {
-        ArrayList keys = new ArrayList(chatConsoles.keySet());
+        ArrayList<Integer> keys = new ArrayList<Integer>(chatConsoles.keySet());
         Collections.sort(keys);
 
-        Iterator iterator = keys.iterator();
+        Iterator<Integer> iterator = keys.iterator();
 
         //mainPane.removeAll();
         //mainPane.updateUI();
         //int i = 0;
 
         while (iterator.hasNext()) {
-            Integer nextKey = (Integer) iterator.next();
+            Integer nextKey = iterator.next();
 
             if (chatConsoles.containsKey(new Integer(channelNumber)) && remove) {
                 if (nextKey.equals(new Integer(channelNumber))) {
 
-                    mainPane.remove((Component) chatConsoles.remove(new Integer(channelNumber)));
+                    mainPane.remove(chatConsoles.remove(new Integer(channelNumber)));
 
                     //mainPane.updateUI();
                 }
@@ -297,14 +295,14 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
                 for (int i1 = keys.size() - 1; i1 >= 0; i1--) {
 
-                    if (channelNumber > ((Integer) keys.get(i1)).intValue()) {
+                    if (channelNumber > (keys.get(i1)).intValue()) {
                         index = i1 + 1;
 
                         Console addConsole = new Console(getConn(), consolePreferences, ("tell " + Integer.toString(channelNumber)));
                         chatConsoles.put(new Integer(channelNumber), addConsole);
 
 
-                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, (Console) chatConsoles.get(new Integer(channelNumber)), null, index);
+                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
                         //mainPane.updateUI();
                         break;
                     } else if (i1 < 1) {
@@ -315,7 +313,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                         chatConsoles.put(new Integer(channelNumber), addConsole);
 
 
-                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, (Console) chatConsoles.get(new Integer(channelNumber)), null, index);
+                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
                         //mainPane.updateUI();
                         break;
                     }
@@ -396,9 +394,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     }
 
     private void getControls() {
-        //System.out.println(getPrefs().getBool("tabs.closeable"));
         if (getPrefs().getBool("tabs.closeable")) {
-            //System.out.println("Preferences = " + getPrefs().getBool( "tabs.closeable"));
             CloseableTabbedPane closeablePane = new CloseableTabbedPane();
             closeablePane.setCloseTabAction(closeAction);
             mainPane = closeablePane;
@@ -458,11 +454,11 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
             Console receivingConsole;
 
             if (chatType.equals("shout") || chatType.equals("ishout")) {
-                receivingConsole = (Console) chatConsoles.get(new Integer(500));
+                receivingConsole = chatConsoles.get(new Integer(500));
             } else if (chatType.equals("cshout")) {
-                receivingConsole = (Console) chatConsoles.get(new Integer(501));
+                receivingConsole = chatConsoles.get(new Integer(501));
             } else {
-                receivingConsole = (Console) chatConsoles.get(new Integer(Integer.parseInt(channelName)));
+                receivingConsole = chatConsoles.get(new Integer(Integer.parseInt(channelName)));
             }
 
             Console selectedConsole = (Console) mainPane.getSelectedComponent();
@@ -471,11 +467,10 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                 Integer index = null;
                 //Integer index = (Integer) chatTabs.get(receivingConsole);
                 if (chatType.matches("(shout)|(ishout)")) {
-                    //System.out.println("CHAT TYPE = " + chatType);
-                    index = new Integer((mainPane.getTabCount() - 2));
+                    index = (mainPane.getTabCount() - 3);
 
-                } else if (chatType.equals("cshout") == true) {
-                    index = new Integer((mainPane.getTabCount() - 1));
+                } else if (chatType.equals("cshout")) {
+                    index = (mainPane.getTabCount() - 2);
 
                 } else {
                     for (int k = 0; k < mainPane.getTabCount(); k++) {
@@ -486,16 +481,8 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
                     }
                 }
-                //System.out.println("INDEX = " + index);
-                /*mainPane.setTitleAt(index.intValue(),  "*"+channelName);*/
-                //mainPane.setBackgroundAt(index.intValue(), UIManager.getDefaults().getColor("TabRenderer.selectedActivatedBackgroud"));
-                //mainPane.setBackgroundAt(index.intValue(), new Color(rnd.nextInt(128) + 127, rnd.nextInt(128), rnd.nextInt(128)));
-                // if (index != null){
-                if (message.indexOf(Jin.getInstance().getConnManager().getSession().getUser().getUsername()) == -1) {
-                    mainPane.setIconAt(index.intValue(), newChatIcon);
-                } else {
-                    mainPane.setIconAt(index.intValue(), directTellIcon);
-                }
+
+                highlightTab(message, index);
                 // }
             }
 
@@ -506,6 +493,19 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
             String chatMessageType = type + "." + ((forum == null) ? "" : forum.toString()) + "." + sender;
             //System.out.println(">>>TEST" + receivingConsole.toString() + sender + chatMessageType);
             receivingConsole.addToOutput(translateChat(evt), chatMessageType);
+        }
+    }
+
+    /**
+     * This method display graphic indicator on the tab when messega is sent to not-selected tab.
+     * @param message - text of message sent to client from server.
+     * @param index - the number of tab to be hightlighted.
+     */
+    private void highlightTab(String message, Integer index) {
+        if (!message.contains(Jin.getInstance().getConnManager().getSession().getUser().getUsername())) {
+            mainPane.setIconAt(index, newChatIcon);
+        } else {
+            mainPane.setIconAt(index, directTellIcon);
         }
     }
 
@@ -606,11 +606,9 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * @param e ChangeEvent
      */
     public void stateChanged(ChangeEvent e) {
-        //mainPane.setBackgroundAt(mainPane.getSelectedIndex(), UIManager.getDefaults().getColor("control"));
+
         mainPane.setIconAt(mainPane.getSelectedIndex(), nullIcon);
 
-        //String title = mainPane.getTitleAt(mainPane.getSelectedIndex()).replace("*", "");
-        //mainPane.setTitleAt(mainPane.getSelectedIndex(), title );
     }
 
     /*private void updateMenus() {
@@ -662,8 +660,9 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     }
 
     public void plainTextReceived(PlainTextEvent evt) {
-        Console receivingConsole = (Console)chatConsoles.get(502);
+        Console receivingConsole = chatConsoles.get(502);
         receivingConsole.addToOutput(evt.getText(),"plain");
+        highlightTab("", mainPane.getTabCount() - 1 );
     }
 
     /**
@@ -679,7 +678,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
                     if (mainPane.getBoundsAt(i).contains(x, y)) {
                         channelMenu.show(e.getComponent(), x, y);
-                        if ((mainPane.getTitleAt(mainPane.indexAtLocation(x, y)).matches(".*shouts")) == false) {
+                        if (!(mainPane.getTitleAt(mainPane.indexAtLocation(x, y)).matches(".*shouts"))) {
                             componentOver = mainPane.getComponentAt(mainPane.indexAtLocation(x, y));
                         } else {
                             //System.out.println("CLICKED over shout or cshout tabs");

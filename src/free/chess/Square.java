@@ -111,17 +111,10 @@ public class Square{
 
   public static Square parseSquare(String square){
     try{
-      /* if (square.equals("@@")){
-           int file = 'a' -'a';
-           int rank = '1' - '1';
-           return getInstance(file,rank);
-       }*/
-       // else{
-
             int file = square.charAt(0)-'a';
              int rank = square.charAt(1)-'1';
            return getInstance(file,rank);
-       //}
+
 
     } catch (Exception e){
         throw new IllegalArgumentException("The given string("+square+") does not represent a valid location on a chess board");

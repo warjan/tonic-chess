@@ -95,7 +95,7 @@ public abstract class Piece{
 
 
   /**
-   * Returns trie of the given Piece has the same color as this Piece.
+   * Returns true of the given Piece has the same color as this Piece.
    */
 
   public boolean isSameColor(Piece piece){
@@ -122,7 +122,8 @@ public abstract class Piece{
 
 
   /**
-   * Returns the color of this Piece, either {@link #BLACK} or {@link #WHITE}.
+   * Returns the color of this Piece. 
+   * @return - constant representing color either {@link #BLACK} or {@link #WHITE}. 
    */
 
   public int getColor(){
