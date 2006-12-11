@@ -7,7 +7,7 @@ import free.jin.BughouseConnection;
  * User: whp
  * Date: 2006-09-30
  * Time: 01:18:38
- * To change this template use File | Settings | File Templates.
+ * This class serves as a event for Bughouse games.
  */
 public class BughouseEvent extends JinEvent {
 
