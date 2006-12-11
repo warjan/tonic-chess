@@ -31,9 +31,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
@@ -1231,7 +1229,7 @@ public class JBoard extends JComponent{
   private static final Font COORDS_FONT = new Font("Monospaced", Font.BOLD, 10); 
                                                    
                                                    
-  
+
   /**
    * Draws the coordinates.
    */
@@ -1543,7 +1541,8 @@ public class JBoard extends JComponent{
   private void callPaintHooks(Graphics g){
     int size = paintHooks == null ? 0 : paintHooks.size();
     for (int i = 0; i < size; i++){
-      PaintHook hook = (PaintHook)paintHooks.get(i);
+        assert paintHooks != null;
+        PaintHook hook = (PaintHook)paintHooks.get(i);
       hook.paint(this, g);
     }
   }
@@ -1596,6 +1595,7 @@ public class JBoard extends JComponent{
 
   /**
    * Returns the rectangle (in pixels) of the given square.
+   * @return - rectangle (in pixels) of the given square.
    */
 
   public Rectangle squareToRect(int file, int rank, Rectangle squareRect){
@@ -1954,6 +1954,7 @@ public class JBoard extends JComponent{
     final JBoard board = new JBoard();
     final JBughousePiecesPanel jbpp = new JBughousePiecesPanel(board);
       jbpp.setOpaque(true);
+      jbpp.setPtoQ(true);
 
       board.addPropertyChangeListener(new PropertyChangeListener() {
 
@@ -1966,6 +1967,42 @@ public class JBoard extends JComponent{
               }
           }
       });
+
+      board.addComponentListener(new ComponentListener(){
+
+          /**
+     * Invoked when the component's size changes.
+           */
+          public void componentResized(ComponentEvent e) {
+              Component c = e.getComponent();
+              System.out.println(c);
+              if (c.equals(board)){
+                  jbpp.setPiecesSize(board.getHeight()/10);
+                  jbpp.setPreferredSize(new Dimension(board.getHeight()/5+board.getHeight()%5, board.getHeight()));
+              }
+          }
+
+          /**
+     * Invoked when the component's position changes.
+           */
+          public void componentMoved(ComponentEvent e) {
+
+          }
+
+          /**
+     * Invoked when the component has been made visible.
+           */
+          public void componentShown(ComponentEvent e) {
+
+          }
+
+          /**
+     * Invoked when the component has been made invisible.
+           */
+          public void componentHidden(ComponentEvent e) {
+
+          }
+      });
     final JButton flipButton = new JButton("Flip board");
       flipButton.addActionListener(new ActionListener(){
 
@@ -1975,9 +2012,11 @@ public class JBoard extends JComponent{
           public void actionPerformed(ActionEvent e) {
               if (!board.isFlipped()){
                 board.setFlipped(true);
+                //jbpp.setPtoQ(true);
                   System.out.println("Board SHOULD BE flipped!");
               } else {
                   board.setFlipped(false);
+                  //jbpp.setPtoQ(false);
               }
 
 

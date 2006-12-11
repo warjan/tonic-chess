@@ -1222,6 +1222,7 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
       board.setBorder(compoundBorder);*/
       //boardPanel.add(board, BorderLayout.CENTER);
       this.add(board);
+        
 
       infoBoxButtonPanel = new JPanel();
       infoBoxButtonPanel.setBorder(new EmptyBorder(2, 2, 2, 2));
