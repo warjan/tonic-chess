@@ -25,8 +25,8 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
     /**
      * Array of strings that display the quantities of pieces.
      */
-    private int[][] piecesQuantities = new int[2][5];
-     //private final String[][] piecesQuantities = {{"1" ,"2" ,"3", "4", "5"},{"5", "4", "3", "2", "1"}};
+   // private int[][] piecesQuantities = new int[2][5];
+     private final int[][] piecesQuantities = {{1 ,2 ,3, 4, 5},{5, 4, 3, 2, 1}};
     /**
      * Variable stating whether board is flipped.
      */
@@ -59,12 +59,34 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
     private PiecePainter piecePainter;
 
     /**
-     * String arrays holding names for white pieces. Black pieces are
-     * made of this with appropriate string method.
+     * Piece arrays holding pieces. There are assigned later to display pieces in appropriate order.
+     * The ones with lower case letters are black pieces.
      */
 
-    private static final String[] piecesNamesQtoP = {"Q", "R", "B", "N", "P"};
-    private static final String[] piecesNamesPtoQ = {"P", "N", "B", "R", "Q"};
+    private static final Piece[] piecesNamesQtoP = {
+                                                    ChessPiece.fromShortString("Q"),
+                                                    ChessPiece.fromShortString("R"),
+                                                    ChessPiece.fromShortString("B"),
+                                                    ChessPiece.fromShortString("N"),
+                                                    ChessPiece.fromShortString("P"),
+                                                    ChessPiece.fromShortString("q"),
+                                                    ChessPiece.fromShortString("r"),
+                                                    ChessPiece.fromShortString("b"),
+                                                    ChessPiece.fromShortString("n"),
+                                                    ChessPiece.fromShortString("p"),
+                                                                                    };
+    private static final Piece[] piecesNamesPtoQ = {
+                                                    ChessPiece.fromShortString("P"),
+                                                    ChessPiece.fromShortString("N"),
+                                                    ChessPiece.fromShortString("B"),
+                                                    ChessPiece.fromShortString("R"),
+                                                    ChessPiece.fromShortString("Q"),
+                                                    ChessPiece.fromShortString("p"),
+                                                    ChessPiece.fromShortString("n"),
+                                                    ChessPiece.fromShortString("b"),
+                                                    ChessPiece.fromShortString("r"),
+                                                    ChessPiece.fromShortString("q"),
+                                                                                    };
 
     /**
      * Creates new JBughousePiecesPanel with JBoard that it displays pieces for.
@@ -79,6 +101,11 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
 
     }
 
+    /**
+     * Method that flips this panel - it exchanges the posistion of white and black pieces.
+     * @param isBoardFlipped - boolean value - if true is passed then black is displayed nearer to board.
+     */
+
     public void setFlipped(boolean isBoardFlipped) {
         boolean oldValue = this.isBoardFlipped;
         this.isBoardFlipped = isBoardFlipped;
@@ -88,7 +115,7 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
 
     /**
      * Method that sets new PiecePainter for this JBughousePiecesPanel. Usually called
-     * when PiecePainter of the chess board is changed.
+     * when PiecePainter of the chess board changes.
      *
      * @param boardPiecePainter - PiecePainter changed for the board
      */
@@ -101,12 +128,22 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
     }
 
     /**
-     * Method that determines what pieces (white or black) are closer to the board.
-     * It may flip the pieces when
-     * @param ptoQ - true if white should be closer, false if black.
+     * Method that gets the vertical orientation of the pieces.
+     * @return isPtoQ - boolean stating what is the orientation of pieces.
+     * True if pieces are display from pawn to queen, from top to bottom.
      */
 
-    public void setPtoQ(boolean ptoQ){
+    public boolean isOrientationPtoQ(){
+        return isPtoQ;
+    }
+
+    /**
+     * Method that determines what is the orientation vertically of the pieces from queen to pawn or the other way around.
+     * It may flip the pieces when board is flipped.
+     * @param ptoQ - true if pieces are displayed from top to bottom from pawno to queen, false otherwise.
+     */
+
+    public void setOrientationPtoQ(boolean ptoQ){
         boolean oldValue = this.isPtoQ;
         this.isPtoQ = ptoQ;
         repaint();
@@ -132,7 +169,10 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
         return this.piecesSize;
     }
 
-
+    /**
+     * Method that paints the component.
+     * @param g - Graphics object that component paints on.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
@@ -145,9 +185,10 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
 
         int size = getPiecesSize();
 
-        int k = isBoardFlipped == true ? piecesRectangles.length : -1;
-        String[] piecesNames = isPtoQ == true ? piecesNamesPtoQ : piecesNamesQtoP;
+        int k = isBoardFlipped == true ? piecesRectangles.length : -1;  //column
+        Piece[] piecesNames = isPtoQ == true ? piecesNamesPtoQ : piecesNamesQtoP; //orientation
         for (Rectangle[] rectArray : piecesRectangles) {
+            //Counting backwards is board is flipped
             if (isBoardFlipped) {
                 k--;
             } else {
@@ -160,20 +201,21 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
                 g2d.setColor(getBackground());
                 g2d.fill(rect);
                 piecesRectangles[k][i] = rect;
+                //If board flipped black pieces are drawn nearer to board
                 if (!isBoardFlipped) {
                     if (k == 0) {
-                        piecePainter.paintPiece(ChessPiece.fromShortString(piecesNames[i]), g2d, this, rect, false);
+                        piecePainter.paintPiece(piecesNames[i], g2d, this, rect, false);
                         drawQuantity(g2d, k, i);
                     } else {
-                        piecePainter.paintPiece(ChessPiece.fromShortString(piecesNames[i].toLowerCase()), g2d, this, rect, false);
+                        piecePainter.paintPiece(piecesNames[piecesNames.length/2 + i], g2d, this, rect, false);
                         drawQuantity(g2d, k, i);
                     }
                 } else {
                     if (k == piecesRectangles.length - 1){
-                        piecePainter.paintPiece(ChessPiece.fromShortString(piecesNames[i]), g2d, this, rect, false);
+                        piecePainter.paintPiece(piecesNames[i], g2d, this, rect, false);
                         drawQuantity(g2d, k, i);
                     }else{
-                        piecePainter.paintPiece(ChessPiece.fromShortString(piecesNames[i].toLowerCase()), g2d, this, rect, false);
+                        piecePainter.paintPiece(piecesNames[piecesNames.length/2 + i], g2d, this, rect, false);
                         drawQuantity(g2d, k, i);
                     }
                 }
@@ -184,15 +226,27 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
 
     }
 
+    /**
+     * Method that displays quantities of available pieces in small rectangles.
+     * @param g2d - Graphics2D object passed to method.
+     * @param k - the column number
+     * @param i - row number
+     */
+
     private void drawQuantity(Graphics2D g2d, int k, int i) {
         int qk = -1;
-        if (isBoardFlipped){
-            switch(k){
+        int qi = -1;
+        if (isPtoQ){
+          /* switch(k){
                 case 0: qk = 1; break;
                 case 1: qk = 0; break;
-            }
+            }*/
+            qk = k;
+            qi = (piecesQuantities[0].length-1) - i;
+
         } else {
             qk = k;
+            qi = i;
         }
 
         Rectangle rect = piecesRectangles[k][i];
@@ -208,7 +262,7 @@ public class JBughousePiecesPanel extends JComponent implements BughouseListener
         g2d.draw(fontBackground);
         g2d.setColor(Color.WHITE);
         g2d.setFont(quantityFont);
-        int pieceQuantity = piecesQuantities[qk][i];
+        int pieceQuantity = piecesQuantities[qk][qi];
         g2d.drawString(String.valueOf(pieceQuantity), (fontBackground.width/2) - (g2d.getFontMetrics(quantityFont).stringWidth(String.valueOf(pieceQuantity)))/2, rect.height - (fontBackground.height/2 - fontSize/4 ));
         g2d.translate(-rect.x, -rect.y);
     }

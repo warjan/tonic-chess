@@ -1954,7 +1954,7 @@ public class JBoard extends JComponent{
     final JBoard board = new JBoard();
     final JBughousePiecesPanel jbpp = new JBughousePiecesPanel(board);
       jbpp.setOpaque(true);
-      jbpp.setPtoQ(true);
+      jbpp.setOrientationPtoQ(true);
 
       board.addPropertyChangeListener(new PropertyChangeListener() {
 
@@ -1968,7 +1968,7 @@ public class JBoard extends JComponent{
           }
       });
 
-      board.addComponentListener(new ComponentListener(){
+    board.addComponentListener(new ComponentListener(){
 
           /**
      * Invoked when the component's size changes.
@@ -2010,13 +2010,18 @@ public class JBoard extends JComponent{
      * Invoked when an action occurs.
            */
           public void actionPerformed(ActionEvent e) {
-              if (!board.isFlipped()){
+              /*if (!board.isFlipped()){
                 board.setFlipped(true);
-                //jbpp.setPtoQ(true);
+                //jbpp.setOrientationPtoQ(true);
                   System.out.println("Board SHOULD BE flipped!");
               } else {
                   board.setFlipped(false);
-                  //jbpp.setPtoQ(false);
+                  //jbpp.setOrientationPtoQ(false);
+              } */
+              if (jbpp.isOrientationPtoQ()){
+                jbpp.setOrientationPtoQ(false);
+              } else {
+                  jbpp.setOrientationPtoQ(true);
               }
 
 

@@ -72,8 +72,8 @@
 		<mkdir dir="${unix-files-dir}" />
 		<copy todir="${unix-files-dir}">
 			<fileset dir="${build.dir}" excludes="lnfs/jgoodies-windows.jar" />
-			<fileset dir="." includes="changelog.txt copyright.txt gpl.txt" />
-			<fileset dir="unix" includes="README" />
+			<!--<fileset dir="." includes="changelog.txt copyright.txt gpl.txt" />
+			<fileset dir="unix" includes="README" />-->
 		</copy>
 		
 		<property name="unix-tar" value="${release.unix.dir}/tonic-${release.version}-unix.tar" />
@@ -118,7 +118,7 @@
 		<mkdir dir="${dir-to-inst}" />
 		<copy todir="${dir-to-inst}">
 			<fileset dir="${build.dir}" />
-			<fileset dir="." includes="changelog.txt copyright.txt gpl.txt" />
+			<!--<fileset dir="." includes="changelog.txt copyright.txt gpl.txt" />-->
 		</copy>
 		<antcall target="win-create-install">
 			<param name="target-dir" value="${dir-to-inst}" />
@@ -168,9 +168,9 @@
 		<property name="app-dir.name" value="Tonic.app" />
 		<property name="app-dir" value="${release.osx.dir}/${app-dir.name}" />
 		<mkdir dir="${app-dir}/Contents/Resources/Java" />
-		<copy todir="${app-dir}">
+		<!--<copy todir="${app-dir}">
 			<fileset dir="." includes="changelog.txt copyright.txt gpl.txt" />
-		</copy>
+		</copy>-->
 		<copy todir="${app-dir}/Contents">
 			<fileset dir="osx" includes="Info.plist PkgInfo" />
 			<filterset>
