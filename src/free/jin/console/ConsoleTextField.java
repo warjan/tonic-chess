@@ -160,10 +160,16 @@ public class ConsoleTextField extends FixedJTextField{
    * Constructor for ConsoleTextField that gets its prefix from supplied component.
    */
 
-    public ConsoleTextField(Console console, JTextField component){
-    this.console = console;
-    this.commandPrefix = "";
-    this.prefixSupplier = component;
+    /*public ConsoleTextField(Console console, JTextField component){
+        this.console = console;
+        commandPrefix = "";
+        prefixSupplier = component;
+
+        //This hack is here for fixing bug 6474139 see http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6474139
+        int badColumns = prefixSupplier.getColumns();
+        int fixColumns = badColumns + 1;
+        prefixSupplier.setColumns(fixColumns);
+
 
     enableEvents(KeyEvent.KEY_EVENT_MASK | FocusEvent.FOCUS_EVENT_MASK | MouseEvent.MOUSE_EVENT_MASK);
 
@@ -171,7 +177,7 @@ public class ConsoleTextField extends FixedJTextField{
 
     Font oldFont = getFont();
     setFont(new Font("Monospaced", oldFont.getStyle(), oldFont.getSize()));
-  }
+  }*/
 
 
 
