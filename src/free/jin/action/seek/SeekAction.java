@@ -21,27 +21,10 @@
 
 package free.jin.action.seek;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
 import free.chess.Player;
 import free.chess.WildVariant;
+import free.chess.ChesslikeGenericVariant;
+import free.chess.Chess;
 import free.jin.Preferences;
 import free.jin.SeekConnection;
 import free.jin.UserSeek;
@@ -56,16 +39,24 @@ import free.util.swing.SwingUtils;
 import free.workarounds.FixedJComboBox;
 import free.workarounds.FixedJTextField;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.lang.reflect.InvocationTargetException;
+
 
 /**
  * An action which displays a panel where the user can issue a game seek.
  */
  
 public class SeekAction extends JinAction{
-  
-  
-  
-  /**
+
+
+
+    /**
    * Returns the id of the action - "seek".
    */
    
@@ -150,15 +141,24 @@ public class SeekAction extends JinAction{
     private final JTextField incField;
     private final JCheckBox isRatedBox;
     private final JComboBox variantChoice;
+    private final FixedJComboBox subvariantChoice;
     private final JRadioButton autoColor, whiteColor, blackColor;
     private final JCheckBox limitRatingBox;
     private final JTextField minRatingField, maxRatingField;
     private final JCheckBox manualAcceptBox;
     private final JCheckBox useFormulaBox;
-    
-    
-    
-    /**
+      private final String[] uwildTypes = new String[]{"11",  "12",  "14",  "15",  "32",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30"};
+      private final String[] oddsTypes = new String[]{"pawn", "pawn-and-move", "knight", "knight-and-move", "bishop", "bishop-and-move", "rook",
+          "rook-and-move", "queen", "queen-and-move"};
+      private final String[] openingsTypes = new String[]{"albin_cg", "falkbeer_cg"};
+      private DefaultComboBoxModel uwildModel = new DefaultComboBoxModel(uwildTypes);
+      private DefaultComboBoxModel oddsModel = new DefaultComboBoxModel(oddsTypes);
+      private DefaultComboBoxModel openingsModel = new DefaultComboBoxModel(openingsTypes);
+
+
+
+
+      /**
      * Creates a new <code>SeekPanel</code>.
      */
      
@@ -173,6 +173,7 @@ public class SeekAction extends JinAction{
       isRatedBox = new JCheckBox("Rated game");
       variantChoice = new FixedJComboBox(variants);
       variantChoice.setEditable(false);
+      subvariantChoice = new FixedJComboBox();
       autoColor = new JRadioButton("Automatic");
       whiteColor = new JRadioButton("White");
       blackColor = new JRadioButton("Black");
@@ -181,8 +182,10 @@ public class SeekAction extends JinAction{
       maxRatingField = new FixedJTextField(new IntegerStrictPlainDocument(0, 9999), "", 4);
       manualAcceptBox = new JCheckBox("Confirm game manually");
       useFormulaBox = new JCheckBox("Filter opponents by formula");
-      
-      ButtonGroup colorButtonGroup = new ButtonGroup();
+
+      //Possible models for subvariantChoice
+
+          ButtonGroup colorButtonGroup = new ButtonGroup();
       colorButtonGroup.add(autoColor);
       colorButtonGroup.add(whiteColor);
       colorButtonGroup.add(blackColor);
@@ -262,6 +265,8 @@ public class SeekAction extends JinAction{
       variantContainer.add(variantLabel);
       variantContainer.add(Box.createHorizontalStrut(10));
       variantContainer.add(variantChoice);
+      variantContainer.add(Box.createHorizontalStrut(10));  
+      variantContainer.add(subvariantChoice);
       variantContainer.add(Box.createHorizontalGlue());
       
 
@@ -399,6 +404,29 @@ public class SeekAction extends JinAction{
           }
         }
       });
+
+        variantChoice.addItemListener(new ItemListener(){
+
+            public void itemStateChanged(ItemEvent e) {
+                if (((WildVariant)variantChoice.getSelectedItem()).getName().equals("uwild")){
+                    subvariantChoice.setModel(uwildModel);
+
+
+                } else if (((WildVariant)variantChoice.getSelectedItem()).getName().equals("openings")){
+                    subvariantChoice.setModel(openingsModel);
+                    SeekPanel.this.resizeContainerToFit();
+
+
+                } else if (((WildVariant)variantChoice.getSelectedItem()).getName().equals("odds")){
+                    subvariantChoice.setModel(oddsModel);
+                    SeekPanel.this.resizeContainerToFit();
+
+
+                } else{
+
+                }
+            }
+        });
       
       
       cancelButton.addActionListener(new ClosingListener(null));
@@ -422,7 +450,24 @@ public class SeekAction extends JinAction{
             
           boolean isRated = isRatedBox.isSelected();
           
-          WildVariant variant = (WildVariant)variantChoice.getSelectedItem();
+          WildVariant variant;
+          if (((WildVariant)variantChoice.getSelectedItem()).getName().equals("uwild")){
+              subvariantChoice.setModel(uwildModel);
+
+              variant = new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "uwild " + subvariantChoice.getSelectedItem());
+          } else if (((WildVariant)variantChoice.getSelectedItem()).getName().equals("openings")){
+              subvariantChoice.setModel(openingsModel);
+
+              variant = new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "openings " + subvariantChoice.getSelectedItem());
+          } else if (((WildVariant)variantChoice.getSelectedItem()).getName().equals("odds")){
+              subvariantChoice.setModel(oddsModel);
+
+              variant = new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "odds " + subvariantChoice.getSelectedItem());
+          } else{
+              variant = (WildVariant)variantChoice.getSelectedItem();
+          }
+
+
           
           Player color = autoColor.isSelected() ? null :
             whiteColor.isSelected() ? Player.WHITE_PLAYER : Player.BLACK_PLAYER;
