@@ -84,12 +84,12 @@ public class HelpMenu extends JMenu{
 
 
   /**
-   * Creates the "Jin Website" menu item.
+   * Creates the "Tonic Website" menu item.
    */
 
   private JMenuItem createWebsiteMenuItem(){
-    JMenuItem item = new JMenuItem("Jin Website", 'J');
-    item.addActionListener(new UrlDisplayingAction("http://www.jinchess.com"));
+    JMenuItem item = new JMenuItem("Tonic Website", 'J');
+    item.addActionListener(new UrlDisplayingAction("http://tonic-chess.blogspot.com"));
     return item;
   }
 
@@ -114,7 +114,7 @@ public class HelpMenu extends JMenu{
 
   private JMenuItem createBugReportMenuItem(){
     JMenuItem item = new JMenuItem("Report a Bug", 'R');
-    item.addActionListener(new UrlDisplayingAction("https://sourceforge.net/tracker/?group_id=50386&atid=459537"));
+    item.addActionListener(new UrlDisplayingAction("http://sourceforge.net/tracker/?group_id=169064&atid=848921"));
     return item;
   }
 
@@ -126,7 +126,7 @@ public class HelpMenu extends JMenu{
 
   private JMenuItem createFeatureRequestMenuItem(){
     JMenuItem item = new JMenuItem("Suggest a Feature", 'S');
-    item.addActionListener(new UrlDisplayingAction("https://sourceforge.net/tracker/?group_id=50386&atid=459540"));
+    item.addActionListener(new UrlDisplayingAction("http://sourceforge.net/tracker/?group_id=169064&atid=848924"));
     return item;
   }
 
