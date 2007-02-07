@@ -311,7 +311,11 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
 
   private void createUI(String serverCommand) {
 
-    prefixSupplier = new JTextField(serverCommand);
+    prefixSupplier = new JTextField(serverCommand, serverCommand.length()-1);
+
+
+    //int fixedColumns = badColumns + 1;
+    //prefixSupplier.setColumns(fixedColumns);
     prefixSupplier.addFocusListener(new FocusListener(){
             public void focusGained(FocusEvent e){
                 inputComponent.selectAll();
