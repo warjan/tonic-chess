@@ -169,7 +169,7 @@ public class BrowserControl{
    
   public static boolean tryMozilla(String url){
     try{
-      String [] cmd = new String[]{"mozilla", "-remote",  "openURL("+url+", new-tab)"}; 
+      String [] cmd = new String[]{"firefox", "-remote",  "openURL("+url+", new-tab)"}; 
       Process p = Runtime.getRuntime().exec(cmd);
       if (p == null)
         return false;
@@ -181,7 +181,7 @@ public class BrowserControl{
   
         if (exitCode != 0){
           // Command failed, start up the browser
-          cmd = new String[]{"mozilla ", url}; 
+          cmd = new String[]{"firefox ", url}; 
           p = Runtime.getRuntime().exec(cmd);
         } 
       } 
