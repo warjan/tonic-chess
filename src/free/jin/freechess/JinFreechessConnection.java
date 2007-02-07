@@ -131,6 +131,16 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     // setIvarState(Ivar.COMPRESSMOVE, true); Pending DAV's bugfixing spree
     setIvarState(Ivar.LOCK, true);
   }
+
+    /**
+     * <code>sendCommand()</code> method overriden
+     * to get rid of bug [ 1642877 ] Non-channel numbers list pass to channel manager
+     */
+
+    public void sendCommand(String command){
+        super.sendCommand(command);
+        userChannelListNext = false;
+    }
   
   
   
@@ -636,6 +646,8 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     }
     else if (categoryName.equals("pawns/pawns-only"))
         return new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, categoryName);
+    else if (categoryName.equals("nonstandard"))
+        return new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, categoryName);
     else if (categoryName.equals("suicide"))
       return Suicide.getInstance();
     else if (categoryName.equals("losers"))
@@ -667,6 +679,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       throw new IllegalArgumentException("Null variant");
 
     String variantName = variant.getName();
+
     if (variantName.startsWith("wild/"))
       return "w" + variantName.substring("wild/".length());
     else if (variant.equals(Chess.getInstance()))
@@ -679,6 +692,16 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       return "atomic";
     else if ("losers".equals(variantName))
       return "losers";
+    else if (variantName.startsWith("uwild"))
+      return "uwild" + variantName.substring("uwild".length());
+    else if (variantName.startsWith("pawns"))
+      return "pawns" + variantName.substring("pawns".length());
+    else if (variantName.startsWith("odds"))
+      return "odds" + variantName.substring("odds".length());
+    else if (variantName.startsWith("misc"))
+      return "misc" + variantName.substring("misc".length());
+    else if (variantName.startsWith("openings"))
+      return "openings" + variantName.substring("openings".length());
     
     return null;
   }
@@ -692,7 +715,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
   private static WildVariant [] wildVariants;
   
   
-  
+  //TODO: Describe all the variants
   /**
    * Returns a list of support wild variants.
    */
@@ -712,6 +735,11 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
         new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "wild/5"),
         new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "wild/8"),
         new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "wild/8a"),
+        new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "misc little-game"),
+        new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "pawns pawns-only"),
+        new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "odds"),
+        new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "openings"),
+        new ChesslikeGenericVariant(Chess.INITIAL_POSITION_FEN, "uwild"),
       };
     }
     
@@ -1018,6 +1046,8 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
                 case 'L': categories[0] = "losers";
                     break;
                 case 'S': categories[0] = "suicide";
+                    break;
+                case 'n': categories[0] = "nonstandard";
                     break;
                 default: categories[0] = "unknown";
             }
