@@ -337,7 +337,7 @@ public class LicensePanel extends DialogPanel{
     add(eboardPanel);
     add(Box.createVerticalStrut(5));
 
-    JPanel blitzinPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+    /*JPanel blitzinPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
     blitzinPanel.add(new JLabel("<html>Tonic includes piece sets, boards and sounds owned by the &nbsp</html>"));
     LinkLabel blitzinWebsiteLabel = new LinkLabel("Internet Chess Club");
     blitzinWebsiteLabel.setToolTipText("http://www.chessclub.com");
@@ -345,7 +345,7 @@ public class LicensePanel extends DialogPanel{
     blitzinPanel.add(blitzinWebsiteLabel);
     blitzinPanel.add(new JLabel("<html>, used with permission.</html>"));
     add(blitzinPanel);
-    add(Box.createVerticalStrut(5));
+    add(Box.createVerticalStrut(5));*/
 
     try{
       // Throws ClassNotFoundException if not found
