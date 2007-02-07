@@ -130,6 +130,7 @@ public class FreechessConnection extends Connection{
   
   protected boolean fromPlugin;
 
+    //TODO: Make it dependant on user's titles. And other limits as well.
     /**
      * Number that hold the limit of characters that can be send to server. Otherwise server disconnects user.
      * I consider this a bug.
@@ -382,7 +383,8 @@ public class FreechessConnection extends Connection{
    
   public void sendCommand(String command){
     sendCommand(command, true);
-      this.fromPlugin = false;
+      fromPlugin = false;
+
   }
   
   
