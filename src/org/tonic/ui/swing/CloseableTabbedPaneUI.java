@@ -4,8 +4,8 @@ package org.tonic.ui.swing;
  *
  * Created on 14 lipiec 2006, 13:41
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
+ * This class is responsible for creating tab 
+ * with a icon which when clicked closes this tab.
  */
 
 /**
@@ -23,8 +23,9 @@ import java.awt.event.MouseListener;
 import javax.swing.UIManager;
 
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.plaf.metal.MetalTabbedPaneUI;
 
-public class CloseableTabbedPaneUI extends BasicTabbedPaneUI {
+public class CloseableTabbedPaneUI extends MetalTabbedPaneUI {
     
     public final static int BUTTON_SIZE = 10;
     public final static int BORDER_SIZE = 2;

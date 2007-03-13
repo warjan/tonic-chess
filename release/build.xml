@@ -22,7 +22,11 @@
 
 <project name="Tonic Release" default="release">
 
-	<!-- Makes releases for windows, unix, os x and plain source code -->
+	<!-- Task definition for compressing jars with pack200 utility -->
+    <taskdef name="pack200" classname="de.matthiasmann.p200ant.P200AntTask" classpath="/home/whp/var/sfw/apache-ant-1.6.5/pack200-task-de/p200ant.jar" />
+
+
+    <!-- Makes releases for windows, unix, os x and plain source code -->
 	<target name="release" depends="osx, unix, windows, src" description="Build all normal releases"/>
 	
 
@@ -77,14 +81,28 @@
 		</copy>
 		
 		<property name="unix-tar" value="${release.unix.dir}/tonic-${release.version}-unix.tar" />
-		<property name="unix-gz" value="${unix-tar}.bz2" />
-		
-		<tar destfile="${unix-tar}">
+		<property name="unix-gz" value="${unix-tar}.gz" />
+
+        <pack200 configFile="./pack200.config">
+
+            <fileset dir="${unix-files-dir}">
+                <include name="**/*.jar" />
+            </fileset>
+
+        </pack200>
+        <delete>
+            <fileset dir="${unix-files-dir}">
+                <include name="**/*.jar" />
+            </fileset>
+
+        </delete>
+
+        <tar destfile="${unix-tar}">
 			<tarfileset dir="${unix-dir-to-tar}" excludes="*/jin" />
 			<tarfileset dir="${unix-dir-to-tar}" includes="*/jin" mode="755" />
 		</tar>
 		
-		<bzip2 src="${unix-tar}" zipfile="${unix-gz}" />
+		<gzip src="${unix-tar}" zipfile="${unix-gz}" />
 		
 		<delete dir="${unix-dir-to-tar}" />
 		<delete file="${unix-tar}" />
