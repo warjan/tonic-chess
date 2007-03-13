@@ -111,6 +111,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      */
 
     private JPopupMenu channelMenu;
+    private boolean listReceived;
 
     /**
      * Creates a new instance of ChannelsManager
@@ -391,6 +392,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                 }
             }
         }
+        listReceived = true;
     }
 
     private void getControls() {
@@ -661,8 +663,10 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
     public void plainTextReceived(PlainTextEvent evt) {
         Console receivingConsole = chatConsoles.get(502);
+        if (listReceived){
         receivingConsole.addToOutput(evt.getText(),"plain");
         highlightTab("", mainPane.getTabCount() - 1 );
+        }
     }
 
     /**
