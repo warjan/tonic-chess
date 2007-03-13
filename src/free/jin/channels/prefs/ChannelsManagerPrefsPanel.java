@@ -44,6 +44,22 @@ public class ChannelsManagerPrefsPanel extends PreferencesPanel {
     private JRadioButton tellRadio;
 
     /**
+     * Check box for setting preference whether shout tab should be displayed.
+     */
+
+    private JCheckBox shoutCheckBox;
+
+    /**
+     * Check box for setting preference whether c-shout tab should be displayed.
+     */
+    private JCheckBox cshoutCheckBox;
+
+    /**
+     * Check box for setting preference whether plain text tab should be displayed.
+     */
+    private JCheckBox plainCheckBox;
+
+    /**
      * The channels manager
      * @param channelsManager
      */
@@ -52,12 +68,24 @@ public class ChannelsManagerPrefsPanel extends PreferencesPanel {
         this.channelsManager = channelsManager;
         dateCheckBox = new JCheckBox("Display timestamp for tells?");
         closeableCheckBox = new JCheckBox("Use closeable tabs?");
+        shoutCheckBox = new JCheckBox("Display tab for shouts?");
+        cshoutCheckBox = new JCheckBox("Display tab for cshouts (chess related shouts)?");
+        plainCheckBox = new JCheckBox("Display tab for plain text?");
 
         dateCheckBox.addActionListener(new PrefsActionListener());
         dateCheckBox.setSelected(channelsManager.getPrefs().getBool("date.display"));
 
         closeableCheckBox.addActionListener(new PrefsActionListener());
         closeableCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.closeable"));
+
+        shoutCheckBox.addActionListener(new PrefsActionListener());
+        shoutCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.shout"));
+
+        cshoutCheckBox.addActionListener(new PrefsActionListener());
+        cshoutCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.cshout"));
+
+        plainCheckBox.addActionListener(new PrefsActionListener());
+        plainCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.plain"));
         createUI();
     }
 
@@ -77,8 +105,6 @@ public class ChannelsManagerPrefsPanel extends PreferencesPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        c.gridheight = 2;
-        c.gridwidth = 2;
         c.weighty = 0.5;
         c.weightx = 0.5;
         c.anchor = GridBagConstraints.WEST;
@@ -92,6 +118,15 @@ public class ChannelsManagerPrefsPanel extends PreferencesPanel {
         //c.gridx = 2;
         panel.add(closeableCheckBox, c);
 
+        c.gridy = 3;
+        panel.add(shoutCheckBox, c);
+
+        c.gridy = 4;
+        panel.add(cshoutCheckBox, c);
+
+        c.gridy = 5;
+        panel.add(plainCheckBox, c);
+
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 0.5;
@@ -104,6 +139,9 @@ public class ChannelsManagerPrefsPanel extends PreferencesPanel {
     public void applyChanges() throws BadChangesException {
         channelsManager.getPrefs().setBool("tabs.closeable", closeableCheckBox.isSelected());
         channelsManager.getPrefs().setBool("date.display", dateCheckBox.isSelected());
+        channelsManager.getPrefs().setBool("tabs.shout", shoutCheckBox.isSelected());
+        channelsManager.getPrefs().setBool("tabs.cshout", cshoutCheckBox.isSelected());
+        channelsManager.getPrefs().setBool("tabs.plain", plainCheckBox.isSelected());
     }
 
     private class PrefsActionListener implements ActionListener {

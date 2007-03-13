@@ -27,11 +27,12 @@
 		<property name="build.dir" value="build" />
 		<property name="build.compiler" value="modern" />
 		<!--<property name="build.target" value="${java.specification.version}" />-->
-                <property name="build.target" value="1.5" />
+        <property name="build.target" value="1.5" />
 		<property name="build.compress" value="no" />
 		<property name="build.manifest" value="manifest.txt" />
-		
-		<property name="source.dir" value="src" />
+        <property name="build.java6.mainfest" value="mainfestJava6.txt" />
+
+        <property name="source.dir" value="src" />
 		<property name="classes.dir" value="classes" /> 
 		<property name="res.dir" value="resources" /> 
 		<property name="libs.dir" value="${build.dir}/libs" />	
@@ -77,12 +78,12 @@
 		<javac srcdir="${source.dir}"
 		       destdir="${classes.dir}"
 		       includes="**"
-                       excludes="tonic/**,free/jin/mustangtray/**"
+               excludes="tonic/**,free/jin/mustangtray/**"
 		       classpathref="compile.class.path">
 
 
             <compilerarg compiler="modern" line="-target ${build.target}" />
-			<compilerarg compiler="modern" line="-source 5" />
+			<compilerarg compiler="modern" line="-source 1.5" />
             <compilerarg compiler="modern" line="-g:lines,source,vars" />
             <compilerarg compiler="modern" line="-Xlint:deprecation" />
         </javac>
@@ -424,23 +425,13 @@
 			<param name="action.id" value="seek" />
 		</antcall>
                 
-                <!-- Send message action -->
-		<antcall target="buildAction">
-                        <param name="action.id" value="sendmessage" />
-		</antcall>
-                
+              
                  <!-- Show rating graph -->
 		<!--<antcall target="buildAction">
                         <param name="action.id" value="showratinggraph" />
 		</antcall>-->
 
-                <!-- Flip board -->
-                <antcall target="buildAction">
-                    <param name="action.id" value="flipboard" />
-                </antcall>
-    
-    
-		<!-- Resources -->
+  		<!-- Resources -->
 		<mkdir dir="${resources.dir}" />
 		
 		<!-- Copy over piece sets and board patterns -->
