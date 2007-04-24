@@ -662,11 +662,15 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     }
 
     public void plainTextReceived(PlainTextEvent evt) {
+        Console selectedConsole = (Console) mainPane.getSelectedComponent();
         Console receivingConsole = chatConsoles.get(502);
         if (listReceived){
-        receivingConsole.addToOutput(evt.getText(),"plain");
-        highlightTab("", mainPane.getTabCount() - 1 );
+            receivingConsole.addToOutput(evt.getText(),"plain");
+            if(!selectedConsole.equals(receivingConsole)){
+                highlightTab("", mainPane.getTabCount() - 1 );
+            }
         }
+
     }
 
     /**
