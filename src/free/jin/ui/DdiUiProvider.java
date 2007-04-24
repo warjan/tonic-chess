@@ -46,6 +46,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Map;
+import java.util.HashMap;
 
 
 /**
@@ -58,13 +60,15 @@ import java.awt.event.WindowEvent;
 public class DdiUiProvider extends AbstractUiProvider{
     
     private MainDockPane mainFrame;
-    private Viewport viewPort;
+    private Viewport viewport;
     private JMenuBar menubar;
     private ActionsMenu actionsmenu;
     private PluginContainersMenu windowsMenu;
     private PrefsMenu preferencesMenu;
     private View viewPUC;
-    
+    private Map<String, View> viewsMap;
+    private boolean consoleReady;
+
     public DdiUiProvider(){
         
     }
@@ -73,6 +77,7 @@ public class DdiUiProvider extends AbstractUiProvider{
         SwingUtilities.invokeLater(new Runnable(){
             public void run() {
 
+                viewsMap = new HashMap<String, View>(8);
                 mainFrame = getMainFrame();
             
                 restoreFrameGeometry(Jin.getInstance().getPrefs(), mainFrame, "frame.",
@@ -97,7 +102,7 @@ public class DdiUiProvider extends AbstractUiProvider{
                         Jin.getInstance().quit(true);
                     }
                 });
-                
+                menubar.add(new ConnectionMenu());
                 //mainFrame.setContentPane(createDockingPane());
                 mainFrame.addWindowListener(new WindowAdapter(){
                     public void windowOpened(WindowEvent e){
@@ -164,21 +169,32 @@ public class DdiUiProvider extends AbstractUiProvider{
     class DockableUIContainer extends AbstractPluginUIContainer {
         
         String id;
-        View viewPUC;
+
         
         protected DockableUIContainer(Plugin plugin, String id, int mode){
             super(plugin, id, mode);
             this.id = id;
+
+            System.out.println("NEW VIEW ID = " + id);
+     
             viewPUC = View.getInstance(id);
+            System.out.println("NEW VIEW INFO = " + viewPUC);
+
             //viewPUC.setTitlebar(new PluginUITitlebar());
-            viewPUC.addAction(DockingConstants.CLOSE_ACTION);
-            viewPUC.addAction(DockingConstants.PIN_ACTION);
+//            View.getInstance(id).addAction(CLOSE_ACTION);
+//            View.getInstance(id).addAction(PIN_ACTION);
            
 
-            viewPUC.setContentPane(new JPanel());
+            //View.getInstance(id).setContentPane(new JPanel());
+             if (id.equals("console.main")){
+                consoleReady = true;
+                }
+            //viewsMap.put(id, viewPUC);
 
         }
         protected void disposeImpl() {
+            DockingManager.close(View.getInstance(id));
+            viewsMap.remove(id);
         }
         
         protected void loadState() {
@@ -195,53 +211,49 @@ public class DdiUiProvider extends AbstractUiProvider{
         }
         
         protected void setTitleImpl(String title) {
-            viewPUC.setTitle(title);
-            viewPUC.setTabText(title);
+            /*viewsMap.get(id).setTitle(title);
+            viewsMap.get(id).setTabText(title);*/
+            View.getInstance(id).setTitle(title);
+            View.getInstance(id).setTabText(title);
         }
         
         protected void setIconImpl(Image icon) {
         }
         
         public void setSize(int width, int height) {
+            View.getInstance(id).setPreferredSize(new Dimension(width, height));
+            //viewsMap.get(id).setPreferredSize(new Dimension(width, height));
         }
         
         public Container getContentPane() {
-            return viewPUC.getContentPane();
-            
+           return View.getInstance(id).getContentPane();
+            //return viewsMap.get(id).getContentPane();
         }
         
         
         public boolean isVisible() {
-            return viewPUC.isVisible();
+           // return viewsMap.get(id).isVisible();
+            return View.getInstance(id).isVisible();
         }
         
         public void setActive(boolean active) {
+            //viewsMap.get(id).setActive(active);
+            View.getInstance(id).setActive(active);
         }
         
         public boolean isActive() {
-            return viewPUC.isVisible() && viewPUC.isActive();
+            //return viewsMap.get(id).isVisible() && viewsMap.get(id).isActive();
+            return View.getInstance(id).isVisible() && View.getInstance(id).isActive();
         }
 
         public void show(){
-            
-            
-            //            View view1 = new View("lo", "Low");
-            //            JTextField jtf = new JTextField();
-            //
-            //            jtf.setText("Testing flexdock is not always easy");
-            //            view1.getContentPane().add(jtf);
-            //
-            //            view1.setSize(500,500);
-            //            viewPort.dock(view1);
-            
-            
-            //mainFrame.add(viewPUC);
-            //mainFrame.getViewport().dock(viewPUC);
             firePluginUIEvent(new PluginUIEvent(this, PluginUIEvent.PLUGIN_UI_SHOWN));
         }
         
         public void hide(){
-            viewPUC.setVisible(false);
+            //viewsMap.get(id).setVisible(false);
+            View.getInstance(id).setVisible(false);
+            DockingManager.close(View.getInstance(id));
             firePluginUIEvent(new PluginUIEvent(this, PluginUIEvent.PLUGIN_UI_HIDDEN));
         }
         
@@ -260,16 +272,12 @@ public class DdiUiProvider extends AbstractUiProvider{
     
     class MainDockPane extends JFrame implements DockingConstants{
         
-            Viewport viewport;
+
 
             MainDockPane(){
                 super();
                 configureDocking();
-                //this.setLayout(new BorderLayout());
                 setContentPane(createContentPane());
-                //this.getContentPane().add(createContentPane());
-
-
             }
 
             public Viewport getViewport(){
@@ -280,16 +288,7 @@ public class DdiUiProvider extends AbstractUiProvider{
                 p.setBorder(new EmptyBorder(0, 0, 2, 2));
 
                 viewport = new Viewport();
-                /*View fake1 = new View("region.east", "East");
-                View fake2 = new View("region.west", "West");
-                View fake3 = new View("region.north", "North");
-                View fake4 = new View("region.center", "Center");
-                
-                viewport.dock(fake4);
-                fake4.dock(fake1, DockingConstants.EAST_REGION);
-                fake4.dock(fake2, WEST_REGION);
-                fake4.dock(fake3, NORTH_REGION);*/
-                                 
+
                
                 viewport.setSingleTabAllowed(true);
                 System.out.println(p.getHeight() + " x " + p.getWidth());
@@ -299,28 +298,13 @@ public class DdiUiProvider extends AbstractUiProvider{
                 Border outerBorder = BorderFactory.createEmptyBorder(0,0,2,2);
                 Border innerBorder = new ShadowBorder();
                 viewport.setBorderManager(new StandardBorderManager(BorderFactory.createCompoundBorder(outerBorder, innerBorder)));
-                //View startPage = createStartPage();
+
                 p.add(viewport, BorderLayout.CENTER);
                 
                 
                 return p;
-                }
-             
+             }
         }
-        /*private Container createContentPane(){
-            JPanel panel = new JPanel(new BorderLayout(0,0));
-            panel.setBorder(new EmptyBorder(5,5,5,5));
-         
-            viewPort = new Viewport();
-            panel.add(viewPort, BorderLayout.CENTER);
-            viewPort.setSingleTabAllowed(false);
-         
-            return panel;
-        }*/
-
-        //private View createStartPage() {
-        //    return new View("new view", "New view");
-        //}
 
         private void configureDocking() {
             
@@ -329,40 +313,37 @@ public class DdiUiProvider extends AbstractUiProvider{
             
             
             PerspectiveManager.setFactory(new TonicPerspectiveFactory());
-	    PerspectiveManager.setRestoreFloatingOnLoad(true);
-	    PerspectiveManager mgr = PerspectiveManager.getInstance();
-	    mgr.setCurrentPerspective("default", true);
+	        PerspectiveManager.setRestoreFloatingOnLoad(true);
+	        PerspectiveManager mgr = PerspectiveManager.getInstance();
+	        mgr.setCurrentPerspective("default", true);
         }
         
     
     class PluginUIFactory extends DockableFactory.Stub implements DockingConstants{
         public Component getDockableComponent(String dockableId){
-            /*View view1 = null;
-            View view = null;
-            System.out.println(dockableId);
-            if(dockableId.equals("console.main")){
-                view1 = new View(dockableId, "Main console");
-                view1.setContentPane(new JPanel());
+
+            View view;
+//            if (View.getInstance(dockableId) != null){
+//               view = View.getInstance(dockableId);
+//           } else{
+                view = new View(dockableId);
+                view.setContentPane(new JPanel());
+                view.addAction(CLOSE_ACTION);
+                view.addAction(PIN_ACTION);
+//            }
+
+            if (!consoleReady){
                 mainFrame.getViewport().dock(view);
-                return view1;
+            }else{
+                //viewsMap.get("console.main").dock(view);
+                View.getInstance("console.main").dock(view);
+                System.out.println("MAIN CONSOLE TITLE = " + View.getInstance("console.main").getTitle());
+                //viewsMap.get("console.main").setTabText(viewsMap.get("console.main").getTitle());
+
+                
+                System.out.println("CONSOLE VIEW INSTANCE = " + View.getInstance("console.main"));
+                System.out.println("CONSOLE VIEW TAB TEXT = " + View.getInstance("console.main").getTabText());
             }
-            else{
-            view = new View(dockableId, dockableId);
-            view.setContentPane(new JPanel());
-                if (view1 != null){
-                    view1.dock(view, EAST_REGION);
-                    return view;
-                }
-            }
-            return new View(dockableId, dockableId);*/
-            View view = new View(dockableId);
-            //view.setTitle(dockableId, true);
-            view.setContentPane(new JPanel());
-            //Titlebar pluginUITitlebar = new PluginUITitlebar();
-            //pluginUITitlebar.add(new JButton("go"));
-            //view.setTitlebar(pluginUITitlebar);
-            //view.setTitlebar(new Titlebar());
-            mainFrame.getViewport().dock(view);
 
             return view;
         }
@@ -381,7 +362,7 @@ public class DdiUiProvider extends AbstractUiProvider{
     	
     }
 
-    class PluginUITitlebar extends Titlebar{
+    class PluginUITitlebar extends Titlebar {
         PluginUITitlebar(){
             super();
 
@@ -389,11 +370,11 @@ public class DdiUiProvider extends AbstractUiProvider{
 
         }
 
-        /*protected void paintComponent(Graphics g){
-            super.paintComponent(g);
-            g.setColor(Color.RED);
-            g.fillRect(0,0, this.getWidth(),24);
-        }*/
+
+
+        public Dimension getPreferredSize(){
+            return new Dimension(100, 24);
+        }
 
     }
     
