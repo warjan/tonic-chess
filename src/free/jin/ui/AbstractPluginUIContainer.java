@@ -21,16 +21,6 @@
 
 package free.jin.ui;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Image;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-
-import javax.swing.JMenu;
-
 import free.jin.Jin;
 import free.jin.Session;
 import free.jin.plugin.Plugin;
@@ -38,6 +28,11 @@ import free.jin.plugin.PluginUIContainer;
 import free.jin.plugin.PluginUIEvent;
 import free.jin.plugin.PluginUIListener;
 import free.util.RectDouble;
+
+import javax.swing.*;
+import java.awt.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 
 
@@ -168,7 +163,7 @@ public abstract class AbstractPluginUIContainer implements PluginUIContainer{
   
   
   /**
-   * Loads the state of this plugion ui from preferences. This method should
+   * Loads the state of this plugin ui from preferences. This method should
    * probably be called from the constructor of the implementing class. 
    */
   
