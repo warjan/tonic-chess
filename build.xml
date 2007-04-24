@@ -1,9 +1,9 @@
 <project name="tonic" default="build">
-    
+
     <!-- If needed you can set following propeties on command line with -Dproperty.name=property.value ant switch
          release.platform - may be one of: windows, unix, macosx, applet
          release.jtarget - may be one of: pretiger, tiger, mustang - this one does not work for now -->
- 
+
 
 
     <path id="compile.class.path">
@@ -30,32 +30,31 @@
         <property name="build.target" value="1.5" />
 		<property name="build.compress" value="no" />
 		<property name="build.manifest" value="manifest.txt" />
-        <property name="build.java6.mainfest" value="mainfestJava6.txt" />
 
-        <property name="source.dir" value="src" />
-		<property name="classes.dir" value="classes" /> 
-		<property name="res.dir" value="resources" /> 
-		<property name="libs.dir" value="${build.dir}/libs" />	
-		<property name="servers.dir" value="${build.dir}/servers" />	
+		<property name="source.dir" value="src" />
+		<property name="classes.dir" value="classes" />
+		<property name="res.dir" value="resources" />
+		<property name="libs.dir" value="${build.dir}/libs" />
+		<property name="servers.dir" value="${build.dir}/servers" />
 		<property name="plugins.dir" value="${build.dir}/plugins" />
 		<property name="actions.dir" value="${build.dir}/actions" />
-		<property name="resources.dir" value="${build.dir}/resources" />	
+		<property name="resources.dir" value="${build.dir}/resources" />
 		<property name="lnfs.dir" value="${build.dir}/lnfs" />
-		
+
 		<property file="${source.dir}/free/jin/resources/app.props" prefix="jin" />
 		<property name="release.name" value="Tonic" />
 		<property name="release.version" value="build-${date}" />
-                
-                
+
+
 
                 <property name="tonic.classpath" value=".:${build.dir}/tonic.jar:${build.dir}/util.jar:${build.dir}/chess.jar:${libs.dir}/flexdock-0.4.0.jar:${libs.dir}/bsh-core-2.0b4.jar" />
                 <property name="launch4j.dir" value="/home/whp/var/sfw/launch4j" />
-                
+
                 <condition property="buildForMustang">
                     <equals arg1="1.6" arg2="${java.specification.version}" />
                 </condition>
-        
-                
+
+
     </target>
 
 
@@ -83,15 +82,15 @@
 
 
             <compilerarg compiler="modern" line="-target ${build.target}" />
-			<compilerarg compiler="modern" line="-source 1.5" />
+			<compilerarg compiler="modern" line="-source 5" />
             <compilerarg compiler="modern" line="-g:lines,source,vars" />
             <compilerarg compiler="modern" line="-Xlint:deprecation" />
         </javac>
-             
+
 
 
     </target>
-	
+
 	<!-- Compiles a single piece set -->
 	<target name="compilePieceSet">
 		<mkdir dir="${classes.dir}/pieces/${piece-set-id}" />
@@ -117,26 +116,26 @@
 		<mkdir dir="${actions.dir}/fics" />
 		<mkdir dir="${actions.dir}/icc" />
 		<mkdir dir="${lnfs.dir}" />
-		
-		
+
+
 		<!-- Copy libs -->
 		<copy todir="${libs.dir}">
-			<fileset dir="resources/libs" includes="**/*" >                         
+			<fileset dir="resources/libs" includes="**/*" >
 			</fileset>
 		</copy>
 
-		
+
 		<!-- Copy Look and Feels -->
 		<copy todir="${lnfs.dir}">
 			<fileset dir="resources/lnfs" />
 		</copy>
 
-		<!-- Check whether Unix (but not Mac OS X) -->		
+		<!-- Check whether Unix (but not Mac OS X) -->
 		<condition property="unix">
-			
+
                         <and>
 				<os family="unix"/>
-                                
+
 				<not>
 					<os family="mac"/>
 				</not>
@@ -146,9 +145,9 @@
 		<!-- Check whether Windows -->
 		<condition property="windows">
 			<os family="windows" />
-                        
+
 		</condition>
-		
+
 		<!-- Check whether Mac OS X -->
 		<condition property="macosx">
 			<and>
@@ -156,8 +155,8 @@
 				<os family="mac"/>
 			</and>
 		</condition>
-		
-		
+
+
 		<condition property="buildingForUnix">
 			<or>
 				<and>
@@ -187,7 +186,7 @@
 				</and>
 			</or>
 		</condition>
-		
+
 		<condition property="buildingForMacOSX">
 			<or>
 				<and>
@@ -202,7 +201,7 @@
 				</and>
 			</or>
 		</condition>
-		
+
 		<condition property="buildingApplet">
 			<or>
 				<isset property="applet" />
@@ -212,27 +211,27 @@
 				</and>
 			</or>
 		</condition>
-		
+
 
 		<!-- Copy Java resources -->
 		<copy todir="${classes.dir}">
 			<fileset dir="${source.dir}" excludes="**/*.java **/*.html" />
 		</copy>
-		
-		
+
+
 		<!-- Call the tasks that do platform specific stuff -->
-		
+
 		<antcall target="doMacOSXStuff" />
 		<antcall target="doAppletStuff" />
 
-		
+
 		<!-- Set application name and version -->
 		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
 			<entry key="app.name" value="${release.name}" />
 			<entry key="app.version" value="${release.version}" />
 		</propertyfile>
-		
-		
+
+
 		<!-- Utility library: free.util.* and free.workarounds.* and org.tonic.ui.swing-->
 		<jar jarfile="${build.dir}/util.jar"
 		     basedir="${classes.dir}"
@@ -251,7 +250,7 @@
 
 		<!-- Fix CRLF in manifest.txt (for windows) -->
 		<fixcrlf srcdir="${user.dir}" includes="${manifest}" />
-    
+
 
 		<!-- Tonic classes -->
 		<jar jarfile="${build.dir}/tonic.jar"
@@ -262,7 +261,7 @@
 		/>
 
 
-		
+
 		<!-- Free Internet Chess Server support -->
 		<jar jarfile="${servers.dir}/freechess.jar" compress="${build.compress}">
 			<fileset dir="${classes.dir}"
@@ -275,13 +274,13 @@
 		<!-- Internet Chess Club support -->
 		<jar jarfile="${servers.dir}/chessclub.jar" compress="${build.compress}">
 			<fileset dir="${classes.dir}"
-			         includes="free/jin/chessclub/** free/chessclub/**" 
+			         includes="free/jin/chessclub/** free/chessclub/**"
 			         excludes="free/jin/chessclub/definition" />
 			<fileset dir="${classes.dir}/free/jin/chessclub"
 			         includes="definition" />
 		</jar>
 
-		
+
 
 		<!-- Console plugin library -->
 		<jar jarfile="${libs.dir}/console.jar" compress="${build.compress}">
@@ -303,7 +302,7 @@
 		</antcall>
 
 
-		
+
 		<!-- Sound plugin library -->
 		<jar jarfile="${libs.dir}/sound.jar" compress="${build.compress}">
 			<fileset dir="${classes.dir}"
@@ -323,7 +322,7 @@
 			<param name="plugin.id" value="sound" />
 		</antcall>
 
-		
+
 
 		<!-- Seek Graph plugin library -->
 		<jar jarfile="${libs.dir}/seek.jar" compress="${build.compress}">
@@ -344,7 +343,7 @@
 			<param name="plugin.id" value="seek" />
 		</antcall>
 
-		
+
 
 		<!-- Board plugin library -->
 		<jar jarfile="${libs.dir}/board.jar" compress="${build.compress}">
@@ -366,14 +365,14 @@
 		</antcall>
 
 
-		
+
 		<!-- Game Logger plugin -->
 		<antcall target="buildPlugin">
 			<param name="plugin.id" value="gamelogger" />
 		</antcall>
 
 
-		
+
 		<!-- Scripter plugin library -->
 		<jar jarfile="${libs.dir}/scripter.jar" compress="${build.compress}">
 			<fileset dir="${classes.dir}"
@@ -392,48 +391,58 @@
 			<param name="server.id" value="fics" />
 			<param name="plugin.id" value="scripter" />
 		</antcall>
-		
-		
-		
+
+
+
 		<!-- Actions plugin -->
 		<antcall target="buildPlugin">
 			<param name="plugin.id" value="actions" />
 		</antcall>
-		
+
 		<!-- Channels Manager plugin -->
                 <antcall target="buildPlugin">
                         <param name="plugin.id" value="channels" />
                 </antcall>
-                
-                
-                
-		
+
+
+
+
 
 
 		<!-- Get Server Help action -->
 		<antcall target="buildAction">
 			<param name="action.id" value="getserverhelp" />
 		</antcall>
- 		
+
 		<!-- Ask a Question action -->
 		<antcall target="buildAction">
 			<param name="action.id" value="askquestion" />
 		</antcall>
-		
+
 		<!-- Seek action -->
 		<antcall target="buildAction">
 			<param name="action.id" value="seek" />
 		</antcall>
-                
-              
+
+                <!-- Send message action -->
+		<antcall target="buildAction">
+                        <param name="action.id" value="sendmessage" />
+		</antcall>
+
                  <!-- Show rating graph -->
 		<!--<antcall target="buildAction">
                         <param name="action.id" value="showratinggraph" />
 		</antcall>-->
 
-  		<!-- Resources -->
+                <!-- Flip board -->
+                <antcall target="buildAction">
+                    <param name="action.id" value="flipboard" />
+                </antcall>
+
+
+		<!-- Resources -->
 		<mkdir dir="${resources.dir}" />
-		
+
 		<!-- Copy over piece sets and board patterns -->
 		<copy todir="${resources.dir}">
 			<fileset dir="${res.dir}" includes="pieces/**/*.jar pieces/**/*.zip" />
@@ -445,8 +454,8 @@
                 <antcall target="doMustangStuff" />
 
 	</target>
-  
-  
+
+
 	<!-- Creates a single plugin
 	     Parameters: server.id (optional, for server specific plugins}, plugin.id
 	-->
@@ -460,7 +469,7 @@
 			         includes="definition" />
 		</jar>
 	</target>
-  
+
 
 	<!-- Creates a single action.
 	     Parameters: server.id (optional, for server specific actions), action.id
@@ -475,13 +484,13 @@
 			         includes="definition" />
 		</jar>
 	</target>
-        
-        
+
+
         <!-- If the property buildingForMustang is set, does things required for Mustang,
         like building classes that use Mustang API -->
-        
+
         <target name="doMustangStuff" if="buildForMustang">
-                
+
             <!-- Compiles source files for MustangTray plugin -->
             <javac srcdir="${source.dir}"
 		       destdir="${classes.dir}"
@@ -505,16 +514,16 @@
                     <fileset dir="${build.dir}">
                         <include name="tray.dll"/>
                     </fileset>
-                    
-                </delete>
-                
-                
 
-               
-            
+                </delete>
+
+
+
+
+
         </target>
-	
-	
+
+
 	<!-- If the property buildingForUnix is set, does things required for Unix -->
 	<target name="doUnixStuff" if="buildingForUnix">
 		<copy todir="${build.dir}">
@@ -522,9 +531,9 @@
             <fileset dir="resources/os-specific/unix" includes="TonicQuickstart.txt" />
             <fileset dir="resources/os-specific/unix" includes="tonic.png"/>
         </copy>
-                
+
 		<chmod file="${build.dir}/tonic" perm="a+x" />
-	
+
 		<!-- Check whether x86 -->
 		<condition property="x86">
 			<or>
@@ -535,8 +544,8 @@
 				<equals arg1="i686" arg2="${os.arch}" />
 			</or>
 		</condition>
-		<antcall target="doUnixOnx86Stuff" /> 
-		
+		<antcall target="doUnixOnx86Stuff" />
+
 	</target>
 
 	<!-- If the property x86 is set, does things required for unix on x86 -->
@@ -549,14 +558,14 @@
 
             <!-- Copies os specific libraries for JDIC tray implementation -->
             <copy todir="${libs.dir}">
-                                    
+
                                     <fileset dir="resources/os-specific/unix">
                                         <include name="*.so" />
                                         <include name ="*.jar" />
                                     </fileset>
-                                    
+
                 </copy>
-                
+
 		<!--
 		<copy todir="${build.dir}">
 			<fileset dir="resources/os-specific/unix/x86" />
@@ -580,18 +589,18 @@
                 </fileset>
             </copy>
                 <copy todir="${libs.dir}">
-                                    
+
                                     <fileset dir="resources/os-specific/windows">
                                         <include name="*.jar" />
                                     </fileset>
-                                    
+
                 </copy>
 
         <!-- Calls a target that creates .exe file -->
         <antcall target="createexe"/>
     </target>
-	
-	
+
+
 	<!-- If the property buildingForMacOSX is set, does things required for Mac OS X -->
 	<target name="doMacOSXStuff" if="buildingForMacOSX">
 		<javac srcdir="resources/os-specific/macosx"
@@ -604,9 +613,9 @@
 				<pathelement path="${classes.dir}"/>
 			</classpath>
 		</javac>
-        
+
     </target>
-	
+
 
 	<!-- If the property buildingApplet is set, does things required for Applets -->
 	<target name="doAppletStuff" if="buildingApplet">
@@ -616,11 +625,11 @@
 			<compilerarg compiler="modern" line="-target ${build.target}" />
 			<compilerarg compiler="modern" line="-source 1.2" />
 		</javac>
-		
+
 		<copy todir="${build.dir}">
 			<fileset file="resources/os-specific/applet/**" excludes="**.java"/>
 		</copy>
-		
+
  		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
 			<entry key="lf.extra.count" value="0" />
 		</propertyfile>
@@ -721,12 +730,12 @@
 
     <!-- Do not use it - it doesn't work for now -->
     <target name="run" depends="build">
-		
+
 		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Djava.library.path=./libs">
-			
+
 			<!--<jvmarg value="-Djava.library.path=libs"/>-->
-		
+
 		</java>
 	</target>
-	
+
 </project>
