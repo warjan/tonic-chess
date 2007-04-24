@@ -21,53 +21,27 @@
 
 package free.jin.console;
 
-import free.jin.Jin;
-import free.jin.plugin.PluginUIListener;
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Toolkit;
-import java.net.URL;
-
-import javax.swing.border.TitledBorder;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-
 import free.jin.Connection;
 import free.jin.GameListConnection;
+import free.jin.Jin;
 import free.jin.console.prefs.ConsolePrefsPanel;
-import free.jin.event.ChatEvent;
-import free.jin.event.ChatListener;
-import free.jin.event.ConnectionListener;
-import free.jin.event.GameListEvent;
-import free.jin.event.GameListListener;
-import free.jin.event.GameListListenerManager;
-import free.jin.event.ListenerManager;
-import free.jin.event.PlainTextEvent;
-import free.jin.event.PlainTextListener;
-import free.jin.plugin.Plugin;
-import free.jin.plugin.PluginUIAdapter;
-import free.jin.plugin.PluginUIContainer;
-import free.jin.plugin.PluginUIEvent;
+import free.jin.event.*;
+import free.jin.plugin.*;
 import free.jin.ui.AbstractPluginUIContainer;
 import free.jin.ui.OptionPanel;
 import free.jin.ui.PreferencesPanel;
 import free.jin.ui.UIProvider;
 
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
-
+import java.awt.event.ItemListener;
+import java.net.URL;
 import java.util.*;
-
-import javax.swing.*;
 
 
 /**
@@ -372,6 +346,8 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
 
 
         newConsoleContainer.setVisible(true);
+        consoleContainer.setTitle("Main Console - " + getConn().getUsername() +
+                " on " + getServer().getLongName());
     }
 
      public void openNewConsole(String prefix, String nameForConsole, String typeForConsole){
@@ -397,6 +373,8 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
 
 
         newConsoleContainer.setVisible(true);
+        consoleContainer.setTitle("Main Console - " + getConn().getUsername() +
+                " on " + getServer().getLongName());
      }
 
     /**
