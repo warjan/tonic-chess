@@ -214,7 +214,7 @@ public class JinApplication implements JinContext{
    * instances describing standalone actions for that server.
    */
    
-  private final Hashtable serversToActions;
+  private final HashMap serversToActions;
 
 
   
@@ -223,13 +223,7 @@ public class JinApplication implements JinContext{
    * instances describing plugins for that server.
    */
 
-  private final Hashtable serversToPlugins;
-
-    /**
-     * Translation kept in one file for all dialogs.
-     */
-    private static ResourceBundle translation;
-
+  private final HashMap serversToPlugins;
 
     /**
      * Creates a new <code>JinApplication</code> with the specified commandline
@@ -729,8 +723,8 @@ public class JinApplication implements JinContext{
    * describing the standalone actions for that server.
    */
    
-  private Hashtable loadActions() throws IOException, ClassNotFoundException{
-    Hashtable actions = new Hashtable();
+  private HashMap loadActions() throws IOException, ClassNotFoundException{
+    HashMap actions = new HashMap();
     for (int i = 0; i < servers.length; i++){
       actions.put(servers[i], new Vector());
     }
@@ -743,12 +737,12 @@ public class JinApplication implements JinContext{
 
 
     // Convert the Server->Vector map to Server->ActionInfo[] map
-    Hashtable result = new Hashtable();
+    HashMap result = new HashMap();
     for (int i = 0; i < servers.length; i++){
       Server server = servers[i];
-      Vector actionsVector = (Vector)actions.get(server);
+      ArrayList actionsVector = (ArrayList)actions.get(server);
       ActionInfo [] actionsArray = new ActionInfo[actionsVector.size()];
-      actionsVector.copyInto(actionsArray);
+      actionsVector.toArray(actionsArray);
 
       result.put(server, actionsArray);
     }
@@ -763,7 +757,7 @@ public class JinApplication implements JinContext{
    * Helper method for <code>loadActions()</code>.
    */
    
-  private void loadActions(final Hashtable actions, final File dir) throws IOException, ClassNotFoundException{
+  private void loadActions(final HashMap actions, final File dir) throws IOException, ClassNotFoundException{
     if (!dir.isDirectory())
       return;
 
@@ -779,7 +773,7 @@ public class JinApplication implements JinContext{
       }
 
       for (int j = 0; j < servers.length; j++)
-        ((Vector)actions.get(servers[j])).addElement(actionInfo);
+        ((ArrayList)actions.get(servers[j])).add(actionInfo);
     }
 
 
@@ -797,7 +791,7 @@ public class JinApplication implements JinContext{
         if (actionInfo == null)
           continue;
 
-        ((Vector)actions.get(server)).addElement(actionInfo);
+        ((ArrayList)actions.get(server)).add(actionInfo);
       }
     }
   }
@@ -859,8 +853,8 @@ public class JinApplication implements JinContext{
    * the plugins for that server.
    */
 
-  private Hashtable loadPlugins() throws IOException, ClassNotFoundException{
-    Hashtable plugins = new Hashtable();
+  private HashMap loadPlugins() throws IOException, ClassNotFoundException{
+    HashMap plugins = new HashMap();
     for (int i = 0; i < servers.length; i++)
       plugins.put(servers[i], new Vector());
 
@@ -872,12 +866,12 @@ public class JinApplication implements JinContext{
 
 
     // Convert the Server->Vector map to Server->PluginInfo[] map
-    Hashtable result = new Hashtable();
+    HashMap result = new HashMap();
     for (int i = 0; i < servers.length; i++){
       Server server = servers[i];
-      Vector pluginsVector = (Vector)plugins.get(server);
+      ArrayList pluginsVector = (ArrayList)plugins.get(server);
       PluginInfo [] pluginsArray = new PluginInfo[pluginsVector.size()];
-      pluginsVector.copyInto(pluginsArray);
+      pluginsVector.toArray(pluginsArray);
 
       result.put(server, pluginsArray);
     }
@@ -892,7 +886,7 @@ public class JinApplication implements JinContext{
    * Helper method for <code>loadPlugins()</code>.
    */
 
-  private void loadPlugins(final Hashtable plugins, final File dir) throws IOException, ClassNotFoundException{
+  private void loadPlugins(final HashMap plugins, final File dir) throws IOException, ClassNotFoundException{
     if (!dir.isDirectory())
       return;
 
@@ -907,7 +901,7 @@ public class JinApplication implements JinContext{
         continue;
 
       for (int j = 0; j < servers.length; j++)
-        ((Vector)plugins.get(servers[j])).addElement(pluginInfo);
+        ((ArrayList)plugins.get(servers[j])).add(pluginInfo);
     }
 
 
@@ -925,7 +919,7 @@ public class JinApplication implements JinContext{
         if (pluginInfo == null)
           continue;
 
-        ((Vector)plugins.get(server)).addElement(pluginInfo);
+        ((ArrayList)plugins.get(server)).add(pluginInfo);
       }
     }
   }
@@ -1004,7 +998,7 @@ public class JinApplication implements JinContext{
    */
    
   public Resource [] getResources(final String resType, final Plugin plugin){
-    Vector resources = new Vector();
+    ArrayList resources = new ArrayList();
     
     String serverId = plugin.getServer().getId();
     
@@ -1017,7 +1011,7 @@ public class JinApplication implements JinContext{
     loadResources(jinServerResDir, resources, plugin);
      
     Resource [] resArr = new Resource[resources.size()];
-    resources.copyInto(resArr);
+    resources.toArray(resArr);
     
     return resArr;
   }
@@ -1029,7 +1023,7 @@ public class JinApplication implements JinContext{
    * specified <code>Vector</code>. Helper method for <code>getResources</code>.
    */
    
-  private void loadResources(final File dir, final Vector v, final Plugin plugin){
+  private void loadResources(final File dir, final ArrayList v, final Plugin plugin){
     if (!dir.exists() || !dir.isDirectory())
       return;
     
@@ -1043,7 +1037,7 @@ public class JinApplication implements JinContext{
         Resource resource = loadResource(resourceFile, plugin);
         
         if (resource != null)
-          v.addElement(resource);
+          v.add(resource);
       } catch (IOException e){
           System.out.println("Failed to load resource from " + resourceFile);
           e.printStackTrace();
