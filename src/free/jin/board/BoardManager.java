@@ -41,10 +41,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
-
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * The plugin responsible for displaying boards and handling all things related
@@ -99,7 +97,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    * used.
    */
 
-  protected final Hashtable gamesToBoardPanels = new Hashtable();
+  protected final HashMap gamesToBoardPanels = new HashMap();
 
 
 
@@ -108,7 +106,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    * A Hashtable mapping PluginUIContainer objects to BoardPanels they contain.
    */
 
-  protected final Hashtable containersToBoardPanels = new Hashtable();
+  protected final HashMap containersToBoardPanels = new HashMap();
 
 
 
@@ -117,7 +115,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    * A Hashtable mapping BoardPanels to their PluginUIContainers.
    */
 
-  protected final Hashtable boardPanelsToContainers = new Hashtable();
+  protected final HashMap boardPanelsToContainers = new HashMap();
 
 
 
@@ -126,7 +124,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    * A list of the PluginUIContainers in the order they were created.
    */
 
-  protected final Vector containers = new Vector();
+  protected final ArrayList containers = new ArrayList();
 
 
 
@@ -1001,7 +999,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
 
   private PluginUIContainer createBoardContainer(){
     for (int i = 0; i < containers.size(); i++){
-      PluginUIContainer container = (PluginUIContainer)containers.elementAt(i);
+      PluginUIContainer container = (PluginUIContainer)containers.get(i);
       BoardPanel panel = (BoardPanel)containersToBoardPanels.get(container);
       if ((panel == null) || !panel.isActive())
         return recycleContainer(container);
@@ -1021,7 +1019,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
     PluginUIContainer boardContainer = 
       createContainer(String.valueOf(containers.size()), UIProvider.SELF_MANAGED_CONTAINER_MODE);
     
-    containers.addElement(boardContainer);
+    containers.add(boardContainer);
 
     URL iconImageURL = BoardManager.class.getResource("board.gif");
     if (iconImageURL!= null)
@@ -1138,12 +1136,10 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    */
   
   public void connectionLost(Connection conn){
-    // We need to copy them to a Vector because you can't use an Enumeration
-    // while modifying its HashTable, and gameEndCleanup modifies the HashTable
     ArrayList games = new ArrayList();
-    Enumeration gamesEnum = gamesToBoardPanels.keys();
-    while (gamesEnum.hasMoreElements()){
-      games.add(gamesEnum.nextElement());
+    Iterator gamesEnum = gamesToBoardPanels.keySet().iterator();
+    while (gamesEnum.hasNext()){
+      games.add(gamesEnum.next());
     }
     
     for (int i = 0; i < games.size(); i++){
@@ -1212,9 +1208,9 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
    */
    
   public boolean isUserPlaying(){
-    Enumeration games = gamesToBoardPanels.keys();
-    while (games.hasMoreElements()){
-      Game game = (Game)games.nextElement();
+    Iterator games = gamesToBoardPanels.keySet().iterator();
+    while (games.hasNext()){
+      Game game = (Game)games.next();
       if ((game.getGameType() == Game.MY_GAME) && game.isPlayed())
         return true;
     }

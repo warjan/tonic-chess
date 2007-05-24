@@ -21,45 +21,21 @@
 
 package free.jin.console;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.Calendar;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.EventListenerList;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.Position;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-
-//import jregex.MatchIterator;
-//import jregex.MatchResult;
-//import jregex.Pattern;
-//import jregex.PatternSyntaxException;
 import free.jin.Connection;
 import free.jin.Preferences;
 import free.util.BrowserControl;
-import java.util.regex.Pattern;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.EventListenerList;
+import javax.swing.text.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 
@@ -169,7 +145,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
    * Maps text types that were actually looked up to the resulting AttributeSets.
    */
 
-  private final Hashtable attributesCache = new Hashtable();
+  private final HashMap attributesCache = new HashMap();
 
 
 

@@ -21,30 +21,8 @@
 
 package free.jin.board;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Vector;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
 import free.jin.Connection;
 import free.jin.Game;
-import free.jin.freechess.JinFreechessConnection;
 import free.jin.event.GameAdapter;
 import free.jin.event.GameEndEvent;
 import free.jin.event.GameListener;
@@ -53,6 +31,15 @@ import free.jin.plugin.Plugin;
 import free.jin.ui.OptionPanel;
 import free.util.TableLayout;
 import free.workarounds.FixedJPanel;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 /**

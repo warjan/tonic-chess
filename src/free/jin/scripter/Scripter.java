@@ -21,60 +21,20 @@
 
 package free.jin.scripter;
 
-import java.awt.Component;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Properties;
-import java.util.Vector;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
 import bsh.EvalError;
-import free.chess.Chess;
-import free.chess.ChessMove;
-import free.chess.Move;
-import free.chess.Player;
-import free.chess.Position;
-import free.chess.Square;
-import free.jin.Connection;
-import free.jin.FriendsConnection;
-import free.jin.Game;
-import free.jin.Preferences;
-import free.jin.Seek;
-import free.jin.SeekConnection;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.ConnectionListener;
-import free.jin.event.FriendsEvent;
-import free.jin.event.FriendsListener;
-import free.jin.event.FriendsListenerManager;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameEvent;
-import free.jin.event.GameListener;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.JinEvent;
-import free.jin.event.ListenerManager;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PlainTextEvent;
-import free.jin.event.PlainTextListener;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.SeekEvent;
-import free.jin.event.SeekListener;
-import free.jin.event.SeekListenerManager;
-import free.jin.event.TakebackEvent;
+import free.chess.*;
+import free.jin.*;
+import free.jin.event.*;
 import free.jin.plugin.Plugin;
 import free.jin.ui.PreferencesPanel;
 import free.util.MemoryFile;
 import free.util.Utilities;
 import free.util.swing.UrlDisplayingAction;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.util.*;
 
 
 /**
@@ -87,11 +47,11 @@ public class Scripter extends Plugin{
 
 
   /**
-   * A hashtable mapping event type names to <code>ScriptDispatcher</code>
+   * A HashMap mapping event type names to <code>ScriptDispatcher</code>
    * instances supporting those types of events.
    */
 
-  private final Hashtable dispatchers;
+  private final HashMap dispatchers;
 
 
 
@@ -109,7 +69,7 @@ public class Scripter extends Plugin{
    */
 
   public Scripter(){
-    dispatchers = new Hashtable();
+    dispatchers = new HashMap();
 
     registerScriptDispatcher("Connection", new ConnectionScriptDispatcher());
     registerScriptDispatcher("Text (Unparsed text)", new PlainTextScriptDispatcher());
@@ -161,18 +121,18 @@ public class Scripter extends Plugin{
   public String [] getSupportedEventTypes(){
     Connection conn = getConn();
 
-    Enumeration eventTypesEnum = dispatchers.keys();
-    Vector eventTypesVector = new Vector(dispatchers.size());
+    Iterator eventTypesEnum = dispatchers.keySet().iterator();
+    ArrayList eventTypesVector = new ArrayList(dispatchers.size());
 
-    while (eventTypesEnum.hasMoreElements()){
-      String eventType = (String)eventTypesEnum.nextElement();
+    while (eventTypesEnum.hasNext()){
+      String eventType = (String)eventTypesEnum.next();
       ScriptDispatcher dispatcher = (ScriptDispatcher)dispatchers.get(eventType);
       if (dispatcher.isSupportedBy(conn))
-        eventTypesVector.addElement(eventType);
+        eventTypesVector.add(eventType);
     }
 
     String [] eventTypesArr = new String[eventTypesVector.size()];
-    eventTypesVector.copyInto(eventTypesArr);
+    eventTypesVector.toArray(eventTypesArr);
 
     return eventTypesArr;
   }
@@ -313,7 +273,7 @@ public class Scripter extends Plugin{
    */
 
   public Script [] getScripts(){
-    Vector scriptsVector = new Vector();
+    ArrayList scriptsVector = new ArrayList();
     String [] eventTypes = getSupportedEventTypes();
     
     for (int i = 0; i < eventTypes.length; i++){
@@ -321,11 +281,11 @@ public class Scripter extends Plugin{
       ScriptDispatcher dispatcher = getScriptDispatcher(eventType);
       Script [] scripts = dispatcher.getScripts();
       for (int j = 0; j < scripts.length; j++)
-        scriptsVector.addElement(scripts[j]);
+        scriptsVector.add(scripts[j]);
     }
 
     Script [] scriptsArr = new Script[scriptsVector.size()];
-    scriptsVector.copyInto(scriptsArr);
+    scriptsVector.toArray(scriptsArr);
 
     return scriptsArr;
   } 
@@ -561,7 +521,7 @@ public class Scripter extends Plugin{
      * occurs.
      */
 
-    private final Vector scripts = new Vector();
+    private final ArrayList scripts = new ArrayList();
 
 
     
@@ -609,7 +569,7 @@ public class Scripter extends Plugin{
       if (scripts.size() == 0)
         registerForEvent(getConn().getListenerManager());
 
-      scripts.addElement(script);
+      scripts.add(script);
     }
 
 
@@ -620,7 +580,7 @@ public class Scripter extends Plugin{
      */
 
     public void removeScript(Script script){
-      if (!scripts.removeElement(script))
+      if (!scripts.remove(script))
         throw new IllegalArgumentException("The specified script ("+script+") has not been previously registered with this ScriptDispatcher ("+this+").");
 
       if (scripts.size() == 0)
@@ -636,7 +596,7 @@ public class Scripter extends Plugin{
 
     public Script [] getScripts(){
       Script [] scriptsArr = new Script[scripts.size()];
-      scripts.copyInto(scriptsArr);
+      scripts.toArray(scriptsArr);
 
       return scriptsArr;
     }
@@ -661,7 +621,7 @@ public class Scripter extends Plugin{
 
       int scriptCount = scripts.size();
       for (int i = 0; i < scriptCount; i++){
-        Script script = (Script)scripts.elementAt(i);
+        Script script = (Script)scripts.get(i);
         String [] eventSubtypes = script.getEventSubtypes();
         if (script.isEnabled() && ((eventSubtype == null) || Utilities.contains(eventSubtypes, eventSubtype))){
           try{
@@ -809,12 +769,12 @@ public class Scripter extends Plugin{
      * Creates the basic set of variables for the specified GameEvent.
      */
 
-    private Vector createVarsVector(GameEvent evt){
-      Vector vars = new Vector(25);
+    private ArrayList createVarsVector(GameEvent evt){
+      ArrayList vars = new ArrayList(25);
 
       Game game = evt.getGame();
 
-      vars.addElement(new Object[]{"game", game});
+      vars.add(new Object[]{"game", game});
 
       int gameType = game.getGameType();
       String gameTypeString;
@@ -826,129 +786,129 @@ public class Scripter extends Plugin{
           throw new IllegalStateException("Unknown game type: "+gameType);
       }
 
-      vars.addElement(new Object[]{"gameType", gameTypeString});
-      vars.addElement(new Object[]{"initialPosition", game.getInitialPosition()});
-      vars.addElement(new Object[]{"variant", game.getVariant().getName()});
+      vars.add(new Object[]{"gameType", gameTypeString});
+      vars.add(new Object[]{"initialPosition", game.getInitialPosition()});
+      vars.add(new Object[]{"variant", game.getVariant().getName()});
 
       Player userPlayer = game.getUserPlayer();
-      vars.addElement(new Object[]{"whiteName", game.getWhiteName()});
-      vars.addElement(new Object[]{"blackName", game.getBlackName()});
-      vars.addElement(new Object[]{"whiteTime", new Integer(game.getWhiteTime()/(1000*60))});
-      vars.addElement(new Object[]{"whiteInc", new Integer(game.getWhiteInc()/1000)});
-      vars.addElement(new Object[]{"blackTime", new Integer(game.getBlackTime()/(1000*60))});
-      vars.addElement(new Object[]{"blackInc", new Integer(game.getBlackInc()/1000)});
-      vars.addElement(new Object[]{"whiteRating", new Integer(game.getWhiteRating())});
-      vars.addElement(new Object[]{"blackRating", new Integer(game.getBlackRating())});
-      vars.addElement(new Object[]{"whiteTitle", game.getWhiteTitles()});
-      vars.addElement(new Object[]{"blackTitle", game.getBlackTitles()});
+      vars.add(new Object[]{"whiteName", game.getWhiteName()});
+      vars.add(new Object[]{"blackName", game.getBlackName()});
+      vars.add(new Object[]{"whiteTime", new Integer(game.getWhiteTime()/(1000*60))});
+      vars.add(new Object[]{"whiteInc", new Integer(game.getWhiteInc()/1000)});
+      vars.add(new Object[]{"blackTime", new Integer(game.getBlackTime()/(1000*60))});
+      vars.add(new Object[]{"blackInc", new Integer(game.getBlackInc()/1000)});
+      vars.add(new Object[]{"whiteRating", new Integer(game.getWhiteRating())});
+      vars.add(new Object[]{"blackRating", new Integer(game.getBlackRating())});
+      vars.add(new Object[]{"whiteTitle", game.getWhiteTitles()});
+      vars.add(new Object[]{"blackTitle", game.getBlackTitles()});
 
       if (userPlayer != null){
         if (userPlayer.isWhite()){
-          vars.addElement(new Object[]{"myName", game.getWhiteName()});
-          vars.addElement(new Object[]{"oppName", game.getBlackName()});
-          vars.addElement(new Object[]{"myTime", new Integer(game.getWhiteTime()/(1000*60))});
-          vars.addElement(new Object[]{"myInc", new Integer(game.getWhiteInc()/1000)});
-          vars.addElement(new Object[]{"oppTime", new Integer(game.getBlackTime()/(1000*60))});
-          vars.addElement(new Object[]{"oppInc", new Integer(game.getBlackInc()/1000)});
-          vars.addElement(new Object[]{"myRating", new Integer(game.getWhiteRating())});
-          vars.addElement(new Object[]{"oppRating", new Integer(game.getBlackRating())});
-          vars.addElement(new Object[]{"myTitle", game.getWhiteTitles()});
-          vars.addElement(new Object[]{"oppTitle", game.getBlackTitles()});
+          vars.add(new Object[]{"myName", game.getWhiteName()});
+          vars.add(new Object[]{"oppName", game.getBlackName()});
+          vars.add(new Object[]{"myTime", new Integer(game.getWhiteTime()/(1000*60))});
+          vars.add(new Object[]{"myInc", new Integer(game.getWhiteInc()/1000)});
+          vars.add(new Object[]{"oppTime", new Integer(game.getBlackTime()/(1000*60))});
+          vars.add(new Object[]{"oppInc", new Integer(game.getBlackInc()/1000)});
+          vars.add(new Object[]{"myRating", new Integer(game.getWhiteRating())});
+          vars.add(new Object[]{"oppRating", new Integer(game.getBlackRating())});
+          vars.add(new Object[]{"myTitle", game.getWhiteTitles()});
+          vars.add(new Object[]{"oppTitle", game.getBlackTitles()});
         }
         else{
-          vars.addElement(new Object[]{"oppName", game.getWhiteName()});
-          vars.addElement(new Object[]{"myName", game.getBlackName()});
-          vars.addElement(new Object[]{"oppTime", new Integer(game.getWhiteTime()/(1000*60))});
-          vars.addElement(new Object[]{"oppInc", new Integer(game.getWhiteInc()/1000)});
-          vars.addElement(new Object[]{"myTime", new Integer(game.getBlackTime()/(1000*60))});
-          vars.addElement(new Object[]{"myInc", new Integer(game.getBlackInc()/1000)});
-          vars.addElement(new Object[]{"oppRating", new Integer(game.getWhiteRating())});
-          vars.addElement(new Object[]{"myRating", new Integer(game.getBlackRating())});
-          vars.addElement(new Object[]{"oppTitle", game.getWhiteTitles()});
-          vars.addElement(new Object[]{"myTitle", game.getBlackTitles()});
+          vars.add(new Object[]{"oppName", game.getWhiteName()});
+          vars.add(new Object[]{"myName", game.getBlackName()});
+          vars.add(new Object[]{"oppTime", new Integer(game.getWhiteTime()/(1000*60))});
+          vars.add(new Object[]{"oppInc", new Integer(game.getWhiteInc()/1000)});
+          vars.add(new Object[]{"myTime", new Integer(game.getBlackTime()/(1000*60))});
+          vars.add(new Object[]{"myInc", new Integer(game.getBlackInc()/1000)});
+          vars.add(new Object[]{"oppRating", new Integer(game.getWhiteRating())});
+          vars.add(new Object[]{"myRating", new Integer(game.getBlackRating())});
+          vars.add(new Object[]{"oppTitle", game.getWhiteTitles()});
+          vars.add(new Object[]{"myTitle", game.getBlackTitles()});
         }
 
-        vars.addElement(new Object[]{"userPlayer", game.getUserPlayer().toString().toLowerCase()});
+        vars.add(new Object[]{"userPlayer", game.getUserPlayer().toString().toLowerCase()});
       }
 
-      vars.addElement(new Object[]{"isGameRated", game.isRated() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"ratingCategory", game.getRatingCategoryString()});
-      vars.addElement(new Object[]{"isPlayed", game.isPlayed() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"isTimeOdds", game.isTimeOdds() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"isGameRated", game.isRated() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"ratingCategory", game.getRatingCategoryString()});
+      vars.add(new Object[]{"isPlayed", game.isPlayed() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"isTimeOdds", game.isTimeOdds() ? Boolean.TRUE : Boolean.FALSE});
 
       return vars;
     }
 
     public void gameStarted(GameStartEvent evt){
-      Vector varsVector = createVarsVector(evt);
+      ArrayList varsVector = createVarsVector(evt);
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[0], vars);
     }
 
     public void moveMade(MoveMadeEvent evt){
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"move", evt.getMove()});
-//      varsVector.addElement(new Object[]{"isNewMove", evt.isNew() ? Boolean.TRUE : Boolean.FALSE});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"move", evt.getMove()});
+//      varsVector.add(new Object[]{"isNewMove", evt.isNew() ? Boolean.TRUE : Boolean.FALSE});
       // Since I'm not sure myself whether isNewMove does what it was intended to,
       // let's not confuse the user...
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[1], vars);
     }
 
     public void positionChanged(PositionChangedEvent evt){
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"newPosition", evt.getPosition()});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"newPosition", evt.getPosition()});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[6], vars);
     }
 
     public void takebackOccurred(TakebackEvent evt){
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"takebackCount", new Integer(evt.getTakebackCount())});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"takebackCount", new Integer(evt.getTakebackCount())});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[2], vars);
     }
 
     public void illegalMoveAttempted(IllegalMoveEvent evt){
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"illegalMove", evt.getMove()});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"illegalMove", evt.getMove()});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[4], vars);
     }
 
     public void clockAdjusted(ClockAdjustmentEvent evt){
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"player", evt.getPlayer().toString().toLowerCase()});
-      varsVector.addElement(new Object[]{"time", new Integer(evt.getTime())});
-      varsVector.addElement(new Object[]{"isClockRunning", evt.isClockRunning() ? Boolean.TRUE : Boolean.FALSE});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"player", evt.getPlayer().toString().toLowerCase()});
+      varsVector.add(new Object[]{"time", new Integer(evt.getTime())});
+      varsVector.add(new Object[]{"isClockRunning", evt.isClockRunning() ? Boolean.TRUE : Boolean.FALSE});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[5], vars);
     }
 
     public void boardFlipped(BoardFlipEvent evt){
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"isFlipped", evt.isFlipped() ? Boolean.TRUE : Boolean.FALSE});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"isFlipped", evt.isFlipped() ? Boolean.TRUE : Boolean.FALSE});
 
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[3], vars);
     }
@@ -964,21 +924,21 @@ public class Scripter extends Plugin{
           return;
       }
 
-      Vector varsVector = createVarsVector(evt);
-      varsVector.addElement(new Object[]{"offerType", offerType});
-      varsVector.addElement(new Object[]{"isOffered", evt.isOffered() ? Boolean.TRUE : Boolean.FALSE});
-      varsVector.addElement(new Object[]{"player", evt.getPlayer().toString().toLowerCase()});
+      ArrayList varsVector = createVarsVector(evt);
+      varsVector.add(new Object[]{"offerType", offerType});
+      varsVector.add(new Object[]{"isOffered", evt.isOffered() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"player", evt.getPlayer().toString().toLowerCase()});
       if (evt.getOfferId() == OfferEvent.TAKEBACK_OFFER)
-        varsVector.addElement(new Object[]{"takebackCount", new Integer(evt.getTakebackCount())});
+        varsVector.add(new Object[]{"takebackCount", new Integer(evt.getTakebackCount())});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[7], vars);
     }
 
     public void gameEnded(GameEndEvent evt){
-      Vector varsVector = createVarsVector(evt);
+      ArrayList varsVector = createVarsVector(evt);
 
       int gameResult = evt.getResult();
       Player userPlayer = evt.getGame().getUserPlayer();
@@ -1017,83 +977,83 @@ public class Scripter extends Plugin{
         }
       }
 
-      varsVector.addElement(new Object[]{"gameResult", gameResultString});
+      varsVector.add(new Object[]{"gameResult", gameResultString});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[8], vars);
     }
 
     protected Object [][] getAvailableVars(String [] eventSubtypes){
-      Vector varsVector = new Vector(25);
+      ArrayList varsVector = new ArrayList(25);
       Game game = new Game(Game.MY_GAME, new Position(), 0, "AlexTheGreat", "Kasparov", 5*60*1000, 2000,
         5*60*1000, 2000, 1800, 2852, "blah", "Blitz", true, true, "C", "GM", false, Player.WHITE_PLAYER);
 
-      varsVector.addElement(new Object[]{"game", game});
-      varsVector.addElement(new Object[]{"gameType", new Integer(game.getGameType())});
-      varsVector.addElement(new Object[]{"initialPosition", game.getInitialPosition()});
-      varsVector.addElement(new Object[]{"variant", game.getVariant()});
+      varsVector.add(new Object[]{"game", game});
+      varsVector.add(new Object[]{"gameType", new Integer(game.getGameType())});
+      varsVector.add(new Object[]{"initialPosition", game.getInitialPosition()});
+      varsVector.add(new Object[]{"variant", game.getVariant()});
 
-      varsVector.addElement(new Object[]{"myName", game.getWhiteName()});
-      varsVector.addElement(new Object[]{"oppName", game.getBlackName()});
-      varsVector.addElement(new Object[]{"myTime", new Integer(game.getWhiteTime()/(1000*60))});
-      varsVector.addElement(new Object[]{"myInc", new Integer(game.getWhiteInc()/1000)});
-      varsVector.addElement(new Object[]{"oppTime", new Integer(game.getBlackTime()/(1000*60))});
-      varsVector.addElement(new Object[]{"oppInc", new Integer(game.getBlackInc()/1000)});
-      varsVector.addElement(new Object[]{"myRating", new Integer(game.getWhiteRating())});
-      varsVector.addElement(new Object[]{"oppRating", new Integer(game.getBlackRating())});
-      varsVector.addElement(new Object[]{"myTitle", game.getWhiteTitles()});
-      varsVector.addElement(new Object[]{"oppTitle", game.getBlackTitles()});
+      varsVector.add(new Object[]{"myName", game.getWhiteName()});
+      varsVector.add(new Object[]{"oppName", game.getBlackName()});
+      varsVector.add(new Object[]{"myTime", new Integer(game.getWhiteTime()/(1000*60))});
+      varsVector.add(new Object[]{"myInc", new Integer(game.getWhiteInc()/1000)});
+      varsVector.add(new Object[]{"oppTime", new Integer(game.getBlackTime()/(1000*60))});
+      varsVector.add(new Object[]{"oppInc", new Integer(game.getBlackInc()/1000)});
+      varsVector.add(new Object[]{"myRating", new Integer(game.getWhiteRating())});
+      varsVector.add(new Object[]{"oppRating", new Integer(game.getBlackRating())});
+      varsVector.add(new Object[]{"myTitle", game.getWhiteTitles()});
+      varsVector.add(new Object[]{"oppTitle", game.getBlackTitles()});
 
-      varsVector.addElement(new Object[]{"whiteName", game.getWhiteName()});
-      varsVector.addElement(new Object[]{"blackName", game.getBlackName()});
-      varsVector.addElement(new Object[]{"whiteTime", new Integer(game.getWhiteTime()/(1000*60))});
-      varsVector.addElement(new Object[]{"whiteInc", new Integer(game.getWhiteInc()/1000)});
-      varsVector.addElement(new Object[]{"blackTime", new Integer(game.getBlackTime()/(1000*60))});
-      varsVector.addElement(new Object[]{"blackInc", new Integer(game.getBlackInc()/1000)});
-      varsVector.addElement(new Object[]{"whiteRating", new Integer(game.getWhiteRating())});
-      varsVector.addElement(new Object[]{"blackRating", new Integer(game.getBlackRating())});
-      varsVector.addElement(new Object[]{"whiteTitle", game.getWhiteTitles()});
-      varsVector.addElement(new Object[]{"blackTitle", game.getBlackTitles()});
+      varsVector.add(new Object[]{"whiteName", game.getWhiteName()});
+      varsVector.add(new Object[]{"blackName", game.getBlackName()});
+      varsVector.add(new Object[]{"whiteTime", new Integer(game.getWhiteTime()/(1000*60))});
+      varsVector.add(new Object[]{"whiteInc", new Integer(game.getWhiteInc()/1000)});
+      varsVector.add(new Object[]{"blackTime", new Integer(game.getBlackTime()/(1000*60))});
+      varsVector.add(new Object[]{"blackInc", new Integer(game.getBlackInc()/1000)});
+      varsVector.add(new Object[]{"whiteRating", new Integer(game.getWhiteRating())});
+      varsVector.add(new Object[]{"blackRating", new Integer(game.getBlackRating())});
+      varsVector.add(new Object[]{"whiteTitle", game.getWhiteTitles()});
+      varsVector.add(new Object[]{"blackTitle", game.getBlackTitles()});
 
       Move move = new ChessMove(Square.parseSquare("e2"), Square.parseSquare("e4"),
         Player.WHITE_PLAYER, false, false, false, null, 4, null, "e4");
 
       if (Utilities.contains(eventSubtypes, subtypes[1])){
-        varsVector.addElement(new Object[]{"move", move});
-        varsVector.addElement(new Object[]{"isNewMove", Boolean.TRUE});
+        varsVector.add(new Object[]{"move", move});
+        varsVector.add(new Object[]{"isNewMove", Boolean.TRUE});
       }
 
       if (Utilities.contains(eventSubtypes, subtypes[6]))
-        varsVector.addElement(new Object[]{"newPosition", new Position()});
+        varsVector.add(new Object[]{"newPosition", new Position()});
 
       if (Utilities.contains(eventSubtypes, subtypes[2]))
-        varsVector.addElement(new Object[]{"takebackCount", new Integer(3)});
+        varsVector.add(new Object[]{"takebackCount", new Integer(3)});
 
       if (Utilities.contains(eventSubtypes, subtypes[4]))
-        varsVector.addElement(new Object[]{"illegalMove", move});
+        varsVector.add(new Object[]{"illegalMove", move});
 
       if (Utilities.contains(eventSubtypes, subtypes[5])){
-        varsVector.addElement(new Object[]{"player", Player.WHITE_PLAYER.toString().toLowerCase()});
-        varsVector.addElement(new Object[]{"time", new Integer(4*60*1000)});
-        varsVector.addElement(new Object[]{"isClockRunning", Boolean.TRUE});
+        varsVector.add(new Object[]{"player", Player.WHITE_PLAYER.toString().toLowerCase()});
+        varsVector.add(new Object[]{"time", new Integer(4*60*1000)});
+        varsVector.add(new Object[]{"isClockRunning", Boolean.TRUE});
       }
 
       if (Utilities.contains(eventSubtypes, subtypes[3]))
-        varsVector.addElement(new Object[]{"isFlipped", Boolean.TRUE});
+        varsVector.add(new Object[]{"isFlipped", Boolean.TRUE});
 
       if (Utilities.contains(eventSubtypes, subtypes[7])){
-        varsVector.addElement(new Object[]{"offerType", "draw"});
-        varsVector.addElement(new Object[]{"isMade", Boolean.TRUE});
-        varsVector.addElement(new Object[]{"player", Player.WHITE_PLAYER.toString().toLowerCase()});
+        varsVector.add(new Object[]{"offerType", "draw"});
+        varsVector.add(new Object[]{"isMade", Boolean.TRUE});
+        varsVector.add(new Object[]{"player", Player.WHITE_PLAYER.toString().toLowerCase()});
       }
 
       if (Utilities.contains(eventSubtypes, subtypes[8]))
-        varsVector.addElement(new Object[]{"gameResult", "win"});
+        varsVector.add(new Object[]{"gameResult", "win"});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
       return vars;
     }
 
@@ -1126,80 +1086,80 @@ public class Scripter extends Plugin{
      * Creates the basic set of variables for the specified SeekEvent.
      */
 
-    private Vector createVarsVector(SeekEvent evt){
-      Vector vars = new Vector(15);
+    private ArrayList createVarsVector(SeekEvent evt){
+      ArrayList vars = new ArrayList(15);
 
       Seek seek = evt.getSeek();
 
-      vars.addElement(new Object[]{"seek", seek});
-      vars.addElement(new Object[]{"name", seek.getSeekerName()});
-      vars.addElement(new Object[]{"title", seek.getSeekerTitle()});
-      vars.addElement(new Object[]{"rating", new Integer(seek.getSeekerRating())});
-      vars.addElement(new Object[]{"isProvisional", seek.isSeekerProvisional() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"isRegistered", seek.isSeekerRegistered() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"isComputer", seek.isSeekerComputer() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"ratingCategory", seek.getRatingCategoryString()});
-      vars.addElement(new Object[]{"time", new Integer(seek.getTime()/(1000*60))});
-      vars.addElement(new Object[]{"inc", new Integer(seek.getInc()/1000)});
-      vars.addElement(new Object[]{"isRated", seek.isRated() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"seek", seek});
+      vars.add(new Object[]{"name", seek.getSeekerName()});
+      vars.add(new Object[]{"title", seek.getSeekerTitle()});
+      vars.add(new Object[]{"rating", new Integer(seek.getSeekerRating())});
+      vars.add(new Object[]{"isProvisional", seek.isSeekerProvisional() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"isRegistered", seek.isSeekerRegistered() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"isComputer", seek.isSeekerComputer() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"ratingCategory", seek.getRatingCategoryString()});
+      vars.add(new Object[]{"time", new Integer(seek.getTime()/(1000*60))});
+      vars.add(new Object[]{"inc", new Integer(seek.getInc()/1000)});
+      vars.add(new Object[]{"isRated", seek.isRated() ? Boolean.TRUE : Boolean.FALSE});
       String colorString = seek.getSoughtColor() == null ? null :
                           (seek.getSoughtColor().isWhite() ? "white" : "black");
-      vars.addElement(new Object[]{"color", colorString});
-      vars.addElement(new Object[]{"ratingLimited", seek.isRatingLimited() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"minRating", new Integer(seek.getMinRating())});
-      vars.addElement(new Object[]{"maxRating", new Integer(seek.getMaxRating())});
-      vars.addElement(new Object[]{"isManualAccept", seek.isManualAccept() ? Boolean.TRUE : Boolean.FALSE});
-      vars.addElement(new Object[]{"isFormula", seek.isFormula() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"color", colorString});
+      vars.add(new Object[]{"ratingLimited", seek.isRatingLimited() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"minRating", new Integer(seek.getMinRating())});
+      vars.add(new Object[]{"maxRating", new Integer(seek.getMaxRating())});
+      vars.add(new Object[]{"isManualAccept", seek.isManualAccept() ? Boolean.TRUE : Boolean.FALSE});
+      vars.add(new Object[]{"isFormula", seek.isFormula() ? Boolean.TRUE : Boolean.FALSE});
 
       return vars;
     }
 
 
     public void seekAdded(SeekEvent evt){
-      Vector varsVector = createVarsVector(evt);
+      ArrayList varsVector = createVarsVector(evt);
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[0], vars);
     }
 
     public void seekRemoved(SeekEvent evt){
-      Vector varsVector = createVarsVector(evt);
+      ArrayList varsVector = createVarsVector(evt);
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, subtypes[1], vars);
     }
 
 
     protected Object [][] getAvailableVars(String [] eventSubtypes){
-      Vector varsVector = new Vector(25);
+      ArrayList varsVector = new ArrayList(25);
       
       Seek seek = new Seek("64", "AlexTheGreat", "C", 1800, false, true, true, true, Chess.getInstance(),
         "Blitz", 5*60*1000, 2000, true, null, true, 1700, 1900, false, false);
 
-      varsVector.addElement(new Object[]{"seek", seek});
-      varsVector.addElement(new Object[]{"name", seek.getSeekerName()});
-      varsVector.addElement(new Object[]{"title", seek.getSeekerTitle()});
-      varsVector.addElement(new Object[]{"rating", new Integer(seek.getSeekerRating())});
-      varsVector.addElement(new Object[]{"isProvisional", seek.isSeekerProvisional() ? Boolean.TRUE : Boolean.FALSE});
-      varsVector.addElement(new Object[]{"isRegistered", seek.isSeekerRegistered() ? Boolean.TRUE : Boolean.FALSE});
-      varsVector.addElement(new Object[]{"isComputer", seek.isSeekerComputer() ? Boolean.TRUE : Boolean.FALSE});
-      varsVector.addElement(new Object[]{"ratingCategory", seek.getRatingCategoryString()});
-      varsVector.addElement(new Object[]{"time", new Integer(seek.getTime()/(1000*60))});
-      varsVector.addElement(new Object[]{"inc", new Integer(seek.getInc()/1000)});
-      varsVector.addElement(new Object[]{"isRated", seek.isRated() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"seek", seek});
+      varsVector.add(new Object[]{"name", seek.getSeekerName()});
+      varsVector.add(new Object[]{"title", seek.getSeekerTitle()});
+      varsVector.add(new Object[]{"rating", new Integer(seek.getSeekerRating())});
+      varsVector.add(new Object[]{"isProvisional", seek.isSeekerProvisional() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"isRegistered", seek.isSeekerRegistered() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"isComputer", seek.isSeekerComputer() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"ratingCategory", seek.getRatingCategoryString()});
+      varsVector.add(new Object[]{"time", new Integer(seek.getTime()/(1000*60))});
+      varsVector.add(new Object[]{"inc", new Integer(seek.getInc()/1000)});
+      varsVector.add(new Object[]{"isRated", seek.isRated() ? Boolean.TRUE : Boolean.FALSE});
       String colorString = seek.getSoughtColor() == null ? null :
                           (seek.getSoughtColor().isWhite() ? "white" : "black");
-      varsVector.addElement(new Object[]{"color", colorString});
-      varsVector.addElement(new Object[]{"ratingLimited", seek.isRatingLimited() ? Boolean.TRUE : Boolean.FALSE});
-      varsVector.addElement(new Object[]{"minRating", new Integer(seek.getMinRating())});
-      varsVector.addElement(new Object[]{"maxRating", new Integer(seek.getMaxRating())});
-      varsVector.addElement(new Object[]{"isManualAccept", seek.isManualAccept() ? Boolean.TRUE : Boolean.FALSE});
-      varsVector.addElement(new Object[]{"isFormula", seek.isFormula() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"color", colorString});
+      varsVector.add(new Object[]{"ratingLimited", seek.isRatingLimited() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"minRating", new Integer(seek.getMinRating())});
+      varsVector.add(new Object[]{"maxRating", new Integer(seek.getMaxRating())});
+      varsVector.add(new Object[]{"isManualAccept", seek.isManualAccept() ? Boolean.TRUE : Boolean.FALSE});
+      varsVector.add(new Object[]{"isFormula", seek.isFormula() ? Boolean.TRUE : Boolean.FALSE});
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
       return vars;
     }
 

@@ -22,12 +22,12 @@
 
 package free.chessclub.level2;
 
+import free.util.FormatException;
+
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Vector;
-
-import free.util.FormatException;
+import java.util.ArrayList;
 
 
 /**
@@ -354,7 +354,7 @@ public class Datagram{
       int index = dgString.indexOf(' ');
       int id = Integer.parseInt(dgString.substring(0, index));
       
-      Vector fields = new Vector();
+      ArrayList fields = new ArrayList();
       
       index++;
       int dgLength = dgString.length();
@@ -382,11 +382,11 @@ public class Datagram{
           index = endIndex + 1;
         }
         
-        fields.addElement(dgString.substring(startIndex, endIndex));
+        fields.add(dgString.substring(startIndex, endIndex));
       }
   
       String [] fieldsArr = new String[fields.size()];
-      fields.copyInto(fieldsArr);
+      fields.toArray(fieldsArr);
   
       return new Datagram(id, fieldsArr);
     } catch (NumberFormatException e){

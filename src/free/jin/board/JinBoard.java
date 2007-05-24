@@ -46,7 +46,7 @@ public class JinBoard extends JBoard implements PaintHook{
 
 
   /**
-   * A Vector holding the arrows of the board (instances of Arrow).
+   * A ArrayList holding the arrows of the board (instances of Arrow).
    */
 
   private final ArrayList arrows = new ArrayList(3);
@@ -54,7 +54,7 @@ public class JinBoard extends JBoard implements PaintHook{
 
 
   /**
-   * A Vector holding the circles of the board (instances of Circle).
+   * A ArrayList holding the circles of the board (instances of Circle).
    */
 
   private final ArrayList circles = new ArrayList(2);

@@ -21,14 +21,14 @@
 
 package free.jin.scripter.fics;
 
-import java.util.Hashtable;
-import java.util.Vector;
-
 import free.jin.Connection;
 import free.jin.event.ChatEvent;
 import free.jin.event.ChatListener;
 import free.jin.event.ListenerManager;
 import free.jin.scripter.Scripter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -57,7 +57,7 @@ public class FreechessScripter extends Scripter{
 
     private final String [] subtypes = new String[]{"Personal Tell", "(BugHouse) Partner Tell", "Shout", "T-Shout", "C-Shout", "Announcement", "Channel Tell", "Kibitz", "Whisper", "QTell"};
 
-    private final Hashtable chatTypesToSubtypeNames = new Hashtable();
+    private final HashMap chatTypesToSubtypeNames = new HashMap();
 
     public ChatScriptDispatcher(){
       chatTypesToSubtypeNames.put("tell", subtypes[0]);
@@ -87,19 +87,19 @@ public class FreechessScripter extends Scripter{
     }
 
     public void chatMessageReceived(ChatEvent evt){
-      Vector varsVector = new Vector(5);
+      ArrayList varsVector = new ArrayList(5);
 
       Object [] forumVar = calcForumVar(evt);
 
-      varsVector.addElement(new Object[]{"message", evt.getMessage()});
-      varsVector.addElement(new Object[]{"tellType", evt.getType()});
-      varsVector.addElement(new Object[]{"sender", evt.getSender()});
-      varsVector.addElement(new Object[]{"title", evt.getSenderTitle()});
+      varsVector.add(new Object[]{"message", evt.getMessage()});
+      varsVector.add(new Object[]{"tellType", evt.getType()});
+      varsVector.add(new Object[]{"sender", evt.getSender()});
+      varsVector.add(new Object[]{"title", evt.getSenderTitle()});
       if (forumVar != null)
-        varsVector.addElement(forumVar);
+        varsVector.add(forumVar);
 
       Object [][] vars = new Object[varsVector.size()][];
-      varsVector.copyInto(vars);
+      varsVector.toArray(vars);
 
       runScripts(evt, (String)chatTypesToSubtypeNames.get(evt.getType()), vars);
     }

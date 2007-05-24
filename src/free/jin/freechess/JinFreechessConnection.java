@@ -40,9 +40,11 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
+
+import java.util.HashMap;
+
+import java.util.Iterator;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -753,7 +755,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * of games that haven't started yet.
    */
 
-  private final Hashtable unstartedGamesData = new Hashtable(1);
+  private final HashMap unstartedGamesData = new HashMap(1);
 
 
 
@@ -762,7 +764,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * Maps game numbers to InternalGameData objects of ongoing games.
    */
 
-  private final Hashtable ongoingGamesData = new Hashtable(5);
+  private final HashMap ongoingGamesData = new HashMap(5);
 
 
 
@@ -774,7 +776,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * or not.
    */
 
-  private final Hashtable unechoedMoves = new Hashtable(1);
+  private final HashMap unechoedMoves = new HashMap(1);
 
 
 
@@ -784,7 +786,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * reason (not a supported variant for example).
    */
 
-  private final Vector unsupportedGames = new Vector();
+  private final ArrayList unsupportedGames = new ArrayList();
 
 
 
@@ -842,9 +844,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     if (primaryPlayedGame != -1)
       return getGameData(primaryPlayedGame);
 
-    Enumeration gameNumbers = ongoingGamesData.keys();
-    while (gameNumbers.hasMoreElements()){
-      Integer gameNumber = (Integer)gameNumbers.nextElement();
+    Iterator gameNumbers = ongoingGamesData.keySet().iterator();
+    while (gameNumbers.hasNext()){
+      Integer gameNumber = (Integer)gameNumbers.next();
       InternalGameData gameData = (InternalGameData)ongoingGamesData.get(gameNumber);
       Game game = gameData.game;
       if (game.getGameType() == Game.MY_GAME)
@@ -862,9 +864,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    */
 
   private InternalGameData findMyGameAgainst(String playerName) throws NoSuchGameException{
-    Enumeration gameNumbers = ongoingGamesData.keys();
-    while (gameNumbers.hasMoreElements()){
-      Integer gameNumber = (Integer)gameNumbers.nextElement();
+    Iterator gameNumbers = ongoingGamesData.keySet().iterator();
+    while (gameNumbers.hasNext()){
+      Integer gameNumber = (Integer)gameNumbers.next();
       InternalGameData gameData = (InternalGameData)ongoingGamesData.get(gameNumber);
       Game game = gameData.game;
       Player userPlayer = game.getUserPlayer();
@@ -1317,7 +1319,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
      * id. Takeback offers are kept separately.
      */
 
-    public final Hashtable indicesToOffers = new Hashtable();
+    public final HashMap indicesToOffers = new HashMap();
 
 
 
@@ -1328,7 +1330,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
      * offered to take back.
      */
 
-    public final Hashtable indicesToTakebackOffers = new Hashtable(); 
+    public final HashMap indicesToTakebackOffers = new HashMap();
 
 
 
@@ -1340,7 +1342,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
      * separately.
      */
 
-    private final Hashtable offers = new Hashtable();
+    private final HashMap offers = new HashMap();
 
 
 
@@ -1598,7 +1600,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       processLine("* and is thus unable to display the game.               " + spacePad);
       processLine("* Please use the appropriate command to close the game. " + spacePad);
       processLine("********************************************************" + starsPad);
-      unsupportedGames.addElement(new Integer(gameInfo.getGameNumber()));
+      unsupportedGames.add(new Integer(gameInfo.getGameNumber()));
       return null;
     }
 
@@ -1751,11 +1753,12 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     listenerManager.fireGameEvent(new MoveMadeEvent(this, game, move, true, currentPlayerName)); 
       // (isNew == true) because FICS never sends the entire move history
 
-    Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+    ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
+
     if ((unechoedGameMoves != null) && (unechoedGameMoves.size() != 0)){ // Looks like it's our move.
-      Move madeMove = (Move)unechoedGameMoves.elementAt(0);
+      Move madeMove = (Move)unechoedGameMoves.get(0);
       if (moveToString(game, move).equals(moveToString(game, madeMove))) // Same move.
-        unechoedGameMoves.removeElementAt(0); 
+        unechoedGameMoves.remove(0);
     }
 
     gameData.addMove(move);
@@ -1811,7 +1814,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
         setIvarState(Ivar.SEEKINFO, true); // Refresh the seeks
     }
     else
-      unsupportedGames.removeElement(gameID);
+      unsupportedGames.remove(gameID);
   }
 
 
@@ -1836,21 +1839,21 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       InternalGameData gameData = findMyGame(); 
       Game game = gameData.game;
 
-      Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+      ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
 
       // Not a move we made (probably the user typed it in)
       if ((unechoedGameMoves == null) || (unechoedGameMoves.size() == 0)) 
         return;
 
 
-      Move move = (Move)unechoedGameMoves.elementAt(0);
+      Move move = (Move)unechoedGameMoves.get(0);
 
       // We have no choice but to allow (moveString == null) because the server
       // doesn't always send us the move string (for example if it's not our turn).
       if ((moveString == null) || moveToString(game, move).equals(moveString)){
         // Our move, probably
 
-        unechoedGameMoves.removeAllElements();
+        unechoedGameMoves.clear();
         listenerManager.fireGameEvent(new IllegalMoveEvent(this, game, move));
       }
     } catch (NoSuchGameException e){}
@@ -1936,9 +1939,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
     // We do this because moves in bsetup mode cause position change events, not move events
     if (gameData.isBSetup){
-      Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+      ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
       if ((unechoedGameMoves != null) && (unechoedGameMoves.size() != 0))
-        unechoedGameMoves.removeElementAt(0); 
+        unechoedGameMoves.remove(0);
     }
   }
 
@@ -1948,7 +1951,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * Maps seek IDs to Seek objects currently in the sought list.
    */
 
-  private final Hashtable seeks = new Hashtable();
+  private final HashMap seeks = new HashMap();
 
 
 
@@ -2086,9 +2089,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       Object [] seeksIndices = new Object[seeksCount];
 
       // Copy all the keys into a temporary array
-      Enumeration seekIDsEnum = seeks.keys();
+      Iterator seekIDsEnum = seeks.keySet().iterator();
       for (int i = 0; i < seeksCount; i++)
-        seeksIndices[i] = seekIDsEnum.nextElement();
+        seeksIndices[i] = seekIDsEnum.next();
 
       // Remove all the seeks one by one, notifying any interested listeners.
       for (int i = 0; i < seeksCount; i++){
@@ -2111,9 +2114,9 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    */
 
   void notFirstListenerAdded(SeekListener listener){
-    Enumeration seeksEnum = seeks.elements();
-    while (seeksEnum.hasMoreElements()){
-      Seek seek = (Seek)seeksEnum.nextElement();
+    Iterator seeksEnum = seeks.values().iterator();
+    while (seeksEnum.hasNext()){
+      Seek seek = (Seek)seeksEnum.next();
       SeekEvent evt = new SeekEvent(this, SeekEvent.SEEK_ADDED, seek);
       listener.seekAdded(evt);
     }
@@ -2139,7 +2142,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    * representing the games in which the offer was made.
    */
 
-  private final Hashtable offerIndicesToGameData = new Hashtable();
+  private final HashMap offerIndicesToGameData = new HashMap();
 
 
 
@@ -2480,7 +2483,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    */
 
   public void acceptSeek(Seek seek){
-    if (!seeks.contains(seek))
+    if (!seeks.containsValue(seek))
       throw new IllegalArgumentException("The specified seek is not on the seek list");
 
     sendCommand("$play "+seek.getID());
@@ -2554,10 +2557,10 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    */
 
   public void makeMove(Game game, Move move){
-    Enumeration gamesDataEnum = ongoingGamesData.elements();
+    Iterator gamesDataEnum = ongoingGamesData.keySet().iterator();
     boolean ourGame = false;
-    while (gamesDataEnum.hasMoreElements()){
-      InternalGameData gameData = (InternalGameData)gamesDataEnum.nextElement();
+    while (gamesDataEnum.hasNext()){
+      InternalGameData gameData = (InternalGameData)gamesDataEnum.next();
       if (gameData.game == game){
         ourGame = true;
         break;
@@ -2569,12 +2572,12 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
     sendCommand(moveToString(game, move));
 
-    Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+    ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
     if (unechoedGameMoves == null){
-      unechoedGameMoves = new Vector(2);
+      unechoedGameMoves = new ArrayList(2);
       unechoedMoves.put(game, unechoedGameMoves);
     }
-    unechoedGameMoves.addElement(move);
+    unechoedGameMoves.add(move);
   }
 
 

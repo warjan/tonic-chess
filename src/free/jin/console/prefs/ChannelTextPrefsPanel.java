@@ -25,7 +25,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.util.Vector;
+import java.util.ArrayList;
+
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -71,10 +72,10 @@ public class ChannelTextPrefsPanel extends TextPrefsPanel{
 
 
   /**
-   * A Vector holding all the <code>ChannelPanels</code>.
+   * A ArrayList holding all the <code>ChannelPanels</code>.
    */
 
-  private Vector channelPanels;
+  private ArrayList channelPanels;
 
 
 
@@ -106,8 +107,8 @@ public class ChannelTextPrefsPanel extends TextPrefsPanel{
 
       ChannelsCategoryPanel channelCategoryPanel = createChannelsCategoryPanel(categoryName, categoryIDs, channelsCount);
       if (channelPanels == null)        // Can't initialize in the constructor because this 
-        channelPanels = new Vector();   // method is called from the superclass' constructor.
-      channelPanels.addElement(channelCategoryPanel);
+        channelPanels = new ArrayList();   // method is called from the superclass' constructor.
+      channelPanels.add(channelCategoryPanel);
 
       return channelCategoryPanel;
     }
