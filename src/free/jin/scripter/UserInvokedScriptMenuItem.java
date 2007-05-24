@@ -21,37 +21,6 @@
 
 package free.jin.scripter;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.util.Vector;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.Box;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.KeyStroke;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableColumn;
-
 import bsh.EvalError;
 import bsh.Interpreter;
 import free.jin.ui.DialogPanel;
@@ -60,6 +29,17 @@ import free.util.PlatformUtils;
 import free.workarounds.FixedJComboBox;
 import free.workarounds.FixedJTable;
 import free.workarounds.FixedTableColumn;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 
 /**
@@ -291,7 +271,7 @@ class UserInvokedScriptMenuItem extends JMenuItem implements ActionListener{
           }
 
           int rowCount = tableModel.getRowCount();
-          Vector varsVector = new Vector(rowCount);
+          ArrayList varsVector = new ArrayList(rowCount);
           for (int i = 0; i < rowCount; i++){
             String type = (String)tableModel.getValueAt(i, 0);
             String name = (String)tableModel.getValueAt(i, 1);
@@ -314,11 +294,11 @@ class UserInvokedScriptMenuItem extends JMenuItem implements ActionListener{
                 OptionPanel.error("Bad Variable Value", "Inappropriate value specified for variable \""+name+"\", must be of type \""+type+"\"");
                 return;
               }
-            varsVector.addElement(new Object[]{name, value});
+            varsVector.add(new Object[]{name, value});
           }
 
           Object [][] vars = new Object[varsVector.size()][];
-          varsVector.copyInto(vars);
+          varsVector.toArray(vars);
 
           close(vars);
         }

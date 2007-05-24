@@ -21,48 +21,22 @@
 
 package free.jin.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.UIManager;
-import javax.swing.border.TitledBorder;
-
-import free.jin.ConnectionDetails;
-import free.jin.Jin;
-import free.jin.Server;
-import free.jin.User;
-import free.jin.UsernamePolicy;
+import free.jin.*;
 import free.util.BrowserControl;
 import free.util.StringEncoder;
 import free.util.Utilities;
 import free.workarounds.FixedJComboBox;
 import free.workarounds.FixedJPasswordField;
 import free.workarounds.FixedJTextField;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 
 

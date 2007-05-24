@@ -24,10 +24,8 @@ package free.jin.chessclub;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.Socket;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.*;
+
 
 import javax.swing.SwingUtilities;
 
@@ -859,7 +857,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
           boolean isIrregularLegality, boolean isIrregularSemantics, boolean usesPlunkers,
           String fancyTimeControls){
 
-    Hashtable gameProps = new Hashtable();
+    HashMap gameProps = new HashMap();
     gameProps.put("WhiteName", whiteName);
     gameProps.put("BlackName", blackName);
     gameProps.put("Variant", variant);
@@ -1347,7 +1345,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
         game.setInitialPosition(newInitPos);
         game.setPliesSinceStart(0);
-        gameInfo.moves.removeAllElements();
+        gameInfo.moves.clear();
         gameInfo.position.copyFrom(game.getInitialPosition());
         gameInfo.numMovesToFollow = numMovesToFollow;
 
@@ -1476,7 +1474,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
       Move move = parseWarrenSmith(smithMove, position, algebraicMove); 
 
       position.makeMove(move);
-      gameInfo.moves.addElement(move);
+      gameInfo.moves.add(move);
 
       boolean isNewMove = (variationCode != ChessclubConstants.INITIAL_MOVE) &&
                           (variationCode != ChessclubConstants.FORWARD_MOVE);
@@ -1545,15 +1543,15 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
       GameInfo gameInfo = getGameInfo(gameNumber);
       Game game = gameInfo.game;
       Position pos = gameInfo.position;
-      Vector moves = gameInfo.moves;
+      ArrayList moves = gameInfo.moves;
 
       int numMadeMoves = moves.size() - backwardCount;
       for (int i = moves.size() - 1; i >= numMadeMoves; i--)
-        moves.removeElementAt(i);
+        moves.remove(i);
 
       pos.copyFrom(game.getInitialPosition());
       for (int i = 0; i < numMadeMoves; i++)
-        pos.makeMove((Move)moves.elementAt(i));
+        pos.makeMove((Move)moves.get(i));
 
       fireGameEvent(new TakebackEvent(this, game, backwardCount));
     } catch (NoSuchGameException e){}
@@ -1580,15 +1578,15 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
       GameInfo gameInfo = getGameInfo(gameNumber);
       Game game = gameInfo.game;
       Position pos = gameInfo.position;
-      Vector moves = gameInfo.moves;
+      ArrayList moves = gameInfo.moves;
 
       int numMadeMoves = moves.size() - takebackCount;
       for (int i = moves.size() - 1; i >= numMadeMoves; i--)
-        moves.removeElementAt(i);
+        moves.remove(i);
 
       pos.copyFrom(game.getInitialPosition());
       for (int i = 0; i < numMadeMoves; i++)
-        pos.makeMove((Move)moves.elementAt(i));
+        pos.makeMove((Move)moves.get(i));
 
       fireGameEvent(new TakebackEvent(this, game, takebackCount));
       updateTakebackOffer(gameInfo, Player.WHITE_PLAYER, 0); // The server seems to only clear
@@ -2318,7 +2316,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
      * The list of moves.
      */
 
-    public final Vector moves;
+    public final ArrayList moves;
 
 
 
@@ -2427,7 +2425,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
     public GameInfo(Game game, Position initialPos, int numMovesToFollow){
       this.game = game;
       this.position = initialPos;
-      this.moves = new Vector();
+      this.moves = new ArrayList();
       this.numMovesToFollow = numMovesToFollow;
       this.isFlipped = game.isBoardInitiallyFlipped();
 
@@ -2586,7 +2584,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
    * Maps seek IDs to Seek objects currently in the sought list.
    */
 
-  private final Hashtable seeks = new Hashtable();
+  private final HashMap seeks = new HashMap();
 
 
 
@@ -2609,9 +2607,9 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
    */
 
   void notFirstListenerAdded(SeekListener listener){
-    Enumeration seeksEnum = seeks.elements();
-    while (seeksEnum.hasMoreElements()){
-      Seek seek = (Seek)seeksEnum.nextElement();
+    Iterator seeksEnum = seeks.values().iterator();
+    while (seeksEnum.hasNext()){
+      Seek seek = (Seek)seeksEnum.next();
       SeekEvent evt = new SeekEvent(this, SeekEvent.SEEK_ADDED, seek);
       listener.seekAdded(evt);
     }
@@ -2729,7 +2727,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
    */
 
   public void acceptSeek(Seek seek){
-    if (!seeks.contains(seek))
+    if (!seeks.containsValue(seek))
       throw new IllegalArgumentException("The specified seek is not on the seek list");
 
     sendCommand("play "+seek.getID());

@@ -21,30 +21,6 @@
 
 package free.jin.scripter;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.Vector;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-
 import free.util.AWTUtilities;
 import free.util.IOUtilities;
 import free.util.TableLayout;
@@ -53,6 +29,14 @@ import free.util.swing.PlainTextDialog;
 import free.util.swing.SwingUtils;
 import free.workarounds.FixedJComboBox;
 import free.workarounds.FixedJTextField;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 
@@ -287,18 +271,18 @@ abstract class ScriptDialog extends JDialog{
         String scriptName = scriptNameField.getText();
         String eventType = (String)eventTypeChoice.getSelectedItem();
 
-        Vector selectedSubtypesVector = new Vector();
+        ArrayList selectedSubtypesVector = new ArrayList();
         Component [] subtypeCheckboxes = subtypesPanel.getComponents();
         for (int i = 0; i < subtypeCheckboxes.length; i++){
           Component component = subtypeCheckboxes[i];
           if (component instanceof JCheckBox){
             JCheckBox checkbox = (JCheckBox)component;
             if (checkbox.isSelected())
-              selectedSubtypesVector.addElement(checkbox.getActionCommand());
+              selectedSubtypesVector.add(checkbox.getActionCommand());
           }
         }
         String [] selectedSubtypes = new String[selectedSubtypesVector.size()];
-        selectedSubtypesVector.copyInto(selectedSubtypes);
+        selectedSubtypesVector.toArray(selectedSubtypes);
 
         if ((scriptName == null) || (scriptName.length() == 0)){
           JOptionPane.showMessageDialog(ScriptDialog.this, "You must specify a script name", "Missing Option", JOptionPane.ERROR_MESSAGE);

@@ -28,8 +28,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Hashtable;
-import java.util.Vector;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 import bsh.EvalError;
 import bsh.Interpreter;
@@ -114,7 +114,7 @@ public class GameLogger extends Plugin implements GameListener{
    * Maps Game objects to GameInfo objects.
    */
 
-  private final Hashtable gamesToGameInfo = new Hashtable();
+  private final HashMap gamesToGameInfo = new HashMap();
 
 
 
@@ -139,10 +139,10 @@ public class GameLogger extends Plugin implements GameListener{
 
 
   /**
-   * A Vector of LoggingRules.
+   * A ArrayList of LoggingRules.
    */
 
-  private Vector loggingRules;
+  private ArrayList loggingRules;
   
 
 
@@ -188,14 +188,14 @@ public class GameLogger extends Plugin implements GameListener{
 
 
   /**
-   * Returns a deep copy of the <code>loggingRules</code> Vector.
+   * Returns a deep copy of the <code>loggingRules</code> ArrayList.
    */
 
-  public Vector getLoggingRules(){
-    Vector rules = new Vector(loggingRules.size());
+  public ArrayList getLoggingRules(){
+    ArrayList rules = new ArrayList(loggingRules.size());
     for (int i = 0; i < loggingRules.size(); i++){
-      LoggingRule rule = (LoggingRule)loggingRules.elementAt(i);
-      rules.addElement(new LoggingRule(rule));
+      LoggingRule rule = (LoggingRule)loggingRules.get(i);
+      rules.add(new LoggingRule(rule));
     }
 
     return rules;
@@ -278,7 +278,7 @@ public class GameLogger extends Plugin implements GameListener{
       
 
     int rulesCount = prefs.getInt("logging.rules.count", 0);
-    loggingRules = new Vector(rulesCount);
+    loggingRules = new ArrayList(rulesCount);
 
     for (int i = 0; i < rulesCount; i++){
       String name = prefs.getString("logging.rule-"+(i+1)+".name");
@@ -286,7 +286,7 @@ public class GameLogger extends Plugin implements GameListener{
       String filename = prefs.getString("logging.rule-"+(i+1)+".filename");
 
       try{
-        loggingRules.addElement(new LoggingRule(name, condition, filename));
+        loggingRules.add(new LoggingRule(name, condition, filename));
       } catch (EvalError e){
           e.printStackTrace();
         }
@@ -349,9 +349,9 @@ public class GameLogger extends Plugin implements GameListener{
     else{
       GameInfo gameInfo = (GameInfo)gamesToGameInfo.get(game);
 
-      Vector files = new Vector();
+      ArrayList files = new ArrayList();
       for (int i = 0; i < loggingRules.size(); i++){
-        LoggingRule rule = (LoggingRule)loggingRules.elementAt(i);
+        LoggingRule rule = (LoggingRule)loggingRules.get(i);
         String condition = rule.getCondition();
         Interpreter bsh = new Interpreter();
         boolean isUserWhite = game.getUserPlayer().isWhite();
@@ -370,7 +370,7 @@ public class GameLogger extends Plugin implements GameListener{
 
           boolean result = ((Boolean)bsh.eval(condition)).booleanValue();
           if (result)
-            files.addElement(rule.getFilename());
+            files.add(rule.getFilename());
         } catch (EvalError e){
             e.printStackTrace();
           }
@@ -381,7 +381,7 @@ public class GameLogger extends Plugin implements GameListener{
 
       String [] filenames = new String[files.size()];
       for (int i = 0; i < filenames.length; i++)
-        filenames[i] = (String)files.elementAt(i);
+        filenames[i] = (String)files.get(i);
 
       return filenames;
     }
@@ -481,13 +481,13 @@ public class GameLogger extends Plugin implements GameListener{
 
       out.writeBytes("\n");
 
-      Vector movelist = gameInfo.movelist;
+      ArrayList movelist = gameInfo.movelist;
       int moveCount = movelist.size();
       StringBuffer lineBuf = new StringBuffer();
       StringBuffer buf = new StringBuffer();
       for (int i = 0; i < moveCount; i++){
         buf.setLength(0);
-        ChessMove move = (ChessMove)movelist.elementAt(i);
+        ChessMove move = (ChessMove)movelist.get(i);
         Player movingPlayer = move.getPlayer();
         String san = move.getSAN();
         if ((i == 0) && movingPlayer.isBlack()){
@@ -592,7 +592,7 @@ public class GameLogger extends Plugin implements GameListener{
     Game game = evt.getGame();
     Move move = evt.getMove();
     GameInfo gameInfo = (GameInfo)gamesToGameInfo.get(game);
-    gameInfo.movelist.addElement(move);
+    gameInfo.movelist.add(move);
   }
 
 
@@ -618,11 +618,11 @@ public class GameLogger extends Plugin implements GameListener{
   public void takebackOccurred(TakebackEvent evt){
     Game game = evt.getGame();
     GameInfo gameInfo = (GameInfo)gamesToGameInfo.get(game);
-    Vector movelist = gameInfo.movelist;
+    ArrayList movelist = gameInfo.movelist;
     int start = movelist.size() - 1;
     int stop = Math.max(0, movelist.size() - evt.getTakebackCount());
     for (int i = start; i >= stop; i--)
-      movelist.removeElementAt(i);
+      movelist.remove(i);
   }
 
 
@@ -703,7 +703,7 @@ public class GameLogger extends Plugin implements GameListener{
      * The move list.
      */
 
-    public Vector movelist;
+    public ArrayList movelist;
 
 
 
@@ -722,7 +722,7 @@ public class GameLogger extends Plugin implements GameListener{
 
     public GameInfo(Position initPos){
       this.initPos = initPos;
-      movelist = new Vector();
+      movelist = new ArrayList();
       gameStartDate = new Date();
     }
 

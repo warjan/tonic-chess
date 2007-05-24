@@ -21,7 +21,7 @@
 
 package free.jin;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import free.jin.action.ActionContext;
 import free.jin.action.ActionInfo;
@@ -128,7 +128,7 @@ public class Session{
    
   private JinAction [] createActions() throws PluginStartException{
     ActionInfo [] actionsInfo = Jin.getInstance().getActions(getServer());
-    Vector actions = new Vector(actionsInfo.length);
+    ArrayList actions = new ArrayList(actionsInfo.length);
     
     for (int i = 0; i < actionsInfo.length; i++){
       ActionInfo info = actionsInfo[i];
@@ -150,13 +150,13 @@ public class Session{
       ActionContext actionContext = new ActionContext(conn, getUser(), prefs);
       
       if (action.setContext(actionContext))
-        actions.addElement(action);
+        actions.add(action);
       else
         System.err.println("Warning: unsupported action not created - " + action.getId());
     }
     
     JinAction [] actionsArr = new JinAction[actions.size()];
-    actions.copyInto(actionsArr);
+    actions.toArray(actionsArr);
     return actionsArr;
   }
 

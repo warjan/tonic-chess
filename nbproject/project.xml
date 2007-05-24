@@ -91,7 +91,7 @@
         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
             <compilation-unit>
                 <package-root>src</package-root>
-                <classpath mode="compile">resources/libs/jregex.jar:resources/libs/fics/timesealing.jar:resources/libs/icc/timestamping.jar:resources/libs/jdic.jar:resources/libs/bsh-core-2.0b4.jar:../../sfw/flexdock-0.4.0/flexdock-0.4.0.jar</classpath>
+                <classpath mode="compile">resources/libs/jregex.jar:resources/libs/fics/timesealing.jar:resources/libs/icc/timestamping.jar:resources/libs/jdic.jar:resources/libs/bsh-core-2.0b4.jar:resources/os-specific/unix/jdic_stub.jar:resources/libs/flexdock-0.5.1.jar:resources/libs/commons-logging-1.1.jar</classpath>
                 <built-to>classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>

@@ -21,39 +21,19 @@
 
 package free.jin;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import free.jin.action.ActionInfo;
+import free.jin.plugin.Plugin;
+import free.jin.plugin.PluginInfo;
+import free.util.*;
+import free.util.zip.ZipClassLoader;
+import free.util.zip.ZipURLStreamHandler;
+
+import javax.swing.*;
+import java.io.*;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.util.*;
-
-import javax.swing.JOptionPane;
-
-import free.jin.action.ActionInfo;
-import free.jin.plugin.Plugin;
-import free.jin.plugin.PluginInfo;
-import free.util.ChildClassLoader;
-import free.util.DelegatingClassLoader;
-import free.util.ExtensionFilenameFilter;
-import free.util.IOUtilities;
-import free.util.MemoryFile;
-import free.util.MultiOutputStream;
-import free.util.PlatformUtils;
-import free.util.Utilities;
-import free.util.zip.ZipClassLoader;
-import free.util.zip.ZipURLStreamHandler;
 
 
 
@@ -726,7 +706,7 @@ public class JinApplication implements JinContext{
   private HashMap loadActions() throws IOException, ClassNotFoundException{
     HashMap actions = new HashMap();
     for (int i = 0; i < servers.length; i++){
-      actions.put(servers[i], new Vector());
+      actions.put(servers[i], new ArrayList());
     }
 
     // actions that are shared between all users - usually the ones that come with Jin
@@ -736,7 +716,7 @@ public class JinApplication implements JinContext{
     loadActions(actions, new File(prefsDir, "actions"));
 
 
-    // Convert the Server->Vector map to Server->ActionInfo[] map
+    // Convert the Server->ArrayList map to Server->ActionInfo[] map
     HashMap result = new HashMap();
     for (int i = 0; i < servers.length; i++){
       Server server = servers[i];
@@ -856,7 +836,7 @@ public class JinApplication implements JinContext{
   private HashMap loadPlugins() throws IOException, ClassNotFoundException{
     HashMap plugins = new HashMap();
     for (int i = 0; i < servers.length; i++)
-      plugins.put(servers[i], new Vector());
+      plugins.put(servers[i], new ArrayList());
 
     // plugins that are shared between all users - usually the ones that come with Jin
     loadPlugins(plugins, new File(JIN_DIR, "plugins")); 
@@ -865,7 +845,7 @@ public class JinApplication implements JinContext{
     loadPlugins(plugins, new File(prefsDir, "plugins"));
 
 
-    // Convert the Server->Vector map to Server->PluginInfo[] map
+    // Convert the Server->ArrayList map to Server->PluginInfo[] map
     HashMap result = new HashMap();
     for (int i = 0; i < servers.length; i++){
       Server server = servers[i];
@@ -1020,7 +1000,7 @@ public class JinApplication implements JinContext{
    
   /**
    * Loads resources from the specified directory, adding them to the
-   * specified <code>Vector</code>. Helper method for <code>getResources</code>.
+   * specified <code>ArrayList</code>. Helper method for <code>getResources</code>.
    */
    
   private void loadResources(final File dir, final ArrayList v, final Plugin plugin){

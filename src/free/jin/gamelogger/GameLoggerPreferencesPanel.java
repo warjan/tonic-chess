@@ -21,39 +21,6 @@
 
 package free.jin.gamelogger;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.Vector;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.text.JTextComponent;
-
 import bsh.EvalError;
 import free.jin.BadChangesException;
 import free.jin.Preferences;
@@ -63,6 +30,20 @@ import free.util.IOUtilities;
 import free.util.swing.ExtensionFileFilter;
 import free.util.swing.PlainTextDialog;
 import free.workarounds.FixedJTextField;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.text.JTextComponent;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 
@@ -214,7 +195,7 @@ public class GameLoggerPreferencesPanel extends PreferencesPanel{
   protected void createUI(){
     int loggingMode = gameLogger.getLoggingMode();
     String allGamesLogFile = gameLogger.getLogFileForAll();
-    Vector loggingRules = gameLogger.getLoggingRules();
+    ArrayList loggingRules = gameLogger.getLoggingRules();
 
     logNoneButton = new JRadioButton("Do Not Log Games");
     logAllButton = new JRadioButton("Log All Games to File:");
@@ -299,7 +280,7 @@ public class GameLoggerPreferencesPanel extends PreferencesPanel{
 
     final DefaultListModel rulesListModel = new DefaultListModel();
     for (int i = 0; i < loggingRules.size(); i++)
-      rulesListModel.addElement(loggingRules.elementAt(i));
+      rulesListModel.addElement(loggingRules.get(i));
     loggingRulesList = new JList(rulesListModel);
     loggingRulesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     loggingRulesList.addListSelectionListener(new ListSelectionListener(){
