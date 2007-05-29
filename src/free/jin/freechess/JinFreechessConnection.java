@@ -24,8 +24,8 @@ package free.jin.freechess;
 import free.chess.*;
 import free.chess.variants.BothSidesCastlingVariant;
 import free.chess.variants.NoCastlingVariant;
-import free.chess.variants.bughouse.Bughouse;
 import free.chess.variants.atomic.Atomic;
+import free.chess.variants.bughouse.Bughouse;
 import free.chess.variants.fischerrandom.FischerRandom;
 import free.chess.variants.suicide.Suicide;
 import free.chessclub.ChessclubConnection;
@@ -40,11 +40,8 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
-
 import java.util.HashMap;
-
 import java.util.Iterator;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -751,7 +748,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
   
 
   /**
-   * A hashtable where we keep game numbers mapped to GameInfoStruct objects
+   * A HashMap where we keep game numbers mapped to GameInfoStruct objects
    * of games that haven't started yet.
    */
 
@@ -771,7 +768,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
 
   /**
-   * A Hashtable mapping Game objects to Vectors of moves which were sent for
+   * A HashMap mapping Game objects to ArrayLists of moves which were sent for
    * these games but the server didn't tell us yet whether the move is legal
    * or not.
    */

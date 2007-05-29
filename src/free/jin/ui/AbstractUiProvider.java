@@ -21,27 +21,18 @@
 
 package free.jin.ui;
 
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
-
-import javax.swing.JFrame;
-
-import free.jin.Jin;
-import free.jin.Preferences;
-import free.jin.Session;
-import free.jin.SessionEvent;
-import free.jin.SessionListener;
-import free.jin.User;
+import free.jin.*;
 import free.jin.plugin.Plugin;
 import free.jin.plugin.PluginUIContainer;
 import free.util.AWTUtilities;
 import free.util.Pair;
 import free.util.RectDouble;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 
@@ -58,7 +49,7 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
    * the PluginContainers for that plugin and container id.
    */
 
-  private final Hashtable pluginContainers = new Hashtable();
+  private final HashMap pluginContainers = new HashMap();
   
   
   
@@ -70,7 +61,7 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
    * if more code needs to be notified.   
    */
   
-  private final Vector creationNotifiedMenus = new Vector();
+  private final ArrayList creationNotifiedMenus = new ArrayList();
   
 
   
@@ -91,10 +82,10 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
   public void sessionEstablished(SessionEvent evt){
     loadSelectedFrame(evt.getSession());
     
-    Enumeration pluginContainers = getExistingPluginUIContainers();
-    while (pluginContainers.hasMoreElements()){
+    Iterator pluginContainers = getExistingPluginUIContainers();
+    while (pluginContainers.hasNext()){
       AbstractPluginUIContainer container = 
-        (AbstractPluginUIContainer)pluginContainers.nextElement();
+        (AbstractPluginUIContainer)pluginContainers.next();
       if (container.getMode() == HIDEABLE_CONTAINER_MODE)
         container.setVisible(container.getPlugin().getPrefs().getBool(container.getPrefsPrefix() + "visible", true));
     }
@@ -109,10 +100,10 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
   public void sessionClosed(SessionEvent evt){
     saveSelectedFrame(evt.getSession());
     
-    Enumeration pluginContainers = getExistingPluginUIContainers();
-    while (pluginContainers.hasMoreElements()){
+    Iterator pluginContainers = getExistingPluginUIContainers();
+    while (pluginContainers.hasNext()){
       AbstractPluginUIContainer container = 
-        (AbstractPluginUIContainer)pluginContainers.nextElement();
+        (AbstractPluginUIContainer)pluginContainers.next();
       if (container.getMode() == HIDEABLE_CONTAINER_MODE)
         container.getPlugin().getPrefs().setBool(container.getPrefsPrefix() + "visible", container.isVisible());
     }
@@ -131,9 +122,9 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
     String pluginId = user.getPrefs().getString("selected.plugin", null);
     String containerId = user.getPrefs().getString("selected.container", null);
 
-    Enumeration e = pluginContainers.elements();
-    while (e.hasMoreElements()){
-      PluginUIContainer c = (PluginUIContainer)e.nextElement();
+    Iterator e = pluginContainers.values().iterator();
+    while (e.hasNext()){
+      PluginUIContainer c = (PluginUIContainer)e.next();
 
       if (c.getPlugin().getId().equals(pluginId) && c.getId().equals(containerId)){
         if (c.isVisible())
@@ -152,9 +143,9 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
   private void saveSelectedFrame(Session session){
     User user = session.getUser();
 
-    Enumeration e = pluginContainers.elements();
-    while (e.hasMoreElements()){
-      PluginUIContainer c = (PluginUIContainer)e.nextElement();
+    Iterator e = pluginContainers.values().iterator();
+    while (e.hasNext()){
+      PluginUIContainer c = (PluginUIContainer)e.next();
       if (c.isActive()){
         String id = c.getId();
         String pluginId = c.getPlugin().getId();
@@ -189,7 +180,7 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
     }
     
     for (int i = 0; i < creationNotifiedMenus.size(); i++){
-      PluginContainersMenu menu = (PluginContainersMenu)creationNotifiedMenus.elementAt(i);
+      PluginContainersMenu menu = (PluginContainersMenu)creationNotifiedMenus.get(i);
       menu.pluginContainerAdded(container);
     }
   }
@@ -206,7 +197,7 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
       }
       
       for (int i = 0; i < creationNotifiedMenus.size(); i++){
-          PluginContainersMenu menu = (PluginContainersMenu)creationNotifiedMenus.elementAt(i);
+          PluginContainersMenu menu = (PluginContainersMenu)creationNotifiedMenus.get(i);
           menu.pluginContainerRemoved(container);
       }
       
@@ -219,8 +210,8 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
    * Returns a list of existing plugin ui containers.
    */
   
-  public Enumeration getExistingPluginUIContainers(){
-    return pluginContainers.elements();
+  public Iterator getExistingPluginUIContainers(){
+    return pluginContainers.values().iterator();
   }
   
   
@@ -232,7 +223,7 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
    */
   
   public void addPluginUIContainerCreationListener(PluginContainersMenu menu){
-    creationNotifiedMenus.addElement(menu);
+    creationNotifiedMenus.add(menu);
   }
   
   
@@ -243,20 +234,20 @@ public abstract class AbstractUiProvider implements UIProvider, SessionListener{
    */
   
   public void removePluginUIContainerCreationListener(PluginContainersMenu menu){
-    creationNotifiedMenus.removeElement(menu);
+    creationNotifiedMenus.remove(menu);
   }
   
   
 
   /**
    * Disposes of all the plugin containers and removes them from the
-   * <code>pluginContainers</code> hashtable.
+   * <code>pluginContainers</code> HashMap.
    */
   
   protected void removePluginContainers(){
-    Enumeration e = pluginContainers.elements();
-    while (e.hasMoreElements())
-      ((PluginUIContainer)e.nextElement()).dispose();
+    Iterator e = pluginContainers.values().iterator();
+    while (e.hasNext())
+      ((PluginUIContainer)e.next()).dispose();
 
     pluginContainers.clear();
   }

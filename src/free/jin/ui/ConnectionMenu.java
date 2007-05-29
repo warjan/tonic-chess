@@ -4,11 +4,11 @@ import free.jin.*;
 import free.util.Utilities;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
-import java.awt.*;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
    * The connection menu.
@@ -51,11 +51,11 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
 
 
   /**
-   * A vector holding the history of recently used accounts, in descending
+   * A ArrayList holding the history of recently used accounts, in descending
    * order (last used first).
    */
 
-  private final Vector recentAccounts;
+  private final ArrayList recentAccounts;
 
 
 
@@ -159,8 +159,8 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
     if (!connected && (session != null)){
       User user = session.getUser();
       if (Jin.getInstance().isKnownUser(user) && !user.isGuest()){
-        recentAccounts.removeElement(user);
-        recentAccounts.insertElementAt(user, 0);
+        recentAccounts.remove(user);
+        recentAccounts.add(0, user);
         updateRecentAccountsMenuItems();
         saveRecentAccounts(recentAccounts);
       }
@@ -198,7 +198,7 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
     }
     else{ // One of the recent account menu items
       int index = Utilities.indexOf(getMenuComponents(), source);
-      User user = (User)recentAccounts.elementAt(index - separatorIndex - 1);
+      User user = (User)recentAccounts.get(index - separatorIndex - 1);
       connManager.displayNewConnUI(user);
     }
   }
@@ -216,7 +216,7 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
 
     // Add them again
     for (int i = 1; i <= recentAccounts.size(); i++){
-      User user = (User)recentAccounts.elementAt(i - 1);
+      User user = (User)recentAccounts.get(i - 1);
       String label = i + " " + user.getUsername() + " at " + user.getServer().getShortName();
       JMenuItem menuItem = new JMenuItem(label);
       if (i <= 8)
@@ -244,11 +244,11 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
 
 
   /**
-   * Loads the recently used accounts list into a vector and returns it.
+   * Loads the recently used accounts list into a ArrayList and returns it.
    */
 
-  private Vector loadRecentAccounts(){
-    Vector accounts = new Vector(MAX_RECENT_LIST);
+  private ArrayList loadRecentAccounts(){
+    ArrayList accounts = new ArrayList(MAX_RECENT_LIST);
     Preferences prefs = Jin.getInstance().getPrefs();
 
     int count = prefs.getInt("accounts.recent.count", 0);
@@ -264,7 +264,7 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
       if (user == null)
         continue;
 
-      accounts.addElement(user);
+      accounts.add(user);
       if (accounts.size() == MAX_RECENT_LIST)
         break;
     }
@@ -278,14 +278,14 @@ class ConnectionMenu extends JMenu implements ActionListener, SessionListener {
    * Saves the recent account list into user preferences.
    */
 
-  private void saveRecentAccounts(Vector accounts){
+  private void saveRecentAccounts(ArrayList accounts){
     Preferences prefs = Jin.getInstance().getPrefs();
 
     int count = accounts.size();
     prefs.setInt("accounts.recent.count", count);
 
     for (int i = 0; i < count; i++){
-      User user = (User)accounts.elementAt(i);
+      User user = (User)accounts.get(i);
 
       String username = user.getUsername();
       String serverId = user.getServer().getId();

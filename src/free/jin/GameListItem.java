@@ -21,7 +21,7 @@
 
 package free.jin;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 
 /**
@@ -34,11 +34,11 @@ public abstract class GameListItem{
 
 
   /**
-   * All of the game properties are kept in this Hashtable. There are just too
+   * All of the game properties are kept in this HashMap. There are just too
    * many of them to be confortably kept in instance variables :-)
    */
 
-  private final Hashtable gameProperties = new Hashtable(100, 0.25f);
+  private final HashMap gameProperties = new HashMap(100, 0.25f);
 
 
 

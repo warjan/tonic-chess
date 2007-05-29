@@ -93,7 +93,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
 
 
   /**
-   * A Hashtable mapping Game objects to BoardPanel objects which are currently
+   * A HashMap mapping Game objects to BoardPanel objects which are currently
    * used.
    */
 
@@ -103,7 +103,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
 
 
   /**
-   * A Hashtable mapping PluginUIContainer objects to BoardPanels they contain.
+   * A HashMap mapping PluginUIContainer objects to BoardPanels they contain.
    */
 
   protected final HashMap containersToBoardPanels = new HashMap();
@@ -112,7 +112,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
 
 
   /**
-   * A Hashtable mapping BoardPanels to their PluginUIContainers.
+   * A HashMap mapping BoardPanels to their PluginUIContainers.
    */
 
   protected final HashMap boardPanelsToContainers = new HashMap();

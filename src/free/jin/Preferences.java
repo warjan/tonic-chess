@@ -21,32 +21,16 @@
 
 package free.jin;
 
-import java.awt.Color;
-import java.awt.Rectangle;
+import free.util.*;
+
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
-
-import free.util.BeanProperties;
-import free.util.EventListenerList;
-import free.util.FilteringEnumeration;
-import free.util.FormatException;
-import free.util.IOUtilities;
-import free.util.MappingEnumeration;
-import free.util.RectDouble;
-import free.util.StringEncoder;
-import free.util.StringParser;
 
 
 /**
@@ -79,11 +63,11 @@ public abstract class Preferences{
 
 
   /**
-   * Returns an <code>Enumeration</code> of the preference names in this
+   * Returns an <code>Iterator</code> of the preference names in this
    * <code>Preference</code> object.
    */
 
-  public abstract Enumeration getPreferenceNames();
+  public abstract Iterator getPreferenceNames();
 
 
 
@@ -481,9 +465,9 @@ public abstract class Preferences{
   public void save(OutputStream out) throws IOException{
     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
 
-    Enumeration prefNames = getPreferenceNames();
-    while (prefNames.hasMoreElements()){
-      String prefName = (String)prefNames.nextElement();
+    Iterator prefNames = getPreferenceNames();
+    while (prefNames.hasNext()){
+      String prefName = (String)prefNames.next();
       Object prefValue = get(prefName);
       
       writer.write(prefName);
@@ -764,7 +748,7 @@ public abstract class Preferences{
 
 
 
-    public Enumeration getPreferenceNames(){
+    public Iterator getPreferenceNames(){
       return props.getPropertyNames();
     }
 
@@ -894,11 +878,23 @@ public abstract class Preferences{
 
 
 
-    public Enumeration getPreferenceNames(){
-      Enumeration filtering = new FilteringEnumeration(delegate.getPreferenceNames()){
+    public Iterator getPreferenceNames(){
+      Iterator filtering = new FilteringIterator(delegate.getPreferenceNames()){
         public boolean accept(Object preferenceName){
           return ((String)preferenceName).startsWith(prefix);
         }
+
+                public boolean hasNext() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+
+                public Object next() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+
+                public void remove() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
       };
 
       return new MappingEnumeration(filtering){
@@ -906,6 +902,18 @@ public abstract class Preferences{
           String s = (String)o;
           return s.substring(prefix.length());
         }
+
+                public boolean hasNext() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+
+                public Object next() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+
+                public void remove() {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
       };
     }
 
@@ -1032,22 +1040,22 @@ public abstract class Preferences{
 
 
 
-    public Enumeration getPreferenceNames(){
-      Hashtable prefNamesSet = new Hashtable();
+    public Iterator getPreferenceNames(){
+      HashMap prefNamesSet = new HashMap();
 
-      Enumeration prefNames = mainDelegate.getPreferenceNames();
-      while (prefNames.hasMoreElements()){
-        Object prefName = prefNames.nextElement();
+      Iterator prefNames = mainDelegate.getPreferenceNames();
+      while (prefNames.hasNext()){
+        Object prefName = prefNames.next();
         prefNamesSet.put(prefName, prefName);
       }
 
       prefNames = defaultDelegate.getPreferenceNames();
-      while (prefNames.hasMoreElements()){
-        Object prefName = prefNames.nextElement();
+      while (prefNames.hasNext()){
+        Object prefName = prefNames.next();
         prefNamesSet.put(prefName, prefName);
       }
 
-      return prefNamesSet.keys();
+      return prefNamesSet.keySet().iterator();
     }
 
 

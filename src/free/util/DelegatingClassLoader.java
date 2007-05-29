@@ -23,9 +23,9 @@ package free.util;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 /**
@@ -40,7 +40,7 @@ public class DelegatingClassLoader extends ChildClassLoader{
    * A list of <code>ChildClassLoaders</code> to which we delegate.
    */
 
-  private final Vector delegates = new Vector();
+  private final ArrayList delegates = new ArrayList();
 
 
 
@@ -50,7 +50,7 @@ public class DelegatingClassLoader extends ChildClassLoader{
    * ChildClassLoaders that have this classloader as their parent.
    */
 
-  private final Hashtable beingLoaded = new Hashtable();
+  private final HashMap beingLoaded = new HashMap();
 
 
 
@@ -80,7 +80,7 @@ public class DelegatingClassLoader extends ChildClassLoader{
    */
 
   public void addDelegate(ChildClassLoader classLoader){
-    delegates.addElement(classLoader);
+    delegates.add(classLoader);
   }
 
 
@@ -90,7 +90,7 @@ public class DelegatingClassLoader extends ChildClassLoader{
    */
 
   public void removeDelegate(ChildClassLoader classLoader){
-    delegates.removeElement(classLoader);
+    delegates.remove(classLoader);
   }
 
 
@@ -105,9 +105,9 @@ public class DelegatingClassLoader extends ChildClassLoader{
 
     beingLoaded.put(name, name);
     Class c = null;
-    Enumeration loaders = delegates.elements();
-    while (loaders.hasMoreElements()){
-      ChildClassLoader loader = (ChildClassLoader)loaders.nextElement();
+    Iterator loaders = delegates.iterator();
+    while (loaders.hasNext()){
+      ChildClassLoader loader = (ChildClassLoader)loaders.next();
       try{
         c = loader.loadClass(name, resolve);
         if (c != null)
@@ -132,9 +132,9 @@ public class DelegatingClassLoader extends ChildClassLoader{
 
     beingLoaded.put(name, name);
     InputStream in = null;
-    Enumeration loaders = delegates.elements();
-    while (loaders.hasMoreElements()){
-      ChildClassLoader loader = (ChildClassLoader)loaders.nextElement();
+    Iterator loaders = delegates.iterator();
+    while (loaders.hasNext()){
+      ChildClassLoader loader = (ChildClassLoader)loaders.next();
       in = loader.getResourceAsStream(name);
       if (in != null)
         break;
@@ -157,9 +157,9 @@ public class DelegatingClassLoader extends ChildClassLoader{
 
     beingLoaded.put(name, name);
     URL url = null;
-    Enumeration loaders = delegates.elements();
-    while (loaders.hasMoreElements()){
-      ChildClassLoader loader = (ChildClassLoader)loaders.nextElement();
+    Iterator loaders = delegates.iterator();
+    while (loaders.hasNext()){
+      ChildClassLoader loader = (ChildClassLoader)loaders.next();
       url = loader.getResource(name);
       if (url != null)
         break;

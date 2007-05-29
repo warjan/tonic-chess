@@ -21,24 +21,14 @@
 
 package free.chess;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.GridLayout;
-import java.awt.Point;
+import free.util.AWTUtilities;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.Hashtable;
-
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
-
-import free.util.AWTUtilities;
+import java.util.HashMap;
 
 
 /**
@@ -52,7 +42,7 @@ public class PieceChooser extends JComponent implements ActionListener{
    * Maps JButtons to Pieces.
    */
 
-  private final Hashtable buttonsToPieces = new Hashtable();
+  private final HashMap buttonsToPieces = new HashMap();
   
   
   
@@ -60,7 +50,7 @@ public class PieceChooser extends JComponent implements ActionListener{
    * Maps pieces to buttons.
    */
    
-  private final Hashtable piecesToButtons = new Hashtable();
+  private final HashMap piecesToButtons = new HashMap();
 
 
 

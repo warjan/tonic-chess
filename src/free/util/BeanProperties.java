@@ -23,8 +23,8 @@ package free.util;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
@@ -48,10 +48,10 @@ public class BeanProperties{
 
 
   /**
-   * The hashtable where we keep the properties.
+   * The HashMap where we keep the properties.
    */
 
-  private final Hashtable props = new Hashtable();
+  private final HashMap props = new HashMap();
 
 
 
@@ -128,8 +128,8 @@ public class BeanProperties{
    * Returns an enumeration of all the property names.
    */
 
-  public Enumeration getPropertyNames(){
-    return props.keys();
+  public Iterator getPropertyNames(){
+    return props.keySet().iterator();
   }
 
 

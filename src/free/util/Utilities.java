@@ -21,8 +21,8 @@
 
 package free.util;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
@@ -107,12 +107,16 @@ public class Utilities{
   
   
   /**
-   * An empty enumeration.
+   * An empty Iterator.
    */
   
-  public static final Enumeration EMPTY_ENUM = new Enumeration(){
-    public boolean hasMoreElements(){return false;}
-    public Object nextElement(){throw new NoSuchElementException();}
+  public static final Iterator EMPTY_ENUM = new Iterator(){
+    public boolean hasNext(){return false;}
+    public Object next(){throw new NoSuchElementException();}
+
+        public void remove() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
   };
   
   
@@ -133,13 +137,13 @@ public class Utilities{
 
   /**
    * Maps the specified key to the specified value in the specified
-   * <code>Hashtable</code>. If the specified value is <code>null</code> any
+   * <code>HashMap</code>. If the specified value is <code>null</code> any
    * existing mapping of the specified key is removed from the
-   * <code>Hashtable</code>. The old value mapped to the specified key
+   * <code>HashMap</code>. The old value mapped to the specified key
    * is returned, or <code>null</code> if no value was mapped to the key.
    */
 
-  public static Object put(Hashtable table, Object key, Object value){
+  public static Object put(HashMap table, Object key, Object value){
     return value == null ? table.remove(key) : table.put(key, value);
   }
 
@@ -221,17 +225,17 @@ public class Utilities{
 
 
   /**
-   * Converts the specified <code>Hashtable</code> into a string by putting
+   * Converts the specified <code>HashMap</code> into a string by putting
    * each key and value on a separate line (separated by '\n') and an arrow
    * (" -> ") between them.
    */
 
-  public static String hashtableToString(Hashtable hashtable){
+  public static String hashtableToString(HashMap HashMap){
     StringBuffer buf = new StringBuffer();
-    Enumeration keys = hashtable.keys();
-    while (keys.hasMoreElements()){
-      Object key = keys.nextElement();
-      Object value = hashtable.get(key);
+    Iterator keys = HashMap.keySet().iterator();
+    while (keys.hasNext()){
+      Object key = keys.next();
+      Object value = HashMap.get(key);
       buf.append(key.toString());
       buf.append(" -> ");
       buf.append(value.toString());

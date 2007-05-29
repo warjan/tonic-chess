@@ -21,8 +21,8 @@
 
 package free.util;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * <P>A blocking queue, one that always "contains" elements.
@@ -37,10 +37,10 @@ public class BlockingQueue implements Cloneable{
 
 
   /**
-   * The underlying Vector this BlockingQueue is using.
+   * The underlying ArrayList this BlockingQueue is using.
    */
 
-  private final Vector queue;
+  private final ArrayList queue;
 
 
   /**
@@ -64,7 +64,7 @@ public class BlockingQueue implements Cloneable{
    */
 
   public BlockingQueue(){
-    queue = new Vector();
+    queue = new ArrayList();
   }
 
 
@@ -77,7 +77,7 @@ public class BlockingQueue implements Cloneable{
 
   public void push(Object object){
     synchronized(pushLock){
-      queue.addElement(object);
+      queue.add(object);
       synchronized(this){
         notify();
       }
@@ -115,8 +115,8 @@ public class BlockingQueue implements Cloneable{
             throw new InterruptedException("Timed out");
         }
       }
-      Object val = queue.firstElement();
-      queue.removeElementAt(0);
+      Object val = queue.get(0);
+      queue.remove(0);
       return val;
     }
   }
@@ -155,7 +155,7 @@ public class BlockingQueue implements Cloneable{
             throw new InterruptedException("Timed out");
         }
       }
-      return queue.firstElement();
+      return queue.get(0);
     }
   }
 
@@ -197,14 +197,14 @@ public class BlockingQueue implements Cloneable{
 
 
   /**
-   * Returns an Enumeration of the elements in this queue. The order of the
+   * Returns an Iterator of the elements in this queue. The order of the
    * elements is the same as if they were popped from the queue one by one (the
    * first element is the first element that would have been popped). <br>
-   * <B>IMPORTANT:</B> Modifying the queue breaks the returned Enumeration.
+   * <B>IMPORTANT:</B> Modifying the queue breaks the returned Iterator.
    */
 
-  public Enumeration getElements(){
-    return queue.elements();
+  public Iterator getElements(){
+    return queue.iterator();
   }
 
 
@@ -214,7 +214,7 @@ public class BlockingQueue implements Cloneable{
    */
 
   public void removeAllElements(){
-    queue.removeAllElements();
+    queue.clear();
   }
 
 
@@ -224,7 +224,7 @@ public class BlockingQueue implements Cloneable{
    */
 
   public void clear(){
-    queue.removeAllElements();
+    queue.clear();
   }
 
 
@@ -235,9 +235,9 @@ public class BlockingQueue implements Cloneable{
 
   public synchronized Object clone(){
     BlockingQueue copy = new BlockingQueue();
-    Enumeration elems = getElements();
-    while (elems.hasMoreElements()){
-      Object item = elems.nextElement();
+    Iterator elems = getElements();
+    while (elems.hasNext()){
+      Object item = elems.next();
       copy.push(item);
     }
     return copy;

@@ -21,14 +21,14 @@
 
 package free.util.audio;
 
+import free.util.IOUtilities;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Vector;
-
-import free.util.IOUtilities;
+import java.util.ArrayList;
 
 
 /**
@@ -71,16 +71,16 @@ public class AudioClip{
       try{
         BufferedReader reader = new BufferedReader(new InputStreamReader(AudioClip.class.getResourceAsStream("players.txt")));
 
-        Vector tempVec = new Vector();
+        ArrayList tempVec = new ArrayList();
         String line;
         while ((line = reader.readLine()) != null)
-          tempVec.addElement(line);
+          tempVec.add(line);
 
         reader.close();
 
         classnames = new String[tempVec.size()];
         for (int i = 0; i < classnames.length; i++)
-          classnames[i] = (String)tempVec.elementAt(i);
+          classnames[i] = (String)tempVec.get(i);
       } catch (IOException e){
           e.printStackTrace();
           classnames = new String[0];

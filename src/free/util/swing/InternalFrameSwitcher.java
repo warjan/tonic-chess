@@ -21,16 +21,14 @@
 
 package free.util.swing;
 
+import javax.swing.*;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.beans.PropertyVetoException;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.Iterator;
-
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
 
 
 /**
@@ -45,10 +43,10 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
 
 
     /**
-     * A vector of the current internal frames, in the right order.
+     * A ArrayList of the current internal frames, in the right order.
      */
 
-    private final Vector frames = new Vector();
+    private final ArrayList frames = new ArrayList();
 
 
     /**
@@ -80,7 +78,7 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
         if (evt.getChild()instanceof JInternalFrame) {
             JInternalFrame internalFrame = (JInternalFrame) evt.getChild();
 
-            frames.addElement(internalFrame);
+            frames.add(internalFrame);
             internalFrame.addInternalFrameListener(this);
         }
     }
@@ -98,7 +96,7 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
         if (evt.getChild()instanceof JInternalFrame) {
             JInternalFrame internalFrame = (JInternalFrame) evt.getChild();
 
-            frames.removeElement(internalFrame);
+            frames.remove(internalFrame);
             internalFrame.removeInternalFrameListener(this);
         }
     }
@@ -111,8 +109,8 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
     public void internalFrameActivated(InternalFrameEvent e) {
         JInternalFrame f = (JInternalFrame) e.getSource();
 
-        frames.removeElement(f);
-        frames.insertElementAt(f, 0);
+        frames.remove(f);
+        frames.add(0, f);
     }
 
 
@@ -144,7 +142,7 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
         // JInternalFrame newSelectedFrame = null;
 
         if (!frames.isEmpty()) {
-            JInternalFrame f = (JInternalFrame) frames.elementAt(frames.size() - 1);
+            JInternalFrame f = (JInternalFrame) frames.get(frames.size() - 1);
             try {
                 ignoreContainerEvents = true;
                 f.setSelected(true);
@@ -162,13 +160,13 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
 
     public void selectPrevious() {
         if (!frames.isEmpty()) {
-            Object f = frames.elementAt(0);
-            frames.removeElementAt(0);
-            frames.addElement(f);
+            Object f = frames.get(0);
+            frames.remove(0);
+            frames.add(f);
 
             try {
                 ignoreContainerEvents = true;
-                ((JInternalFrame) frames.elementAt(0)).setSelected(true);
+                ((JInternalFrame) frames.get(0)).setSelected(true);
                 ignoreContainerEvents = false;
                 return;
             } catch (PropertyVetoException e) {
@@ -187,7 +185,7 @@ public class InternalFrameSwitcher implements ContainerListener, InternalFrameLi
             if (nextFrame.getTitle().indexOf("Main Console") != -1) {
                 try {
                     ignoreContainerEvents = true;
-                    ((JInternalFrame) frames.elementAt(0)).setSelected(true);
+                    ((JInternalFrame) frames.get(0)).setSelected(true);
                     ignoreContainerEvents = false;
                     return;
                 } catch (PropertyVetoException e) {

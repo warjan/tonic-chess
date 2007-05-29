@@ -21,13 +21,9 @@
 
 package free.util;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.LayoutManager2;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.Vector;
+
 
 
 /**
@@ -68,7 +64,7 @@ public class TableLayout implements LayoutManager2{
 
 
   /**
-   * A Vector of rows where each row is a Component array holding the components
+   * A ArrayList of rows where each row is a Component array holding the components
    * in that row.
    */
 

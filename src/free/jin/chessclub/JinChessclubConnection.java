@@ -21,22 +21,7 @@
 
 package free.jin.chessclub;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.net.Socket;
-import java.util.*;
-
-
-import javax.swing.SwingUtilities;
-
-import free.chess.Chess;
-import free.chess.ChessMove;
-import free.chess.ChesslikeGenericVariant;
-import free.chess.Move;
-import free.chess.Player;
-import free.chess.Position;
-import free.chess.Square;
-import free.chess.WildVariant;
+import free.chess.*;
 import free.chess.variants.NoCastlingVariant;
 import free.chess.variants.atomic.Atomic;
 import free.chess.variants.fischerrandom.FischerRandom;
@@ -55,6 +40,15 @@ import free.jin.chessclub.event.CircleEvent;
 import free.jin.event.*;
 import free.util.Pair;
 import free.util.Utilities;
+
+import javax.swing.*;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.StringTokenizer;
 
 
 
@@ -732,34 +726,34 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
 
   /**
-   * A Hashtable mapping gameNumbers to GameInfo objects about ongoing games.
+   * A HashMap mapping gameNumbers to GameInfo objects about ongoing games.
    */
 
-  private final Hashtable gameNumbersToGameInfo = new Hashtable(1);
+  private final HashMap gameNumbersToGameInfo = new HashMap(1);
   
 
 
 
 
   /**
-   * A Hashtable mapping game numbers to Hashtables containing game properties.
+   * A HashMap mapping game numbers to HashMaps containing game properties.
    * This is used for passing information between the various datagrams that
    * tell us a game started and the DG_POSITION_BEGIN datagram when we actually
    * fire the game started event.
    */
 
-  private final Hashtable nonStartedGames = new Hashtable(1); 
+  private final HashMap nonStartedGames = new HashMap(1); 
 
 
 
 
   /**
-   * A Hashtable mapping Game objects to Vectors of moves which were sent for
+   * A HashMap mapping Game objects to ArrayLists of moves which were sent for
    * these games but the server didn't tell us yet whether the move is legal
    * or not.
    */
 
-  private final Hashtable unechoedMoves = new Hashtable(1);
+  private final HashMap unechoedMoves = new HashMap(1);
 
 
 
@@ -801,7 +795,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
   /**
    * Adds the specified <code>GameInfo</code> to the
-   * <code>gameNumbersToGameInfo</code> hashtable.
+   * <code>gameNumbersToGameInfo</code> HashMap.
    */
 
   private void addGameInfo(int gameNumber, GameInfo gameInfo){
@@ -815,7 +809,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
   /**
    * Removes the <code>GameInfo</code> of the specified game from the
-   * <code>gameNumbersToGameInfo</code> hashtable.
+   * <code>gameNumbersToGameInfo</code> HashMap.
    */
 
   private GameInfo removeGameInfo(int gameNumber){
@@ -843,7 +837,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
 
   /**
-   * Adds a Hashtable containing the given game information to the list of games
+   * Adds a HashMap containing the given game information to the list of games
    * we haven't fired a game started event yet. This and the createGameFromNonStarted
    * methods are here essentially for hiding some of the ugliness of passing information
    * from the various DGs notifying of game start and the DG_POSITION_BEGIN arrival
@@ -897,7 +891,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
    */
 
   private Object getPropertyForNonStarted(int gameNumber, String propertyName){
-    Hashtable gameProps = (Hashtable)nonStartedGames.get(new Integer(gameNumber));    
+    HashMap gameProps = (HashMap)nonStartedGames.get(new Integer(gameNumber));    
     return gameProps.get(propertyName);
   }
 
@@ -909,7 +903,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
    */
 
   private void putPropertyForNonStarted(int gameNumber, String propertyName, Object propertyValue){
-    Hashtable gameProps = (Hashtable)nonStartedGames.get(new Integer(gameNumber));    
+    HashMap gameProps = (HashMap)nonStartedGames.get(new Integer(gameNumber));    
     gameProps.put(propertyName, propertyValue);
   }
 
@@ -919,14 +913,14 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
   /**
    * Creates a <code>Game</code> object from the properties saved by the
-   * addNonStartedGame method and the given initial position. The Hashtable with
+   * addNonStartedGame method and the given initial position. The HashMap with
    * game information saved by the addNonStartedGame method is removed from the
    * list of games for whom a game started event hasn't been fired yet.
    */
 
   private Game createGameFromNonStarted(int gameNumber, Position initialPosition){
     
-    Hashtable gameProps = (Hashtable)nonStartedGames.remove(new Integer(gameNumber));
+    HashMap gameProps = (HashMap)nonStartedGames.remove(new Integer(gameNumber));
 
     String whiteName = (String)gameProps.get("WhiteName");
     String blackName = (String)gameProps.get("BlackName");
@@ -1486,11 +1480,11 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
         gameInfo.numMovesToFollow--;
       }
       else{
-        Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+        ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
         if ((unechoedGameMoves != null) && (unechoedGameMoves.size() != 0)){ // Looks like it's our move.
-          Move madeMove = (Move)unechoedGameMoves.elementAt(0);
+          Move madeMove = (Move)unechoedGameMoves.get(0);
           if (moveToString(game, move).equals(moveToString(game, madeMove))) // Same move.
-            unechoedGameMoves.removeElementAt(0); 
+            unechoedGameMoves.remove(0);
         }
       }
     } catch (NoSuchGameException e){}
@@ -1709,13 +1703,13 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
       GameInfo gameInfo = getGameInfo(gameNumber);
       Game game = gameInfo.game;
 
-      Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+      ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
       if ((unechoedGameMoves == null) || (unechoedGameMoves.size() == 0)) // Not a move we made (probably the user typed it in)
         return;
 
-      Move move = (Move)unechoedGameMoves.elementAt(0);
+      Move move = (Move)unechoedGameMoves.get(0);
       if (moveToString(game, move).equals(moveString)){ // Our move
-        unechoedGameMoves.removeAllElements();
+        unechoedGameMoves.clear();
         fireGameEvent(new IllegalMoveEvent(this, game, move));
       }
     } catch (NoSuchGameException e){}
@@ -1992,12 +1986,12 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
     else
       sendCommand("chessmove " + moveString);
 
-    Vector unechoedGameMoves = (Vector)unechoedMoves.get(game);
+    ArrayList unechoedGameMoves = (ArrayList)unechoedMoves.get(game);
     if (unechoedGameMoves == null){
-      unechoedGameMoves = new Vector(2);
+      unechoedGameMoves = new ArrayList(2);
       unechoedMoves.put(game, unechoedGameMoves);
     }
-    unechoedGameMoves.addElement(move);
+    unechoedGameMoves.add(move);
   }
 
 
@@ -2396,7 +2390,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
      * second one is the offer id. Takeback offers are kept separately.
      */
 
-    private final Hashtable offers = new Hashtable();
+    private final HashMap offers = new HashMap();
 
 
 
@@ -2764,7 +2758,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
 
   /**
    * The GameListInfo for the list we're currently reading. I'm not holding
-   * a hashtable in hope that different lists will not be mixed.
+   * a HashMap in hope that different lists will not be mixed.
    */
 
   private GameListInfo curGameListInfo = null;
@@ -3283,7 +3277,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
    * Contains the currently existing events.
    */
 
-  private final Hashtable chessEvents = new Hashtable();
+  private final HashMap chessEvents = new HashMap();
   
 
 

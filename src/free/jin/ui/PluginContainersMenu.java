@@ -21,24 +21,19 @@
 
 package free.jin.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
-
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JSeparator;
-
 import free.jin.plugin.PluginUIContainer;
 import free.jin.plugin.PluginUIEvent;
 import free.jin.plugin.PluginUIListener;
 import free.util.Utilities;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 
@@ -56,7 +51,7 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    * which allow showing/hiding them.
    */
   
-  private final Hashtable containersToVisCheckBoxes = new Hashtable();
+  private final HashMap containersToVisCheckBoxes = new HashMap();
   
   
   
@@ -65,7 +60,7 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    * containers to the said containers. 
    */
   
-  private final Hashtable visCheckBoxesToContainers = new Hashtable();
+  private final HashMap visCheckBoxesToContainers = new HashMap();
   
   
   
@@ -74,7 +69,7 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    * control which container is currently active.
    */
   
-  private final Hashtable containersToActiveRadioButtons = new Hashtable();
+  private final HashMap containersToActiveRadioButtons = new HashMap();
   
   
   
@@ -83,7 +78,7 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    * active to the said containers.
    */
   
-  private final Hashtable activeRadioButtonsToContainers = new Hashtable();
+  private final HashMap activeRadioButtonsToContainers = new HashMap();
   
   
   
@@ -94,7 +89,7 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    * JMenu.add(Component, int index) is completely broken under Swing 1.1.1. 
    */
   
-  private final Vector items = new Vector();
+  private final ArrayList items = new ArrayList();
   
   
   
@@ -121,12 +116,12 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    * of existing plugin ui containers.
    */
   
-  public PluginContainersMenu(Enumeration existingContainers, String text, int mnemonic){
+  public PluginContainersMenu(Iterator existingContainers, String text, int mnemonic){
     super(text);
     setMnemonic(mnemonic);
     
-    while (existingContainers.hasMoreElements())
-      pluginContainerAdded((AbstractPluginUIContainer)existingContainers.nextElement());
+    while (existingContainers.hasNext())
+      pluginContainerAdded((AbstractPluginUIContainer)existingContainers.next());
   }
   
   
@@ -140,7 +135,7 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
     removeAll();
     
     for (int i = 0; i < items.size(); i++){
-      Object item = items.elementAt(i);
+      Object item = items.get(i);
       if (item instanceof JMenuItem)
         add((JMenuItem)item);
       else if (item instanceof JSeparator)
@@ -193,14 +188,14 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
   
   private void addShowCheckBox(JCheckBoxMenuItem item){
     if (sepIndex != -1){ // separator already exists
-      items.insertElementAt(item, sepIndex++);
+      items.add(sepIndex++, item);
     }
     else if (activeRadioButtonsToContainers.size() != 0){ // need to insert separator
-      items.insertElementAt(item, 0);
-      items.insertElementAt(new JSeparator(), sepIndex = 1);
+      items.add(0, item);
+      items.add(sepIndex = 1, new JSeparator());
     }
     else // separator not needed yet
-      items.addElement(item);
+      items.add(item);
     
     syncMenus();
   }
@@ -213,13 +208,13 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    */
   
   private void removeShowCheckBox(JCheckBoxMenuItem item){
-    items.removeElement(item);
+    items.remove(item);
     
     if (sepIndex != -1)
       sepIndex--;
     
     if (sepIndex == 0){ // the separator is first
-      items.removeElementAt(0);        // remove the separator
+      items.remove(0);        // remove the separator
       sepIndex = -1;
     }
     
@@ -235,14 +230,14 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
   
   private void addActiveRadioButton(JRadioButtonMenuItem item){
     if (sepIndex != -1) // separator already exists
-      items.addElement(item);
+      items.add(item);
     else if (visCheckBoxesToContainers.size() != 0){ // need to insert separator
       sepIndex = items.size();
-      items.addElement(new JSeparator());
-      items.addElement(item);
+      items.add(new JSeparator());
+      items.add(item);
     }
     else // separator not needed yet
-      items.addElement(item);
+      items.add(item);
     
     syncMenus();
   }
@@ -254,10 +249,10 @@ public class PluginContainersMenu extends JMenu implements PropertyChangeListene
    */
   
   private void removeActiveRadioButton(JRadioButtonMenuItem item){
-    items.removeElement(item);
+    items.remove(item);
     
     if ((sepIndex != -1) && (sepIndex == items.size() - 1)){  // the separator is last
-      items.removeElementAt(sepIndex);                   // remove the separator
+      items.remove(sepIndex);                   // remove the separator
       sepIndex = -1;
     }
     
