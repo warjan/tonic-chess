@@ -27,6 +27,7 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
+import java.lang.UnsupportedOperationException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
