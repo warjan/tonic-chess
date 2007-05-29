@@ -36,8 +36,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Iterator;
+
 
 
 /**
@@ -152,12 +153,12 @@ public class ConsoleTextPane extends FixedJTextPane{
 
 
   /**
-   * A Hashtable mapping <code>RenderingHints$Key</code> objects (as strings,
+   * A HashMap mapping <code>RenderingHints$Key</code> objects (as strings,
    * so that they can be used via BeanShell to their current values (again, as
    * strings).
    */
 
-  private Hashtable renderingHints = null;
+  private HashMap renderingHints = null;
 
 
 
@@ -189,7 +190,7 @@ public class ConsoleTextPane extends FixedJTextPane{
 
   protected void paintComponent(Graphics g){
     if (renderingHints == null){
-      renderingHints = new Hashtable(10, 0.1f);
+      renderingHints = new HashMap(10, 0.1f);
       boolean antialias = console.getPrefs().getBool("output-text.antialias", false);
 //      String fractionalMetrics = console.getProperty("output-text.fractionalMetrics");
 
@@ -209,9 +210,9 @@ public class ConsoleTextPane extends FixedJTextPane{
           setRenderingHint = g2Class.getMethod("setRenderingHint", argumentTypes);
         }
 
-        Enumeration renderingHintsEnum = renderingHints.keys();
-        while (renderingHintsEnum.hasMoreElements()){
-          String keyName = (String)renderingHintsEnum.nextElement();
+        Iterator renderingHintsEnum = renderingHints.keySet().iterator();
+        while (renderingHintsEnum.hasNext()){
+          String keyName = (String)renderingHintsEnum.next();
           String valueName = (String)renderingHints.get(keyName);
           Object key = rhClass.getField(keyName).get(null);
           Object value = rhClass.getField(valueName).get(null);

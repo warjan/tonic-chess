@@ -21,23 +21,21 @@
 
 package free.jin.seek;
 
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.Hashtable;
-
-import javax.swing.JComponent;
-
 import free.chess.Chess;
 import free.chess.Player;
 import free.chess.WildVariant;
 import free.jin.Preferences;
 import free.jin.Seek;
-import free.jin.Jin;
 import free.jin.plugin.Plugin;
 import free.jin.seek.event.SeekSelectionEvent;
 import free.jin.seek.event.SeekSelectionListener;
 import free.util.GraphicsUtilities;
 import free.util.ImageUtilities;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 
 /**
@@ -123,7 +121,7 @@ public class SoughtGraph extends JComponent{
    * Maps Seeks to Point objects indicating their locations on the graph.
    */
 
-  protected final Hashtable seeksToLocations = new Hashtable();
+  protected final HashMap seeksToLocations = new HashMap();
 
 
 
@@ -173,7 +171,7 @@ public class SoughtGraph extends JComponent{
    * "seek-image.rated/unrated.computer/human.variant"
    */
 
-  private final Hashtable [] seekImageCache;
+  private final HashMap [] seekImageCache;
 
 
 
@@ -214,9 +212,9 @@ public class SoughtGraph extends JComponent{
     
     minSeekImageSize = minSize;
 
-    seekImageCache = new Hashtable[maxSize+1];
+    seekImageCache = new HashMap[maxSize+1];
     for (int i = 0; i < seekImageSizes.length; i++)
-      seekImageCache[seekImageSizes[i]] = new Hashtable(10);
+      seekImageCache[seekImageSizes[i]] = new HashMap(10);
 
 
 
@@ -636,7 +634,7 @@ public class SoughtGraph extends JComponent{
     if (index == -1)
       throw new IllegalStateException("Couldn't find suitable seek images");
 
-    Hashtable sizeImages = seekImageCache[index];
+    HashMap sizeImages = seekImageCache[index];
 
     String playerType = seek.isSeekerComputer() ? "computer" : "human";
     String ratedString = seek.isRated() ? "rated" : "unrated";

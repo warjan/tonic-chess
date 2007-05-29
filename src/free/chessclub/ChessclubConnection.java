@@ -22,20 +22,15 @@
 
 package free.chessclub;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.PushbackInputStream;
-import java.util.BitSet;
-import java.util.Hashtable;
-
 import free.chessclub.level2.Datagram;
 import free.chessclub.level2.DatagramEvent;
 import free.chessclub.level2.DatagramListener;
 import free.util.Connection;
 import free.util.EventListenerList;
+
+import java.io.*;
+import java.util.BitSet;
+import java.util.HashMap;
 
 
 /**
@@ -56,7 +51,7 @@ public class ChessclubConnection extends free.util.Connection{
    * Maps rating keys to their english names.
    */
 
-  private final Hashtable ratingCategoryNames = new Hashtable();
+  private final HashMap ratingCategoryNames = new HashMap();
 
 
 
@@ -65,7 +60,7 @@ public class ChessclubConnection extends free.util.Connection{
    * Maps wild variant indices to their english names.
    */
 
-  private final Hashtable variantNames = new Hashtable();
+  private final HashMap variantNames = new HashMap();
 
 
 

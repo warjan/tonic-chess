@@ -111,7 +111,7 @@ public class FreechessConnection extends Connection{
 
 
   /**
-   * A Hashtable of Strings specifying lines that need to be filtered out.
+   * A HashMap of Strings specifying lines that need to be filtered out.
    */
 
   private final HashMap linesToFilter = new HashMap();

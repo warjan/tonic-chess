@@ -21,22 +21,6 @@
 
 package free.jin.ui;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.Enumeration;
-
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-
 import free.jin.Jin;
 import free.jin.Preferences;
 import free.jin.SessionEvent;
@@ -45,6 +29,13 @@ import free.jin.plugin.PluginUIContainer;
 import free.jin.plugin.PluginUIEvent;
 import free.util.AWTUtilities;
 import free.util.RectDouble;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.Iterator;
 
 
 
@@ -154,9 +145,9 @@ public class SdiUiProvider extends AbstractUiProvider{
    */
   
   public boolean isUiVisible(){
-    Enumeration containers = getExistingPluginUIContainers();
-    while (containers.hasMoreElements()){
-      PluginUIContainer c = (PluginUIContainer)containers.nextElement();
+    Iterator containers = getExistingPluginUIContainers();
+    while (containers.hasNext()){
+      PluginUIContainer c = (PluginUIContainer)containers.next();
       if (c.isVisible())
         return true;
     }

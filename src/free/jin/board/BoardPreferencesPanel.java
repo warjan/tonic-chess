@@ -21,28 +21,16 @@
 
 package free.jin.board;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-
 import free.chess.Position;
-import free.jin.board.prefs.BoardLooksPanel;
-import free.jin.board.prefs.BoardModifyingPrefsPanel;
-import free.jin.board.prefs.MoveHighlightPanel;
-import free.jin.board.prefs.MoveInputPanel;
-import free.jin.board.prefs.SquareCoordinatesPanel;
+import free.jin.board.prefs.*;
 import free.jin.ui.CompositePreferencesPanel;
 import free.jin.ui.PreferencesPanel;
 import free.util.SquareLayout;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -154,7 +142,7 @@ public class BoardPreferencesPanel extends CompositePreferencesPanel{
     pos.setLexigraphic("rn-qkbnrPPP-pppp-------------b---------------------PPPPPRNBQKBNR");
     
     for (int i = 0; i < panels.size(); i++)
-      ((BoardModifyingPrefsPanel)panels.elementAt(i)).initPreviewBoard();
+      ((BoardModifyingPrefsPanel)panels.get(i)).initPreviewBoard();
   }
   
   

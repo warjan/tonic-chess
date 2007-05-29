@@ -21,7 +21,8 @@
 
 package free.util;
 
-import java.util.Enumeration;
+
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
@@ -32,7 +33,7 @@ import java.util.NoSuchElementException;
  * mappings.
  */
 
-public abstract class MappingEnumeration implements Enumeration{
+public abstract class MappingEnumeration implements Iterator{
 
 
 
@@ -40,7 +41,7 @@ public abstract class MappingEnumeration implements Enumeration{
    * The delegate enumeration.
    */
 
-  private final Enumeration delegate;
+  private final Iterator delegate;
 
 
 
@@ -49,18 +50,19 @@ public abstract class MappingEnumeration implements Enumeration{
    * delegate.
    */
 
-  public MappingEnumeration(Enumeration delegate){
+  public MappingEnumeration(Iterator delegate){
     this.delegate = delegate;
   }
 
 
 
   /**
-   * Returns whether there are more elements in this <code>Enumeration</code>.
+   * Returns whether there are more elements in this <code>Iterator</code>.
+   * @return boolean stating whether there are more elements 
    */
 
   public boolean hasMoreElements(){
-    return delegate.hasMoreElements();
+    return delegate.hasNext();
   }
 
 
@@ -71,7 +73,7 @@ public abstract class MappingEnumeration implements Enumeration{
    */
 
   public Object nextElement() throws NoSuchElementException{
-    return map(delegate.nextElement());
+    return map(delegate.next());
   }
 
 

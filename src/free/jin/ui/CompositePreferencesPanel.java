@@ -21,12 +21,13 @@
 
 package free.jin.ui;
 
-import java.util.Vector;
+
+
+import free.jin.BadChangesException;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import free.jin.BadChangesException;
+import java.util.ArrayList;
 
 
 /**
@@ -41,7 +42,7 @@ public abstract class CompositePreferencesPanel extends PreferencesPanel{
    * A list of the underlying panels.
    */
   
-  protected final Vector panels = new Vector();
+  protected final ArrayList panels = new ArrayList();
   
   
   
@@ -63,7 +64,7 @@ public abstract class CompositePreferencesPanel extends PreferencesPanel{
    */
   
   public final void addPanel(PreferencesPanel panel, String panelName, String panelToolTip){
-    panels.addElement(panel);
+    panels.add(panel);
     panel.addChangeListener(proxyListener);
     
     addPanelToUi(panel, panelName, panelToolTip);
@@ -85,7 +86,7 @@ public abstract class CompositePreferencesPanel extends PreferencesPanel{
 
   public void applyChanges() throws BadChangesException{
     for (int i = 0; i < panels.size(); i++)
-      ((PreferencesPanel)panels.elementAt(i)).applyChanges();
+      ((PreferencesPanel)panels.get(i)).applyChanges();
   }
 
 }

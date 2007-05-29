@@ -33,7 +33,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 
 
@@ -442,9 +442,9 @@ public class TextPrefsPanel extends PreferencesPanel{
   public void applyChanges(){
     Preferences consolePrefs = consoleManager.getPrefs();
 
-    Enumeration prefNames = prefs.getPreferenceNames();
-    while (prefNames.hasMoreElements()){
-      String propertyName = (String)prefNames.nextElement();
+    Iterator prefNames = prefs.getPreferenceNames();
+    while (prefNames.hasNext()){
+      String propertyName = (String)prefNames.next();
       Object propertyValue = prefs.get(propertyName);
 
       consolePrefs.set(propertyName, propertyValue);

@@ -33,7 +33,10 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Properties;
 
 
 
@@ -512,7 +515,7 @@ public class JinApplication implements JinContext{
 
 
   /**
-   * Loads the user (memory) files from the specified file. Returns a hashtable
+   * Loads the user (memory) files from the specified file. Returns a HashMap
    * mapping filenames to <code>MemoryFile</code> objects. Helper method for
    * <code>loadUser</code>.
    */
@@ -698,7 +701,7 @@ public class JinApplication implements JinContext{
   
   
   /**
-   * Loads the actions for all servers. Returns a hashtable mapping
+   * Loads the actions for all servers. Returns a HashMap mapping
    * <code>Server</code> objects to arrays of <code>ActionInfo</code> objects
    * describing the standalone actions for that server.
    */
@@ -733,7 +736,7 @@ public class JinApplication implements JinContext{
   
   
   /**
-   * Loads actions from the specified directory into the specified hashtable.
+   * Loads actions from the specified directory into the specified HashMap.
    * Helper method for <code>loadActions()</code>.
    */
    
@@ -828,7 +831,7 @@ public class JinApplication implements JinContext{
 
 
   /**
-   * Loads the plugin classes for all servers. Returns a hashtable that maps
+   * Loads the plugin classes for all servers. Returns a HashMap that maps
    * <code>Server</code> objects to arrays of PluginInfo objects describing
    * the plugins for that server.
    */
@@ -862,7 +865,7 @@ public class JinApplication implements JinContext{
 
 
   /**
-   * Loads plugins from the specified directory into the specified hashtable.
+   * Loads plugins from the specified directory into the specified HashMap.
    * Helper method for <code>loadPlugins()</code>.
    */
 

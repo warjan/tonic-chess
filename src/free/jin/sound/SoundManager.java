@@ -21,39 +21,21 @@
 
 package free.jin.sound;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.Hashtable;
-
-//import jregex.Matcher;
-//import jregex.Pattern;
-//import jregex.PatternSyntaxException;
 import free.jin.Connection;
 import free.jin.Game;
 import free.jin.Preferences;
-import free.jin.event.BoardFlipEvent;
-import free.jin.event.ChatEvent;
-import free.jin.event.ChatListener;
-import free.jin.event.ClockAdjustmentEvent;
-import free.jin.event.ConnectionListener;
-import free.jin.event.GameEndEvent;
-import free.jin.event.GameListener;
-import free.jin.event.GameStartEvent;
-import free.jin.event.IllegalMoveEvent;
-import free.jin.event.ListenerManager;
-import free.jin.event.MoveMadeEvent;
-import free.jin.event.OfferEvent;
-import free.jin.event.PlainTextEvent;
-import free.jin.event.PlainTextListener;
-import free.jin.event.PositionChangedEvent;
-import free.jin.event.TakebackEvent;
+import free.jin.event.*;
 import free.jin.plugin.Plugin;
 import free.util.audio.AudioClip;
 import free.util.models.BooleanModel;
 import free.util.models.Model;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -72,7 +54,7 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
    * Maps sound filenames to AudioClips loaded from those filenames.
    */
 
-  protected final static Hashtable FILENAMES_TO_AUDIO_CLIPS = new Hashtable();
+  protected final static HashMap FILENAMES_TO_AUDIO_CLIPS = new HashMap();
 
 
   
@@ -80,7 +62,7 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
    * Maps chat patterns to filenames containing the sound data.
    */
 
-  protected final Hashtable chatPatternsToFilenames = new Hashtable();
+  protected final HashMap chatPatternsToFilenames = new HashMap();
 
 
 
@@ -88,7 +70,7 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
    * Maps text patterns to filenames containing the sound data.
    */
 
-  protected final Hashtable textPatternsToFilenames = new Hashtable();
+  protected final HashMap textPatternsToFilenames = new HashMap();
 
 
 
@@ -96,7 +78,7 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
    * Maps event names such as ("OnConnect") to AudioClips.
    */
 
-  protected final Hashtable eventsToAudioClips = new Hashtable();
+  protected final HashMap eventsToAudioClips = new HashMap();
 
 
 
@@ -202,10 +184,10 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
 
   /**
    * Loads patterns and their corresponding sounds of the given type, mapping
-   * the patterns to sound filenames in the given Hashtable.
+   * the patterns to sound filenames in the given HashMap.
    */
 
-  private void loadPatternSounds(String type, Hashtable map){
+  private void loadPatternSounds(String type, HashMap map){
     Preferences prefs = getPrefs();
     int numPatterns = prefs.getInt("num-" + type + "-patterns", 0);
     
@@ -242,7 +224,7 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
 
   /**
    * Tries to load an AudioClip for the given event and map the event name to the
-   * AudioClip in the <code>eventsToAudioClips</code> hashtable. Silently fails if
+   * AudioClip in the <code>eventsToAudioClips</code> HashMap. Silently fails if
    * unsuccessful.
    */
 
@@ -323,9 +305,9 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
     String sender = evt.getSender();
     String chatMessageType = type+"."+(forum == null ? "" : forum.toString())+"."+sender;
     
-    Enumeration patterns = chatPatternsToFilenames.keys();
-    while (patterns.hasMoreElements()){
-      Pattern regex = (Pattern)patterns.nextElement();
+    Iterator patterns = chatPatternsToFilenames.keySet().iterator();
+    while (patterns.hasNext()){
+      Pattern regex = (Pattern)patterns.next();
       Matcher matcher = regex.matcher(chatMessageType);
       if (matcher.find()){
         String filename = (String)chatPatternsToFilenames.get(regex);
@@ -348,9 +330,9 @@ public class SoundManager extends Plugin implements PlainTextListener, ChatListe
 
     String line = evt.getText();
 
-    Enumeration patterns = textPatternsToFilenames.keys();
-    while (patterns.hasMoreElements()){
-      Pattern regex = (Pattern)patterns.nextElement();
+    Iterator patterns = textPatternsToFilenames.keySet().iterator();
+    while (patterns.hasNext()){
+      Pattern regex = (Pattern)patterns.next();
       Matcher matcher = regex.matcher(line);
       if (matcher.find()){
         String filename = (String)textPatternsToFilenames.get(regex);

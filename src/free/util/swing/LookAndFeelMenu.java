@@ -21,24 +21,14 @@
 
 package free.util.swing;
 
-import java.awt.Component;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Hashtable;
-import java.util.Vector;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JMenu;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -53,7 +43,7 @@ public class LookAndFeelMenu extends JMenu{
    * The Components that need to be updated when the look and feel changes.
    */
 
-  private final Vector treeRoots;
+  private final ArrayList treeRoots;
 
 
 
@@ -61,7 +51,7 @@ public class LookAndFeelMenu extends JMenu{
    * Maps LookAndFeel class names to AbstractButtons representing them.
    */
 
-  private final Hashtable lookAndFeelClassNamesToButtons = new Hashtable();
+  private final HashMap lookAndFeelClassNamesToButtons = new HashMap();
 
 
 
@@ -69,7 +59,7 @@ public class LookAndFeelMenu extends JMenu{
    * Maps AbstractButtons to LookAndFeel class names they represent.
    */
 
-  private final Hashtable buttonsToLookAndFeelClassNames = new Hashtable();
+  private final HashMap buttonsToLookAndFeelClassNames = new HashMap();
 
 
 
@@ -104,13 +94,13 @@ public class LookAndFeelMenu extends JMenu{
     super("Look&Feel");
     setMnemonic('L');
 
-    this.treeRoots = new Vector(treeRoots.length);
+    this.treeRoots = new ArrayList(treeRoots.length);
     for (int i = 0; i < treeRoots.length; i++)
-      this.treeRoots.addElement(treeRoots[i]);
+      this.treeRoots.add(treeRoots[i]);
 
     ActionListener lnfActionListener = new LookAndFeelChoiceListener();
     
-    Hashtable installedLFs = new Hashtable(); // Filter duplicates.
+    HashMap installedLFs = new HashMap(); // Filter duplicates.
 
     UIManager.LookAndFeelInfo [] lnfs = UIManager.getInstalledLookAndFeels();
     String currentLookAndFeelClassName = UIManager.getLookAndFeel().getClass().getName();
@@ -148,7 +138,7 @@ public class LookAndFeelMenu extends JMenu{
    */
 
   public void addTreeRoot(Component component){
-    treeRoots.addElement(component);
+    treeRoots.add(component);
   }
 
 
@@ -159,7 +149,7 @@ public class LookAndFeelMenu extends JMenu{
    */
 
   public void removeTreeRoot(Component component){
-    treeRoots.removeElement(component);
+    treeRoots.remove(component);
   }
 
 
@@ -170,7 +160,7 @@ public class LookAndFeelMenu extends JMenu{
 
   private void updateComponents(){
     for (int i = 0 ; i < treeRoots.size(); i++){
-      Component component = (Component)treeRoots.elementAt(i);
+      Component component = (Component)treeRoots.get(i);
       SwingUtilities.updateComponentTreeUI(component);
     }
   }
