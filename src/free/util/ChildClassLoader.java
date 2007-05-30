@@ -24,13 +24,13 @@ package free.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 
 /**
  * A class loader with a parent, to which loading is delegated if the class or
  * resource can't be found. This class isn't needed with JDK1.2 which already
- * has this functionality. As an additional feature, this class uses a Hashtable
+ * has this functionality. As an additional feature, this class uses a HashMap
  * to look up already loaded classes, so any subclasses needn't do this.
  */
 
@@ -50,7 +50,7 @@ public abstract class ChildClassLoader extends ClassLoader{
    * Maps class names to already loaded classes.
    */
 
-  private final Hashtable namesToClasses = new Hashtable();
+  private final HashMap namesToClasses = new HashMap();
 
 
 

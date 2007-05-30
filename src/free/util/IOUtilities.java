@@ -21,20 +21,10 @@
 
 package free.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Properties;
 
 
@@ -50,7 +40,7 @@ public class IOUtilities{
    * Maps URLs to byte arrays of the data loaded from them.
    */
    
-  private final static Hashtable urlCache = new Hashtable();
+  private final static HashMap urlCache = new HashMap();
   
 
 

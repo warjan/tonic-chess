@@ -21,24 +21,24 @@
 
 package free.util;
 
-import java.util.Hashtable;
+    import java.util.HashMap;
 
 
 /**
  * This is a convenient superclass for classes whose job is to be containers
  * of final (constant) data. It's especially convenient for holding a large 
  * amount of fields, since it alleviates the need for instance variables,
- * instead holding the data in a Hashtable.
+ * instead holding the data in a HashMap.
  */
 
 public class Struct{
 
 
   /**
-   * A Hashtable where we hold all the properties.
+   * A HashMap where we hold all the properties.
    */
 
-  private final Hashtable properties;
+  private final HashMap properties;
 
 
 
@@ -58,7 +58,7 @@ public class Struct{
    */
 
   public Struct(int propertiesCount){
-    properties = new Hashtable(propertiesCount);
+    properties = new HashMap(propertiesCount);
   }
 
 
