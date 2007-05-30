@@ -23,13 +23,13 @@ package free.util;
 
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 
 /**
  * An implementation of <code>URLStreamHandlerFactory</code> which maps protocol
  * names to instances of <code>URLStreamHandlerFactory</code> with a simple
- * hashtable.
+ * HashMap.
  */
 
 public class MapURLStreamHandlerFactory implements URLStreamHandlerFactory{
@@ -37,11 +37,11 @@ public class MapURLStreamHandlerFactory implements URLStreamHandlerFactory{
 
 
   /**
-   * A hashtable mapping protocol names to instances of
+   * A HashMap mapping protocol names to instances of
    * <code>URLStreamHandler</code> which handle that protocol.
    */
 
-  private final Hashtable handlers = new Hashtable();
+  private final HashMap handlers = new HashMap();
 
 
 
