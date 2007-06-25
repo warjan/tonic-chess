@@ -318,22 +318,20 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
        
         
       //TODO add methods and objects that will display to the user the result of the game on the board, near buttons panel.
-      
-      switch (evt.getResult()){
-          case Game.WHITE_WINS:
-              resultLabel.setText("White wins!"); break;
-          case Game.BLACK_WINS:
-              resultLabel.setText("Black wins!"); break;
-          case Game.DRAW:
-              resultLabel.setText("It is draw."); break;
-          case Game.UNKNOWN_RESULT:
-              resultLabel.setText("Result unknown. Check console for reason."); break;
-          
-      }
-        
-      if (evt.getGame() != game)
-        return;
-      if (getgameButton != null){
+
+        if (evt.getGame().equals(game)) {
+            switch (evt.getResult()){
+                case Game.WHITE_WINS:
+                    resultLabel.setText("White wins!"); break;
+                case Game.BLACK_WINS:
+                    resultLabel.setText("Black wins!"); break;
+                case Game.DRAW:
+                    resultLabel.setText("It is draw."); break;
+                case Game.UNKNOWN_RESULT:
+                    resultLabel.setText("Result unknown. Check console for reason."); break;
+
+            }
+             if (getgameButton != null){
         getgameButton.setEnabled(true);
       }
       drawButton.setEnabled(false);
@@ -346,8 +344,16 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
         takeback1Button.setEnabled(false);
       if (takebackNButton != null)
         takebackNButton.setEnabled(false);
-      
+
       plugin.getConn().getListenerManager().removeGameListener(this);
+        }     else {
+            return;
+        }
+
+/*
+      if (evt.getGame() != game)
+        return;*/
+
 
       super.gameEnded(evt);
     }
