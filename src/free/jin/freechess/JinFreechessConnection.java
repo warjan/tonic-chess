@@ -2554,7 +2554,7 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    */
 
   public void makeMove(Game game, Move move){
-    Iterator gamesDataEnum = ongoingGamesData.keySet().iterator();
+    Iterator gamesDataEnum = ongoingGamesData.values().iterator();
     boolean ourGame = false;
     while (gamesDataEnum.hasNext()){
       InternalGameData gameData = (InternalGameData)gamesDataEnum.next();
