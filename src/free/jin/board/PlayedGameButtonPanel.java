@@ -314,12 +314,13 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
       super.offerUpdated(evt);
     }
 
+        @Override
     public void gameEnded(GameEndEvent evt){
        
         
       //TODO add methods and objects that will display to the user the result of the game on the board, near buttons panel.
 
-        if (evt.getGame().equals(game)) {
+        if (evt.getGame().getID()==game.getID()) {
             switch (evt.getResult()){
                 case Game.WHITE_WINS:
                     resultLabel.setText("White wins!"); break;
