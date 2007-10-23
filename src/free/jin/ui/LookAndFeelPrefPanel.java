@@ -21,21 +21,14 @@
 
 package free.jin.ui;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.UIManager;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import free.jin.BadChangesException;
 import free.jin.Jin;
 import free.util.PlatformUtils;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 
 
 
@@ -119,7 +112,7 @@ public class LookAndFeelPrefPanel extends PreferencesPanel{
   /**
    * Installs any extra look and feels Jin is using.
    */
-  
+  //TODO: Make it aware of additional laf classes in jars - parse jars contents for look and feel classes.
   private static synchronized void installExtraLookAndFeels(){
     if (extraLnFsInstalled)
       return;
@@ -221,7 +214,7 @@ public class LookAndFeelPrefPanel extends PreferencesPanel{
      
     public LnF(UIManager.LookAndFeelInfo info){
       this.name = info.getName();
-      this.classname = info.getClassName();;
+      this.classname = info.getClassName();
     }
     
     
