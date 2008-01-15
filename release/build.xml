@@ -36,8 +36,8 @@
 		<property name="source.dir" value="${tonic.dir}/src" />
 
 		<!-- Ask for Tonic version -->
-		<input message="Please specify the release version:" addproperty="release.version" />
-		
+		<!--<input message="Please specify the release version:" addproperty="release.version" />-->
+		<property name="release.version" value="0"/>
 		<property name="release.dir" value="tonic-${release.version}" />
     
 		<mkdir dir="${release.dir}" />
