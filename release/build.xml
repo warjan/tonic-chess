@@ -27,7 +27,7 @@
 
 
     <!-- Makes releases for windows, unix, os x and plain source code -->
-	<target name="release" depends="osx, unix, windows, src" description="Build all normal releases"/>
+	<target name="release" depends="unix, windows, src" description="Build all normal releases"/>
 	
 
 	<target name="init">
