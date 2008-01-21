@@ -47,345 +47,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/AudioPlayer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/AudioPlayer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/DialogPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/DialogPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/pieces/tonicGeometric.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/pieces/tonicGeometric.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ChatEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ChatEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/ChessclubBoardManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/ChessclubBoardManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseableTabbedPane.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseableTabbedPane.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/java6/mustangtray.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/java6/mustangtray.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsoleManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsoleManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ConnectionDetails.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ConnectionDetails.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/checkmate.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/checkmate.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chessclub/level2/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chessclub/level2/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/connlost.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/connlost.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/gamelogger/LoggingRule.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/gamelogger/LoggingRule.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/jgoodies.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/jgoodies.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/Game.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/Game.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ArrayEnumeration.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ArrayEnumeration.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/IntegerStrictPlainDocument.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/IntegerStrictPlainDocument.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/TextUtilities.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/TextUtilities.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicLinesPaper.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicLinesPaper.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/NonEditableTableModel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/NonEditableTableModel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/Move.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/Move.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/event/UserMoveListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/event/UserMoveListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_human_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_human_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/AbstractChessClock.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/AbstractChessClock.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListListenerManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListListenerManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/SeekListenerManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/SeekListenerManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/libs/bsh-core-2.0b4.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/libs/bsh-core-2.0b4.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/fics/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/fics/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/beanshell.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/beanshell.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ChatListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ChatListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FriendsListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FriendsListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ImageUtilities.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ImageUtilities.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/AdvancedJDesktopPane.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/AdvancedJDesktopPane.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/JinContext.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/JinContext.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/revert.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/revert.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/board.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/board.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/WildVariant.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/WildVariant.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/PlayedGameButtonPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/PlayedGameButtonPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/7/rated_human_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/7/rated_human_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/Link.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/Link.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/AppKiller.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/AppKiller.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/Command.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/Command.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ColoredPiecePainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ColoredPiecePainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/Seek.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/Seek.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/gameend.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/gameend.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/SingleItemEnumeration.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/SingleItemEnumeration.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/adjourn.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/adjourn.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicWoodTiles.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicWoodTiles.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/EboardVectorPiecePainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/EboardVectorPiecePainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/giveaway/Giveaway.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/giveaway/Giveaway.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/LinkLabel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/LinkLabel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/AppletAudioPlayer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/AppletAudioPlayer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/ExtensionFileFilter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/ExtensionFileFilter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/back2.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/back2.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/normal.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/normal.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsoleTextPane.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsoleTextPane.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PipedInputStream.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PipedInputStream.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_human_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_human_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/DefaultPiecePainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/DefaultPiecePainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/Plugin.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/Plugin.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/NoCastlingVariant.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/NoCastlingVariant.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/libs/fics/timesealing.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/libs/fics/timesealing.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/BoardPainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/BoardPainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/MultiOutputStream.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/MultiOutputStream.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/ChessEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/ChessEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ChessclubGameListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ChessclubGameListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/unix/tonic.png" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/unix/tonic.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/MoveMadeEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/MoveMadeEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsoleTextField.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsoleTextField.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/windows/jdic_stub.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/windows/jdic_stub.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_comp.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_comp.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedTableColumn.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedTableColumn.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/commands.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/commands.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/DeltaBoardStruct.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/DeltaBoardStruct.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/PreferencesPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/PreferencesPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/Server.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/Server.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ColoredBoardPainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ColoredBoardPainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/CircleEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/CircleEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/pieces/tonicXboardRev.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/pieces/tonicXboardRev.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PaintHook.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PaintHook.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginUIListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginUIListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/suicide/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/suicide/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/welcome-icc.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/welcome-icc.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/fullscreen.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/fullscreen.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/icon.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/icon.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/shuffleboth/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/shuffleboth/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SwingUtils.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SwingUtils.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/LibListItem.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/LibListItem.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/libs/jdic.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/libs/jdic.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/icc/definition" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/icc/definition" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/back1.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/back1.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_comp_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_comp_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/cork.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/cork.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/fitebell.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/fitebell.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/icc/definition" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/icc/definition" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/liquid.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/liquid.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_comp_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_comp_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/l4j/Tonic.ico" afterPath="/home/whp/var/src/TonicCVS/tonic/l4j/Tonic.ico" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/normal.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/normal.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/BoardFlipEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/BoardFlipEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/retroguard.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/retroguard.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/event/SeekSelectionListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/event/SeekSelectionListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ConnectionManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ConnectionManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/JinEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/JinEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ImageBoardPainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ImageBoardPainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/release/changelog.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/release/changelog.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ChessEventListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ChessEventListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/eventType.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/eventType.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/tonic/plugin/BoardPanel_1.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/tonic/plugin/BoardPanel_1.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/rated_comp.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/rated_comp.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/AboutPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/AboutPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/atomic/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/atomic/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJComboBox.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJComboBox.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/FreechessListenerManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/FreechessListenerManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/alert.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/alert.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/AbstractServer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/AbstractServer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/windows/tray.dll" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/windows/tray.dll" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/GameListTable.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/GameListTable.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicWoodOilPhased.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicWoodOilPhased.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/kunststoff.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/kunststoff.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/event/MoveEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/event/MoveEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/kriegspiel/KriegspielMove.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/kriegspiel/KriegspielMove.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ChessEventEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ChessEventEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_human.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_human.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_comp.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_comp.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/rated_human.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/rated_human.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/channels/newChatEvent.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/channels/newChatEvent.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/TakebackEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/TakebackEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/SearchListItem.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/SearchListItem.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/event/ArrowCircleListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/event/ArrowCircleListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/resources/icon.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/resources/icon.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/condition.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/condition.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/SeekEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/SeekEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/Player.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/Player.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicLinesGentle.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicLinesGentle.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/Style12Struct.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/Style12Struct.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsole.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsole.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/JChessClock.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/JChessClock.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/NoSuchGameException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/NoSuchGameException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/icc/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/icc/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/JBoard.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/JBoard.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/CommandScript.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/CommandScript.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/CommandsScriptDialog.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/CommandsScriptDialog.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsoleTextField.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsoleTextField.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/FullscreenPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/FullscreenPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/welcome-fics.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/welcome-fics.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/event/UserMoveEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/event/UserMoveEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/copyright.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/copyright.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/WindowDisposingListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/WindowDisposingListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SolidColorOvalIcon.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SolidColorOvalIcon.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/properties" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/properties" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/ChessclubJBoard.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/ChessclubJBoard.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/UrlDisplayingAction.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/UrlDisplayingAction.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/FormatException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/FormatException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/ChessclubServer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/ChessclubServer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/giveaway/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/giveaway/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ChesslikeGenericVariant.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ChesslikeGenericVariant.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/Bounce.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/Bounce.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/Script.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/Script.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/connlost.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/connlost.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/event/SeekSelectionEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/event/SeekSelectionEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/SafeRunnable.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/SafeRunnable.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/libs/icc/timestamping.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/libs/icc/timestamping.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FlipBoardEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FlipBoardEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/UIProvider.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/UIProvider.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/looks-2.0.2.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/looks-2.0.2.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/fics/definition" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/fics/definition" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/MoveFormatException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/MoveFormatException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/goodbye.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/goodbye.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/event/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/event/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/StrictPlainDocument.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/StrictPlainDocument.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/moved.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/moved.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsoleManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/fics/FreechessConsoleManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_human.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_human.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SolidColorRectangleIcon.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SolidColorRectangleIcon.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/event/MoveListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/event/MoveListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/GraphicsUtilities.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/GraphicsUtilities.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/metouia.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/metouia.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/OptionPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/OptionPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/StringEncoder.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/StringEncoder.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_human_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/unrated_human_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/shuffleboth/ShuffleBoth.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/shuffleboth/ShuffleBoth.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/PiecePainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/PiecePainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/RawTelnet.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/RawTelnet.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/15/rated_comp_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/15/rated_comp_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/capture-fics.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/capture-fics.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/zip/ZipURLConnection.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/zip/ZipURLConnection.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/User.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/User.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJInternalFrame.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJInternalFrame.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixUtils.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixUtils.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/Pair.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/Pair.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseTabAction.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseTabAction.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/synthetica.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/synthetica.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/normal.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/normal.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ArrowEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/event/ArrowEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_comp_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_comp_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/VectorPiecePainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/VectorPiecePainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/lgpl.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/lgpl.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/PgsLookAndFeel.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/PgsLookAndFeel.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginContext.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginContext.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/ChessclubBoardPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/ChessclubBoardPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/background.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/background.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/substance.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/substance.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/SwingFix.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/SwingFix.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/fics/definition" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/fics/definition" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/eventSubtypes.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/help/eventSubtypes.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/gameend.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/mustangtray/gameend.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/draw.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/draw.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/hide.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/hide.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/.cvsignore" afterPath="/home/whp/var/src/TonicCVS/tonic/.cvsignore" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/AWTUtilities.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/AWTUtilities.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chessclub/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chessclub/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/DefaultBoardPainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/DefaultBoardPainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PipedStreams.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PipedStreams.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ApplyLicense.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ApplyLicense.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/UnixDevAudioPlayer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/UnixDevAudioPlayer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/channels/directTell.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/channels/directTell.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/FreechessServer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/FreechessServer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/zip/ZipClassLoader.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/zip/ZipClassLoader.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/squareness.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/squareness.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/PieceIcon.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/PieceIcon.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/fics/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/fics/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/PositionFormatException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/PositionFormatException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/capture-icc.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/capture-icc.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/BeanShellScript.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/BeanShellScript.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameListListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/MemoryFile.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/MemoryFile.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/l4j/tonic.bmp" afterPath="/home/whp/var/src/TonicCVS/tonic/l4j/tonic.bmp" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/PositionChangedEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/PositionChangedEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJPasswordField.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJPasswordField.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ListenerManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ListenerManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginUIContainer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginUIContainer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/SeekListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/SeekListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/abort.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/abort.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/PGNConnection.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/PGNConnection.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/fics/FreechessBoardPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/fics/FreechessBoardPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/suicide/Suicide.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/suicide/Suicide.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/gpl.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/legal/gpl.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/move-icc.au" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/move-icc.au" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicOak.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicOak.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/getgame.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/getgame.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/show.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/show.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/PlainTextDialog.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/PlainTextDialog.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/BlitzinVectorPiecePainter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/icc/BlitzinVectorPiecePainter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/SeekConnection.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/SeekConnection.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJTable.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJTable.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PipedOutputStream.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PipedOutputStream.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FriendsEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FriendsEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/LoginException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/LoginException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/prefs.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/prefs.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/fischerrandom/FischerRandom.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/fischerrandom/FischerRandom.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/fischerrandom/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/fischerrandom/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/zip/ZipURLStreamHandler.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/zip/ZipURLStreamHandler.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/BadChangesException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/BadChangesException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameAdapter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameAdapter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/SeekInfoStruct.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/SeekInfoStruct.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FriendsListenerManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/FriendsListenerManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/atomic/Atomic.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/atomic/Atomic.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/moved.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/moved.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/HistoryListItem.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/HistoryListItem.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/SquareLayout.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/SquareLayout.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/ChessclubListenerManager.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/ChessclubListenerManager.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/tonic.pcs" afterPath="/home/whp/var/src/TonicCVS/tonic/tonic.pcs" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/ilf-gpl.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/lnfs/ilf-gpl.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/UnsupportedOperationException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/UnsupportedOperationException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/UsernamePolicy.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/UsernamePolicy.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_comp.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/13/rated_comp.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginStartException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginStartException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/StringParser.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/StringParser.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameStartEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameStartEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icon.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icon.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ChessMove.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ChessMove.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/start.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/start.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/GameListTableModel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/GameListTableModel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/15/rated_human_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/15/rated_human_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/normal.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/tray/normal.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJTextArea.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJTextArea.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/resources/logo.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/resources/logo.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/kriegspiel/Kriegspiel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/kriegspiel/Kriegspiel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/action/sendmessage/SendMessage.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/action/sendmessage/SendMessage.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/BothSidesCastlingVariant.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/BothSidesCastlingVariant.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/7/rated_comp_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/7/rated_comp_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/unix/jdic_stub.jar" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/os-specific/unix/jdic_stub.jar" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginUIEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginUIEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/EventListenerList.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/EventListenerList.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/NoSuchGameException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/chessclub/NoSuchGameException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ClockAdjustmentEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/ClockAdjustmentEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/flip.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/flip.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/resign.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/resign.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/BeanShellScriptDialog.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/BeanShellScriptDialog.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/ExaminedGameButtonPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/ExaminedGameButtonPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/GameInfoStruct.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/freechess/GameInfoStruct.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJTextField.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/workarounds/FixedJTextField.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/gamelogger/condition-help.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/gamelogger/condition-help.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsoleTextPane.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsoleTextPane.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/rated_comp_wild.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/rated_comp_wild.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/icc/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/sound/icc/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameEndEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/GameEndEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/JBughousePiecesPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/JBughousePiecesPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/ScripterPreferencesPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/scripter/ScripterPreferencesPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/fics/preferences" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/fics/preferences" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/prefs/TextStyleChooserPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/prefs/TextStyleChooserPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/kriegspiel/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/kriegspiel/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/RectDouble.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/RectDouble.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/properties" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/freechess/properties" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/IllegalMoveEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/IllegalMoveEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/ServerChoicePanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/ServerChoicePanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/GameListConnection.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/GameListConnection.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/package.html" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/variants/package.html" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginInfo.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/plugin/PluginInfo.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PumpThread.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/PumpThread.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicWoodOil.zip" afterPath="/home/whp/var/src/TonicCVS/tonic/resources/boards/tonicWoodOil.zip" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/FontSelectorPanel.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/FontSelectorPanel.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/SunAudioPlayer.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/SunAudioPlayer.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/FriendsConnection.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/FriendsConnection.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ChessPiece.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/chess/ChessPiece.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_human.gif" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/seek/images/9/unrated_human.gif" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/UnsupportedContextException.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/UnsupportedContextException.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/OfferEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/OfferEvent.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SolidColorIcon.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/SolidColorIcon.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/ColorChooser.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/swing/ColorChooser.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/draw.png" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/board/images/draw.png" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/players.txt" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/audio/players.txt" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/PlainTextListener.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/PlainTextListener.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsole.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/console/icc/ChessclubConsole.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ExtensionFilenameFilter.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/util/ExtensionFilenameFilter.java" />
-      <change type="MODIFICATION" beforePath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/PlainTextEvent.java" afterPath="/home/whp/var/src/TonicCVS/tonic/src/free/jin/event/PlainTextEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.iml" afterPath="$PROJECT_DIR$/Tonic2.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.iws" afterPath="$PROJECT_DIR$/Tonic2.iws" />
     </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
@@ -411,40 +74,8 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <method_breakpoints>
-      <breakpoint url="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/board/PlayedGameButtonPanel.java" line="316" class="Class at PlayedGameButtonPanel.java:316" package="free.jin.board">
-        <option name="WATCH_ENTRY" value="true" />
-        <option name="WATCH_EXIT" value="true" />
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file:///home/whp/var/src/TonicCVS/tonic/src/free/util/Connection.java" line="134" class="Class at Connection.java:134" package="free.util">
-        <option name="WATCH_ENTRY" value="true" />
-        <option name="WATCH_EXIT" value="true" />
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </method_breakpoints>
     <line_breakpoints>
-      <breakpoint url="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/JBughousePiecesPanel.java" line="189" class="free.chess.JBughousePiecesPanel" package="free.chess">
+      <breakpoint url="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/JBughousePiecesPanel.java" line="189" class="Class at JBughousePiecesPanel.java:189" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -505,8 +136,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -532,37 +163,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CloseableTabbedPane.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseableTabbedPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="53" selection-start="524" selection-end="524" vertical-scroll-proportion="0.06769826">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Position.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/Position.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="9" selection-start="2688" selection-end="2688" vertical-scroll-proportion="0.029880479">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChesslikeGenericVariant.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/ChesslikeGenericVariant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="19" selection-start="4041" selection-end="4041" vertical-scroll-proportion="0.029880479">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LoginPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/LoginPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="365" column="8" selection-start="10068" selection-end="10068" vertical-scroll-proportion="0.029880479">
+            <state line="365" column="8" selection-start="10068" selection-end="10068" vertical-scroll-proportion="0.024590164">
               <folding />
             </state>
           </provider>
@@ -571,7 +175,7 @@
       <file leaf-file-name="TonicLoginPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/TonicLoginPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="27" selection-start="1600" selection-end="1600" vertical-scroll-proportion="0.27079305">
+            <state line="75" column="27" selection-start="1600" selection-end="1600" vertical-scroll-proportion="0.2208">
               <folding />
             </state>
           </provider>
@@ -580,16 +184,43 @@
       <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file:///home/whp/var/src/TonicCVS/tonic/release/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.030991735">
+            <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file:///home/whp/var/src/TonicTCTest/release/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.030991735">
+            <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tonic2.ipr" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tonic2.ipr">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="47" selection-start="2525" selection-end="2528" vertical-scroll-proportion="-12.098361">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tonic2.iws" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Tonic2.iws">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="22" selection-start="3117" selection-end="3117" vertical-scroll-proportion="-4.9180326">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tonic2.iml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tonic2.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -607,7 +238,7 @@
       <file leaf-file-name="MacOSXSpecific.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file:///home/whp/var/src/TonicCVS/tonic/resources/os-specific/macosx/free/jin/MacOSXSpecific.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="21" selection-start="952" selection-end="952" vertical-scroll-proportion="0.029013539">
+            <state line="23" column="21" selection-start="952" selection-end="952" vertical-scroll-proportion="0.024">
               <folding />
             </state>
           </provider>
@@ -616,7 +247,7 @@
       <file leaf-file-name="DialogPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/DialogPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="29" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.029013539">
+            <state line="154" column="29" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.024">
               <folding />
             </state>
           </provider>
@@ -676,46 +307,8 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/home/whp/IdeaProjects/Tonic2" />
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicCVS/tonic" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicCVS/tonic" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicCVS/tonic/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
         </PATH_ELEMENT>
       </PATH>
     </subPane>
@@ -753,8 +346,8 @@
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="RunManagerConfig.compileBeforeRunning" value="true" />
+    <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="/home/whp/var/src/TonicTCTest/release" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -819,13 +412,6 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -847,6 +433,13 @@
       <method>
         <option name="Make" value="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
@@ -975,37 +568,38 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1280" height="974" extended-state="6" />
+    <frame x="-4" y="25" width="1288" height="977" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20233919" order="8" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20164126" order="8" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19561689" order="1" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25655645" order="1" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51308304" order="3" />
-      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982457" order="8" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" order="8" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31690142" order="8" />
+      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" order="-1" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847533" order="7" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22889611" order="1" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32711038" order="0" x="25" y="130" width="307" height="565" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32656378" order="0" x="25" y="130" width="307" height="565" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" order="2" />
-      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" order="8" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" order="3" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982457" order="8" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="4" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32748538" order="8" />
+      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" order="8" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -1099,27 +693,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/JBughousePiecesPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="372" column="35" selection-start="12392" selection-end="12392" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/Chess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="50" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.21357286">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/JBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1943" column="21" selection-start="50555" selection-end="50555" vertical-scroll-proportion="0.96015936">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/Tonic2.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1143,42 +716,35 @@
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseableTabbedPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="53" selection-start="524" selection-end="524" vertical-scroll-proportion="0.06769826">
+        <state line="23" column="53" selection-start="524" selection-end="524" vertical-scroll-proportion="0.041044775">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/Position.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="9" selection-start="2688" selection-end="2688" vertical-scroll-proportion="0.029880479">
+        <state line="116" column="9" selection-start="2688" selection-end="2688" vertical-scroll-proportion="0.019011406">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/ChesslikeGenericVariant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="19" selection-start="4041" selection-end="4041" vertical-scroll-proportion="0.029880479">
+        <state line="129" column="19" selection-start="4041" selection-end="4041" vertical-scroll-proportion="0.019011406">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/LoginPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="365" column="8" selection-start="10068" selection-end="10068" vertical-scroll-proportion="0.029880479">
+        <state line="365" column="8" selection-start="10068" selection-end="10068" vertical-scroll-proportion="0.024590164">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/TonicLoginPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="27" selection-start="1600" selection-end="1600" vertical-scroll-proportion="0.27079305">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/release/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.030991735">
+        <state line="75" column="27" selection-start="1600" selection-end="1600" vertical-scroll-proportion="0.2208">
           <folding />
         </state>
       </provider>
@@ -1192,21 +758,49 @@
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/resources/os-specific/macosx/free/jin/MacOSXSpecific.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="21" selection-start="952" selection-end="952" vertical-scroll-proportion="0.029013539">
+        <state line="23" column="21" selection-start="952" selection-end="952" vertical-scroll-proportion="0.024">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/DialogPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="29" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.029013539">
+        <state line="154" column="29" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.024">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///home/whp/var/src/TonicCVS/tonic/release/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tonic2.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///home/whp/var/src/TonicTCTest/release/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.030991735">
+        <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tonic2.ipr">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="47" selection-start="2525" selection-end="2528" vertical-scroll-proportion="-12.098361">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tonic2.iws">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="22" selection-start="3117" selection-end="3117" vertical-scroll-proportion="-4.9180326">
           <folding />
         </state>
       </provider>
