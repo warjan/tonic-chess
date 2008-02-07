@@ -439,7 +439,7 @@ public class JinChessclubConnection extends ChessclubConnection implements Datag
     String variantName = getVariantName(variantNumber);
     if (variantName==null)
       variantName = "w"+variantNumber;
-    processLine("This version of Jin does not support the wild variant ("+variantName+") and is thus unable to display the game.");
+    processLine("This version of Tonic does not support the wild variant ("+variantName+") and is thus unable to display the game.");
     processLine("Please activate the appropriate command to abort this game");
   }
 
