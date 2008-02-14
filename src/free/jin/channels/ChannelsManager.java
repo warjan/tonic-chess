@@ -362,17 +362,17 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
             }
 
             for (int j = 0; j < 3; j++) {
-                if (j == 0) {
+                if (j == 0 && getPrefs().getBool("tabs.shout", true)) {
                     Console chatConsole = new Console(getConn(), consolePreferences, "shout");
                     chatConsoles.put(new Integer(500), chatConsole);
                     //chatTabs.put(chatConsole, new Integer(chatConsoles.size() - 1));
                     mainPane.addTab("shouts", nullIcon, chatConsole);
-                } else if (j == 1) {
+                } else if (j == 1 && getPrefs().getBool("tabs.cshout", true)) {
                     Console chatConsole = new Console(getConn(), consolePreferences, "cshout");
                     chatConsoles.put(new Integer(501), chatConsole);
                     //chatTabs.put(chatConsole, new Integer(chatConsoles.size() - 1));
                     mainPane.addTab("cshouts", nullIcon, chatConsole);
-                } else{
+                } else if (getPrefs().getBool("tabs.plain", true)){
                     Console chatConsole = new Console(getConn(), consolePreferences, "plain");
                     chatConsoles.put(new Integer(502), chatConsole);
                     //chatTabs.put(chatConsole, new Integer(chatConsoles.size() - 1));

@@ -1,13 +1,13 @@
 package free.jin.channels.prefs;
 
-import free.jin.ui.PreferencesPanel;
-import free.jin.channels.ChannelsManager;
 import free.jin.BadChangesException;
+import free.jin.channels.ChannelsManager;
+import free.jin.ui.PreferencesPanel;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -79,13 +79,13 @@ public class ChannelsManagerPrefsPanel extends PreferencesPanel {
         closeableCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.closeable"));
 
         shoutCheckBox.addActionListener(new PrefsActionListener());
-        shoutCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.shout"));
+        shoutCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.shout", true));
 
         cshoutCheckBox.addActionListener(new PrefsActionListener());
-        cshoutCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.cshout"));
+        cshoutCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.cshout", true));
 
         plainCheckBox.addActionListener(new PrefsActionListener());
-        plainCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.plain"));
+        plainCheckBox.setSelected(channelsManager.getPrefs().getBool("tabs.plain", true));
         createUI();
     }
 
