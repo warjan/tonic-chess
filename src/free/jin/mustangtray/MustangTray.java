@@ -12,8 +12,8 @@ package free.jin.mustangtray;
 import free.jin.Connection;
 import free.jin.ConnectionDetails;
 import free.jin.Jin;
-import free.jin.mustangtray.prefs.MustangTrayPrefsPanel;
 import free.jin.event.*;
+import free.jin.mustangtray.prefs.MustangTrayPrefsPanel;
 import free.jin.plugin.Plugin;
 import free.jin.ui.MdiUiProvider;
 import free.jin.ui.PreferencesPanel;
@@ -95,7 +95,7 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
      */
     
     private boolean firstTime;
-    
+
     /**
      * Popup menu for tray icon.
      */
@@ -139,11 +139,12 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
      */
     @Override
     public void start(){
-        if (SystemTray.isSupported() && getPrefs().getBool("display.tray") == true){
+        if (SystemTray.isSupported() && getPrefs().getBool("display.tray")){
             registerListeners();
             initTrayMenu();
             createIcons();
             firstTime = true;
+            setRunning(true);
         }
         else{
             System.out.println("***WARNING*** SystemTray is unsupported here!");
@@ -160,7 +161,7 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
 
     @Override
     public boolean hasPreferencesUI() {
-        return getPrefs().getBool("preferences.show", true); 
+        return getPrefs().getBool("preferences.show", true);
     }
 
 
@@ -280,8 +281,7 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
     }
     
     public void gameStarted(GameStartEvent evt) {
-            
-        
+
                 trayIcon.setImage(gameStartIcon);
                 iconChanged = false;
         
@@ -388,8 +388,10 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
         listenerManager.addChatListener(this);
     }
     public void stop(){
-        unregisterListeners();
-        removeTrayIcon();
+        if (isRunning()){
+           unregisterListeners();
+           removeTrayIcon();
+        }
     }
 
     private void removeTrayIcon() {
