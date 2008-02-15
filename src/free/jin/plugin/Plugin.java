@@ -21,19 +21,14 @@
 
 package free.jin.plugin;
 
-import javax.swing.ListModel;
-
-import free.jin.Connection;
-import free.jin.Jin;
-import free.jin.Preferences;
-import free.jin.Resource;
-import free.jin.Server;
-import free.jin.User;
+import free.jin.*;
 import free.jin.action.JinAction;
 import free.jin.ui.PreferencesPanel;
 import free.jin.ui.UIProvider;
 import free.util.MemoryFile;
 import free.util.models.Model;
+
+import javax.swing.*;
 
 
 /**
@@ -67,8 +62,10 @@ public abstract class Plugin{
 
   private Preferences prefs;
 
-
-
+  /**
+   * Field for checking whether the plugin is running.
+   */
+  private boolean running;
 
   /**
    * Sets the plugin's context. Returns whether it can operate properly with
@@ -346,9 +343,23 @@ public abstract class Plugin{
    */
 
   public void start() throws PluginStartException{
-
+     
   }
 
+    /**
+     * Sets the isRunning field indicated whether the plugin is running.
+     * @param isRunning
+     */
+  public void setRunning(boolean isRunning){
+      running = isRunning;
+  }
+
+    /**
+     * Checks whether the plugin is running.
+     */
+  public boolean isRunning(){
+      return running;
+    }
 
 
   /**

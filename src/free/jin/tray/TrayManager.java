@@ -88,6 +88,8 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
      */
     
     private Icon connFailIcon;
+
+    
     
     /**
      * Indicates wether tray is displayed with application start.
@@ -140,10 +142,13 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
      */
     @Override
     public void start(){
-            if (getPrefs().getBool("display.tray") == true){
+        tray = SystemTray.getDefaultSystemTray();
+
+            if ( tray != null && getPrefs().getBool("display.tray") == true){
                 registerListeners();
                 initTrayMenu();
                 createIcons();
+                setRunning(true);
                 firstTime = true;
             }
     }
@@ -174,7 +179,7 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
     private void createIcons() {
 
         //creation of normal application icon
-        URL normalIconURL = TrayManager.class.getResource("normal.gif");
+        URL normalIconURL = TrayManager.class.getResource("normal.png");
         normalIcon = new ImageIcon(normalIconURL);
         trayIcon = new TrayIcon(normalIcon); //sets the initial icon for tray
         trayIcon.setIconAutoSize(true); //makes icon autoresizable - otherwise sometimes just a part of icon be visible
@@ -318,7 +323,7 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
     
     public void connectionEstablished(Connection conn) {
         if (firstTime){
-            tray = SystemTray.getDefaultSystemTray();
+
             tray.addTrayIcon(trayIcon);
             iconChanged = false;
             firstTime = false;
@@ -375,8 +380,8 @@ public class TrayManager extends Plugin implements ChatListener, GameListener, C
     @Override
     public void stop(){
         if (tray != null){
-        unregisterListeners();
-        removeTrayIcon();
+           unregisterListeners();
+           removeTrayIcon();
         }
     }
 
