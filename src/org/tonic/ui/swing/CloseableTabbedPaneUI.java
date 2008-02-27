@@ -12,18 +12,12 @@ package org.tonic.ui.swing;
  *
  *
  */
-import java.awt.BasicStroke;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
+
+import javax.swing.*;
+import javax.swing.plaf.metal.MetalTabbedPaneUI;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.UIManager;
-
-import javax.swing.plaf.basic.BasicTabbedPaneUI;
-import javax.swing.plaf.metal.MetalTabbedPaneUI;
 
 public class CloseableTabbedPaneUI extends MetalTabbedPaneUI {
     
@@ -37,9 +31,11 @@ public class CloseableTabbedPaneUI extends MetalTabbedPaneUI {
     
 
     
+    @Override
     protected void paintTab(Graphics g, int tabPlacement, Rectangle[] rects, int tabIndex, Rectangle iconRect, Rectangle textRect) {
-        super.paintTab(g,tabPlacement,rects,tabIndex,iconRect,textRect);
+        
         Graphics2D g2d = (Graphics2D)g.create();
+        super.paintTab(g2d,tabPlacement,rects,tabIndex,iconRect,textRect);
         int xPosition;
         int yPosition;
         
