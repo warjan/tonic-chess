@@ -26,6 +26,7 @@ import free.jin.plugin.Plugin;
 import free.util.GraphicsUtilities;
 import free.util.PlatformUtils;
 import free.workarounds.FixedJTextPane;
+import free.workarounds.FixedStyledEditorKit;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -131,6 +132,7 @@ public class ConsoleTextPane extends FixedJTextPane{
       KeyStroke.getKeyStroke(KeyEvent.VK_C, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), copyAction);
 
     enableEvents(MouseEvent.MOUSE_EVENT_MASK | MouseEvent.MOUSE_MOTION_EVENT_MASK);
+    setEditorKit(new FixedStyledEditorKit());
   }
 
 
