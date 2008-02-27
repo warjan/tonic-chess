@@ -224,27 +224,8 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
    */
 
   public Console(Connection conn, Preferences prefs, String serverCommand ){
-    this.conn = conn;
-    this.prefs = prefs;
-
-
-    this.outputComponent = new ConsoleTextPane(this);
-    configureOutputComponent(outputComponent);
-    this.outputScrollPane = createOutputScrollPane(outputComponent);
-    this.inputComponent = new ConsoleTextField(this, serverCommand);
-    //this.inputComponent2 = new ConsoleImprovedInput(this, serverCommand);
-    
-    registerKeyboardAction(clearingActionListener, 
-        KeyStroke.getKeyStroke(KeyEvent.VK_L, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()),
-        WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
-    createUI(serverCommand);
-    
-    outputComponent.addKeyListener(this);
-    inputComponent.addKeyListener(this);
-    outputComponent.addContainerListener(this);
-    
-    init();
+    this(conn,prefs);
+      createPrefixSuplier(serverCommand);
   }
   
   /**
@@ -281,18 +262,18 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
     add(bottomPanel, BorderLayout.SOUTH);
   }
 
-  /**
-   * Creates UI for one-command consoles.
-   */
+    @Override
+    public int hashCode() {
+        return super.hashCode();    //To change body of overridden methods use File | Settings | File Templates.
+    }
 
-  private void createUI(String serverCommand) {
+    /**
+     * Method that creates prefix suplier.
+     */
 
-    prefixSupplier = new JTextField(serverCommand, serverCommand.length()-1);
-
-
-    //int fixedColumns = badColumns + 1;
-    //prefixSupplier.setColumns(fixedColumns);
-    prefixSupplier.addFocusListener(new FocusListener(){
+    public void createPrefixSuplier(String prefix){
+        prefixSupplier = new JTextField(prefix, prefix.length()-1);
+        prefixSupplier.addFocusListener(new FocusListener(){
             public void focusGained(FocusEvent e){
                 inputComponent.selectAll();
             }
@@ -300,26 +281,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
                 inputComponent.setCommandPrefix(prefixSupplier.getText().trim() + " ");
             }
         });
-    JButton clearButton = new JButton("Clear Console");
-    clearButton.addActionListener(clearingActionListener);
-    clearButton.setRequestFocusEnabled(false);
-    
-    // We always want input component to have focus
-    inputComponent.setNextFocusableComponent(inputComponent);
-    
-    bottomPanel = new JPanel(new BorderLayout());
-    bottomPanel.add(prefixSupplier, BorderLayout.WEST);
-    bottomPanel.add(inputComponent, BorderLayout.CENTER);
-    bottomPanel.add(clearButton, BorderLayout.EAST);
-
-    
-    //setBorder(compoundBorder);
-    setLayout(new BorderLayout());
-    add(outputScrollPane, BorderLayout.CENTER);
-    add(bottomPanel, BorderLayout.SOUTH);
-        
-        
-        
+        bottomPanel.add(prefixSupplier, BorderLayout.WEST);
     }
 
 
@@ -813,7 +775,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
         
     }
 
-    /*MatchIterator emailMatches = EMAIL_REGEX.matcher(text).findAll();*/
+
      
      Matcher emailMatches = EMAIL_REGEX.matcher(text);
     while (emailMatches.find()){
@@ -1019,7 +981,6 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
   protected AttributeSet attributesForTextType(String textType){
     AttributeSet attributes = (AttributeSet)attributesCache.get(textType);
     if (attributes != null){
-        
         return attributes;
     }
 
@@ -1030,6 +991,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
     Boolean underline = (Boolean)prefs.lookup("font-underlined." + textType, Boolean.FALSE);
     Color foreground = (Color)prefs.lookup("foreground." + textType, Color.white);
     Float indent = (Float)prefs.lookup("indent." + textType, new Float(6.0));
+    Color background = (Color)prefs.lookup("background." + textType, Color.ORANGE);
     //System.out.println("[*]Indent value = " + indent);
 
    
@@ -1042,12 +1004,7 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
     mAttributes.addAttribute(StyleConstants.Underline, underline);
     mAttributes.addAttribute(StyleConstants.Foreground, foreground);
     mAttributes.addAttribute(StyleConstants.FirstLineIndent, indent);
-//    StyleConstants.setFontFamily(mAttributes, fontFamily);
-//    StyleConstants.setFontSize(mAttributes, fontSize);
-//    StyleConstants.setBold(mAttributes, bold);
-//    StyleConstants.setItalic(mAttributes, italic);
-//    StyleConstants.setUnderline(mAttributes, underlined);
-//    StyleConstants.setForeground(mAttributes, foreground);
+    mAttributes.addAttribute(StyleConstants.Background, background);  
     attributesCache.put(textType, mAttributes);
 
     return mAttributes;
@@ -1204,8 +1161,9 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
    */
 
   private void unregisterAsListenerToHierarchy(Component component){
-    if (component.isFocusTraversable())
-      component.removeKeyListener(this);
+    if (component.isFocusTraversable()) {
+        component.removeKeyListener(this);
+    }
 
     if (component instanceof Container){
       Container container = (Container)component;
@@ -1215,8 +1173,4 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
         unregisterAsListenerToHierarchy(container.getComponent(i));        
     }
   }
-
-
-  
-
 }
