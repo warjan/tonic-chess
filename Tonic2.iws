@@ -47,8 +47,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.iml" afterPath="$PROJECT_DIR$/Tonic2.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/Console.java" afterPath="$PROJECT_DIR$/src/free/jin/console/Console.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java" afterPath="$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Tonic2.iml" afterPath="$PROJECT_DIR$/Tonic.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/ConsoleManager.java" afterPath="$PROJECT_DIR$/src/free/jin/console/ConsoleManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/tonic/ui/swing/CloseableTabbedPaneUI.java" afterPath="$PROJECT_DIR$/src/org/tonic/ui/swing/CloseableTabbedPaneUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.iws" afterPath="$PROJECT_DIR$/Tonic2.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java" afterPath="$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.ipr" afterPath="$PROJECT_DIR$/Tonic2.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/ui/WindowingModePrefPanel.java" afterPath="$PROJECT_DIR$/src/free/jin/ui/WindowingModePrefPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/ConsoleTextPane.java" afterPath="$PROJECT_DIR$/src/free/jin/console/ConsoleTextPane.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lnfs/squareness.jar" afterPath="$PROJECT_DIR$/resources/lnfs/squareness.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/workarounds/FixedJTextPane.java" afterPath="$PROJECT_DIR$/src/free/workarounds/FixedJTextPane.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/ui/LookAndFeelPrefPanel.java" afterPath="$PROJECT_DIR$/src/free/jin/ui/LookAndFeelPrefPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/ui/LoginPanel.java" afterPath="$PROJECT_DIR$/src/free/jin/ui/LoginPanel.java" />
     </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
@@ -136,8 +148,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -163,91 +175,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/LoginPanel.java">
+      <file leaf-file-name="Console.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/console/Console.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="365" column="8" selection-start="10068" selection-end="10068" vertical-scroll-proportion="0.024590164">
+            <state line="209" column="41" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TonicLoginPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/TonicLoginPanel.java">
+      <file leaf-file-name="ChannelsManager.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="27" selection-start="1600" selection-end="1600" vertical-scroll-proportion="0.2208">
+            <state line="273" column="22" selection-start="7864" selection-end="7864" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/release/build.xml">
+      <file leaf-file-name="Container.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/awt/Container.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+            <state line="1450" column="0" selection-start="56144" selection-end="56144" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicTCTest/release/build.xml">
+      <file leaf-file-name="FreechessConsoleManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+            <state line="259" column="45" selection-start="9656" selection-end="9656" vertical-scroll-proportion="0.8207792">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tonic2.ipr" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tonic2.ipr">
+      <file leaf-file-name="BoardManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="47" selection-start="2525" selection-end="2528" vertical-scroll-proportion="-12.098361">
+            <state line="1061" column="38" selection-start="26215" selection-end="26215" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tonic2.iws" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Tonic2.iws">
+      <file leaf-file-name="BoardPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="22" selection-start="3117" selection-end="3117" vertical-scroll-proportion="-4.9180326">
+            <state line="437" column="34" selection-start="10178" selection-end="10178" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tonic2.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tonic2.iml">
+      <file leaf-file-name="FreechessConnection.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="717" column="0" selection-start="29885" selection-end="29885" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/build.xml">
+      <file leaf-file-name="Connection.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/util/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="237" column="9" selection-start="5948" selection-end="5948" vertical-scroll-proportion="0.019480519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MacOSXSpecific.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/resources/os-specific/macosx/free/jin/MacOSXSpecific.java">
+      <file leaf-file-name="SafeRunnable.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/util/SafeRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="21" selection-start="952" selection-end="952" vertical-scroll-proportion="0.024">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/DialogPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="29" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.024">
+            <state line="41" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.42857143">
               <folding />
             </state>
           </provider>
@@ -293,7 +296,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
+          <option name="myItemId" value="Tonic" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -303,11 +306,107 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="Tonic2" />
+          <option name="myItemId" value="Tonic" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic2" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic2" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src/free" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic2" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src/free" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src/free/jin" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic2" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Tonic" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src/free" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src/free/jin" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/home/whp/var/src/TonicSVN/tonic-chess/trunk/src/free/jin/channels" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -330,12 +429,12 @@
     <option name="lastEditedConfigurable" value="Tonic2" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="0.43945068" version="1" splitterProportion="0.5">
-      <flattenPackages />
+    <navigator currentView="ProjectPane" proportions="0.5" version="1" splitterProportion="0.5">
+      <flattenPackages ProjectPane="false" />
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="true" />
       <abbreviatePackageNames />
       <showStructure ProjectPane="true" />
       <autoscrollToSource />
@@ -344,14 +443,34 @@
     </navigator>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="RunManagerConfig.compileBeforeRunning" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="106" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="71" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="35" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="91" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="79" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="95" />
     <property name="last_opened_file_path" value="/home/whp/var/src/TonicTCTest/release" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="74" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="866" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="74" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="885" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="RunManagerConfig.compileBeforeRunning" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="Regex">
@@ -365,75 +484,34 @@
     <option name="referencePos" value="0" />
     <option name="showLabels" value="true" />
   </component>
-  <component name="RunManager" selected="Application.JBoard">
+  <component name="RunManager" selected="Remote.Tonic-debug">
     <tempConfiguration default="false" name="JBoard" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="free.chess.JBoard" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Tonic2" />
+      <module name="Tonic" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="47653" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" value="&#10;additional-options=&#10;snapshots-dir=&#10;" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="/home/whp/var/sfw/idea-5281/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -470,6 +548,62 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="/home/whp/var/sfw/idea-5281/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
+      </RunnerSettings>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
+      </RunnerSettings>
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
     <configuration default="false" name="Test JBughousePiecesPanel" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="free.chess.JBughousePiecesPanel" />
       <option name="VM_PARAMETERS" value="" />
@@ -480,12 +614,15 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Tonic2" />
+      <module name="" />
       <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="57548" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" value="&#10;additional-options=&#10;snapshots-dir=&#10;" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
@@ -494,7 +631,27 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
-    <configuration default="false" name="Tonic" type="Remote" factoryName="Remote">
+    <configuration default="false" name="Tonic" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" value="free.jin.JinApplication" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Tonic" />
+      <envs />
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" value="&#10;additional-options=&#10;snapshots-dir=&#10;" />
+      </RunnerSettings>
+      <method>
+        <option name="Run Ant target" value="true" />
+        <option name="Make" value="false" />
+      </method>
+    </configuration>
+    <configuration default="false" name="Tonic-debug" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
@@ -505,16 +662,19 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="false" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" value="&#10;additional-options=&#10;snapshots-dir=&#10;" />
+      </RunnerSettings>
       <ConfigurationWrapper RunnerId="Debug" />
       <method>
-        <option name="Run ant target" value="true" />
         <option name="Make" value="false" />
       </method>
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.JBoard" />
       <item index="1" class="java.lang.String" itemvalue="Application.Test JBughousePiecesPanel" />
-      <item index="2" class="java.lang.String" itemvalue="Remote.Tonic" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Tonic" />
+      <item index="3" class="java.lang.String" itemvalue="Remote.Tonic-debug" />
     </list>
   </component>
   <component name="ScopeChooserConfigurable.UI">
@@ -568,38 +728,40 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="25" width="1288" height="977" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="25" width="1280" height="974" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20164126" order="8" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19561689" order="1" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25655645" order="1" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51308304" order="3" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28588235" order="8" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25347507" order="1" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4117647" order="1" />
+      <window_info id="Profile" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="19" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5129412" order="3" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" order="8" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31690142" order="8" />
-      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" order="-1" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" order="10" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3130129" order="12" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847533" order="7" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22889611" order="1" />
-      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32656378" order="0" x="25" y="130" width="307" height="565" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22812755" order="1" />
+      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19460343" order="0" x="25" y="130" width="307" height="565" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="15" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="17" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" order="2" />
-      <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" order="3" />
+      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" order="11" />
+      <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" order="4" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
+      <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" order="13" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
-      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982457" order="8" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982457" order="14" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="4" />
-      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32748538" order="8" />
-      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" order="8" />
+      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32748538" order="16" />
+      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" order="18" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -610,7 +772,7 @@
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Poking with release configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug #1882389 - http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1882389&amp;group_id=169064&amp;atid=848921" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -629,6 +791,9 @@
     <MESSAGE value="TODO: Make LookAndFeelPrefPanel class aware of laf classes in a jar" />
     <MESSAGE value="Changes in the build file for release" />
     <MESSAGE value="Poking with release configuration" />
+    <MESSAGE value="Cleaning IntelliJ IDEA files from previous settings" />
+    <MESSAGE value="First implementation of https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1596138&amp;group_id=169064&amp;atid=848924 feature request" />
+    <MESSAGE value="Fixed bug #1882389 - http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1882389&amp;group_id=169064&amp;atid=848921" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -667,25 +832,17 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-    <buildFile url="file:///home/whp/var/src/TonicCVS/tonic/build.xml">
+    <buildFile url="file://$PROJECT_DIR$/build.xml">
       <antCommandLine value="" />
-      <runInBackground value="false" />
+      <runInBackground value="true" />
       <targetFilters />
       <treeView value="true" />
       <verbose value="true" />
       <viewClosedWhenNoErrors value="false" />
     </buildFile>
-    <buildFile url="file:///home/whp/var/src/TonicCVS/tonic/release/build.xml">
+    <buildFile url="file://$PROJECT_DIR$/release/build.xml">
       <antCommandLine value="" />
-      <runInBackground value="false" />
-      <targetFilters />
-      <treeView value="true" />
-      <verbose value="true" />
-      <viewClosedWhenNoErrors value="false" />
-    </buildFile>
-    <buildFile url="file:///home/whp/var/src/TonicCVS/tonic/build.xml">
-      <antCommandLine value="" />
-      <runInBackground value="false" />
+      <runInBackground value="true" />
       <targetFilters />
       <treeView value="true" />
       <verbose value="true" />
@@ -693,114 +850,114 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/Tonic2.iml">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/freechess/JinFreechessConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="53" column="13" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.030425964">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicTCTest/build.xml">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/plugin/Plugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="4" selection-start="507" selection-end="507" vertical-scroll-proportion="0.4338843">
+        <state line="365" column="20" selection-start="9275" selection-end="9275" vertical-scroll-proportion="0.030425964">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/board/JinBoard.java">
+    <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/javax/swing/JComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="18" selection-start="1654" selection-end="1654" vertical-scroll-proportion="0.029013539">
+        <state line="2180" column="16" selection-start="81350" selection-end="81350" vertical-scroll-proportion="0.3326572">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/org/tonic/ui/swing/CloseableTabbedPane.java">
+    <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/awt/event/KeyEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="53" selection-start="524" selection-end="524" vertical-scroll-proportion="0.041044775">
+        <state line="265" column="28" selection-start="10647" selection-end="10647" vertical-scroll-proportion="2.7971601">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/Position.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/tray/TrayManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="9" selection-start="2688" selection-end="2688" vertical-scroll-proportion="0.019011406">
+        <state line="383" column="11" selection-start="9959" selection-end="9959" vertical-scroll-proportion="0.48582995">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/chess/ChesslikeGenericVariant.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/console/ConsoleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="19" selection-start="4041" selection-end="4041" vertical-scroll-proportion="0.019011406">
+        <state line="470" column="24" selection-start="14557" selection-end="14557" vertical-scroll-proportion="0.030364372">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/LoginPanel.java">
+    <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/awt/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="365" column="8" selection-start="10068" selection-end="10068" vertical-scroll-proportion="0.024590164">
+        <state line="2616" column="16" selection-start="89423" selection-end="89423" vertical-scroll-proportion="0.14979757">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/TonicLoginPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/console/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="27" selection-start="1600" selection-end="1600" vertical-scroll-proportion="0.2208">
+        <state line="209" column="41" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/build.xml">
+    <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="1450" column="0" selection-start="56144" selection-end="56144" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/resources/os-specific/macosx/free/jin/MacOSXSpecific.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="21" selection-start="952" selection-end="952" vertical-scroll-proportion="0.024">
+        <state line="259" column="45" selection-start="9656" selection-end="9656" vertical-scroll-proportion="0.8207792">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/src/free/jin/ui/DialogPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="29" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.024">
+        <state line="1061" column="38" selection-start="26215" selection-end="26215" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicCVS/tonic/release/build.xml">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+        <state line="437" column="34" selection-start="10178" selection-end="10178" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tonic2.iml">
+    <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="717" column="0" selection-start="29885" selection-end="29885" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///home/whp/var/src/TonicTCTest/release/build.xml">
+    <entry file="file://$PROJECT_DIR$/src/free/util/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.02538071">
+        <state line="237" column="9" selection-start="5948" selection-end="5948" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tonic2.ipr">
+    <entry file="file://$PROJECT_DIR$/src/free/util/SafeRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="47" selection-start="2525" selection-end="2528" vertical-scroll-proportion="-12.098361">
+        <state line="41" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.42857143">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tonic2.iws">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="22" selection-start="3117" selection-end="3117" vertical-scroll-proportion="-4.9180326">
+        <state line="273" column="22" selection-start="7864" selection-end="7864" vertical-scroll-proportion="0.019480519">
           <folding />
         </state>
       </provider>
