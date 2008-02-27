@@ -24,12 +24,12 @@ package free.jin.console.fics;
 import free.jin.console.Console;
 import free.jin.console.ConsoleManager;
 import free.jin.event.ChatEvent;
-import free.jin.ui.PreferencesPanel;
 import free.jin.ui.OptionPanel;
+import free.jin.ui.PreferencesPanel;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -56,7 +56,7 @@ public class FreechessConsoleManager extends ConsoleManager{
       //Typed mapped to strings are:
         //          announcment         qtell       channel-tell        cshout          kibitz          say             ptell           tell            shout         ishout              (qtell.tourney tshout)      whisper
         //indices       0                   1               2               3           4               5                   6               7             8             9                         10                  11              12
-      String[] ct = {"Announcments", "Bots shouts", "Channel tells", "Chess shouts", "Kibitzes", "Oppenents tells", "Partner tells", "Private tells", "Shouts", "Special shouts (-->)", "Tourney announcments", "Whispers", "Custom console..." };
+      String[] ct = {"Announcments", "Bots shouts", "Channel tells", "Chess shouts", "Kibitzes", "Opponents tells", "Partner tells", "Private tells", "Shouts", "Special shouts (-->)", "Tourney announcments", "Whispers", "Custom console..." };
       return ct;
   }
 
@@ -88,6 +88,7 @@ public class FreechessConsoleManager extends ConsoleManager{
      * Overrides method returning a type of new console.
      */
 
+    @Override
     protected String getConsoleType(){
 
         String type = "";
@@ -117,6 +118,7 @@ public class FreechessConsoleManager extends ConsoleManager{
      * Overrides method that returns new console name.
      */
 
+      @Override
       protected String getConsoleName(){
           String name = "";
           int typeId = newConsoleSpec.getSelectedIndex();
@@ -235,18 +237,19 @@ public class FreechessConsoleManager extends ConsoleManager{
 
     private class NewConsoleListener implements ActionListener {
         public void actionPerformed(ActionEvent evt){
+            String consoleSubtype = chanGameNumberInput.getText();
             if (
-                    ((String)newConsoleSpec.getSelectedItem()).equals("Specific channel") && !(chanGameNumberInput.getText().matches("\\d{1,3}"))){
+                    ((String)newConsoleSpec.getSelectedItem()).equals("Channel tells") && !(consoleSubtype.matches("\\d{1,3}"))){
                 OptionPanel.error(console, "Channel number error", "Type a number from 1 to 255, please.");
             }
 
-            if (((String)newConsoleSpec.getSelectedItem()).equals("Specific game") && !(chanGameNumberInput.getText().matches("\\d{1,4}"))){
+            if (((String)newConsoleSpec.getSelectedItem()).equals("Specific game") && !(consoleSubtype.matches("\\d{1,4}"))){
                 OptionPanel.error(console, "Game number error", "Type a number from 1 to 255, please.");
             }
             else{
             if (((String)newConsoleSpec.getSelectedItem()).equals("Private tells")){
 
-                openNewConsole("tell " + chanGameNumberInput.getText());
+                openNewConsole("tell " + consoleSubtype, null, null);
             }
             /*if (((String)newConsoleSpec.getSelectedItem()).matches("(Kibitzes)|(Whispers)")){
 
@@ -254,7 +257,7 @@ public class FreechessConsoleManager extends ConsoleManager{
 
                 else{
                 //System.out.println("EQUALS!!! " + chanGameNumberInput.getText() + "<->" +newConsoleSpec.getSelectedItem());
-              openNewConsole();
+              openNewConsole(null, null, null);
               }
             }
         }
