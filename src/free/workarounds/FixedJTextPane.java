@@ -21,7 +21,7 @@
  
 package free.workarounds;
 
-import javax.swing.JTextPane;
+import javax.swing.*;
 import javax.swing.text.StyledDocument;
 
 
@@ -49,6 +49,7 @@ public class FixedJTextPane extends JTextPane{
   
   
   
+    @Override
   public void paste(){
     try{
       super.paste();
@@ -62,6 +63,7 @@ public class FixedJTextPane extends JTextPane{
   
   
   
+    @Override
   public void copy(){
     try{
       super.copy();
@@ -75,6 +77,7 @@ public class FixedJTextPane extends JTextPane{
 
 
   
+    @Override
   public void cut(){
     try{
       super.cut();
