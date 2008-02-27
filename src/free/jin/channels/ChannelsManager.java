@@ -32,8 +32,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.util.*;
 import static java.util.Calendar.*;
+import java.util.*;
 
 
 /**
@@ -77,7 +77,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     /**
      * Map of chatConsoles. Channels' numbers are the keys.
      */
-    private Map<Integer, Console> chatConsoles;
+    private Map<String, Console> chatConsoles;
 
     /**
      * Map of chatConsoles in mainPane. Values are indices of tabs in it.
@@ -141,7 +141,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * Starts the plugin.
      */
     public void start() {
-        chatConsoles = Collections.synchronizedMap(new TreeMap<Integer, Console>());
+        chatConsoles = Collections.synchronizedMap(new TreeMap<String, Console>());
         channelSet = Collections.synchronizedSet(new TreeSet<Integer>());
         //chatTabs = new HashMap();
 
@@ -269,41 +269,36 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * @param remove        indicates wether channel should be removed (true) or added (false)
      * @param channelNumber number of channel to be added or removed
      */
-    private synchronized void updateChannelsView(boolean remove, int channelNumber) {
-        ArrayList<Integer> keys = new ArrayList<Integer>(chatConsoles.keySet());
-        Collections.sort(keys);
+    private synchronized void updateChannelsView(boolean remove, String channelNumber) {
+        TreeSet<String> keys = new TreeSet<String>(chatConsoles.keySet());
+        Console consoleToRemove;
 
-        Iterator<Integer> iterator = keys.iterator();
+        if (chatConsoles.containsKey(channelNumber) && remove){
+            consoleToRemove = chatConsoles.remove(channelNumber);
+            mainPane.remove(consoleToRemove);
+        }
+        Iterator<String> iterator = keys.iterator();
 
-        //mainPane.removeAll();
-        //mainPane.updateUI();
-        //int i = 0;
+
 
         while (iterator.hasNext()) {
-            Integer nextKey = iterator.next();
+            String nextKey = iterator.next();
 
-            if (chatConsoles.containsKey(new Integer(channelNumber)) && remove) {
-                if (nextKey.equals(new Integer(channelNumber))) {
+            
 
-                    mainPane.remove(chatConsoles.remove(new Integer(channelNumber)));
-
-                    //mainPane.updateUI();
-                }
-            }
-
-            if (!chatConsoles.containsKey(new Integer(channelNumber)) && !remove) {
+            if (!chatConsoles.containsKey(channelNumber) && !remove) {
                 int index;
 
                 for (int i1 = keys.size() - 1; i1 >= 0; i1--) {
 
-                    if (channelNumber > (keys.get(i1)).intValue()) {
+                    if (channelNumber > (keys.get(i1))) {
                         index = i1 + 1;
 
-                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + Integer.toString(channelNumber)));
-                        chatConsoles.put(new Integer(channelNumber), addConsole);
+                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + channelNumber);
+                        chatConsoles.put(channelNumber, addConsole);
 
 
-                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
+                        mainPane.insertTab(channelNumber, nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
                         //mainPane.updateUI();
                         break;
                     } else if (i1 < 1) {
@@ -311,10 +306,10 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                         index = 0;
 
                         Console addConsole = new Console(getConn(), consolePreferences, ("tell " + Integer.toString(channelNumber)));
-                        chatConsoles.put(new Integer(channelNumber), addConsole);
+                        chatConsoles.put(channelNumber, addConsole);
 
 
-                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
+                        mainPane.insertTab(channelNumber, nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
                         //mainPane.updateUI();
                         break;
                     }
@@ -354,8 +349,9 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
 
             for (int i = 0; i < channels.length; i++) {
-                Console chatConsole = new Console(getConn(), consolePreferences, ("tell " + channels[i]));
-                chatConsoles.put(new Integer(channels[i]), chatConsole);
+                String channelName = String.valueOf(channels[i]);
+                Console chatConsole = new Console(getConn(), consolePreferences, ("tell " + channelName));
+                chatConsoles.put(channelName, chatConsole);
                 mainPane.addTab(Integer.toString(channels[i]), nullIcon, chatConsole);
                 channelSet.add(new Integer(channels[i]));
 
@@ -465,6 +461,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
             Console selectedConsole = (Console) mainPane.getSelectedComponent();
 
+            //TODO: Change below code to not depend on tab count, but rather on the content or title
             if (!receivingConsole.equals(selectedConsole)) {
                 Integer index = null;
                 //Integer index = (Integer) chatTabs.get(receivingConsole);
@@ -499,7 +496,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     }
 
     /**
-     * This method display graphic indicator on the tab when messega is sent to not-selected tab.
+     * This method display graphic indicator on the tab when message is sent to not-selected tab.
      * @param message - text of message sent to client from server.
      * @param index - the number of tab to be hightlighted.
      */
@@ -609,7 +606,8 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      */
     public void stateChanged(ChangeEvent e) {
 
-        mainPane.setIconAt(mainPane.getSelectedIndex(), nullIcon);
+       mainPane.setIconAt(mainPane.getSelectedIndex(), nullIcon);
+
 
     }
 
@@ -664,7 +662,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     public void plainTextReceived(PlainTextEvent evt) {
         Console selectedConsole = (Console) mainPane.getSelectedComponent();
         Console receivingConsole = chatConsoles.get(502);
-        if (listReceived){
+        if (listReceived && receivingConsole != null){
             receivingConsole.addToOutput(evt.getText(),"plain");
             if(!selectedConsole.equals(receivingConsole)){
                 highlightTab("", mainPane.getTabCount() - 1 );
