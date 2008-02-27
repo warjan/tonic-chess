@@ -351,15 +351,35 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
     }
 
      public void openNewConsole(String prefix, String nameForConsole, String typeForConsole){
+
+        if ( nameForConsole == null ){
+            nameForConsole = getConsoleName();
+        }
+
+        if ( typeForConsole == null ){
+            typeForConsole = getConsoleType();
+        }
+        Console newConsole;
+        PluginUIContainer newConsoleContainer;
         int newConsoleHeight = getPrefs().getInt("newconsole-height");
         int newConsoleWidth = getPrefs().getInt("newconsole-width");
-        Console newConsole = createConsole(prefix);
-        newConsole.setPreferredSize(new Dimension(newConsoleWidth, newConsoleHeight));
-        //String consoleName = nameForConsole;
-        //String consoleType = typeForConsole;
 
-        PluginUIContainer newConsoleContainer = createContainer(typeForConsole, UIProvider.CLOSEABLE_CONTAINER_MODE);
-        newConsoleContainer.setTitle(nameForConsole);
+         if ( prefix != null ){
+             newConsole = createConsole(prefix);
+         }
+         else {
+              newConsole = createConsole();
+         }
+        newConsole.setPreferredSize(new Dimension(newConsoleWidth, newConsoleHeight));
+
+
+             newConsoleContainer = createContainer(typeForConsole, UIProvider.CLOSEABLE_CONTAINER_MODE);
+
+
+         
+
+            newConsoleContainer.setTitle(nameForConsole);
+
 
         newConsoleContainer.addPluginUIListener(pul);
 
@@ -373,8 +393,8 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
 
 
         newConsoleContainer.setVisible(true);
-        consoleContainer.setTitle("Main Console - " + getConn().getUsername() +
-                " on " + getServer().getLongName());
+        /*consoleContainer.setTitle("Main Console - " + getConn().getUsername() +
+                " on " + getServer().getLongName());*/
      }
 
     /**
@@ -452,10 +472,6 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
     }
 
     //TODO review Console class to find out how to filter messages.
-    /*protected Console createConsole(){
-        return new Console(getConn(), getPrefs(), )
-    }*/
-
 
     /**
      * Sets the current game lists display style to the specified value. Possible
