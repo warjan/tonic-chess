@@ -151,7 +151,7 @@ public class LookAndFeelPrefPanel extends PreferencesPanel{
     scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     JPanel restartPanel = new JPanel(new GridLayout(2, 1, 5, 5));
-    restartPanel.add(new JLabel("You must restart Jin to apply"));
+    restartPanel.add(new JLabel("You must restart Tonic to apply"));
     restartPanel.add(new JLabel("the new Look and Feel"));
     
     setLayout(new BorderLayout(10, 10));
