@@ -21,21 +21,13 @@
 
 package free.jin.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Enumeration;
-
-import javax.swing.Box;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
 import free.jin.BadChangesException;
 import free.jin.Jin;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -111,9 +103,9 @@ public class WindowingModePrefPanel extends PreferencesPanel{
     sdiMode.setMnemonic('S');
     ddiModeFDock.setMnemonic('F');
     
-    mdiMode.setToolTipText("Jin windows are placed inside one outer window");
-    sdiMode.setToolTipText("Jin windows are separate, OS native, windows");
-    ddiModeFDock.setToolTipText("Tonic windows are placed with flexdock docking manager");
+    mdiMode.setToolTipText("Tonic's windows are placed inside one outer window");
+    sdiMode.setToolTipText("Tonic's windows are separate, OS native, windows");
+    ddiModeFDock.setToolTipText("Tonic's windows are placed with flexdock docking manager");
     
     Container modesPanel = Box.createVerticalBox();
     modesPanel.add(mdiMode);
@@ -121,7 +113,7 @@ public class WindowingModePrefPanel extends PreferencesPanel{
     modesPanel.add(ddiModeFDock);
     
     Container restartPane = new JPanel(new GridLayout(2, 1, 5, 5));
-    restartPane.add(new JLabel("You must restart Jin to apply"));
+    restartPane.add(new JLabel("You must restart Tonic to apply"));
     restartPane.add(new JLabel("a different windowing mode"));
 
     setLayout(new BorderLayout(10, 10));
