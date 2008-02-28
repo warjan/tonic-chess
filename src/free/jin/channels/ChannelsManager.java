@@ -270,31 +270,30 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * @param channelNumber number of channel to be added or removed
      */
     private synchronized void updateChannelsView(boolean remove, String channelNumber) {
-        TreeSet<String> keys = new TreeSet<String>(chatConsoles.keySet());
-        Console consoleToRemove;
+
 
         if (chatConsoles.containsKey(channelNumber) && remove){
-            consoleToRemove = chatConsoles.remove(channelNumber);
+            Console consoleToRemove = chatConsoles.remove(channelNumber);
             mainPane.remove(consoleToRemove);
-        }
+        } else if (!chatConsoles.containsKey(channelNumber) && !remove){
+        TreeSet<String> keys = new TreeSet<String>(chatConsoles.keySet());
         Iterator<String> iterator = keys.iterator();
-
-
-
+            int i = 0;
         while (iterator.hasNext()) {
             String nextKey = iterator.next();
+            i++;
 
-            
 
-            if (!chatConsoles.containsKey(channelNumber) && !remove) {
+
+
                 int index;
 
                 for (int i1 = keys.size() - 1; i1 >= 0; i1--) {
 
-                    if (channelNumber > (keys.get(i1))) {
+                    if (channelNumber > nextKey) {
                         index = i1 + 1;
 
-                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + channelNumber);
+                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + channelNumber));
                         chatConsoles.put(channelNumber, addConsole);
 
 
@@ -314,8 +313,14 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                         break;
                     }
                 }
-            }
+
         }
+        }
+
+
+
+
+
     }
 
     /**

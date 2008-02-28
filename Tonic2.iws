@@ -47,20 +47,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/Console.java" afterPath="$PROJECT_DIR$/src/free/jin/console/Console.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java" afterPath="$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Tonic2.iml" afterPath="$PROJECT_DIR$/Tonic.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/ConsoleManager.java" afterPath="$PROJECT_DIR$/src/free/jin/console/ConsoleManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/tonic/ui/swing/CloseableTabbedPaneUI.java" afterPath="$PROJECT_DIR$/src/org/tonic/ui/swing/CloseableTabbedPaneUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.iws" afterPath="$PROJECT_DIR$/Tonic2.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java" afterPath="$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tonic2.ipr" afterPath="$PROJECT_DIR$/Tonic2.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/ui/WindowingModePrefPanel.java" afterPath="$PROJECT_DIR$/src/free/jin/ui/WindowingModePrefPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/console/ConsoleTextPane.java" afterPath="$PROJECT_DIR$/src/free/jin/console/ConsoleTextPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lnfs/squareness.jar" afterPath="$PROJECT_DIR$/resources/lnfs/squareness.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/workarounds/FixedJTextPane.java" afterPath="$PROJECT_DIR$/src/free/workarounds/FixedJTextPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/ui/LookAndFeelPrefPanel.java" afterPath="$PROJECT_DIR$/src/free/jin/ui/LookAndFeelPrefPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/ui/LoginPanel.java" afterPath="$PROJECT_DIR$/src/free/jin/ui/LoginPanel.java" />
     </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
@@ -148,8 +136,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -178,7 +166,7 @@
       <file leaf-file-name="Console.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/jin/console/Console.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="209" column="41" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.019480519">
+            <state line="209" column="41" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.036319613">
               <folding />
             </state>
           </provider>
@@ -187,7 +175,18 @@
       <file leaf-file-name="ChannelsManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="273" column="22" selection-start="7864" selection-end="7864" vertical-scroll-proportion="0.019480519">
+            <state line="292" column="37" selection-start="8433" selection-end="8433" vertical-scroll-proportion="0.60048425">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/util/TreeSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="13" selection-start="3502" selection-end="3502" vertical-scroll-proportion="0.33171913">
               <folding />
             </state>
           </provider>
@@ -196,7 +195,7 @@
       <file leaf-file-name="Container.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/awt/Container.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1450" column="0" selection-start="56144" selection-end="56144" vertical-scroll-proportion="0.019480519">
+            <state line="1450" column="0" selection-start="56144" selection-end="56144" vertical-scroll-proportion="0.036319613">
               <folding />
             </state>
           </provider>
@@ -205,8 +204,10 @@
       <file leaf-file-name="FreechessConsoleManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="259" column="45" selection-start="9656" selection-end="9656" vertical-scroll-proportion="0.8207792">
-              <folding />
+            <state line="259" column="45" selection-start="9656" selection-end="9656" vertical-scroll-proportion="1.5302663">
+              <folding>
+                <marker date="1204161863000" expanded="false" signature="955:1218" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -214,7 +215,7 @@
       <file leaf-file-name="BoardManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1061" column="38" selection-start="26215" selection-end="26215" vertical-scroll-proportion="0.019480519">
+            <state line="1061" column="38" selection-start="26215" selection-end="26215" vertical-scroll-proportion="0.036319613">
               <folding />
             </state>
           </provider>
@@ -223,7 +224,7 @@
       <file leaf-file-name="BoardPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="437" column="34" selection-start="10178" selection-end="10178" vertical-scroll-proportion="0.019480519">
+            <state line="437" column="34" selection-start="10178" selection-end="10178" vertical-scroll-proportion="0.036319613">
               <folding />
             </state>
           </provider>
@@ -232,7 +233,7 @@
       <file leaf-file-name="FreechessConnection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="717" column="0" selection-start="29885" selection-end="29885" vertical-scroll-proportion="0.019480519">
+            <state line="717" column="0" selection-start="29885" selection-end="29885" vertical-scroll-proportion="0.036319613">
               <folding />
             </state>
           </provider>
@@ -241,7 +242,7 @@
       <file leaf-file-name="Connection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/util/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="237" column="9" selection-start="5948" selection-end="5948" vertical-scroll-proportion="0.019480519">
+            <state line="237" column="9" selection-start="5948" selection-end="5948" vertical-scroll-proportion="0.036319613">
               <folding />
             </state>
           </provider>
@@ -250,7 +251,7 @@
       <file leaf-file-name="SafeRunnable.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/util/SafeRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.42857143">
+            <state line="41" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.7990315">
               <folding />
             </state>
           </provider>
@@ -512,12 +513,68 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
+      </RunnerSettings>
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="/home/whp/var/sfw/idea-5281/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
+      </RunnerSettings>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
@@ -544,62 +601,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="/home/whp/var/sfw/idea-5281/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <RunnerSettings RunnerId="Profile ">
-        <option name="myExternalizedOptions" />
-      </RunnerSettings>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <RunnerSettings RunnerId="Profile ">
-        <option name="myExternalizedOptions" />
-      </RunnerSettings>
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
       <method>
         <option name="Make" value="true" />
       </method>
@@ -732,10 +733,10 @@
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28588235" order="8" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28521127" order="8" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25347507" order="1" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4117647" order="1" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41079813" order="1" />
       <window_info id="Profile" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="19" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5129412" order="3" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -745,7 +746,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847533" order="7" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22812755" order="1" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19460343" order="0" x="25" y="130" width="307" height="565" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20850368" order="0" x="25" y="130" width="307" height="565" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="15" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
@@ -772,7 +773,7 @@
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug #1882389 - http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1882389&amp;group_id=169064&amp;atid=848921" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated squareness look and feel jar." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -794,6 +795,16 @@
     <MESSAGE value="Cleaning IntelliJ IDEA files from previous settings" />
     <MESSAGE value="First implementation of https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1596138&amp;group_id=169064&amp;atid=848924 feature request" />
     <MESSAGE value="Fixed bug #1882389 - http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1882389&amp;group_id=169064&amp;atid=848921" />
+    <MESSAGE value="Inspection profile and other changes to Idea's project files." />
+    <MESSAGE value="Changed Jin to Tonic in displayed text." />
+    <MESSAGE value="Trying to get rid of bug http://sourceforge.net/tracker/?group_id=169064&amp;atid=848921 Unfortunatetly this change doesn't fix it." />
+    <MESSAGE value="Changing Channels Manager to better handle optional shout, cshout, plain text tabs." />
+    <MESSAGE value="Merging method for creating new consoles with prefix suplier." />
+    <MESSAGE value="Merging methods for creating new consoles." />
+    <MESSAGE value="Working on making Console to display different backgrounds for messages." />
+    <MESSAGE value="Added @Override annotations." />
+    <MESSAGE value="Added @Override annotations and changes method calls for openning new consoles." />
+    <MESSAGE value="Updated squareness look and feel jar." />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -850,13 +861,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/free/jin/freechess/JinFreechessConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="13" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.030425964">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/plugin/Plugin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="365" column="20" selection-start="9275" selection-end="9275" vertical-scroll-proportion="0.030425964">
@@ -901,64 +905,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/console/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="209" column="41" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.019480519">
+        <state line="209" column="41" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.036319613">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1450" column="0" selection-start="56144" selection-end="56144" vertical-scroll-proportion="0.019480519">
+        <state line="1450" column="0" selection-start="56144" selection-end="56144" vertical-scroll-proportion="0.036319613">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="45" selection-start="9656" selection-end="9656" vertical-scroll-proportion="0.8207792">
-          <folding />
+        <state line="259" column="45" selection-start="9656" selection-end="9656" vertical-scroll-proportion="1.5302663">
+          <folding>
+            <marker date="1204161863000" expanded="false" signature="955:1218" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1061" column="38" selection-start="26215" selection-end="26215" vertical-scroll-proportion="0.019480519">
+        <state line="1061" column="38" selection-start="26215" selection-end="26215" vertical-scroll-proportion="0.036319613">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="437" column="34" selection-start="10178" selection-end="10178" vertical-scroll-proportion="0.019480519">
+        <state line="437" column="34" selection-start="10178" selection-end="10178" vertical-scroll-proportion="0.036319613">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="717" column="0" selection-start="29885" selection-end="29885" vertical-scroll-proportion="0.019480519">
+        <state line="717" column="0" selection-start="29885" selection-end="29885" vertical-scroll-proportion="0.036319613">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/util/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="9" selection-start="5948" selection-end="5948" vertical-scroll-proportion="0.019480519">
+        <state line="237" column="9" selection-start="5948" selection-end="5948" vertical-scroll-proportion="0.036319613">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/util/SafeRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.42857143">
+        <state line="41" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.7990315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///home/whp/var/sfw/jdk1.6.0_10/src.zip!/java/util/TreeSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="13" selection-start="3502" selection-end="3502" vertical-scroll-proportion="0.33171913">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="273" column="22" selection-start="7864" selection-end="7864" vertical-scroll-proportion="0.019480519">
-          <folding />
+        <state line="292" column="37" selection-start="8433" selection-end="8433" vertical-scroll-proportion="0.60048425">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
