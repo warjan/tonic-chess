@@ -32,8 +32,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import static java.util.Calendar.*;
 import java.util.*;
+import static java.util.Calendar.*;
 
 
 /**
@@ -77,7 +77,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     /**
      * Map of chatConsoles. Channels' numbers are the keys.
      */
-    private Map<String, Console> chatConsoles;
+    private Map<Integer, Console> chatConsoles;
 
     /**
      * Map of chatConsoles in mainPane. Values are indices of tabs in it.
@@ -141,7 +141,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * Starts the plugin.
      */
     public void start() {
-        chatConsoles = Collections.synchronizedMap(new TreeMap<String, Console>());
+        chatConsoles = Collections.synchronizedMap(new TreeMap<Integer, Console>());
         channelSet = Collections.synchronizedSet(new TreeSet<Integer>());
         //chatTabs = new HashMap();
 
@@ -152,6 +152,8 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
         getControls();
 
         createChannelMenu();
+        //TODO: when regitering connection listener this class should check what kind of
+        //TODO: information it can display
         registerConnListeners();
     }
 
@@ -269,35 +271,41 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * @param remove        indicates wether channel should be removed (true) or added (false)
      * @param channelNumber number of channel to be added or removed
      */
-    private synchronized void updateChannelsView(boolean remove, String channelNumber) {
+    private synchronized void updateChannelsView(boolean remove, int channelNumber) {
+        ArrayList<Integer> keys = new ArrayList<Integer>(chatConsoles.keySet());
+        Collections.sort(keys);
 
+        Iterator<Integer> iterator = keys.iterator();
 
-        if (chatConsoles.containsKey(channelNumber) && remove){
-            Console consoleToRemove = chatConsoles.remove(channelNumber);
-            mainPane.remove(consoleToRemove);
-        } else if (!chatConsoles.containsKey(channelNumber) && !remove){
-        TreeSet<String> keys = new TreeSet<String>(chatConsoles.keySet());
-        Iterator<String> iterator = keys.iterator();
-            int i = 0;
+        //mainPane.removeAll();
+        //mainPane.updateUI();
+        //int i = 0;
+
         while (iterator.hasNext()) {
-            String nextKey = iterator.next();
-            i++;
+            Integer nextKey = iterator.next();
 
+            if (chatConsoles.containsKey(new Integer(channelNumber)) && remove) {
+                if (nextKey.equals(new Integer(channelNumber))) {
 
+                    mainPane.remove(chatConsoles.remove(new Integer(channelNumber)));
 
+                    //mainPane.updateUI();
+                }
+            }
 
+            if (!chatConsoles.containsKey(new Integer(channelNumber)) && !remove) {
                 int index;
 
                 for (int i1 = keys.size() - 1; i1 >= 0; i1--) {
 
-                    if (channelNumber > nextKey) {
+                    if (channelNumber > (keys.get(i1)).intValue()) {
                         index = i1 + 1;
 
-                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + channelNumber));
-                        chatConsoles.put(channelNumber, addConsole);
+                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + Integer.toString(channelNumber)));
+                        chatConsoles.put(new Integer(channelNumber), addConsole);
 
 
-                        mainPane.insertTab(channelNumber, nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
+                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
                         //mainPane.updateUI();
                         break;
                     } else if (i1 < 1) {
@@ -308,19 +316,13 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                         chatConsoles.put(channelNumber, addConsole);
 
 
-                        mainPane.insertTab(channelNumber, nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
+                        mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
                         //mainPane.updateUI();
                         break;
                     }
                 }
-
+            }
         }
-        }
-
-
-
-
-
     }
 
     /**
@@ -354,9 +356,8 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
 
             for (int i = 0; i < channels.length; i++) {
-                String channelName = String.valueOf(channels[i]);
-                Console chatConsole = new Console(getConn(), consolePreferences, ("tell " + channelName));
-                chatConsoles.put(channelName, chatConsole);
+                Console chatConsole = new Console(getConn(), consolePreferences, ("tell " + channels[i]));
+                chatConsoles.put(new Integer(channels[i]), chatConsole);
                 mainPane.addTab(Integer.toString(channels[i]), nullIcon, chatConsole);
                 channelSet.add(new Integer(channels[i]));
 
@@ -611,8 +612,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      */
     public void stateChanged(ChangeEvent e) {
 
-       mainPane.setIconAt(mainPane.getSelectedIndex(), nullIcon);
-
+        mainPane.setIconAt(mainPane.getSelectedIndex(), nullIcon);
 
     }
 
