@@ -7,6 +7,7 @@
       <antReference projectDefault="true" />
       <customJdkName value="" />
       <maximumHeapSize value="128" />
+      <maximumStackSize value="32" />
       <properties />
     </buildFile>
     <buildFile url="file://$PROJECT_DIR$/release/build.xml">
@@ -14,6 +15,7 @@
       <antReference projectDefault="true" />
       <customJdkName value="" />
       <maximumHeapSize value="128" />
+      <maximumStackSize value="32" />
       <properties />
     </buildFile>
   </component>
@@ -86,6 +88,7 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -108,12 +111,6 @@
       <profile version="1.0" is_locked="false">
         <option name="myName" value="MyProfile" />
         <option name="myLocal" value="false" />
-        <inspection_tool class="SillyAssignmentJS" level="WARNING" enabled="false" />
-        <inspection_tool class="IncompatibleMaskJS" level="WARNING" enabled="false" />
-        <inspection_tool class="PointlessBitwiseExpressionJS" level="WARNING" enabled="false">
-          <option name="m_ignoreExpressionsContainingConstants" value="false" />
-        </inspection_tool>
-        <inspection_tool class="ShiftOutOfRangeJS" level="WARNING" enabled="false" />
         <inspection_tool class="AnonymousClassMethodCount" level="WARNING" enabled="true">
           <option name="m_limit" value="1" />
         </inspection_tool>
@@ -235,18 +232,6 @@
           <option name="m_ignoreStaticAccessFromStaticContext" value="false" />
         </inspection_tool>
         <inspection_tool class="MultipleTypedDeclaration" level="WARNING" enabled="true" />
-        <inspection_tool class="ConstantConditionalExpressionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ConstantIfStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="FallthroughInSwitchStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="LoopStatementThatDoesntLoopJS" level="WARNING" enabled="false" />
-        <inspection_tool class="PointlessBooleanExpressionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="TrivialIfJS" level="WARNING" enabled="false" />
-        <inspection_tool class="TrivialConditionalJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryContinueJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryReturnJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLabelJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLabelOnBreakStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLabelOnContinueStatementJS" level="WARNING" enabled="false" />
         <inspection_tool class="CssNoGenericFontName" level="WARNING" enabled="false" />
         <inspection_tool class="CssOverwrittenProperties" level="WARNING" enabled="false" />
         <inspection_tool class="CssUnitlessNumber" level="WARNING" enabled="false" />
@@ -263,10 +248,6 @@
           </option>
         </inspection_tool>
         <inspection_tool class="CssUnusedSymbolInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLocalVariableJS" level="WARNING" enabled="false">
-          <option name="m_ignoreImmediatelyReturnedVariables" value="false" />
-          <option name="m_ignoreAnnotatedVariables" value="false" />
-        </inspection_tool>
         <inspection_tool class="LawOfDemeter" level="WARNING" enabled="true">
           <option name="ignoreLibraryCalls" value="true" />
         </inspection_tool>
@@ -307,10 +288,6 @@
           <option name="ignorePrivateMethods" value="true" />
         </inspection_tool>
         <inspection_tool class="ReturnOfDateField" level="WARNING" enabled="true" />
-        <inspection_tool class="ContinueOrBreakFromFinallyBlockJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ExceptionCaughtLocallyJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ReturnFromFinallyBlockJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ThrowFromFinallyBlockJS" level="WARNING" enabled="false" />
         <inspection_tool class="CatchGenericClass" level="WARNING" enabled="true" />
         <inspection_tool class="CheckedExceptionClass" level="WARNING" enabled="true" />
         <inspection_tool class="InstanceofCatchParameter" level="WARNING" enabled="true" />
@@ -318,7 +295,9 @@
         <inspection_tool class="ThreadDeathRethrown" level="WARNING" enabled="true" />
         <inspection_tool class="NestedTryStatement" level="WARNING" enabled="true" />
         <inspection_tool class="NonFinalFieldOfException" level="WARNING" enabled="true" />
-        <inspection_tool class="TooBroadCatch" level="WARNING" enabled="true" />
+        <inspection_tool class="TooBroadCatch" level="WARNING" enabled="true">
+          <option name="onlyWarnOnRootExceptions" value="false" />
+        </inspection_tool>
         <inspection_tool class="BadExceptionCaught" level="WARNING" enabled="true">
           <option name="exceptionsString" value="java.lang.NullPointerException,java.lang.IllegalMonitorStateException,java.lang.ArrayIndexOutOfBoundsException" />
         </inspection_tool>
@@ -404,19 +383,6 @@
           <option name="m_ignoreClassesWithNoConstructors" value="true" />
         </inspection_tool>
         <inspection_tool class="FieldHasSetterButNoGetter" level="WARNING" enabled="true" />
-        <inspection_tool class="JSDeprecatedSymbols" level="INFO" enabled="false" />
-        <inspection_tool class="JSDuplicatedDeclaration" level="WARNING" enabled="false" />
-        <inspection_tool class="JSUndeclaredVariable" level="INFO" enabled="false" />
-        <inspection_tool class="JSUnresolvedFunction" level="INFO" enabled="false" />
-        <inspection_tool class="JSUnresolvedVariable" level="INFO" enabled="false" />
-        <inspection_tool class="JSUnusedLocalSymbols" level="WARNING" enabled="false" />
-        <inspection_tool class="DuplicateCaseLabelJS" level="WARNING" enabled="false" />
-        <inspection_tool class="DuplicatePropertyOnObjectJS" level="WARNING" enabled="false" />
-        <inspection_tool class="BadExpressionStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="FunctionWithInconsistentReturnsJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ReservedWordUsedAsNameJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ThisExpressionReferencesGlobalObjectJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnreachableCodeJS" level="WARNING" enabled="false" />
         <inspection_tool class="AssertEqualsBetweenInconvertibleTypes" level="WARNING" enabled="false" />
         <inspection_tool class="ComparisonOfShortAndChar" level="WARNING" enabled="true" />
         <inspection_tool class="ComparisonToNaN" level="WARNING" enabled="true" />
@@ -442,20 +408,6 @@
         <inspection_tool class="UnaryPlus" level="WARNING" enabled="true" />
         <inspection_tool class="UnnecessaryUnaryMinus" level="WARNING" enabled="true" />
         <inspection_tool class="UnpredictableBigDecimalConstructorCall" level="WARNING" enabled="true" />
-        <inspection_tool class="PointlessArithmeticExpressionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="EmptyStatementBodyJS" level="WARNING" enabled="false">
-          <option name="m_reportEmptyBlocks" value="false" />
-        </inspection_tool>
-        <inspection_tool class="InfiniteLoopJS" level="WARNING" enabled="false" />
-        <inspection_tool class="InfiniteRecursionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="dependsOnMethodTestNG" level="WARNING" enabled="false" />
-        <inspection_tool class="groupsTestNG" level="WARNING" enabled="false">
-          <option name="groups">
-            <value>
-              <list size="0" />
-            </value>
-          </option>
-        </inspection_tool>
         <inspection_tool class="AccessToNonThreadSafeStaticFieldFromInstance" level="WARNING" enabled="true">
           <option name="nonThreadSafeTypes" value="java.text.DateFormat,java.util.Calendar" />
         </inspection_tool>
@@ -568,6 +520,7 @@
         <inspection_tool class="StaticVariableOfConcreteClass" level="WARNING" enabled="true" />
         <inspection_tool class="TypeMayBeWeakened" level="WARNING" enabled="true">
           <option name="useRighthandTypeAsWeakestTypeInAssignments" value="true" />
+          <option name="useParameterizedTypeForCollectionMethods" value="true" />
         </inspection_tool>
         <inspection_tool class="ReplaceAssignmentWithOperatorAssignment" level="WARNING" enabled="true">
           <option name="ignoreLazyOperators" value="true" />
@@ -618,8 +571,6 @@
         </inspection_tool>
         <inspection_tool class="ThisEscapedInConstructor" level="WARNING" enabled="true" />
         <inspection_tool class="NonThreadSafeLazyInitialization" level="WARNING" enabled="true" />
-        <inspection_tool class="JSUntypedDeclaration" level="INFO" enabled="false" />
-        <inspection_tool class="JSShowOverridingMarkers" level="INFO" enabled="false" />
         <inspection_tool class="SystemGC" level="WARNING" enabled="true" />
         <inspection_tool class="StaticCollection" level="WARNING" enabled="true">
           <option name="m_ignoreWeakCollections" value="false" />
@@ -705,29 +656,6 @@
         <inspection_tool class="DriverManagerGetConnection" level="WARNING" enabled="true" />
         <inspection_tool class="XmlWrongClosingTagName" level="ERROR" enabled="false" />
         <inspection_tool class="XmlWrongRootElement" level="ERROR" enabled="false" />
-        <inspection_tool class="ArgNamesErrorsInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="ArgNamesWarningsInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="DeclareParentsInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringAopErrorsInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringAopWarningsInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="AbstractBeanReferencesInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="AutowiredDependenciesInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="SpringBeanConstructorArgInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="DuplicatedBeanNamesInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringInjectionValueConsistencyInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="InjectionValueTypeInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringBeanLookupMethodInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringReplacedMethodsInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringBeanAutowiringInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringBeanDepedencyCheckInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringFactoryMethodInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringBeanInstantiationInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringBeanNameConventionInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="SpringInjectionValueStyleInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="SpringJamErrorInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="SpringModelInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SpringScopesInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="UtilSchemaInspection" level="ERROR" enabled="false" />
       </profile>
       <profile version="1.0" is_locked="false">
         <option name="myName" value="Project Default" />
@@ -735,12 +663,6 @@
         <inspection_tool class="AntDuplicateTargetsInspection" level="ERROR" enabled="false" />
         <inspection_tool class="AntDuplicateImportedTargetsInspection" level="WARNING" enabled="false" />
         <inspection_tool class="AntMissingPropertiesFileInspection" level="ERROR" enabled="false" />
-        <inspection_tool class="SillyAssignmentJS" level="WARNING" enabled="false" />
-        <inspection_tool class="IncompatibleMaskJS" level="WARNING" enabled="false" />
-        <inspection_tool class="PointlessBitwiseExpressionJS" level="WARNING" enabled="false">
-          <option name="m_ignoreExpressionsContainingConstants" value="false" />
-        </inspection_tool>
-        <inspection_tool class="ShiftOutOfRangeJS" level="WARNING" enabled="false" />
         <inspection_tool class="AnonymousClassMethodCount" level="WARNING" enabled="true">
           <option name="m_limit" value="1" />
         </inspection_tool>
@@ -862,18 +784,6 @@
           <option name="m_ignoreStaticAccessFromStaticContext" value="false" />
         </inspection_tool>
         <inspection_tool class="MultipleTypedDeclaration" level="WARNING" enabled="true" />
-        <inspection_tool class="ConstantConditionalExpressionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ConstantIfStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="FallthroughInSwitchStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="LoopStatementThatDoesntLoopJS" level="WARNING" enabled="false" />
-        <inspection_tool class="PointlessBooleanExpressionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="TrivialIfJS" level="WARNING" enabled="false" />
-        <inspection_tool class="TrivialConditionalJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryContinueJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryReturnJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLabelJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLabelOnBreakStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLabelOnContinueStatementJS" level="WARNING" enabled="false" />
         <inspection_tool class="CssNoGenericFontName" level="WARNING" enabled="false" />
         <inspection_tool class="CssOverwrittenProperties" level="WARNING" enabled="false" />
         <inspection_tool class="CssUnitlessNumber" level="WARNING" enabled="false" />
@@ -890,10 +800,6 @@
           </option>
         </inspection_tool>
         <inspection_tool class="CssUnusedSymbolInspection" level="WARNING" enabled="false" />
-        <inspection_tool class="UnnecessaryLocalVariableJS" level="WARNING" enabled="false">
-          <option name="m_ignoreImmediatelyReturnedVariables" value="false" />
-          <option name="m_ignoreAnnotatedVariables" value="false" />
-        </inspection_tool>
         <inspection_tool class="LawOfDemeter" level="WARNING" enabled="true">
           <option name="ignoreLibraryCalls" value="true" />
         </inspection_tool>
@@ -934,10 +840,6 @@
           <option name="ignorePrivateMethods" value="true" />
         </inspection_tool>
         <inspection_tool class="ReturnOfDateField" level="WARNING" enabled="true" />
-        <inspection_tool class="ContinueOrBreakFromFinallyBlockJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ExceptionCaughtLocallyJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ReturnFromFinallyBlockJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ThrowFromFinallyBlockJS" level="WARNING" enabled="false" />
         <inspection_tool class="CatchGenericClass" level="WARNING" enabled="true" />
         <inspection_tool class="CheckedExceptionClass" level="WARNING" enabled="true" />
         <inspection_tool class="InstanceofCatchParameter" level="WARNING" enabled="true" />
@@ -945,7 +847,9 @@
         <inspection_tool class="ThreadDeathRethrown" level="WARNING" enabled="true" />
         <inspection_tool class="NestedTryStatement" level="WARNING" enabled="true" />
         <inspection_tool class="NonFinalFieldOfException" level="WARNING" enabled="true" />
-        <inspection_tool class="TooBroadCatch" level="WARNING" enabled="true" />
+        <inspection_tool class="TooBroadCatch" level="WARNING" enabled="true">
+          <option name="onlyWarnOnRootExceptions" value="false" />
+        </inspection_tool>
         <inspection_tool class="BadExceptionCaught" level="WARNING" enabled="true">
           <option name="exceptionsString" value="java.lang.NullPointerException,java.lang.IllegalMonitorStateException,java.lang.ArrayIndexOutOfBoundsException" />
         </inspection_tool>
@@ -1031,19 +935,6 @@
           <option name="m_ignoreClassesWithNoConstructors" value="true" />
         </inspection_tool>
         <inspection_tool class="FieldHasSetterButNoGetter" level="WARNING" enabled="true" />
-        <inspection_tool class="JSDeprecatedSymbols" level="INFO" enabled="false" />
-        <inspection_tool class="JSDuplicatedDeclaration" level="WARNING" enabled="false" />
-        <inspection_tool class="JSUndeclaredVariable" level="INFO" enabled="false" />
-        <inspection_tool class="JSUnresolvedFunction" level="INFO" enabled="false" />
-        <inspection_tool class="JSUnresolvedVariable" level="INFO" enabled="false" />
-        <inspection_tool class="JSUnusedLocalSymbols" level="WARNING" enabled="false" />
-        <inspection_tool class="DuplicateCaseLabelJS" level="WARNING" enabled="false" />
-        <inspection_tool class="DuplicatePropertyOnObjectJS" level="WARNING" enabled="false" />
-        <inspection_tool class="BadExpressionStatementJS" level="WARNING" enabled="false" />
-        <inspection_tool class="FunctionWithInconsistentReturnsJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ReservedWordUsedAsNameJS" level="WARNING" enabled="false" />
-        <inspection_tool class="ThisExpressionReferencesGlobalObjectJS" level="WARNING" enabled="false" />
-        <inspection_tool class="UnreachableCodeJS" level="WARNING" enabled="false" />
         <inspection_tool class="AssertEqualsBetweenInconvertibleTypes" level="WARNING" enabled="false" />
         <inspection_tool class="ComparisonOfShortAndChar" level="WARNING" enabled="true" />
         <inspection_tool class="ComparisonToNaN" level="WARNING" enabled="true" />
@@ -1069,20 +960,6 @@
         <inspection_tool class="UnaryPlus" level="WARNING" enabled="true" />
         <inspection_tool class="UnnecessaryUnaryMinus" level="WARNING" enabled="true" />
         <inspection_tool class="UnpredictableBigDecimalConstructorCall" level="WARNING" enabled="true" />
-        <inspection_tool class="PointlessArithmeticExpressionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="EmptyStatementBodyJS" level="WARNING" enabled="false">
-          <option name="m_reportEmptyBlocks" value="false" />
-        </inspection_tool>
-        <inspection_tool class="InfiniteLoopJS" level="WARNING" enabled="false" />
-        <inspection_tool class="InfiniteRecursionJS" level="WARNING" enabled="false" />
-        <inspection_tool class="dependsOnMethodTestNG" level="WARNING" enabled="false" />
-        <inspection_tool class="groupsTestNG" level="WARNING" enabled="false">
-          <option name="groups">
-            <value>
-              <list size="0" />
-            </value>
-          </option>
-        </inspection_tool>
         <inspection_tool class="AccessToNonThreadSafeStaticFieldFromInstance" level="WARNING" enabled="true">
           <option name="nonThreadSafeTypes" value="java.text.DateFormat,java.util.Calendar" />
         </inspection_tool>

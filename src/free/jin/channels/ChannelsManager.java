@@ -58,18 +58,6 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     private JTabbedPane mainPane;
 
     /**
-     * Panel with updateButton and updateLabel.
-     */
-    private JPanel updatePanel;
-
-    /**
-     * Label that explains what does the updateButton.
-     */
-
-    //TODO Should not it be done through tooltip?
-    private JLabel updateLabel;
-
-    /**
      * ConsoleManager preferences.
      */
     private Preferences consolePreferences;
@@ -78,11 +66,6 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      * Map of chatConsoles. Channels' numbers are the keys.
      */
     private Map<Integer, Console> chatConsoles;
-
-    /**
-     * Map of chatConsoles in mainPane. Values are indices of tabs in it.
-     */
-    private Map chatTabs;
 
     /**
      * Boolean value indicating that channels manager received information about user's channels for the first time.
@@ -143,7 +126,6 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
     public void start() {
         chatConsoles = Collections.synchronizedMap(new TreeMap<Integer, Console>());
         channelSet = Collections.synchronizedSet(new TreeSet<Integer>());
-        //chatTabs = new HashMap();
 
         ui = getPluginUIContainer();
 
@@ -277,20 +259,13 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
         Iterator<Integer> iterator = keys.iterator();
 
-        //mainPane.removeAll();
-        //mainPane.updateUI();
-        //int i = 0;
-
         while (iterator.hasNext()) {
             Integer nextKey = iterator.next();
 
             if (chatConsoles.containsKey(new Integer(channelNumber)) && remove) {
-                if (nextKey.equals(new Integer(channelNumber))) {
-
+                //if (nextKey.equals(new Integer(channelNumber))) {
                     mainPane.remove(chatConsoles.remove(new Integer(channelNumber)));
-
-                    //mainPane.updateUI();
-                }
+                //}
             }
 
             if (!chatConsoles.containsKey(new Integer(channelNumber)) && !remove) {
@@ -301,23 +276,19 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
                     if (channelNumber > (keys.get(i1)).intValue()) {
                         index = i1 + 1;
 
-                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + Integer.toString(channelNumber)));
+                        Console addConsole = new Console(getConn(), consolePreferences, "tell " + Integer.toString(channelNumber));
                         chatConsoles.put(new Integer(channelNumber), addConsole);
-
-
                         mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
-                        //mainPane.updateUI();
+
                         break;
                     } else if (i1 < 1) {
 
                         index = 0;
 
-                        Console addConsole = new Console(getConn(), consolePreferences, ("tell " + Integer.toString(channelNumber)));
+                        Console addConsole = new Console(getConn(), consolePreferences, "tell " + Integer.toString(channelNumber));
                         chatConsoles.put(channelNumber, addConsole);
-
-
                         mainPane.insertTab(Integer.toString(channelNumber), nullIcon, chatConsoles.get(new Integer(channelNumber)), null, index);
-                        //mainPane.updateUI();
+
                         break;
                     }
                 }
@@ -357,7 +328,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
             for (int i = 0; i < channels.length; i++) {
                 Console chatConsole = new Console(getConn(), consolePreferences, ("tell " + channels[i]));
-                chatConsoles.put(new Integer(channels[i]), chatConsole);
+                chatConsoles.put(channels[i], chatConsole);
                 mainPane.addTab(Integer.toString(channels[i]), nullIcon, chatConsole);
                 channelSet.add(new Integer(channels[i]));
 
@@ -569,7 +540,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
         // Tells
         if (type.equals("tell")) {
-            return timestamp + sender + title + " tells you: " + message;
+            return new StringBuilder().append(timestamp).append(sender).append(title).append(" tells you: ").append(message).toString();
         } else if (type.equals("say")) {
             return timestamp +sender + title + " says: " + message;
         } else if (type.equals("ptell")) {
@@ -643,25 +614,25 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
 
     private String getTimestamp() {
 
-        String time = "";
+        StringBuilder time = new StringBuilder(8);
         if (getPrefs().getBool("date.display")){
          TimeZone tz = TimeZone.getDefault();
 
          String hour = String.valueOf(getInstance(tz).get(HOUR_OF_DAY));
             if (hour.length() == 1){
-                hour = "0" + hour;
+                hour = '0' + hour;
             }
         String minute = String.valueOf(getInstance(tz).get(MINUTE));
             if (minute.length() == 1){
-                minute = "0" + minute;
+                minute = '0' + minute;
             }
-        time = "["+ hour + ":" + minute + "] ";
+        time = time.append('[').append(hour).append(':').append(minute).append("] ");
             //time = tz.toString();
         }else {
 
         }
 
-                 return time;
+                 return time.toString();
     }
 
     public void plainTextReceived(PlainTextEvent evt) {
@@ -681,6 +652,7 @@ public class ChannelsManager extends Plugin implements ChannelsListener, Connect
      */
 
     class ComponentSeeker extends MouseAdapter {
+        @Override
         public void mouseClicked(MouseEvent e) {
             int x = e.getX();
             int y = e.getY();

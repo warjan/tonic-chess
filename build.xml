@@ -450,7 +450,7 @@
 		</copy>
                 <!-- Calling os and Java specific targets -->
                 <antcall target="doUnixStuff" />
-		        <antcall target="doWindowsStuff" />
+		<antcall target="doWindowsStuff" />
                 <antcall target="doMustangStuff" />
 
 	</target>
@@ -723,15 +723,15 @@
 
     </target>
     <target name="createexe" depends="init">
-		<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
+		<!--<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
 		    :${launch4j.dir}/lib/xstream.jar" />
-		<launch4j configFile="./l4j/Tonic.xml" />
+		<launch4j configFile="./l4j/Tonic.xml" />-->
 	</target>
 
     <!-- Do not use it - it doesn't work for now -->
     <target name="run" depends="build">
 
-		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Djava.library.path=./libs">
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Djava.library.path=./libs -Xms16M -Xmx32M">
 
 			<!--<jvmarg value="-Djava.library.path=libs"/>-->
 
