@@ -18,6 +18,12 @@
 		</fileset>
 	</path>
 
+    <!-- Loading tasks from ant-contrib -->
+    <taskdef resource="sf/net/antcontrib/antlib.xml">
+    <classpath>
+        <pathelement location="./ant-contrib-1.0b3.jar"/>
+    </classpath>
+   </taskdef>
 
 	<!-- Initializes stuff -->
 	<target name="init">
@@ -597,7 +603,7 @@
                 </copy>
 
         <!-- Calls a target that creates .exe file -->
-        <antcall target="createexe"/>
+        <!--<antcall target="createexe"/>-->
     </target>
 
 
@@ -652,7 +658,7 @@
         <RetroGuardTask infile="${libs.dir}/sound.jar" outfile="${libs.dir}/sound_obf.jar" rgsfile="./script.txt"/>
 
         <RetroGuardTask infile="${libs.dir}/bsh-core-2.0b4.jar" outfile="${libs.dir}/bsh-core-2.0b4_obf.jar" rgsfile="./script.txt" />
-        <RetroGuardTask infile="${libs.dir}/flexdock-0.4.0.jar" outfile="${libs.dir}/flexdock-0.4.0_obf.jar" rgsfile="./script.txt" />
+        <RetroGuardTask infile="${libs.dir}/flexdock-0.5.1.jar" outfile="${libs.dir}/flexdock-0.5.1_obf.jar" rgsfile="./script.txt" />
         <RetroGuardTask infile="${libs.dir}/jdic.jar" outfile="${libs.dir}/jdic_obf.jar" rgsfile="./script.txt" />
         <RetroGuardTask infile="${libs.dir}/jdic_stub.jar" outfile="${libs.dir}/jdic_stub_obf.jar" rgsfile="./script.txt" />
 
@@ -734,6 +740,14 @@
 		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Djava.library.path=./libs -Xms16M -Xmx32M">
 
 			<!--<jvmarg value="-Djava.library.path=libs"/>-->
+
+		</java>
+	</target>
+    <target name="run-debug" depends="build">
+
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Xdebug -Xrunjdwp:transport=dt_shmem,server=y,suspend=n,address=javadebug" >
+
+			<!--<jvmarg value="-Djava.library.path=libs -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"/>-->
 
 		</java>
 	</target>
