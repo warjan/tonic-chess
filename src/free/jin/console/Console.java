@@ -245,16 +245,16 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
   private void createUI(){
     
   
-    JButton clearButton = new JButton("Clear Console");
+    /*JButton clearButton = new JButton("Clear Console");
     clearButton.addActionListener(clearingActionListener);
-    clearButton.setRequestFocusEnabled(false);
+    clearButton.setRequestFocusEnabled(false);*/
     
     // We always want input component to have focus
     inputComponent.setNextFocusableComponent(inputComponent);
     
     bottomPanel = new JPanel(new BorderLayout());
     bottomPanel.add(inputComponent, BorderLayout.CENTER);
-    bottomPanel.add(clearButton, BorderLayout.EAST);
+    /*bottomPanel.add(clearButton, BorderLayout.EAST);*/
 
     
     setLayout(new BorderLayout());
