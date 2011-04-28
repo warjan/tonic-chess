@@ -263,7 +263,7 @@ public class ConsoleTextField extends FixedJTextField{
     if (evt.getID() == KeyEvent.KEY_PRESSED){
       switch (evt.getKeyCode()){
         case KeyEvent.VK_ENTER:
-            String commandPrefix = getCommandPrefix();
+          String commandPrefix = getCommandPrefix();
           String command = commandPrefix + " " + getText();
           long modifiers = 0;
           if (isShiftDown)

@@ -273,9 +273,10 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
 
     public void createPrefixSuplier(String prefix){
         prefixSupplier = new JTextField(prefix, prefix.length()-1);
+        inputComponent.setCommandPrefix(prefixSupplier.getText().trim() + " ");
         prefixSupplier.addFocusListener(new FocusListener(){
             public void focusGained(FocusEvent e){
-                inputComponent.selectAll();
+                prefixSupplier.selectAll();
             }
             public void focusLost(FocusEvent e){
                 inputComponent.setCommandPrefix(prefixSupplier.getText().trim() + " ");
