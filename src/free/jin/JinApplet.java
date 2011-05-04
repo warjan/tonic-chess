@@ -1063,7 +1063,7 @@ public class JinApplet extends Applet implements JinContext{
       String username = in.readUTF();
       int prefsLength = in.readInt();
       Preferences prefs = Preferences.load(new ByteArrayInputStream(IOUtilities.read(in, prefsLength)));
-      HashMap files = new HashMap(); // TODO: Add loading/saving files 
+      HashMap files = new HashMap();
        
       return new User(server, username, prefs, files);
     }
