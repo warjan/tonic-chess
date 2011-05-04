@@ -25,7 +25,7 @@
     </classpath>
    </taskdef>
 
-	<!-- Initializes stuff -->
+	<!-- Initializes stuff. Please review settings to build Tonic yourself -->
 	<target name="init">
 		<tstamp>
 			<format property="date" pattern="dd.MM.yyyy" />
@@ -52,12 +52,16 @@
 		<property name="release.version" value="build-${date}" />
 
 
-
-                <property name="tonic.classpath" value=".:${build.dir}/tonic.jar:${build.dir}/util.jar:${build.dir}/chess.jar:${libs.dir}/flexdock-0.4.0.jar:${libs.dir}/bsh-core-2.0b4.jar" />
+                <property name="debug.compile" value="false" />
+                <property name="tonic.classpath" value=".:${build.dir}/tonic.jar:${build.dir}/util.jar:${build.dir}/chess.jar:${libs.dir}/bsh-core-2.0b4.jar" />
                 <property name="launch4j.dir" value="/home/whp/var/sfw/launch4j" />
 
                 <condition property="buildForMustang">
                     <equals arg1="1.6" arg2="${java.specification.version}" />
+                </condition>
+                
+                <condition property="compileWithDebugInfo">
+                    <equals arg1="true" arg2="${debug.compile}" />
                 </condition>
 
 
@@ -76,27 +80,36 @@
 
 	<!-- This is just to compile everything, without jarring
 			 or placing things at appropriate locations -->
-	<target name="compile" depends="init">
+        <target name="compile" depends="init" unless="compileWithDebugInfo">
 		<mkdir dir="${classes.dir}" />
 		<echo message="COMPILER: ${build.compiler}" />
                 <echo message="JAVA VERSION: ${java.specification.version}" />
-		<javac srcdir="${source.dir}"
+		<javac sourcepath=""
+                       srcdir="${source.dir}"
+		       destdir="${classes.dir}"
+		       includes="**"             
+		       classpathref="compile.class.path">
+                           <exclude name="tonic/**"/>
+                           <exclude name="free/jin/mustangtray/**" />
+                           <exclude name="free/jin/ui/DdiUiProvider.java" />
+                </javac>
+        </target>
+        <!-- Compile everything with debug info -->
+        <target name="debug-compile" depends="init" if="compileWithDebugInfo">
+		<mkdir dir="${classes.dir}" />
+		<echo message="COMPILER: ${build.compiler}" />
+                <echo message="JAVA VERSION: ${java.specification.version}" />
+                <echo message="Compiling with debug info" />
+		<javac sourcepath=""
+                       srcdir="${source.dir}"
 		       destdir="${classes.dir}"
 		       includes="**"
-               excludes="tonic/**,free/jin/mustangtray/**"
-		       classpathref="compile.class.path">
-
-
-            <compilerarg compiler="modern" line="-target ${build.target}" />
-			<compilerarg compiler="modern" line="-source 5" />
-            <compilerarg compiler="modern" line="-g:lines,source,vars" />
-            <compilerarg compiler="modern" line="-Xlint:deprecation" />
-        </javac>
-
-
-
-    </target>
-
+		       classpathref="compile.class.path"
+                       debug="true"
+                       debuglevel="lines,vars,source">
+                       <exclude name="tonic/**,free/jin/mustangtray/**,free/jin/ui/DdiUiProvider.java" />
+                </javac>
+        </target>
 	<!-- Compiles a single piece set -->
 	<target name="compilePieceSet">
 		<mkdir dir="${classes.dir}/pieces/${piece-set-id}" />
@@ -111,7 +124,7 @@
 
 	<!-- After compiling, this jars everything properly
 			 and puts it where it belongs. -->
-	<target name="build" depends="init, compile">
+	<target name="build" depends="init, compile, debug-compile">
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${libs.dir}" />
 		<mkdir dir="${servers.dir}" />
@@ -500,11 +513,10 @@
             <!-- Compiles source files for MustangTray plugin -->
             <javac srcdir="${source.dir}"
 		       destdir="${classes.dir}"
-		       includes="**"
-               excludes="tonic/**"
+		       includes="free/jin/mustangtray/**"
+               
 		               classpathref="compile.class.path">
-			        <compilerarg compiler="modern" line="-target ${build.target}" />
-			        <compilerarg compiler="modern" line="-source 5" />
+			        
 		       </javac>
                  <!-- MustangTray plugin -->
                 <antcall target="buildPlugin">
