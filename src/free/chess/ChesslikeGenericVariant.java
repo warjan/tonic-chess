@@ -497,8 +497,6 @@ public class ChesslikeGenericVariant implements WildVariant{
     checkPosition(pos);
     //TODO: Fix this ugly hack
       if (move instanceof ChessMove) {
-
-
           ChessMove cmove = (ChessMove) move;
           return createMove(pos, cmove.getStartingSquare(), cmove.getEndingSquare(),
                   cmove.getPromotionTarget(), cmove.getStringRepresentation());
