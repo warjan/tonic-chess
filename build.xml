@@ -19,11 +19,11 @@
 	</path>
 
     <!-- Loading tasks from ant-contrib -->
-    <taskdef resource="sf/net/antcontrib/antlib.xml">
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
     <classpath>
-        <pathelement location="./ant-contrib-1.0b3.jar"/>
+        <pathelement location="ant-contrib-1.0b3.jar"/>
     </classpath>
-   </taskdef>
+    </taskdef>
 
 	<!-- Initializes stuff. Please review settings to build Tonic yourself -->
 	<target name="init">
