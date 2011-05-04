@@ -3,6 +3,9 @@
     <type>org.netbeans.modules.ant.freeform</type>
     <configuration>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>tonic</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
             <!-- Do not use Project Properties customizer when editing this file manually. -->
             <name>tonic</name>
             <properties/>
@@ -11,6 +14,7 @@
                     <label>src</label>
                     <type>java</type>
                     <location>src</location>
+                    <excludes>free/jin/ui/DdiUiProvider.java</excludes>
                 </source-folder>
             </folders>
             <ide-actions>
@@ -68,6 +72,7 @@
                     <source-folder style="packages">
                         <label>src</label>
                         <location>src</location>
+                        <excludes>free/jin/ui/DdiUiProvider.java</excludes>
                     </source-folder>
                     <source-file>
                         <location>build.xml</location>
@@ -88,12 +93,12 @@
             </view>
             <subprojects/>
         </general-data>
-        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
             <compilation-unit>
                 <package-root>src</package-root>
-                <classpath mode="compile">resources/libs/jregex.jar:resources/libs/fics/timesealing.jar:resources/libs/icc/timestamping.jar:resources/libs/jdic.jar:resources/libs/bsh-core-2.0b4.jar:resources/os-specific/unix/jdic_stub.jar:resources/libs/flexdock-0.5.1.jar:resources/libs/commons-logging-1.1.jar</classpath>
+                <classpath mode="compile">resources/libs/fics/timesealing.jar;resources/libs/icc/timestamping.jar;resources/libs/jdic.jar;resources/libs/bsh-core-2.0b4.jar;resources/os-specific/unix/jdic_stub.jar;resources/libs/commons-logging-1.1.jar</classpath>
                 <built-to>classes</built-to>
-                <source-level>1.5</source-level>
+                <source-level>1.6</source-level>
             </compilation-unit>
         </java-data>
     </configuration>
