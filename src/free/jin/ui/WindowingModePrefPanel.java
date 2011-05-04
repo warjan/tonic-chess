@@ -56,14 +56,8 @@ public class WindowingModePrefPanel extends PreferencesPanel{
   
   private final JRadioButton sdiMode;
   
-  /**
-   * The DDI mode radio button. For now with flexdock as a backend.
-   */
   
-  private final JRadioButton ddiModeFDock;
-  
-  
-  
+    
   /**
    * Creates a new <code>WindowingModePrefPanel</code>.
    */
@@ -72,12 +66,11 @@ public class WindowingModePrefPanel extends PreferencesPanel{
     String pref = Jin.getInstance().getPrefs().getString("uiProvider.classname");
     mdiMode = new JRadioButton("Multiple Document Interface", MdiUiProvider.class.getName().equals(pref));
     sdiMode = new JRadioButton("Single Document Interface", SdiUiProvider.class.getName().equals(pref));
-    ddiModeFDock = new JRadioButton("Dockable Document Interface - flexdock backend", DdiUiProvider.class.getName().equals(pref));
     
     bg = new ButtonGroup();
     bg.add(mdiMode);
     bg.add(sdiMode);
-    bg.add(ddiModeFDock);
+    
     
     ActionListener changeListener = new ActionListener(){
       public void actionPerformed(ActionEvent evt){
@@ -87,7 +80,7 @@ public class WindowingModePrefPanel extends PreferencesPanel{
     
     sdiMode.addActionListener(changeListener);
     mdiMode.addActionListener(changeListener);
-    ddiModeFDock.addActionListener(changeListener);
+    
     
     createUi();
   }
@@ -101,16 +94,13 @@ public class WindowingModePrefPanel extends PreferencesPanel{
   private void createUi(){
     mdiMode.setMnemonic('M');
     sdiMode.setMnemonic('S');
-    ddiModeFDock.setMnemonic('F');
     
     mdiMode.setToolTipText("Tonic's windows are placed inside one outer window");
     sdiMode.setToolTipText("Tonic's windows are separate, OS native, windows");
-    ddiModeFDock.setToolTipText("Tonic's windows are placed with flexdock docking manager");
     
     Container modesPanel = Box.createVerticalBox();
     modesPanel.add(mdiMode);
     modesPanel.add(sdiMode);
-    modesPanel.add(ddiModeFDock);
     
     Container restartPane = new JPanel(new GridLayout(2, 1, 5, 5));
     restartPane.add(new JLabel("You must restart Tonic to apply"));
@@ -131,11 +121,10 @@ public class WindowingModePrefPanel extends PreferencesPanel{
               
           }
       }*/
-    //Jin.getInstance().getPrefs().setString("uiProvider.classname", 
-    //    mdiMode.isSelected() ? MdiUiProvider.class.getName() : SdiUiProvider.class.getName());
+    Jin.getInstance().getPrefs().setString("uiProvider.classname", 
+        mdiMode.isSelected() ? MdiUiProvider.class.getName() : SdiUiProvider.class.getName());
     
-    Jin.getInstance().getPrefs().setString("uiProvider.classname", mdiMode.isSelected() ? MdiUiProvider.class.getName() : 
-        (sdiMode.isSelected() ? SdiUiProvider.class.getName() : DdiUiProvider.class.getName()));
+    
   }
   
   
