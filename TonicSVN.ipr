@@ -29,7 +29,11 @@
       <entry name="?*.tld" />
       <entry name="?*.ftl" />
     </wildcardResourcePatterns>
-    <annotationProcessing enabled="false" useClasspath="true" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
   </component>
   <component name="CopyrightManager" default="">
     <module2copyright />
@@ -204,14 +208,12 @@
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="svn" />
+    <mapping directory="" vcs="Git" />
   </component>
   <component name="libraryTable">
     <library name="libs1">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/resources/libs/flexdock-0.5.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/resources/libs/bsh-core-2.0b4.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/libs/jdic.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

@@ -1,16 +1,12 @@
 <project name="tonic" default="build">
 
     <!-- If needed you can set following propeties on command line with -Dproperty.name=property.value ant switch
-         release.platform - may be one of: windows, unix, macosx, applet
-         release.jtarget - may be one of: pretiger, tiger, mustang - this one does not work for now -->
+         release.platform - may be one of: windows, unix, macosx, applet -->
 
 
 
     <path id="compile.class.path">
 		<fileset dir="resources/libs">
-			<include name="*.jar"/>
-		</fileset>
-		<fileset dir="resources/libs/icc">
 			<include name="*.jar"/>
 		</fileset>
 		<fileset dir="resources/libs/fics">
@@ -33,7 +29,7 @@
 		<property name="build.dir" value="build" />
 		<property name="build.compiler" value="modern" />
 		<!--<property name="build.target" value="${java.specification.version}" />-->
-        <property name="build.target" value="1.5" />
+        <property name="build.target" value="1.6" />
 		<property name="build.compress" value="no" />
 		<property name="build.manifest" value="manifest.txt" />
 
@@ -57,7 +53,11 @@
                 <property name="launch4j.dir" value="/home/whp/var/sfw/launch4j" />
 
                 <condition property="buildForMustang">
-                    <equals arg1="1.6" arg2="${java.specification.version}" />
+                     <or>
+                         <equals arg1="1.6" arg2="${java.specification.version}" />
+                         <equals arg1="1.7" arg2="${java.specification.version}" />
+                     </or>
+
                 </condition>
                 
                 <condition property="compileWithDebugInfo">

@@ -19,8 +19,13 @@ import free.jin.ui.MdiUiProvider;
 import free.jin.ui.PreferencesPanel;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import java.awt.AWTException;
+import java.awt.Image;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
