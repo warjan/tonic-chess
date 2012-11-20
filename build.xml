@@ -1,7 +1,7 @@
 <project name="tonic" default="build">
 
     <!-- If needed you can set following propeties on command line with -Dproperty.name=property.value ant switch
-         release.platform - may be one of: windows, unix, macosx, applet -->
+         release.platform - may be one of: windows, unix, macosx-->
 
 
 
@@ -221,17 +221,6 @@
 			</or>
 		</condition>
 
-		<condition property="buildingApplet">
-			<or>
-				<isset property="applet" />
-				<and>
-					<isset property="release.platform" />
-					<equals arg1="applet" arg2="${release.platform}" />
-				</and>
-			</or>
-		</condition>
-
-
 		<!-- Copy Java resources -->
 		<copy todir="${classes.dir}">
 			<fileset dir="${source.dir}" excludes="**/*.java **/*.html" />
@@ -241,8 +230,6 @@
 		<!-- Call the tasks that do platform specific stuff -->
 
 		<antcall target="doMacOSXStuff" />
-		<antcall target="doAppletStuff" />
-
 
 		<!-- Set application name and version -->
 		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
@@ -576,25 +563,6 @@
 		</javac>
 
     </target>
-
-
-	<!-- If the property buildingApplet is set, does things required for Applets -->
-	<target name="doAppletStuff" if="buildingApplet">
-		<javac srcdir="resources/os-specific/applet"
-		       destdir="${build.dir}"
-		       includes="DetectJava.java">
-			<compilerarg compiler="modern" line="-target ${build.target}" />
-			<compilerarg compiler="modern" line="-source 1.2" />
-		</javac>
-
-		<copy todir="${build.dir}">
-			<fileset file="resources/os-specific/applet/**" excludes="**.java"/>
-		</copy>
-
- 		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
-			<entry key="lf.extra.count" value="0" />
-		</propertyfile>
-	</target>
 
     <target name="createexe" depends="init">
 		<!--<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
