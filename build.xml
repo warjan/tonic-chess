@@ -84,11 +84,7 @@
 		<mkdir dir="${classes.dir}" />
 		<echo message="COMPILER: ${build.compiler}" />
                 <echo message="JAVA VERSION: ${java.specification.version}" />
-		<javac sourcepath=""
-                       srcdir="${source.dir}"
-		       destdir="${classes.dir}"
-		       includes="**"             
-		       classpathref="compile.class.path">
+		<javac sourcepath="" srcdir="${source.dir}" destdir="${classes.dir}" includes="**" classpathref="compile.class.path">
                            <exclude name="tonic/**"/>
                            <exclude name="free/jin/mustangtray/**" />
                            <exclude name="free/jin/ui/DdiUiProvider.java" />
@@ -526,23 +522,6 @@
 
 	<!-- If the property buildingForWindows is set, does things required for Windows -->
 	<target name="doWindowsStuff" if="buildingForWindows">
-		<!-- Tray Manager plugin -->
-                    <antcall target="buildPlugin">
-                        <param name="plugin.id" value="tray" />
-                    </antcall>
-		 <!-- Copies os specific libraries for JDIC tray implementation -->
-            <copy todir="${build.dir}">
-                <fileset dir="resources/os-specific/windows">
-                                <exclude name="*.jar" />
-                </fileset>
-            </copy>
-                <copy todir="${libs.dir}">
-
-                                    <fileset dir="resources/os-specific/windows">
-                                        <include name="*.jar" />
-                                    </fileset>
-
-                </copy>
 
         <!-- Calls a target that creates .exe file -->
         <!--<antcall target="createexe"/>-->
