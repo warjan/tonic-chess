@@ -28,7 +28,6 @@ import free.chess.variants.atomic.Atomic;
 import free.chess.variants.bughouse.Bughouse;
 import free.chess.variants.fischerrandom.FischerRandom;
 import free.chess.variants.suicide.Suicide;
-import free.chessclub.ChessclubConnection;
 import free.freechess.*;
 import free.jin.*;
 import free.jin.event.*;
