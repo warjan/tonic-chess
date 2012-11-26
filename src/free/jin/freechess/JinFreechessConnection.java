@@ -54,7 +54,6 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
     SeekConnection, PGNConnection, ChannelsConnection, MessagesConnection, BughouseConnection{
 
 //TODO add implementation of FreechessChannelsConnection.
-//TODO add methods and regular expressions to handle channel list events.
 
     /**
     * Overrides getConnectionName() method returning name of connection. whp 2006
@@ -166,12 +165,14 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
    */
 
   public static Player playerForString(String s){
-    if (s.equals("B"))
-      return Player.BLACK_PLAYER;
-    else if (s.equals("W"))
-      return Player.WHITE_PLAYER;
-    else
-      throw new IllegalArgumentException("Bad player string: "+s);
+      switch (s) {
+          case "B":
+              return Player.BLACK_PLAYER;
+          case "W":
+              return Player.WHITE_PLAYER;
+          default:
+              throw new IllegalArgumentException("Bad player string: " + s);
+      }
   }
 
 
@@ -533,13 +534,13 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
   }
 
   /**
-   * Field that states wether next line is user's channel list.
+   * Field that states whether next line is user's channel list.
    */
 
    boolean userChannelListNext = true;
 
   /**
-   * Assures wether the next line is user's channel list.
+   * Assures whether the next line is user's channel list.
    */
 
    protected boolean processUserChannelListNext(String userName){
@@ -2833,15 +2834,16 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
 
 
   /**
-   * Overrides ChessclubConnection.execRunnable(Runnable) to execute the
-   * runnable on the AWT thread using SwingUtilities.invokeLater(Runnable), 
+   * Overrides Connection.execRunnable(Runnable) to execute the
+   * runnable on the AWT thread using SwingUtilities.invokeLater(Runnable),
    * since this class is meant to be used by Jin, a graphical interface using 
    * Swing.
    *
-   * @see ChessclubConnection#execRunnable(Runnable)
+   * @see Connection#execRunnable(Runnable)
    * @see SwingUtilities.invokeLater(Runnable)
    */
 
+  @Override
   public void execRunnable(Runnable runnable){
     SwingUtilities.invokeLater(runnable);
   }
