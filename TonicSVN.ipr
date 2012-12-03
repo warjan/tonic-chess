@@ -233,6 +233,13 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="timesealing">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/resources/libs/fics/timesealing.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
   </component>
 </project>
 

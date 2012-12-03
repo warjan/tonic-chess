@@ -7,7 +7,7 @@
   <customProcName>true</customProcName>
   <icon>Tonic.ico</icon>
   <jre>
-    <minVersion>1.4.0</minVersion>
+    <minVersion>1.7.0</minVersion>
   </jre>
   <splash>
     <file>tonic.bmp</file>
