@@ -260,9 +260,10 @@ public class BoardLooksPanel extends BoardModifyingPrefsPanel{
     darkSquares.addChangeListener(boardColorChangeListener);
     lightSquares.addChangeListener(boardColorChangeListener);
     
+
+
     JPanel boardAndExtraPanel = new JPanel();
-    boardAndExtraPanel.setLayout(new BoxLayout(boardAndExtraPanel, BoxLayout.Y_AXIS));
-    boardPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    boardAndExtraPanel.add(boardPanel);
 
     JPanel contentPanel = new JPanel(new BorderLayout());
     contentPanel.add(BorderLayout.WEST, piecesPanel);
