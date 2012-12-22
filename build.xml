@@ -121,6 +121,7 @@
 	<!-- After compiling, this jars everything properly
 			 and puts it where it belongs. -->
 	<target name="build" depends="init, compile, debug-compile">
+        <buildnumber />
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${libs.dir}" />
 		<mkdir dir="${servers.dir}" />

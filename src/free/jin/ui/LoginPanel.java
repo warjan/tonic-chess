@@ -659,7 +659,7 @@ public class LoginPanel extends DialogPanel{
         
         Box usernamePanel = new Box(BoxLayout.X_AXIS);
         
-        usernameField.setPreferredSize(new Dimension(130, 20));
+        usernameField.setColumns(16);
         usernamePanel.add(usernameField);
         usernamePanel.add(Box.createHorizontalStrut(10));
         JLabel handleLabel = new JLabel(translation.getString("Handle_(your_login_name)"));
@@ -672,7 +672,7 @@ public class LoginPanel extends DialogPanel{
         
         Box passwordInputPanel = new Box(BoxLayout.X_AXIS);
         
-        passwordField.setPreferredSize(new Dimension(130, 20));
+        passwordField.setColumns(16);
         passwordInputPanel.add(passwordField);
         passwordInputPanel.add(Box.createHorizontalStrut(10));
         JLabel passwordLabel = new JLabel(translation.getString("Password"));

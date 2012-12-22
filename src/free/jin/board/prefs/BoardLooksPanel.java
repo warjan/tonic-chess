@@ -260,27 +260,11 @@ public class BoardLooksPanel extends BoardModifyingPrefsPanel{
     darkSquares.addChangeListener(boardColorChangeListener);
     lightSquares.addChangeListener(boardColorChangeListener);
     
-    
-    JButton downloadExtras = null;
-    if (Jin.getInstance().isUserExtensible()){
-      downloadExtras = new JButton("Download Extras");
-      downloadExtras.setMnemonic('E');
-      downloadExtras.addActionListener(new UrlDisplayingAction("http://www.jinchess.com/extras/"));
-    }
-    
+
+
     JPanel boardAndExtraPanel = new JPanel();
-    boardAndExtraPanel.setLayout(new BoxLayout(boardAndExtraPanel, BoxLayout.Y_AXIS));
-    boardPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-    if (downloadExtras != null)
-      downloadExtras.setAlignmentX(JComponent.CENTER_ALIGNMENT);
     boardAndExtraPanel.add(boardPanel);
-    if (downloadExtras != null){
-      boardAndExtraPanel.add(Box.createVerticalStrut(15));
-      boardAndExtraPanel.add(downloadExtras);
-      boardAndExtraPanel.add(Box.createVerticalStrut(15));
-    }
-   
-    
+
     JPanel contentPanel = new JPanel(new BorderLayout());
     contentPanel.add(BorderLayout.WEST, piecesPanel);
     contentPanel.add(BorderLayout.CENTER, Box.createHorizontalStrut(10));
