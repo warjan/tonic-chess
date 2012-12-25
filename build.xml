@@ -21,6 +21,14 @@
     </classpath>
     </taskdef>
 
+    <!-- Loading tasks from pack200ant -->
+    <taskdef name="p200ant" classname="de.matthiasmann.p200ant.P200AntTask">
+        <classpath>
+            <pathelement location="p200ant.jar" />
+            <pathelement location="lzma.jar"/>
+        </classpath>
+    </taskdef>
+
 	<!-- Initializes stuff. Please review settings to build Tonic yourself -->
 	<target name="init">
 		<tstamp>
@@ -549,6 +557,15 @@
 		    :${launch4j.dir}/lib/xstream.jar" />
 		<launch4j configFile="./l4j/Tonic.xml" />-->
 	</target>
+
+    <target depends="build" name="packjars">
+        <fileset dir="${build.dir}" id="jars2pack">
+            <include name="*.jar"/>
+        </fileset>
+        <p200ant destdir="${build.dir}" lzma="true">
+            <fileset refid="jars2pack"/>
+        </p200ant>
+    </target>
 
     <!-- Do not use it - it doesn't work for now -->
     <target name="run" depends="build">
