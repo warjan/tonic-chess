@@ -11,4 +11,4 @@ fi
 cd `dirname $filename`
 
 # Run Tonic. JAVA_OPTS may set earlier with your shell.
-java -Djava.library.path=./libs $JAVA_OPTS -jar tonic.jar $*
+java -splash:splashscreen01pre1.png -Djava.library.path=./libs $JAVA_OPTS -jar tonic.jar $*

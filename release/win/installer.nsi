@@ -8,7 +8,7 @@
 
 Name "Jin ${ver}"
 OutFile ${file}
-InstallDir $PROGRAMFILES\Jin
+InstallDir $PROGRAMFILES\Tonic
 DirText "Select installation directory"
 
 Page directory "" "" leavingDir
@@ -19,7 +19,7 @@ Function leavingDir
   Goto end
 
   delete_dir:
-    StrCmp $INSTDIR $PROGRAMFILES\Jin really_delete
+    StrCmp $INSTDIR $PROGRAMFILES\Tonic really_delete
     MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "The specified installation directory already exists, do you wish to delete its contents and continue?" IDOK really_delete
     Abort
     Goto end
@@ -47,21 +47,21 @@ Section "Jin"
 
   WriteUninstaller uninstall.exe
   
-  IfFileExists $SMPROGRAMS\Jin delete_start_menu
+  IfFileExists $SMPROGRAMS\Tonic delete_start_menu
   Goto no_delete_start_menu
   
   delete_start_menu:
-    RMDir /r $SMPROGRAMS\Jin
+    RMDir /r $SMPROGRAMS\Tonic
     Goto no_delete_start_menu 
   
   no_delete_start_menu:
-    CreateDirectory $SMPROGRAMS\Jin
-    CreateShortCut $SMPROGRAMS\Jin\Jin.lnk $INSTDIR\jin.exe
-    CreateShortCut $SMPROGRAMS\Jin\Uninstall.lnk $INSTDIR\uninstall.exe
+    CreateDirectory $SMPROGRAMS\Tonic
+    CreateShortCut $SMPROGRAMS\Tonic\Tonic.lnk $INSTDIR\jin.exe
+    CreateShortCut $SMPROGRAMS\Tonic\Uninstall.lnk $INSTDIR\uninstall.exe
 SectionEnd
 
 
 Section "Uninstall"
   RMDir /r $INSTDIR
-  RMDir /r $SMPROGRAMS\Jin
+  RMDir /r $SMPROGRAMS\Tonic
 SectionEnd
