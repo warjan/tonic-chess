@@ -155,7 +155,7 @@ public class MdiUiProvider extends AbstractUiProvider {
 
         frame.setTitle(Jin.getInstance().getAppName());
         frame.setIconImage(frame.getToolkit().getImage(Jin.class.getResource(
-                    "resources/icon.gif")));
+                    "resources/icon.png")));
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
@@ -407,7 +407,7 @@ public class MdiUiProvider extends AbstractUiProvider {
             frame.setVisible(false); // internal frames are initially visible in 1.1
 
             setIconImpl(Toolkit.getDefaultToolkit().getImage(Jin.class.getResource(
-                        "resources/icon.gif")));
+                        "resources/icon.png")));
         }
 
         /**

@@ -223,7 +223,7 @@ public class SdiUiProvider extends AbstractUiProvider{
       
       frame.setJMenuBar(menubar);
       
-      setIconImpl(Toolkit.getDefaultToolkit().getImage(Jin.class.getResource("resources/icon.gif")));
+      setIconImpl(Toolkit.getDefaultToolkit().getImage(Jin.class.getResource("resources/icon32.png")));
     }
 
       /**

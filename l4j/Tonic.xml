@@ -5,7 +5,7 @@
   <errTitle>Tonic</errTitle>
   <chdir>.</chdir>
   <customProcName>true</customProcName>
-  <icon>Tonic.ico</icon>
+  <icon>Tonic.png</icon>
   <jre>
     <minVersion>1.7.0</minVersion>
   </jre>
