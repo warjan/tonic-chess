@@ -54,9 +54,9 @@ public class FreechessConsoleManager extends ConsoleManager{
      */
     protected String[] getConsoleTypes(){
       //Typed mapped to strings are:
-        //          announcment         qtell       channel-tell        cshout          kibitz          say             ptell           tell            shout         ishout              (qtell.tourney tshout)      whisper
+        //          announcement         qtell       channel-tell        cshout          kibitz          say             ptell           tell            shout         ishout              (qtell.tourney tshout)      whisper
         //indices       0                   1               2               3           4               5                   6               7             8             9                         10                  11              12
-      String[] ct = {"Announcments", "Bots shouts", "Channel tells", "Chess shouts", "Kibitzes", "Opponents tells", "Partner tells", "Private tells", "Shouts", "Special shouts (-->)", "Tourney announcments", "Whispers", "Custom console..." };
+      String[] ct = {"Announcements", "Bots shouts", "Channel tells", "Chess shouts", "Kibitzes", "Opponents tells", "Partner tells", "Private tells", "Shouts", "Special shouts (-->)", "Tourney announcments", "Whispers", "Custom console..." };
       return ct;
   }
 
@@ -94,7 +94,7 @@ public class FreechessConsoleManager extends ConsoleManager{
         String type = "";
         int typeId = newConsoleSpec.getSelectedIndex();
         switch(typeId){
-            case 0: type = "announcment"; break;
+            case 0: type = "announcement"; break;
             case 1: type = "qtell"; break;
             case 2: type = "channel-tell " + chanGameNumberInput.getText(); break;
             case 3: type = "cshout"; break;
@@ -123,7 +123,7 @@ public class FreechessConsoleManager extends ConsoleManager{
           String name = "";
           int typeId = newConsoleSpec.getSelectedIndex();
           switch(typeId){
-              case 0: name = "Announcment"; break;
+              case 0: name = "Announcement"; break;
               case 1: name = "Bots tells"; break;
               case 2: name = "Channel " + chanGameNumberInput.getText() + " tells"; break;
               case 3: name = "Chess shouts"; break;

@@ -374,10 +374,6 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
 
 
              newConsoleContainer = createContainer(typeForConsole, UIProvider.CLOSEABLE_CONTAINER_MODE);
-
-
-         
-
             newConsoleContainer.setTitle(nameForConsole);
 
 
@@ -400,7 +396,7 @@ public class ConsoleManager extends Plugin implements PlainTextListener, ChatLis
     /**
      * Returns the type of a console to be created.
      *
-     * @return
+     * @return type of console
      */
 
     protected String getConsoleType() {
