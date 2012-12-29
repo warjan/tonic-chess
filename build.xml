@@ -233,7 +233,10 @@
 			<entry key="app.name" value="${release.name}" />
 			<entry key="app.version" value="${release.version}${build.number}" />
 		</propertyfile>
-
+        <exec executable="git">
+            <arg value="tag" />
+            <arg value="b${build.number}" />
+        </exec>
 
 		<!-- Utility library: free.util.* and free.workarounds.* and org.tonic.ui.swing-->
 		<jar jarfile="${build.dir}/util.jar"
