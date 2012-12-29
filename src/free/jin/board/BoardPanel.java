@@ -785,7 +785,10 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
 
   protected JLabel createBlackLabel(Game game){
     JLabel blackLabel = new JLabel(createBlackLabelText(game));
-    blackLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+    String blackLabelFont = (String)boardManager.getPrefs().getString("blacklabel.font-family", "Serif");
+    int blackLabelFontSize = boardManager.getPrefs().getInt("blacklabel.font-size", 20);
+
+    blackLabel.setFont(new Font(blackLabelFont, Font.BOLD, blackLabelFontSize));
     return blackLabel;
   }
 
