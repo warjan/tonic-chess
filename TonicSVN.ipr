@@ -349,7 +349,7 @@
     <mapping directory="" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="libs1">
+    <library name="bsh">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/resources/libs/bsh-core-2.0b4.jar!/" />
       </CLASSES>
