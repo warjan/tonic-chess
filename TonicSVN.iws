@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1338175-584c-4083-b442-e3823ab970c3" name="Misc" comment="Some small typos.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.gif" afterPath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.gif" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.gif" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.png" afterPath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java" afterPath="$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.iws" afterPath="$PROJECT_DIR$/TonicSVN.iws" />
     </list>
     <list id="0b8c54ad-8cb5-483a-af0f-8fc055aa27f7" name="TONIC-10 Use pack200 and 7z to make Tonic download files smaller" comment="TONIC-10 Use pack200 and 7z to make Tonic download files smaller" />
     <list id="4b8167b0-2746-4cb0-8a49-62b2c82ce380" name="TONIC-6 Add build number to application name" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.number" afterPath="$PROJECT_DIR$/build.number" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
     </list>
-    <list id="331cc59b-3b2e-4d3f-bef9-580e17d17382" name="Added lzma library to project" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.iml" afterPath="$PROJECT_DIR$/TonicSVN.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.ipr" afterPath="$PROJECT_DIR$/TonicSVN.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.iws" afterPath="$PROJECT_DIR$/TonicSVN.iws" />
-    </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="TonicSVN.iws" />
-    <file path="/Dummy.txt" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356740023788" ignored="false" />
+    <file path="/Dummy.txt" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356740030660" ignored="false" />
     <file path="/build.xml" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356739972624" ignored="false" />
     <file path="/ChannelsManagerPrefsPanel.java" changelist="38fd9729-6b1a-4311-a5ed-b1907e7f1d03" time="1353505903835" ignored="false" />
     <file path="/a.dummy" changelist="4b8167b0-2746-4cb0-8a49-62b2c82ce380" time="1356481352399" ignored="false" />
@@ -154,10 +151,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MustangTray.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MustangTray.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="191" column="69" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.0">
+            <state line="191" column="69" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.3800475">
               <folding>
                 <element signature="e#0#10602#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -166,10 +163,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="20" selection-start="6018" selection-end="6018" vertical-scroll-proportion="0.024590164">
+            <state line="182" column="20" selection-start="6018" selection-end="6018" vertical-scroll-proportion="-0.16363636">
               <folding />
             </state>
           </provider>
@@ -224,9 +221,9 @@
         <option value="$PROJECT_DIR$/src/free/jin/ui/AboutPanel.java" />
         <option value="$PROJECT_DIR$/nbproject/project.xml" />
         <option value="$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java" />
-        <option value="$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java" />
         <option value="$PROJECT_DIR$/build.number" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java" />
       </list>
     </option>
   </component>
@@ -434,7 +431,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f1338175-584c-4083-b442-e3823ab970c3" name="Misc" comment="Upgraded Java version in l4j's config." />
-      <changelist id="331cc59b-3b2e-4d3f-bef9-580e17d17382" name="Added timeseal.jar to libraries" comment="" />
       <created>1344883701568</created>
       <timeSpent>12203000</timeSpent>
       <updated>1356734352101</updated>
@@ -515,7 +511,11 @@
       <created>1356734708174</created>
       <updated>1356734708174</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added lzma library to project">
+      <created>1356740040873</created>
+      <updated>1356740040873</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers>
       <JIRA shared="false" url="http://kenai.com/jira">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -625,7 +625,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="TONIC-11 Update icon and splashscreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added lzma library to project" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -655,6 +655,7 @@
     <MESSAGE value="Get rid of chessclub.com support" />
     <MESSAGE value="Get rid of old jdic tray code and libraries" />
     <MESSAGE value="TONIC-11 Update icon and splashscreen" />
+    <MESSAGE value="Added lzma library to project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1320,16 +1321,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="191" column="69" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#10602#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.number">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="75" selection-start="82" selection-end="82" vertical-scroll-proportion="-1.92">
@@ -1339,8 +1330,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="20" selection-start="6018" selection-end="6018" vertical-scroll-proportion="0.024590164">
+        <state line="182" column="20" selection-start="6018" selection-end="6018" vertical-scroll-proportion="-0.16363636">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="69" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.3800475">
+          <folding>
+            <element signature="e#0#10602#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

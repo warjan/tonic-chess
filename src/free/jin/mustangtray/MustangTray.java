@@ -189,7 +189,7 @@ public class MustangTray extends Plugin implements ChatListener, GameListener, C
     private void createIcons() {
 
         //creation of normal application icon
-        URL normalIconURL = MustangTray.class.getResource("normal.gif");
+        URL normalIconURL = MustangTray.class.getResource("normal.png");
         try {
             normalIcon = ImageIO.read(normalIconURL);
         } catch (IOException ex) {
