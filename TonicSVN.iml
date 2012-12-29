@@ -10,6 +10,7 @@
     <orderEntry type="library" name="bsh" level="project" />
     <orderEntry type="library" name="timesealing" level="project" />
     <orderEntry type="library" name="lzma" level="project" />
+    <orderEntry type="library" name="flexdock-1.2.1" level="project" />
   </component>
 </module>
 

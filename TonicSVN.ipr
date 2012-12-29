@@ -356,6 +356,13 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="flexdock-1.2.1">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/resources/libs/flexdock-1.2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="lnfs">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/resources/lnfs/synthetica.jar!/" />
