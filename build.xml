@@ -31,13 +31,14 @@
 
 	<!-- Initializes stuff. Please review settings to build Tonic yourself -->
 	<target name="init">
+
 		<tstamp>
 			<format property="date" pattern="dd.MM.yyyy" />
 		</tstamp>
 		<property name="build.dir" value="build" />
 		<property name="build.compiler" value="modern" />
 		<!--<property name="build.target" value="${java.specification.version}" />-->
-        <property name="build.target" value="1.6" />
+        <property name="build.target" value="1.7" />
 		<property name="build.compress" value="no" />
 		<property name="build.manifest" value="manifest.txt" />
 
@@ -52,21 +53,14 @@
 		<property name="lnfs.dir" value="${build.dir}/lnfs" />
 
 		<property file="${source.dir}/free/jin/resources/app.props" prefix="jin" />
+
 		<property name="release.name" value="Tonic" />
-		<property name="release.version" value="build-${date}" />
+		<property name="release.version" value="0.1pre-b" />
 
 
                 <property name="debug.compile" value="false" />
                 <property name="tonic.classpath" value=".:${build.dir}/tonic.jar:${build.dir}/util.jar:${build.dir}/chess.jar:${libs.dir}/bsh-core-2.0b4.jar" />
                 <property name="launch4j.dir" value="/home/whp/var/sfw/launch4j" />
-
-                <condition property="buildForMustang">
-                     <or>
-                         <equals arg1="1.6" arg2="${java.specification.version}" />
-                         <equals arg1="1.7" arg2="${java.specification.version}" />
-                     </or>
-
-                </condition>
                 
                 <condition property="compileWithDebugInfo">
                     <equals arg1="true" arg2="${debug.compile}" />
@@ -74,8 +68,6 @@
 
 
     </target>
-
-
 
 	<!-- Removes things done by build -->
 
@@ -94,7 +86,6 @@
                 <echo message="JAVA VERSION: ${java.specification.version}" />
 		<javac sourcepath="" srcdir="${source.dir}" destdir="${classes.dir}" includes="**" classpathref="compile.class.path">
                            <exclude name="tonic/**"/>
-                           <exclude name="free/jin/mustangtray/**" />
                            <exclude name="free/jin/ui/DdiUiProvider.java" />
                 </javac>
         </target>
@@ -237,9 +228,10 @@
 		<antcall target="doMacOSXStuff" />
 
 		<!-- Set application name and version -->
+        <property file="build.number" />
 		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
 			<entry key="app.name" value="${release.name}" />
-			<entry key="app.version" value="${release.version}" />
+			<entry key="app.version" value="${release.version}${build.number}" />
 		</propertyfile>
 
 
@@ -368,6 +360,11 @@
             <param name="plugin.id" value="channels"/>
         </antcall>
 
+        <!-- MustangTray plugin -->
+        <antcall target="buildPlugin">
+            <param name="plugin.id" value="mustangtray" />
+        </antcall>
+
 		<!-- Get Server Help action -->
 		<antcall target="buildAction">
 			<param name="action.id" value="getserverhelp" />
@@ -403,9 +400,9 @@
 			<fileset dir="${res.dir}" includes="boards/**/.jar boards/**/*.zip" />
 		</copy>
                 <!-- Calling os and Java specific targets -->
-                <antcall target="doUnixStuff" />
+        <antcall target="doUnixStuff" />
 		<antcall target="doWindowsStuff" />
-                <antcall target="doMustangStuff" />
+
 
 	</target>
 
@@ -440,43 +437,6 @@
 	</target>
 
 
-        <!-- If the property buildingForMustang is set, does things required for Mustang,
-        like building classes that use Mustang API -->
-
-        <target name="doMustangStuff" if="buildForMustang">
-
-            <!-- Compiles source files for MustangTray plugin -->
-            <javac srcdir="${source.dir}"
-		       destdir="${classes.dir}"
-		       includes="free/jin/mustangtray/**"
-               
-		               classpathref="compile.class.path">
-			        
-		       </javac>
-                 <!-- MustangTray plugin -->
-                <antcall target="buildPlugin">
-                    <param name="plugin.id" value="mustangtray" />
-                </antcall>
-                <delete>
-                    <fileset dir="${plugins.dir}">
-                        <include name="tray.jar" />
-                    </fileset>
-                    <fileset dir="${libs.dir}">
-                        <include name="tray.so" />
-                    </fileset>
-                    <fileset dir="${build.dir}">
-                        <include name="tray.dll"/>
-                    </fileset>
-
-                </delete>
-
-
-
-
-
-        </target>
-
-
 	<!-- If the property buildingForUnix is set, does things required for Unix -->
 	<target name="doUnixStuff" if="buildingForUnix">
 		<copy todir="${build.dir}">
@@ -504,22 +464,7 @@
 	<!-- If the property x86 is set, does things required for unix on x86 -->
 	<target name="doUnixOnx86Stuff" if="x86">
 
-        <!-- Tray Manager plugin -->
-                    <antcall target="buildPlugin">
-                        <param name="plugin.id" value="tray" />
-                    </antcall>
-
-            <!-- Copies os specific libraries for JDIC tray implementation -->
-            <copy todir="${libs.dir}">
-
-                                    <fileset dir="resources/os-specific/unix">
-                                        <include name="*.so" />
-                                        <include name ="*.jar" />
-                                    </fileset>
-
-                </copy>
-
-		<!--
+       		<!--
 		<copy todir="${build.dir}">
 			<fileset dir="resources/os-specific/unix/x86" />
 		</copy>
