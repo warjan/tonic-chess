@@ -9,6 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" name="libs1" level="project" />
     <orderEntry type="library" name="timesealing" level="project" />
+    <orderEntry type="library" name="lzma" level="project" />
   </component>
 </module>
 

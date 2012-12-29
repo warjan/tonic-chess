@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list id="f1338175-584c-4083-b442-e3823ab970c3" name="Misc" comment="Some small changes: typos, switched to switch statement in one place and removed reference to ChessclubConnection" />
-    <list default="true" id="331cc59b-3b2e-4d3f-bef9-580e17d17382" name="Added timeseal.jar to libraries" comment="">
+    <list default="true" id="f1338175-584c-4083-b442-e3823ab970c3" name="Misc" comment="Some small typos.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.gif" afterPath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.png" afterPath="$PROJECT_DIR$/src/free/jin/mustangtray/normal.png" />
+    </list>
+    <list id="0b8c54ad-8cb5-483a-af0f-8fc055aa27f7" name="TONIC-10 Use pack200 and 7z to make Tonic download files smaller" comment="TONIC-10 Use pack200 and 7z to make Tonic download files smaller" />
+    <list id="4b8167b0-2746-4cb0-8a49-62b2c82ce380" name="TONIC-6 Add build number to application name" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.number" afterPath="$PROJECT_DIR$/build.number" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+    </list>
+    <list id="331cc59b-3b2e-4d3f-bef9-580e17d17382" name="Added lzma library to project" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.iml" afterPath="$PROJECT_DIR$/TonicSVN.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.ipr" afterPath="$PROJECT_DIR$/TonicSVN.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TonicSVN.iws" afterPath="$PROJECT_DIR$/TonicSVN.iws" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="TonicSVN.iws" />
-    <file path="/Dummy.txt" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1353928771860" ignored="false" />
-    <file path="/build.xml" changelist="ed3eb87f-b18a-4bf3-b40a-179f794bf0ff" time="1353410774313" ignored="false" />
+    <file path="/Dummy.txt" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356740023788" ignored="false" />
+    <file path="/build.xml" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356739972624" ignored="false" />
     <file path="/ChannelsManagerPrefsPanel.java" changelist="38fd9729-6b1a-4311-a5ed-b1907e7f1d03" time="1353505903835" ignored="false" />
+    <file path="/a.dummy" changelist="4b8167b0-2746-4cb0-8a49-62b2c82ce380" time="1356481352399" ignored="false" />
+    <file path="/AboutPanel.java" changelist="4b8167b0-2746-4cb0-8a49-62b2c82ce380" time="1356482474882" ignored="false" />
+    <file path="/TonicQuickstart.txt" changelist="a4654617-9f55-4d17-ad3b-620e47f89b92" time="1356734269862" ignored="false" />
+    <file path="$PROJECT_DIR$/build.xml" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356739972995" ignored="false" />
+    <file path="$PROJECT_DIR$/build.number" changelist="f1338175-584c-4083-b442-e3823ab970c3" time="1356739858327" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +44,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -43,7 +55,7 @@
         <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
@@ -59,14 +71,14 @@
         <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -77,67 +89,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChannelsManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="306" column="4" selection-start="9491" selection-end="9491" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelsManagerPrefsPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/free/jin/channels/prefs/ChannelsManagerPrefsPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="0" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoardPreferencesPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/free/jin/board/BoardPreferencesPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="23" selection-start="4435" selection-end="4435" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoardLooksPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/free/jin/board/prefs/BoardLooksPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="3" selection-start="5231" selection-end="5231" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="512" column="0" selection-start="16222" selection-end="16222" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MustangTray.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="2" selection-start="885" selection-end="885" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JinFreechessConnection.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="JinFreechessConnection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/jin/freechess/JinFreechessConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2841" column="6" selection-start="80134" selection-end="80134" vertical-scroll-proportion="0.3485294">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="2841" column="6" selection-start="80134" selection-end="80134" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Decoder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Pobrane/lzma922/Java/SevenZip/Compression/LZMA/Decoder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LzmaAlone.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Pobrane/lzma922/Java/SevenZip/LzmaAlone.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="176" column="8" selection-start="3931" selection-end="3931" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,7 +137,48 @@
       <file leaf-file-name="FreechessConnection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1621" column="0" selection-start="51337" selection-end="51337" vertical-scroll-proportion="0.0">
+            <state line="1637" column="53" selection-start="51771" selection-end="51771" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FreechessConsoleManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="245" column="38" selection-start="8957" selection-end="8957" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MustangTray.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="191" column="69" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#10602#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="182" column="20" selection-start="6018" selection-end="6018" vertical-scroll-proportion="0.024590164">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.number" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.number">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="75" selection-start="82" selection-end="82" vertical-scroll-proportion="-1.92">
               <folding />
             </state>
           </provider>
@@ -177,6 +192,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
@@ -185,25 +201,32 @@
       <MyDateState />
     </option>
   </component>
+  <component name="GradleLocalSettings">
+    <option name="expandStates">
+      <map>
+        <entry key="TonicSVN" value="true" />
+      </map>
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/free/util/FilteringIterator.java" />
-        <option value="$PROJECT_DIR$/src/free/jin/Preferences.java" />
-        <option value="$PROJECT_DIR$/retroguard.log" />
-        <option value="$PROJECT_DIR$/manifest.txt" />
-        <option value="C:/Documents and Settings/Admin/My Documents/NetBeansProjects/LitteraPrototype/src/litteraprototype/Square.fx" />
-        <option value="$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java" />
-        <option value="$PROJECT_DIR$/src/org/tonic/ui/swing/CustomTab.java" />
-        <option value="$PROJECT_DIR$/src/org/tonic/ui/swing/CloseableTabbedPane.java" />
         <option value="$PROJECT_DIR$/src/free/jin/console/ConsoleTextField.java" />
         <option value="$PROJECT_DIR$/src/free/jin/console/Console.java" />
-        <option value="$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java" />
         <option value="$PROJECT_DIR$/release/build.xml" />
         <option value="$PROJECT_DIR$/l4j/Tonic.xml" />
-        <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/free/jin/channels/prefs/ChannelsManagerPrefsPanel.java" />
         <option value="$PROJECT_DIR$/src/free/jin/freechess/JinFreechessConnection.java" />
+        <option value="$PROJECT_DIR$/src/free/jin/ui/SdiUiProvider.java" />
+        <option value="$PROJECT_DIR$/src/free/jin/ui/MdiUiProvider.java" />
+        <option value="$PROJECT_DIR$/src/free/jin/ui/DdiUiProvider.java" />
+        <option value="$PROJECT_DIR$/src/free/jin/seek/SoughtGraphPlugin.java" />
+        <option value="$PROJECT_DIR$/src/free/jin/ui/AboutPanel.java" />
+        <option value="$PROJECT_DIR$/nbproject/project.xml" />
+        <option value="$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java" />
+        <option value="$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java" />
+        <option value="$PROJECT_DIR$/build.number" />
+        <option value="$PROJECT_DIR$/build.xml" />
       </list>
     </option>
   </component>
@@ -215,10 +238,9 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2064" />
-    <option name="height" value="1128" />
+    <option name="y" value="24" />
+    <option name="width" value="1280" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -257,9 +279,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files" />
-      </pane>
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -281,181 +300,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="free" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="free" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="free" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="free" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mustangtray" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TonicSVN" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
       </pane>
       <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.20333333" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="C:\Documents and Settings\Admin\My Documents\NetBeansProjects\LitteraPrototype\src\litteraprototype" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Pobrane/lzma922/Java" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -575,7 +437,7 @@
       <changelist id="331cc59b-3b2e-4d3f-bef9-580e17d17382" name="Added timeseal.jar to libraries" comment="" />
       <created>1344883701568</created>
       <timeSpent>12203000</timeSpent>
-      <updated>1353493257426</updated>
+      <updated>1356734352101</updated>
     </task>
     <task id="LOCAL-00001" summary="Get rid of ICC plugins and action during build.">
       <created>1346280199566</created>
@@ -586,12 +448,12 @@
       <created>1346884538912</created>
       <updated>1346884538912</updated>
     </task>
-    <task id="TONIC-9" summary="Get rid of applet related classes">
-      <option name="closed" value="true" />
-      <created>1353252666000</created>
+    <task id="TONIC-9" summary="Tag builds in git">
+      <created>1356739633512</created>
       <option name="issue" value="true" />
       <timeSpent>13187000</timeSpent>
-      <updated>1353490636000</updated>
+      <option name="type" value="BUG" />
+      <updated>1356739633512</updated>
     </task>
     <task id="TONIC-13" summary="Drop support for icc">
       <option name="closed" value="true" />
@@ -620,8 +482,40 @@
       <created>1353928786261</created>
       <updated>1353928786262</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
-    <option name="myTotallyTimeSpent" value="28009000" />
+    <task id="TONIC-10" summary="Use pack200 and 7z to make Tonic download files smaller">
+      <changelist id="0b8c54ad-8cb5-483a-af0f-8fc055aa27f7" name="TONIC-10 Use pack200 and 7z to make Tonic download files smaller" comment="" />
+      <created>1353415460000</created>
+      <option name="issue" value="true" />
+      <updated>1356478466096</updated>
+    </task>
+    <task id="TONIC-6" summary="Add build number to application name">
+      <changelist id="4b8167b0-2746-4cb0-8a49-62b2c82ce380" name="TONIC-6 Add build number to application name" comment="" />
+      <created>1356221597483</created>
+      <option name="issue" value="true" />
+      <updated>1356564471486</updated>
+    </task>
+    <task id="TONIC-11" summary="Update icon and splashscreen">
+      <created>1353489729000</created>
+      <option name="issue" value="true" />
+      <updated>1356734738768</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated Tonic quickstart informations">
+      <created>1356734340463</created>
+      <updated>1356734340463</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Some small typos.">
+      <created>1356734661580</created>
+      <updated>1356734661580</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Get rid of chessclub.com support">
+      <created>1356734684996</created>
+      <updated>1356734684996</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Get rid of old jdic tray code and libraries">
+      <created>1356734708174</created>
+      <updated>1356734708174</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers>
       <JIRA shared="false" url="http://kenai.com/jira">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -632,6 +526,16 @@
         <option name="useProxy" value="false" />
         <username>wjhp</username>
       </JIRA>
+      <YouTrack shared="false" url="http://warjans.myjetbrains.com/youtrack">
+        <commitMessageFormat>{id} {summary}</commitMessageFormat>
+        <option name="defaultSearch" value="for: me sort by: updated #Unresolved" />
+        <password>df9bdfd9dfdfdfdadfdfdfd9dfd8</password>
+        <option name="loginAnonymously" value="false" />
+        <option name="shouldFormatCommitMessage" value="false" />
+        <option name="useHttpAuthentication" value="false" />
+        <option name="useProxy" value="false" />
+        <username>wjhp</username>
+      </YouTrack>
     </servers>
   </component>
   <component name="TodoView" selected-index="0">
@@ -655,27 +559,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2064" height="1128" extended-state="6" />
+    <frame x="0" y="24" width="1280" height="1000" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26310483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48891354" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.738699" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.326284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2015" sideWeight="0.45665324" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20097245" sideWeight="0.51108646" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54334676" sideWeight="0.4985" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54334676" sideWeight="0.498" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2782705" sideWeight="0.498" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2215" sideWeight="0.73689514" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22087379" sideWeight="0.5221239" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2215" sideWeight="0.2839879" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21799028" sideWeight="0.51108646" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39637598" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32524806" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967507" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Issues - JIRA" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -717,9 +621,11 @@
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some small changes: typos, switched to switch statement in one place and removed reference to ChessclubConnection" />
+    <option name="LAST_COMMIT_MESSAGE" value="TONIC-11 Update icon and splashscreen" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -743,6 +649,12 @@
     <MESSAGE value="Getting rid of import statement related to icc support" />
     <MESSAGE value="Syncing Iintellij .iws file" />
     <MESSAGE value="Some small changes: typos, switched to switch statement in one place and removed reference to ChessclubConnection" />
+    <MESSAGE value="TONIC-10 Use pack200 and 7z to make Tonic download files smaller" />
+    <MESSAGE value="Updated Tonic quickstart informations" />
+    <MESSAGE value="Some small typos." />
+    <MESSAGE value="Get rid of chessclub.com support" />
+    <MESSAGE value="Get rid of old jdic tray code and libraries" />
+    <MESSAGE value="TONIC-11 Update icon and splashscreen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -755,7 +667,7 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
     <buildFile url="file://$PROJECT_DIR$/build.xml">
-      <antCommandLine value="" />
+      <antCommandLine value="-J-Xmx1024m -J-Xms512m" />
       <runInBackground value="true" />
       <targetFilters>
         <filter targetName="createexe" isVisible="false" />
@@ -763,7 +675,6 @@
         <filter targetName="doMustangStuff" isVisible="false" />
         <filter targetName="init" isVisible="false" />
         <filter targetName="run" isVisible="false" />
-        <filter targetName="doAppletStuff" isVisible="false" />
         <filter targetName="build" isVisible="false" />
         <filter targetName="doUnixOnx86Stuff" isVisible="false" />
         <filter targetName="doMacOSXStuff" isVisible="false" />
@@ -775,6 +686,7 @@
         <filter targetName="run-debug" isVisible="false" />
         <filter targetName="doWindowsStuff" isVisible="false" />
         <filter targetName="debug-compile" isVisible="false" />
+        <filter targetName="packjars" isVisible="false" />
       </targetFilters>
       <treeView value="false" />
       <verbose value="true" />
@@ -1315,41 +1227,30 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/release/build.xml">
+    <entry file="file://$PROJECT_DIR$/nbproject/project.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/os-specific/unix/tonic">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/l4j/Tonic.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="257" selection-end="257" vertical-scroll-proportion="0.24324325" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/console/prefs/ChannelTextPrefsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/resources/app.props">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="805" selection-end="805" vertical-scroll-proportion="0.95529413" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="2" selection-start="885" selection-end="885" vertical-scroll-proportion="0.0">
+        <state line="25" column="24" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.9456265">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/console/ConsoleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="512" column="0" selection-start="16222" selection-end="16222" vertical-scroll-proportion="0.0">
+        <state line="221" column="10" selection-start="5716" selection-end="5716" vertical-scroll-proportion="0.93824226">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="306" column="4" selection-start="9491" selection-end="9491" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/free/jin/channels/prefs/ChannelsManagerPrefsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="0" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1363,42 +1264,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/free/jin/board/prefs/BoardLooksPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="3" selection-start="5231" selection-end="5231" vertical-scroll-proportion="0.0">
+        <state line="165" column="3" selection-start="4331" selection-end="4331" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/channels/prefs/ChannelsManagerPrefsPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/freechess/JinFreechessConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="0" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.0">
+        <state line="2841" column="6" selection-start="80134" selection-end="80134" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
+    <entry file="file://$USER_HOME$/Pobrane/lzma922/Java/SevenZip/Compression/LZMA/Decoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1621" column="0" selection-start="51337" selection-end="51337" vertical-scroll-proportion="0.0">
+        <state line="33" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/resources/libs/fics/timesealing.jar!/free/freechess/timeseal/TimesealingSocket.class">
+    <entry file="file://$USER_HOME$/Pobrane/lzma922/Java/SevenZip/LzmaAlone.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="11" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.7530488">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/event/ChannelsEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="19" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/channels/ChannelsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="306" column="4" selection-start="9491" selection-end="9491" vertical-scroll-proportion="0.0">
+        <state line="176" column="8" selection-start="3931" selection-end="3931" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1410,12 +1297,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/free/jin/freechess/JinFreechessConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/free/jin/event/ChannelsEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2841" column="6" selection-start="80134" selection-end="80134" vertical-scroll-proportion="0.3485294">
+        <state line="65" column="19" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/free/freechess/FreechessConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1637" column="53" selection-start="51771" selection-end="51771" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/free/jin/console/fics/FreechessConsoleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="245" column="38" selection-start="8957" selection-end="8957" vertical-scroll-proportion="0.0">
           <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/free/jin/mustangtray/MustangTray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="69" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#10602#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.number">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="75" selection-start="82" selection-end="82" vertical-scroll-proportion="-1.92">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="20" selection-start="6018" selection-end="6018" vertical-scroll-proportion="0.024590164">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1477,6 +1402,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
