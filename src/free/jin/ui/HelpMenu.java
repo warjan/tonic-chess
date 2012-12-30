@@ -61,8 +61,6 @@ public class HelpMenu extends JMenu{
 
     add(createWebsiteMenuItem());
     add(createCreditsMenuItem());
-    add(createBugReportMenuItem());
-    add(createFeatureRequestMenuItem());
     add(createAboutMenuItem());
   }
 
@@ -94,7 +92,6 @@ public class HelpMenu extends JMenu{
   }
 
 
-
   /**
    * Creates the "Credits and copyrights" menu item.
    */
@@ -105,31 +102,6 @@ public class HelpMenu extends JMenu{
     item.addActionListener(menuActionListener);
     return item;
   }
-
-
-
-  /**
-   * Creates the "Report a Bug" menu item.
-   */
-
-  private JMenuItem createBugReportMenuItem(){
-    JMenuItem item = new JMenuItem("Report a Bug", 'R');
-    item.addActionListener(new UrlDisplayingAction("http://sourceforge.net/tracker/?group_id=169064&atid=848921"));
-    return item;
-  }
-
-
-
-  /**
-   * Creates the "Suggest a Feature" menu item.
-   */
-
-  private JMenuItem createFeatureRequestMenuItem(){
-    JMenuItem item = new JMenuItem("Suggest a Feature", 'S');
-    item.addActionListener(new UrlDisplayingAction("http://sourceforge.net/tracker/?group_id=169064&atid=848924"));
-    return item;
-  }
-
 
 
   /**
