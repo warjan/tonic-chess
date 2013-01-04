@@ -120,7 +120,6 @@
 	<!-- After compiling, this jars everything properly
 			 and puts it where it belongs. -->
 	<target name="build" depends="init, compile, debug-compile">
-        <buildnumber />
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${libs.dir}" />
 		<mkdir dir="${servers.dir}" />
@@ -228,15 +227,10 @@
 		<antcall target="doMacOSXStuff" />
 
 		<!-- Set application name and version -->
-        <property file="build.number" />
 		<propertyfile file="${classes.dir}/free/jin/resources/app.props">
 			<entry key="app.name" value="${release.name}" />
 			<entry key="app.version" value="${release.version}${build.number}" />
 		</propertyfile>
-        <exec executable="git">
-            <arg value="tag" />
-            <arg value="b${build.number}" />
-        </exec>
 
 		<!-- Utility library: free.util.* and free.workarounds.* and org.tonic.ui.swing-->
 		<jar jarfile="${build.dir}/util.jar"
@@ -526,7 +520,7 @@
 	</target>
     <target name="run-debug" depends="build">
 
-		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Xdebug -Xrunjdwp:transport=dt_shmem,server=y,suspend=n,address=javadebug" >
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" >
 
 			<!--<jvmarg value="-Djava.library.path=libs -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"/>-->
 
