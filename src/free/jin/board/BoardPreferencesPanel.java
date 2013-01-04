@@ -108,7 +108,7 @@ public class BoardPreferencesPanel extends CompositePreferencesPanel{
     addPanel(createMoveInputPanel(), "Move Input", "Specify how moves are made by the user");
     addPanel(createMoveHighlightingPanel(), "Move Highlighting", "Specify how the last move is highlighted");
     addPanel(createSquareCoordsPanel(), "Coordinates", "Specify how square coordinates are displayed");
-    
+    addPanel(createClocksAndLabelsPanel(), "Clocks and Labels", "Specify the looks and feels of clocks and labels");
     initPreviewBoard();
   }
   
@@ -141,7 +141,7 @@ public class BoardPreferencesPanel extends CompositePreferencesPanel{
     Position pos = previewBoard.getPosition();
     pos.setLexigraphic("rn-qkbnrPPP-pppp-------------b---------------------PPPPPRNBQKBNR");
     
-    for (int i = 0; i < panels.size(); i++)
+    for (int i = 0; i < panels.size()-1; i++)
       ((BoardModifyingPrefsPanel)panels.get(i)).initPreviewBoard();
   }
   
@@ -184,6 +184,14 @@ public class BoardPreferencesPanel extends CompositePreferencesPanel{
   protected BoardModifyingPrefsPanel createSquareCoordsPanel(){
     return new SquareCoordinatesPanel(boardManager, previewBoard);
   }
+
+    /**
+     * Creates the "Clocks and Labels" panel.
+     */
+
+    protected PreferencesPanel createClocksAndLabelsPanel(){
+        return new ClocksAndLabelsPanel(boardManager);
+    }
 
   
 

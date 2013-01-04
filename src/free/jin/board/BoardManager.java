@@ -152,9 +152,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
   private BoardPainter boardPainter;
 
 
-
-
-  /**
+    /**
    * Starts this plugin.
    */
 
@@ -259,7 +257,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
   //     BoardPattern boardPattern = (BoardPattern)boardPatternsArr[i];
   //     if (boardPattern.isCompatibleWith(getServer()))
   //       boardPatterns.put(boardPattern.getId(), boardPattern);
-  //   }
+  //   <}
   // }
 
 
@@ -331,6 +329,10 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
 
     setLightSquareColor(prefs.getColor("light-square-color", Color.cyan));
     setDarkSquareColor(prefs.getColor("dark-square-color", Color.magenta));
+
+    setHidingOpponentsRating(prefs.getBool("hide-opponents-rating", false));
+    //TODO: implement hiding name and titles of opponent
+    //setHideOpponentsNameAndTitles(prefs.getBool("hide-oppenents-nameandtitles", false));
   }
 
 
@@ -840,8 +842,21 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
   public PieceSet getPieceSet(){
     return (PieceSet)props.getProperty("pieceSet", null);
   }
+    /**
+     * Check whether opponent's rating should be hidden in ui.
+     */
+  public boolean isHidingOpponentsRating() {
+      return props.getBooleanProperty("hideOpponentsRating");
+  }
+
   
-  
+    /**
+      * Sets whether opponent's rating should be hidden in ui.
+      */
+
+        public void setHidingOpponentsRating(boolean hideOpponentsRating) {
+            props.setBooleanProperty("hideOpponentsRating", hideOpponentsRating);
+        }
   
   /**
    * Returns the current piece painter. The returned value should not be
@@ -1391,6 +1406,8 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
 
     prefs.setColor("light-square-color", getLightSquareColor());
     prefs.setColor("dark-square-color", getDarkSquareColor());
+
+    prefs.setBool("hide-opponents-rating", isHidingOpponentsRating());
   }
 
 
@@ -1413,7 +1430,6 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
   public String getName(){
     return "Chess Board";
   }
-  
-  
-  
+
+
 }

@@ -26,6 +26,7 @@ import free.jin.board.BoardManager;
 import free.jin.board.BoardPanel;
 
 
+
 /**
  * Extends BoardPanel to provide freechess.org specific functionalities.
  */
@@ -51,9 +52,20 @@ public class FreechessBoardPanel extends BoardPanel{
    */
 
   protected String createWhiteLabelText(Game game){
-    int rating = game.getWhiteRating();
-    String ratingString = (rating > 0) ? (" "+rating) : "";
-    return game.getWhiteName() + game.getWhiteTitles() + ratingString;
+      StringBuilder whiteLabelBuilder = new StringBuilder();
+      String whiteName = game.getWhiteName();
+      String whiteTitles = game.getWhiteTitles();
+      whiteLabelBuilder.append(whiteName).append(whiteTitles).append(' ');
+        String userName = boardManager.getUser().getUsername();
+        boolean isHidOpoRatg = boardManager.isHidingOpponentsRating();
+       if (isHidOpoRatg && !userName.equals(whiteName) && game.isPlayed()) {
+          whiteLabelBuilder.append("----");
+      }  else{
+           int rating = game.getWhiteRating();
+               String ratingString = (rating > 0) ? (" "+rating) : "";
+              whiteLabelBuilder.append(ratingString);
+          }
+      return whiteLabelBuilder.toString();
   }
 
 
@@ -63,11 +75,21 @@ public class FreechessBoardPanel extends BoardPanel{
    * Overrides BoardPanel.createBlackLabelText(Game) to return a freechess.org
    * specific version.
    */
-
   protected String createBlackLabelText(Game game){
-    int rating = game.getBlackRating();
-    String ratingString = (rating > 0) ? (" "+rating) : "";
-    return game.getBlackName() + game.getBlackTitles() + ratingString;
+      StringBuilder blackLabelBuilder = new StringBuilder();
+      String blackName = game.getBlackName();
+      String blackTitles = game.getBlackTitles();
+      blackLabelBuilder.append(blackName).append(blackTitles).append(' ');
+        String userName = boardManager.getUser().getUsername();
+        boolean isHidOpoRatg = boardManager.isHidingOpponentsRating();
+       if (isHidOpoRatg && !userName.equals(blackName) && game.isPlayed()) {
+          blackLabelBuilder.append("----");
+      }  else{
+           int rating = game.getBlackRating();
+               String ratingString = (rating > 0) ? (" "+rating) : "";
+              blackLabelBuilder.append(ratingString);
+          }
+      return blackLabelBuilder.toString();
   }
 
 
