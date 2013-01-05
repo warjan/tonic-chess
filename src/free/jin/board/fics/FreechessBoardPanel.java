@@ -58,7 +58,7 @@ public class FreechessBoardPanel extends BoardPanel{
       whiteLabelBuilder.append(whiteName).append(whiteTitles).append(' ');
         String userName = boardManager.getUser().getUsername();
         boolean isHidOpoRatg = boardManager.isHidingOpponentsRating();
-       if (isHidOpoRatg && !userName.equals(whiteName) && game.isPlayed()) {
+       if (isHidOpoRatg && !userName.equals(whiteName) && game.getGameType()==Game.MY_GAME) {
           whiteLabelBuilder.append("----");
       }  else{
            int rating = game.getWhiteRating();
@@ -82,7 +82,7 @@ public class FreechessBoardPanel extends BoardPanel{
       blackLabelBuilder.append(blackName).append(blackTitles).append(' ');
         String userName = boardManager.getUser().getUsername();
         boolean isHidOpoRatg = boardManager.isHidingOpponentsRating();
-       if (isHidOpoRatg && !userName.equals(blackName) && game.isPlayed()) {
+       if (isHidOpoRatg && !userName.equals(blackName) && game.getGameType()==Game.MY_GAME) {
           blackLabelBuilder.append("----");
       }  else{
            int rating = game.getBlackRating();
