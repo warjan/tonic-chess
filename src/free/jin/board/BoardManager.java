@@ -331,8 +331,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
     setDarkSquareColor(prefs.getColor("dark-square-color", Color.magenta));
 
     setHidingOpponentsRating(prefs.getBool("hide-opponents-rating", false));
-    //TODO: implement hiding name and titles of opponent
-    //setHideOpponentsNameAndTitles(prefs.getBool("hide-oppenents-nameandtitles", false));
+    setHidingOpponentsName(prefs.getBool("hide-opponents-name", false));
   }
 
 
@@ -843,7 +842,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
     return (PieceSet)props.getProperty("pieceSet", null);
   }
     /**
-     * Check whether opponent's rating should be hidden in ui.
+     * Checks whether opponent's rating should be hidden in ui.
      */
   public boolean isHidingOpponentsRating() {
       return props.getBooleanProperty("hideOpponentsRating");
@@ -1408,6 +1407,7 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
     prefs.setColor("dark-square-color", getDarkSquareColor());
 
     prefs.setBool("hide-opponents-rating", isHidingOpponentsRating());
+    prefs.setBool("hide-opponents-name", isHidingOpponentsName());
   }
 
 
@@ -1431,5 +1431,19 @@ public class BoardManager extends Plugin implements GameListener, UserMoveListen
     return "Chess Board";
   }
 
+    /**
+     * Checks whether opponent's name should be hidden in the gui.
+     * @return
+     */
+    public boolean isHidingOpponentsName() {
+        return props.getBooleanProperty("hideOpponentsName");
+    }
 
+    /**
+     * Sets property to hide opponents name in the gui.
+     * @param hideOpponentsName
+     */
+    public void setHidingOpponentsName(boolean hideOpponentsName) {
+        props.setBooleanProperty("hideOpponentsName", hideOpponentsName);
+    }
 }

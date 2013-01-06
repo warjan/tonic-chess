@@ -26,7 +26,6 @@ import free.jin.board.BoardManager;
 import free.jin.board.BoardPanel;
 
 
-
 /**
  * Extends BoardPanel to provide freechess.org specific functionalities.
  */
@@ -55,10 +54,15 @@ public class FreechessBoardPanel extends BoardPanel{
       StringBuilder whiteLabelBuilder = new StringBuilder();
       String whiteName = game.getWhiteName();
       String whiteTitles = game.getWhiteTitles();
-      whiteLabelBuilder.append(whiteName).append(whiteTitles).append(' ');
-        String userName = boardManager.getUser().getUsername();
+      String userName = boardManager.getUser().getUsername();
+      boolean isHidOpoName = boardManager.isHidingOpponentsName();
+      if (isHidOpoName && !userName.equals(whiteName) && game.getGameType()==Game.MY_GAME && game.isPlayed()) {
+          whiteLabelBuilder.append("White");
+      }  else{
+          whiteLabelBuilder.append(whiteName).append(whiteTitles).append(' ');
+          }
         boolean isHidOpoRatg = boardManager.isHidingOpponentsRating();
-       if (isHidOpoRatg && !userName.equals(whiteName) && game.getGameType()==Game.MY_GAME) {
+       if (isHidOpoRatg && !userName.equals(whiteName) && game.getGameType()==Game.MY_GAME && game.isPlayed()) {
           whiteLabelBuilder.append("----");
       }  else{
            int rating = game.getWhiteRating();
@@ -79,10 +83,16 @@ public class FreechessBoardPanel extends BoardPanel{
       StringBuilder blackLabelBuilder = new StringBuilder();
       String blackName = game.getBlackName();
       String blackTitles = game.getBlackTitles();
-      blackLabelBuilder.append(blackName).append(blackTitles).append(' ');
-        String userName = boardManager.getUser().getUsername();
+      String userName = boardManager.getUser().getUsername();
+      boolean isHidOpoName = boardManager.isHidingOpponentsName();
+      if (isHidOpoName && !userName.equals(blackName) && game.getGameType()==Game.MY_GAME && game.isPlayed()) {
+          blackLabelBuilder.append("Black");
+      }  else{
+          blackLabelBuilder.append(blackName).append(blackTitles).append(' ');
+          }
+
         boolean isHidOpoRatg = boardManager.isHidingOpponentsRating();
-       if (isHidOpoRatg && !userName.equals(blackName) && game.getGameType()==Game.MY_GAME) {
+       if (isHidOpoRatg && !userName.equals(blackName) && game.getGameType()==Game.MY_GAME && game.isPlayed()) {
           blackLabelBuilder.append("----");
       }  else{
            int rating = game.getBlackRating();
