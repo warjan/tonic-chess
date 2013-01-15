@@ -316,9 +316,6 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
 
         @Override
     public void gameEnded(GameEndEvent evt){
-       
-        
-      //TODO add methods and objects that will display to the user the result of the game on the board, near buttons panel.
 
         if (evt.getGame().getID()==game.getID()) {
             switch (evt.getResult()){
@@ -501,22 +498,22 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
     resultLabel = new JLabel("Game in progress.");
     resultLabel.setFont(new Font(UIManager.getFont("Label.font").getFamily(), Font.BOLD, 18));
     buttonsFlowPanel = new JPanel();
-    resignButton = createButton("resign.png" ,'r');
+    resignButton = createButton("Resign" ,'r');
       resignButton.setToolTipText("Resign this game");
-    drawButton = createButton("draw.png", 'd');
+    drawButton = createButton("Offer draw", 'd');
       drawButton.setToolTipText("Offer a draw");
-    abortButton = conn.isAbortSupported() ? createButton("abort.png", 'a') : null;
-      abortButton.setToolTipText("Abort the game");
-    adjournButton = conn.isAdjournSupported() ? createButton("adjourn.png", 'j') : null;
+    abortButton = conn.isAbortSupported() ? createButton("Abort", 'a') : null;
+      abortButton.setToolTipText("Abort game");
+    adjournButton = conn.isAdjournSupported() ? createButton("Adjourn", 'j') : null;
       adjournButton.setToolTipText("Adjourn a game to resume later");
-    takeback1Button = conn.isTakebackSupported() ? createButton( "back1.png", 't') : null;
+    takeback1Button = conn.isTakebackSupported() ? createButton( "Takeback", 't') : null;
       takeback1Button.setToolTipText("Request/accept one ply takeback");
     takebackNButton = conn.isMultipleTakebackSupported() ?
-      createButton("back2.png", 'k') : null;
+      createButton("Takeback 2", 'k') : null;
       takebackNButton.setToolTipText("Request/accept multi ply takeback");
     
     //creates getgameButton when connected to fics. whp 2006
-    getgameButton = (conn.getConnectionName() == "FreechessConnection") ? createButton("getgame.png", 'g') : null;
+    getgameButton = (conn.getConnectionName() == "FreechessConnection") ? createButton("Get game", 'g') : null;
       //getgameButton = (conn instanceof JinFreechessConnection) ? createButton("getgame.png", 'g') : null;
 
       if (getgameButton != null){
@@ -531,15 +528,20 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
    */
    
   private JButton createButton(String filename, char mnemonic){
-    JButton button = new JButton(new ImageIcon(getClass().getResource("images/" + filename)));
-    button.addActionListener(this);
+      JButton button;
+      if (filename.contains("png")) {
+          button = new JButton(new ImageIcon(getClass().getResource("images/" + filename)));
+      } else {
+          button = new JButton(filename);
+      }
+      button.addActionListener(this);
     button.setMnemonic(mnemonic);
     button.setDefaultCapable(false);
     button.setRequestFocusEnabled(false);
     button.setMargin(new Insets(0, 0, 0, 0));
     
     Font defaultFont = UIManager.getFont("Button.font");
-    int fontSize = Math.max(14, defaultFont.getSize());
+    int fontSize = Math.max(12, defaultFont.getSize());
     button.setFont(new Font(defaultFont.getFamily(), Font.PLAIN, fontSize));
     
 
@@ -704,7 +706,7 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
       return;
     
     takebackNButton.setEnabled(state != OFFERED_STATE);
-    takebackNButton.setText(Integer.toString(plyCount));
+    takebackNButton.setText("Takeback " + Integer.toString(plyCount));
     takebackNButton.setActionCommand(String.valueOf(plyCount));
     
 
@@ -766,7 +768,7 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
   protected void addComponents(Plugin plugin, Game game){
     setLayout(new BorderLayout());
     
-    buttonsFlowPanel.setLayout(new TableLayout(4));
+    buttonsFlowPanel.setLayout(new GridLayout(3,4));
     
     add(resultLabel, BorderLayout.PAGE_START);
     
