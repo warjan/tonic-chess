@@ -23,7 +23,6 @@ package free.jin.scripter;
 
 import free.util.AWTUtilities;
 import free.util.IOUtilities;
-import free.util.TableLayout;
 import free.util.Utilities;
 import free.util.swing.PlainTextDialog;
 import free.util.swing.SwingUtils;
@@ -155,7 +154,9 @@ abstract class ScriptDialog extends JDialog{
     eventTypeChoice.addItem(SELECT_EVENT_TYPE_STRING);
     eventTypeChoice.setSelectedItem(defaultEventType);
 
-    final JPanel subtypesPanel = new JPanel(new TableLayout(2));
+    //TODO: Change it to vertical box with list.
+    final JPanel subtypesPanel = new JPanel();
+      subtypesPanel.setLayout(new BoxLayout(subtypesPanel, BoxLayout.PAGE_AXIS));
     JPanel subtypesHolderPanel = new JPanel(new BorderLayout());
     subtypesHolderPanel.setBorder(new EmptyBorder(2, 2, 2, 2));
     subtypesHolderPanel.add(subtypesPanel, BorderLayout.NORTH);
@@ -238,29 +239,48 @@ abstract class ScriptDialog extends JDialog{
       }
     });
 
+    JPanel genericDataPanel = new JPanel();
 
-    JPanel genericDataPanel = new JPanel(new TableLayout(3, 7, 5));
+    GroupLayout genericDataPanelLayout = new GroupLayout(genericDataPanel);
+      genericDataPanel.setLayout(genericDataPanelLayout);
+    genericDataPanelLayout.setAutoCreateGaps(true);
+    genericDataPanelLayout.setAutoCreateContainerGaps(true);
 
-    genericDataPanel.add(scriptNameLabel);
-    genericDataPanel.add(scriptNameField);
-    genericDataPanel.add(Box.createVerticalStrut(eventTypeHelp.getPreferredSize().height));
+    genericDataPanelLayout.setHorizontalGroup(genericDataPanelLayout.createSequentialGroup()
+    .addGroup(genericDataPanelLayout.createParallelGroup()
+        .addComponent(scriptNameLabel)
+        .addComponent(eventTypeLabel)
+        .addComponent(eventSubtypesLabel))
+    .addGroup(genericDataPanelLayout.createParallelGroup()
+        .addComponent(scriptNameField)
+        .addComponent(eventTypeChoice)
+        .addComponent(subtypesScrollPane))
+    .addGroup(genericDataPanelLayout.createParallelGroup()
+        .addGap(10)
+        .addComponent(eventTypeHelp)
+        .addComponent(eventSubtypesHelp)));
 
-    genericDataPanel.add(eventTypeLabel);
-    genericDataPanel.add(eventTypeChoice);
-    genericDataPanel.add(eventTypeHelp);
-
-    genericDataPanel.add(eventSubtypesLabel);
-    genericDataPanel.add(subtypesScrollPane);
-    genericDataPanel.add(eventSubtypesHelp);
+    genericDataPanelLayout.setVerticalGroup(genericDataPanelLayout.createSequentialGroup()
+    .addGroup(genericDataPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        .addComponent(scriptNameLabel)
+        .addComponent(scriptNameField)
+        .addGap(10))
+    .addGroup(genericDataPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        .addComponent(eventTypeLabel)
+        .addComponent(eventTypeChoice)
+        .addComponent(eventTypeHelp))
+    .addGroup(genericDataPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        .addComponent(eventSubtypesLabel)
+        .addComponent(subtypesScrollPane)
+        .addComponent(eventSubtypesHelp)));
 
     Container scriptTypeSpecificDataPanel = createScriptTypeSpecificUI();
 
     JPanel dataPanel = new JPanel(null);
-    dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+    dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.PAGE_AXIS));
     dataPanel.setBorder(new EmptyBorder(10, 10, 5, 10));
 
     dataPanel.add(genericDataPanel);
-    dataPanel.add(Box.createVerticalStrut(10));
     dataPanel.add(scriptTypeSpecificDataPanel);
 
     JButton okButton = new JButton("OK");

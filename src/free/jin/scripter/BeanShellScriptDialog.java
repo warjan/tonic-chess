@@ -21,9 +21,7 @@
 
 package free.jin.scripter;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -38,7 +36,6 @@ import javax.swing.JTextArea;
 import bsh.EvalError;
 import free.util.AWTUtilities;
 import free.util.IOUtilities;
-import free.util.TableLayout;
 import free.util.swing.PlainTextDialog;
 import free.workarounds.FixedJTextArea;
 
@@ -86,7 +83,7 @@ class BeanShellScriptDialog extends ScriptDialog{
     BeanShellScript templateScript = (BeanShellScript)(this.templateScript);
     String defaultCode = (templateScript == null ? "" : templateScript.getCode());
 
-    codeArea = new FixedJTextArea(10, 60);
+    codeArea = new FixedJTextArea(10, 50);
     codeArea.setText(defaultCode);
     codeArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
     codeArea.setTabSize(2);
@@ -125,7 +122,7 @@ class BeanShellScriptDialog extends ScriptDialog{
       }
     });
 
-    JPanel panel = new JPanel(new TableLayout(3, 7, 5));
+    JPanel panel = new JPanel(new FlowLayout());
 
     panel.add(codeLabel);
     panel.add(codeScrollPane);

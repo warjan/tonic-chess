@@ -108,7 +108,7 @@ public class ColorChooser extends JComponent implements ActionListener{
     setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
     if (text != null){
       add(label);
-      add(Box.createHorizontalStrut(20));
+      add(Box.createHorizontalStrut(4));
       add(Box.createHorizontalGlue());
     }
     add(button);

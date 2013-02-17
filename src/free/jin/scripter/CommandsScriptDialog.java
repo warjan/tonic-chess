@@ -22,27 +22,18 @@
 package free.jin.scripter;
 
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import bsh.EvalError;
 import bsh.Interpreter;
 import free.util.AWTUtilities;
 import free.util.IOUtilities;
-import free.util.TableLayout;
 import free.util.swing.PlainTextDialog;
 import free.workarounds.FixedJTextArea;
 import free.workarounds.FixedJTextField;
@@ -109,7 +100,7 @@ class CommandsScriptDialog extends ScriptDialog{
     String defaultCondition = (templateScript == null ? "" : templateScript.getCondition());
     String [] defaultCommands = (templateScript == null ? new String[0] : templateScript.getCommands());
 
-    conditionField = new FixedJTextField(defaultCondition, 40);
+    conditionField = new FixedJTextField(defaultCondition);
     conditionField.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
     commandsArea = new FixedJTextArea(5, 40);
@@ -182,16 +173,34 @@ class CommandsScriptDialog extends ScriptDialog{
     conditionHelp.setDefaultCapable(false);
     commandsHelp.setDefaultCapable(false);
 
-    JPanel panel = new JPanel(new TableLayout(3, 7, 5));
+    JPanel panel = new JPanel();
+    GroupLayout layout = new GroupLayout(panel);
+    panel.setLayout(layout);
 
-    panel.add(conditionLabel);
-    panel.add(conditionField);
-    panel.add(conditionHelp);
+    layout.setAutoCreateGaps(true);
+    layout.setAutoCreateContainerGaps(true);
 
-    panel.add(commandsLabel);
-    panel.add(commandsScrollPane);
-    panel.add(commandsHelp);
+    layout.setHorizontalGroup(layout.createSequentialGroup()
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(conditionLabel)
+            .addComponent(commandsLabel))
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(conditionField)
+                .addComponent(commandsScrollPane))
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(conditionHelp)
+                .addComponent(commandsHelp)));
+    layout.setVerticalGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(conditionLabel)
+                    .addComponent(conditionField)
+                    .addComponent(conditionHelp))
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(commandsLabel)
+                    .addComponent(commandsScrollPane)
+                    .addComponent(commandsHelp)));
 
+//    layout.linkSize(SwingConstants.HORIZONTAL, conditionField, commandsScrollPane);
     return panel;
   }
 

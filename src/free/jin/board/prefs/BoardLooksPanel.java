@@ -21,14 +21,11 @@
 
 package free.jin.board.prefs;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -45,17 +42,14 @@ import free.chess.ColoredBoardPainter;
 import free.chess.ColoredPiecePainter;
 import free.chess.PiecePainter;
 import free.jin.BadChangesException;
-import free.jin.Jin;
 import free.jin.Resource;
 import free.jin.board.BoardManager;
 import free.jin.board.BoardPattern;
 import free.jin.board.JinBoard;
 import free.jin.board.PieceSet;
 import free.util.AWTUtilities;
-import free.util.TableLayout;
 import free.util.swing.ColorChooser;
 import free.util.swing.PreferredSizedPanel;
-import free.util.swing.UrlDisplayingAction;
 
 
 /**
@@ -399,7 +393,7 @@ public class BoardLooksPanel extends BoardModifyingPrefsPanel{
     scrollPane.setAlignmentX(JComponent.LEFT_ALIGNMENT);
     scrollPane.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
     
-    JPanel colorsPanel = new PreferredSizedPanel(new TableLayout(1, 0, 5));
+    JPanel colorsPanel = new PreferredSizedPanel(new GridLayout(2, 2, 5, 0));
     colorsPanel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
     colorsPanel.add(whiteColor);
     colorsPanel.add(blackColor);
@@ -441,8 +435,8 @@ public class BoardLooksPanel extends BoardModifyingPrefsPanel{
       new JScrollPane(boardPatterns, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     scrollPane.setAlignmentX(JComponent.LEFT_ALIGNMENT);
     scrollPane.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
-    
-    JPanel colorsPanel = new PreferredSizedPanel(new TableLayout(1, 0, 5));
+
+    JPanel colorsPanel = new PreferredSizedPanel(new GridLayout(1,2));
     colorsPanel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
     colorsPanel.add(darkSquares);    
     colorsPanel.add(lightSquares);
