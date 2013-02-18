@@ -1,7 +1,8 @@
 /**
- * Jin - a chess client for internet chess servers.
+ * Tonic - a chess client for frechess.org chess server.
  * More information is available at http://www.jinchess.com/.
  * Copyright (C) 2002 Alexander Maryanovsky.
+ * Copyright (C) 2013 Wojciech Halicki-Piszko
  * All rights reserved.
  *
  * This program is free software; you can redistribute it and/or
@@ -25,14 +26,10 @@ import free.chess.*;
 import free.chess.event.MoveEvent;
 import free.chess.event.MoveListener;
 import free.jin.Game;
-import free.jin.Jin;
-import free.jin.Session;
 import free.jin.board.event.UserMoveEvent;
 import free.jin.board.event.UserMoveListener;
 import free.jin.event.*;
 import free.jin.plugin.Plugin;
-import free.jin.ui.PrefsDialog;
-import free.util.AWTUtilities;
 import free.util.PlatformUtils;
 import free.util.SquareLayout;
 import free.util.Utilities;
@@ -195,14 +192,8 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
    */
 
   protected JButton flipBoardButton;
-  
-  /**
-   * The button which display board preferences panel.
-   */ 
 
-  protected JButton prefsButton;
-
-  /**
+    /**
    * The AbstractChessClock displaying the time on white's clock.
    */
 
@@ -356,51 +347,12 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
   
   private boolean isConnected = false;
 
-  
   /**
    * Plugins. Just to get BoardManager out of it. whp 2006
    */
   
   private Plugin[] plugins = null;
   
-  /**
-   * Session. whp 2006
-   */
-  Session session = Jin.getInstance().getConnManager().getSession();
-  
-
-  /**
-   * Action for prefsButton - displaying a preferences panel for board from board itself.
-   */
-  
-  private ActionListener prefsAction = new ActionListener(){    
-  public void actionPerformed(ActionEvent evt){
-    
-    /*BoardPanel.this.plugins = session.getPlugins();
-      //System.out.println("prefsButton pressed!");
-       for (int i = 0; i < plugins.length; i++){
-                    
-                    Plugin plugin = plugins[i];
-                    //System.out.print(plugin.getName());
-                    
-                    if (plugin.getName().equals("Chess Board")){*/
-                    Plugin plugin = session.getPluginContext().getPlugin("board");
-                    Frame parentFrame = AWTUtilities.frameForComponent(BoardPanel.this);
-                    JDialog dialog = new PrefsDialog( parentFrame, plugin.getName()
-                    + "Preferences", plugin.getPreferencesUI());
-                     AWTUtilities.centerWindow(dialog, parentFrame);
-                    dialog.setVisible(true);
-                    /*}
-                    else{
-                    }
-                }*/
-      /*PreferencesPanel prefsPanel = session.getPluginContext().getPlugin("board").getPreferencesUI();
-      prefsPanel*/
-    }
-
- };
-
-
   /**
    * Creates a new <code>BoardPanel</code> which will be used by the given
    * <code>BoardManager</code>, will display the given Game and will have the
@@ -578,7 +530,6 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
     blackLabel = createBlackLabel(game);
     fullscreenButton = createFullscreenButton();
     flipBoardButton = createFlipBoardButton();
-    prefsButton = createPrefsButton();
     whiteClock = createWhiteClock(game);
     blackClock = createBlackClock(game);
     buttonPanel = createButtonPanel(game);
@@ -839,22 +790,6 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
       return button;
   }
   
-  /**
-   * Creates prefsButton. @autor whp 2006
-   */ 
-  
-    protected JButton createPrefsButton(){
-      JButton button = new JButton(new ImageIcon(BoardPanel.class.getResource("images/prefs.png")));
-
-      button.setMargin(new Insets(0, 0, 0, 0));
-      button.setToolTipText("Displays board preferences panel");
-      button.addActionListener(prefsAction);
-      
-      return button;
-  }
-
-
-
   /**
    * Creates the AbstractChessClock which will display the amount of time remaining
    * on white's clock.
@@ -1231,8 +1166,7 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
       infoBoxButtonPanel.setBorder(new EmptyBorder(2, 2, 2, 2));
       infoBoxButtonPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
       infoBoxButtonPanel.add(flipBoardButton);
-      infoBoxButtonPanel.add(prefsButton);
-      
+
       if (isVerticalLayout){
         
         
@@ -1259,10 +1193,6 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
 
         fullscreenButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
         
-        //my button - flip and prefs
-        //flipBoardButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-        //prefsButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-
         if (flipped){
           whiteLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
           whiteClock.setAlignmentY(Component.BOTTOM_ALIGNMENT);
@@ -1276,8 +1206,7 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
           
           
             
-          // adding my board fliping and prefs showing button
-          
+
           topInfoBox.add(infoBoxButtonPanel);
           
           topInfoBox.add(Box.createHorizontalGlue());
@@ -1298,9 +1227,6 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
           topInfoBox.add(Box.createHorizontalStrut(10));
           topInfoBox.add(fullscreenButton);
           
-          // adding my board fliping button and prefs button whp
-          //infoBoxButtonPanel.add(flipBoardButton);
-          //infoBoxButtonPanel.add(prefsButton);
           topInfoBox.add(infoBoxButtonPanel);
           
           topInfoBox.add(Box.createHorizontalGlue());
@@ -1337,26 +1263,15 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
         
         Container fullscreenButtonWrapper = 
           SquareLayout.createSquareContainer(fullscreenButton);
-        
-        //Containers for my button flip and show prefs
-        //Container flipBoardButtonWrapper = SquareLayout.createSquareContainer(flipBoardButton);
-        //Container prefsButtonWrapper = SquareLayout.createSquareContainer(prefsButton);
-        //Container infoBoxButtonPanelWrapper = SquareLayout.createSquareContainer(infoBoxButtonPanel);
 
         if (flipped){
           whiteLabelBox.add(fullscreenButtonWrapper, BorderLayout.EAST);
           
-          //adding my buttons' wrappers
-          //whiteLabelBox.add(flipBoardButtonWrapper, BorderLayout.WEST);
-          //whiteLabelBox.add(prefsButtonWrapper, BorderLayout.WEST);
           whiteLabelBox.add(infoBoxButtonPanel, BorderLayout.WEST);
         }
         else{
           blackLabelBox.add(fullscreenButtonWrapper, BorderLayout.EAST);
           
-          //adding my buttons' wrappers
-          //blackLabelBox.add(flipBoardButtonWrapper, BorderLayout.WEST);
-          //blackLabelBox.add(prefsButtonWrapper, BorderLayout.WEST);
           blackLabelBox.add(infoBoxButtonPanel, BorderLayout.WEST);
         }
         

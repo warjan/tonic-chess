@@ -382,12 +382,6 @@
              <param name="action.id" value="sendmessage" />
 		</antcall>
 
-        <!-- Flip board -->
-        <antcall target="buildAction">
-             <param name="action.id" value="flipboard" />
-          </antcall>
-
-
 		<!-- Resources -->
 		<mkdir dir="${resources.dir}" />
 
