@@ -33,7 +33,6 @@ import free.jin.action.JinAction;
 import free.jin.ui.DialogPanel;
 import free.jin.ui.OptionPanel;
 import free.util.AWTUtilities;
-import free.util.TableLayout;
 import free.util.swing.IntegerStrictPlainDocument;
 import free.util.swing.SwingUtils;
 import free.workarounds.FixedJComboBox;
@@ -45,7 +44,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.lang.reflect.InvocationTargetException;
 
 
 /**
@@ -238,8 +236,35 @@ public class SeekAction extends JinAction{
       timeField.setMaximumSize(timeField.getPreferredSize());
       incField.setMaximumSize(incField.getPreferredSize());
       
-      
-      JComponent timeContainer = new JPanel(new TableLayout(5, labelPad, 2));
+      JComponent timeContainer = new JPanel(new GridLayout(3, 2));
+      GroupLayout layout = new GroupLayout(timeContainer);
+      timeContainer.setLayout(layout);
+
+      layout.setAutoCreateGaps(true);
+      layout.setAutoCreateContainerGaps(true);
+
+      layout.setHorizontalGroup(layout.createSequentialGroup()
+              .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                      .addComponent(timeLabel)
+                      .addComponent(incLabel))
+              .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                      .addComponent(timeField)
+                      .addComponent(incField))
+              .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                      .addComponent(minutesLabel)
+                      .addComponent(secondsLabel)));
+
+      layout.setVerticalGroup(layout.createSequentialGroup()
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        .addComponent(timeLabel)
+        .addComponent(timeField)
+        .addComponent(minutesLabel))
+              .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+              .addComponent(incLabel)
+              .addComponent(incField)
+              .addComponent(secondsLabel))
+      );
+
       timeContainer.add(Box.createHorizontalStrut(0));
       timeContainer.add(timeLabel);
       timeContainer.add(Box.createHorizontalStrut(10));
