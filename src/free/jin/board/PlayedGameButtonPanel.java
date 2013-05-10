@@ -29,7 +29,6 @@ import free.jin.event.GameListener;
 import free.jin.event.OfferEvent;
 import free.jin.plugin.Plugin;
 import free.jin.ui.OptionPanel;
-import free.util.TableLayout;
 import free.workarounds.FixedJPanel;
 
 import javax.swing.*;
@@ -281,7 +280,17 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
      */
   
     private JLabel resultLabel;
-    
+
+  /**
+   *  Button that invokes seek action displaying seek dialog.
+   */
+
+    private JButton seekButton;
+
+  /**
+   * Panel for seekButton.
+   */
+    private JPanel seekButtonPanel;
     /**
      * A panel that holds the buttons under the result label. whp 2006
      */
@@ -330,23 +339,28 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
 
             }
              if (getgameButton != null){
-        getgameButton.setEnabled(true);
-      }
-      drawButton.setEnabled(false);
-      resignButton.setEnabled(false);
+              buttonsFlowPanel.add(getgameButtonPanel);
+              }
+             if(seekButton != null) {
+               buttonsFlowPanel.add(seekButtonPanel);
+             }
       if (abortButton != null)
-        abortButton.setEnabled(false);
+        buttonsFlowPanel.remove(abortButtonPanel);
       if (adjournButton != null)
-        adjournButton.setEnabled(false);
+        buttonsFlowPanel.remove(adjournButtonPanel);
       if (takeback1Button != null)
-        takeback1Button.setEnabled(false);
+        buttonsFlowPanel.remove(takeback1ButtonPanel);
       if (takebackNButton != null)
-        takebackNButton.setEnabled(false);
+        buttonsFlowPanel.remove(takebackNButtonPanel);
+      buttonsFlowPanel.remove(drawButtonPanel);
+      buttonsFlowPanel.remove(resignButtonPanel);
 
       plugin.getConn().getListenerManager().removeGameListener(this);
         }     else {
             return;
         }
+
+
 
 /*
       if (evt.getGame() != game)
@@ -514,11 +528,12 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
     
     //creates getgameButton when connected to fics. whp 2006
     getgameButton = (conn.getConnectionName() == "FreechessConnection") ? createButton("Get game", 'g') : null;
-      //getgameButton = (conn instanceof JinFreechessConnection) ? createButton("getgame.png", 'g') : null;
 
       if (getgameButton != null){
         getgameButton.setToolTipText("Get a game filtered by formule");
       }
+    seekButton = new JButton(plugin.getAction("seek").getName());
+    seekButton.addActionListener(plugin.getAction("seek"));
   }
 
 
@@ -768,19 +783,21 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
   protected void addComponents(Plugin plugin, Game game){
     setLayout(new BorderLayout());
     
-    buttonsFlowPanel.setLayout(new GridLayout(3,4));
+    buttonsFlowPanel.setLayout(new GridLayout(2,4));
     
     add(resultLabel, BorderLayout.PAGE_START);
     
     
     if (getgameButton != null){
-        getgameButton.setEnabled(false);
         getgameButtonPanel = new JPanel(new BorderLayout());
         getgameButtonPanel.add(getgameButton, BorderLayout.CENTER);
         getgameButtonPanel.setBorder(this.OFFER_STATE_BORDER);
-        buttonsFlowPanel.add(getgameButtonPanel);
     }
-    
+
+    seekButtonPanel = new JPanel(new BorderLayout());
+    seekButtonPanel.add(seekButton, BorderLayout.CENTER);
+    seekButtonPanel.setBorder(this.OFFER_STATE_BORDER);
+
     drawButtonPanel = new JPanel(new BorderLayout());
     drawButtonPanel.add(drawButton, BorderLayout.CENTER);
     buttonsFlowPanel.add(drawButtonPanel);
