@@ -506,17 +506,22 @@
     <!-- Do not use it - it doesn't work for now -->
     <target name="run" depends="build">
 
-		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-Djava.library.path=./libs -Xms16M -Xmx32M">
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" >
 
-			<!--<jvmarg value="-Djava.library.path=libs"/>-->
+            <jvmarg value="-Djava.library.path=./libs" />
+            <jvmarg value="-Xms16M" />
+            <jvmarg value="-Xmx32M" />
 
 		</java>
 	</target>
     <target name="run-debug" depends="build">
 
-		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" jvmargs="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" >
+		<java jar="${build.dir}/tonic.jar" dir="${build.dir}" fork="true" >
 
-			<!--<jvmarg value="-Djava.library.path=libs -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"/>-->
+            <jvmarg value="-Djava.library.path=./libs" />
+            <jvmarg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" />
+            <jvmarg value="-Xms16M" />
+            <jvmarg value="-Xmx32M" />
 
 		</java>
 	</target>
