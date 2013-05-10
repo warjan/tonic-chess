@@ -29,7 +29,9 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.EventListenerList;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.text.*;
+import javax.swing.Painter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -532,9 +534,31 @@ public class Console extends JPanel implements KeyListener, ContainerListener{
 
     // We set it here because of a Swing bug which causes the background to be 
     // drawn with the foreground color if you set the background as an attribute.
-    Color outputBg = prefs.getColor("background", null);
-    if (outputBg != null)
+    final Color outputBg = prefs.getColor("background", null);
+    if (outputBg != null) {
+      LookAndFeel lookAndFeel = UIManager.getLookAndFeel();
+      if (lookAndFeel instanceof NimbusLookAndFeel) {
+        UIDefaults outputComponentDefaults = new UIDefaults();
+
+        outputComponentDefaults.put("TextPane[Enabled].backgroundPainter", new Painter<JComponent>(){
+
+
+          public void paint(Graphics2D g, JComponent component, int width, int height) {
+            g.setColor(outputBg);
+            Rectangle clipBounds = g.getClipBounds();
+            g.fillRect((int)clipBounds.getX(), (int)clipBounds.getY(), (int)clipBounds.getWidth(), (int)clipBounds.getHeight());
+          }
+        });
+        outputComponent.putClientProperty("Nimbus.Overrides", outputComponentDefaults);
+        outputComponent.putClientProperty("Nimbus.Overrides.InheritDefaults", false);
+        outputComponent.setBackground(outputBg);
+      }
+      else {
       outputComponent.setBackground(outputBg);
+      }
+    }
+
+
 
     Color outputSelection = prefs.getColor("output-selection", null);
     if (outputSelection != null)
