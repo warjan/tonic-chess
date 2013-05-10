@@ -84,10 +84,10 @@ public abstract class FilteringIterator implements Iterator{
 
 
   /**
-   * Returns whether there are more elements in this <code>Enumeration</code>.
+   * Returns whether there are more elements in this <code>Iterator</code>.
    */
 
-  public boolean hasMoreElements(){
+  public boolean hasNext(){
     findNext();
 
     return next != null;
@@ -96,11 +96,11 @@ public abstract class FilteringIterator implements Iterator{
 
 
   /**
-   * Returns the next element in the delegate enumeration which passes the
+   * Returns the next element in the delegate iterator which passes the
    * <code>accept</code> method.
    */
 
-  public Object nextElement() throws NoSuchElementException{
+  public Object next() throws NoSuchElementException{
     findNext();
 
     if (next == null)
@@ -111,7 +111,13 @@ public abstract class FilteringIterator implements Iterator{
     return result;
   }
 
-
+  /**
+   * Removes the next element in the delegate iterator.
+   */
+  @Override
+  public void remove() throws UnsupportedOperationException {
+    throw new UnsupportedOperationException();
+  }
 
   /**
    * Returns whether the specified object passes the filter.

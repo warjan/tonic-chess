@@ -116,8 +116,8 @@ public class WindowingModePrefPanel extends PreferencesPanel{
   public void applyChanges() throws BadChangesException{
       /*String uiProviderName;
       Enumeration ebg = bg.getElements();
-      while (ebg.hasMoreElements()){
-          if(((JRadioButton)ebg.nextElement()).isSelected().e){
+      while (ebg.hasNext()){
+          if(((JRadioButton)ebg.next()).isSelected().e){
               
           }
       }*/

@@ -885,17 +885,7 @@ public abstract class Preferences{
           return ((String)preferenceName).startsWith(prefix);
         }
 
-                public boolean hasNext() {
-                    throw new UnsupportedOperationException("Not supported yet.");
-                }
 
-                public Object next() {
-                    throw new UnsupportedOperationException("Not supported yet.");
-                }
-
-                public void remove() {
-                    throw new UnsupportedOperationException("Not supported yet.");
-                }
       };
 
       return new MappingEnumeration(filtering){
@@ -904,17 +894,7 @@ public abstract class Preferences{
           return s.substring(prefix.length());
         }
 
-                public boolean hasNext() {
-                    throw new UnsupportedOperationException("Not supported yet.");
-                }
 
-                public Object next() {
-                    throw new UnsupportedOperationException("Not supported yet.");
-                }
-
-                public void remove() {
-                    throw new UnsupportedOperationException("Not supported yet.");
-                }
       };
     }
 

@@ -61,7 +61,7 @@ public abstract class MappingEnumeration implements Iterator{
    * @return boolean stating whether there are more elements 
    */
 
-  public boolean hasMoreElements(){
+  public boolean hasNext(){
     return delegate.hasNext();
   }
 
@@ -72,11 +72,18 @@ public abstract class MappingEnumeration implements Iterator{
    * the delegate enumeration.
    */
 
-  public Object nextElement() throws NoSuchElementException{
+  public Object next() throws NoSuchElementException {
     return map(delegate.next());
   }
 
-
+  /**
+   * Should remove last returned object in delegate Iterator.
+   * @throws UnsupportedOperationException
+   */
+  @Override
+  public void remove() throws UnsupportedOperationException {
+    throw new UnsupportedOperationException();
+  }
 
   /**
    * Maps the specified element to some other element.
