@@ -296,8 +296,17 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
      */
    
     private JPanel buttonsFlowPanel;
-     
-    
+
+  /**
+   * Button for issuing rematch offer after the game.
+   */
+    private JButton rematchButton;
+
+  /**
+   * Panel for rematchButton.
+   */
+
+    private JPanel rematchButtonPanel;
     
   private GameListener gameListener = new GameAdapter(){
 
@@ -344,6 +353,9 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
              if(seekButton != null) {
                buttonsFlowPanel.add(seekButtonPanel);
              }
+            if(rematchButton != null) {
+              buttonsFlowPanel.add(rematchButtonPanel);
+            }
       if (abortButton != null)
         buttonsFlowPanel.remove(abortButtonPanel);
       if (adjournButton != null)
@@ -372,7 +384,7 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
 
 
   };
-  
+
 
 
   /**
@@ -534,6 +546,9 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
       }
     seekButton = new JButton(plugin.getAction("seek").getName());
     seekButton.addActionListener(plugin.getAction("seek"));
+
+    rematchButton = new JButton("Rematch");
+    rematchButton.addActionListener(rematchActionListener);
   }
 
 
@@ -829,10 +844,26 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
       takebackNButtonPanel.add(takebackNButton, BorderLayout.CENTER);
       buttonsFlowPanel.add(takebackNButtonPanel);
     }
+
+    if (rematchButton != null) {
+      rematchButtonPanel = new JPanel(new BorderLayout());
+      rematchButtonPanel.add(rematchButton, BorderLayout.CENTER);
+      rematchButtonPanel.setBorder(this.OFFER_STATE_BORDER);
+    }
     add(buttonsFlowPanel,BorderLayout.PAGE_END);
   }
 
+  /**
+   * Action for rematch button.
+   */
 
+  private ActionListener rematchActionListener = new ActionListener() {
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       plugin.getConn().sendCommand("rematch");
+    }
+  };
 
   /**
    * ActionListener implementation. Executes the appropriate command depending
