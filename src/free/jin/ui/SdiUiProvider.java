@@ -35,6 +35,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.net.URL;
 import java.util.Iterator;
 
 
@@ -222,8 +223,12 @@ public class SdiUiProvider extends AbstractUiProvider{
       menubar.add(new HelpMenu());
       
       frame.setJMenuBar(menubar);
-      
-      setIconImpl(Toolkit.getDefaultToolkit().getImage(Jin.class.getResource("resources/icon32.png")));
+
+      URL iconResource = Jin.class.getResource("resources/icon.png");
+
+      if (iconResource != null) {
+        setIconImpl(Toolkit.getDefaultToolkit().getImage(iconResource));
+      }
     }
 
       /**
