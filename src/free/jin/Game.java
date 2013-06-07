@@ -106,7 +106,11 @@ public class Game{
 
   public static final int GAME_IN_PROGRESS = 5;
 
+  /**
+   * The constant for an aborted game.
+   */
 
+  public static final int GAME_ABORTED = 6;
 
   /**
    * The <code>BeanProperties</code> object actually holding the properties.
@@ -750,10 +754,11 @@ public class Game{
 
   /**
    * Sets the result of the game to the specified value. Possible values are
-   * <code>WHITE_WINS</code>, <code>BLACK_WINS</code>, <code>DRAW</code> and
-   * <code>UNKNOWN_RESULT</code>. This method may only be called once per Game
-   * object (when the game ends), and the caller is responsible for notifying 
-   * all interested parties that the game ended.
+   * <code>WHITE_WINS</code>, <code>BLACK_WINS</code>, <code>DRAW</code>,
+   * <code>GAME_ABORTED</code> and * <code>UNKNOWN_RESULT</code>.
+   * This method may only be called once per Game object (when the game ends),
+   * and the caller is responsible for notifying all interested parties
+   * that the game ended.
    */
 
   public void setResult(int result){
@@ -762,6 +767,7 @@ public class Game{
       case BLACK_WINS:
       case DRAW:
       case UNKNOWN_RESULT:
+      case GAME_ABORTED:
         break;
       default:
         throw new IllegalArgumentException("Bad value for game result specified: "+result);
@@ -770,7 +776,7 @@ public class Game{
     if (getResult() != GAME_IN_PROGRESS)
       throw new IllegalStateException("Unable to set the result more than once");
 
-    props.setProperty("result", new Integer(result));
+    props.setProperty("result", Integer.valueOf(result));
   }
 
 

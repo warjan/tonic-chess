@@ -1527,8 +1527,11 @@ public class JinFreechessConnection extends FreechessConnection implements Conne
       resultCode = Game.BLACK_WINS;
     else if ("1/2-1/2".equals(result))
       resultCode = Game.DRAW;
-    else
+    else if ("*".equals(result) && reason.contains("aborted")) {
+      resultCode = Game.GAME_ABORTED;
+    } else {
       resultCode = Game.UNKNOWN_RESULT;
+    }
 
     closeGame(gameNumber, resultCode);
 

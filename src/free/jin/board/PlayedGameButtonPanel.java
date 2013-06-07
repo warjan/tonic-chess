@@ -307,70 +307,81 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
    */
 
     private JPanel rematchButtonPanel;
-    
-  private GameListener gameListener = new GameAdapter(){
+
+    private GameListener gameListener = new GameAdapter() {
 
 
-    public void offerUpdated(OfferEvent evt){
+    public void offerUpdated(OfferEvent evt) {
       if (evt.getGame() != game)
         return;
-      
+
       // getUserPlayer shouldn't return null here because this panel should only
       // be used for games played by the user.
       boolean isOppsOffer = evt.getPlayer().equals(game.getUserPlayer().getOpponent());
-      switch (evt.getOfferId()){
+      switch (evt.getOfferId()) {
         case OfferEvent.DRAW_OFFER:
-          drawOfferUpdate(isOppsOffer, evt.isOffered()); break;
+          drawOfferUpdate(isOppsOffer, evt.isOffered());
+          break;
         case OfferEvent.ABORT_OFFER:
-          abortOfferUpdate(isOppsOffer, evt.isOffered()); break;
+          abortOfferUpdate(isOppsOffer, evt.isOffered());
+          break;
         case OfferEvent.ADJOURN_OFFER:
-          adjournOfferUpdate(isOppsOffer, evt.isOffered()); break;
+          adjournOfferUpdate(isOppsOffer, evt.isOffered());
+          break;
         case OfferEvent.TAKEBACK_OFFER:
-          takebackOfferUpdate(isOppsOffer, evt.isOffered(), evt.getTakebackCount()); break;
+          takebackOfferUpdate(isOppsOffer, evt.isOffered(), evt.getTakebackCount());
+          break;
       }
 
       super.offerUpdated(evt);
     }
 
-        @Override
-    public void gameEnded(GameEndEvent evt){
+    @Override
+    public void gameEnded(GameEndEvent evt) {
 
-        if (evt.getGame().getID()==game.getID()) {
-            switch (evt.getResult()){
-                case Game.WHITE_WINS:
-                    resultLabel.setText("White wins!"); break;
-                case Game.BLACK_WINS:
-                    resultLabel.setText("Black wins!"); break;
-                case Game.DRAW:
-                    resultLabel.setText("It is draw."); break;
-                case Game.UNKNOWN_RESULT:
-                    resultLabel.setText("Result unknown. Check console for reason."); break;
+      if (evt.getGame().getID() == game.getID()) {
+        switch (evt.getResult()) {
+          case Game.WHITE_WINS:
+            resultLabel.setText("White wins!");
+            break;
+          case Game.BLACK_WINS:
+            resultLabel.setText("Black wins!");
+            break;
+          case Game.DRAW:
+            resultLabel.setText("Game drawn.");
+            break;
+          case Game.GAME_ABORTED:
+            resultLabel.setText("Game aborted.");
+            break;
+          case Game.UNKNOWN_RESULT:
+            resultLabel.setText("Result unknown. Check console for reason.");
+            break;
 
-            }
-             if (getgameButton != null){
-              buttonsFlowPanel.add(getgameButtonPanel);
-              }
-             if(seekButton != null) {
-               buttonsFlowPanel.add(seekButtonPanel);
-             }
-            if(rematchButton != null) {
-              buttonsFlowPanel.add(rematchButtonPanel);
-            }
-      if (abortButton != null)
-        buttonsFlowPanel.remove(abortButtonPanel);
-      if (adjournButton != null)
-        buttonsFlowPanel.remove(adjournButtonPanel);
-      if (takeback1Button != null)
-        buttonsFlowPanel.remove(takeback1ButtonPanel);
-      if (takebackNButton != null)
-        buttonsFlowPanel.remove(takebackNButtonPanel);
-      buttonsFlowPanel.remove(drawButtonPanel);
-      buttonsFlowPanel.remove(resignButtonPanel);
-
-      plugin.getConn().getListenerManager().removeGameListener(this);
-        }     else {
-            return;
         }
+        if (getgameButton != null) {
+          buttonsFlowPanel.add(getgameButtonPanel);
+        }
+        if (seekButton != null) {
+          buttonsFlowPanel.add(seekButtonPanel);
+        }
+        if (rematchButton != null) {
+          buttonsFlowPanel.add(rematchButtonPanel);
+        }
+        if (abortButton != null)
+          buttonsFlowPanel.remove(abortButtonPanel);
+        if (adjournButton != null)
+          buttonsFlowPanel.remove(adjournButtonPanel);
+        if (takeback1Button != null)
+          buttonsFlowPanel.remove(takeback1ButtonPanel);
+        if (takebackNButton != null)
+        buttonsFlowPanel.remove(takebackNButtonPanel);
+        buttonsFlowPanel.remove(drawButtonPanel);
+        buttonsFlowPanel.remove(resignButtonPanel);
+
+        plugin.getConn().getListenerManager().removeGameListener(this);
+      } else {
+        return;
+      }
 
 
 
