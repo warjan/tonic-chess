@@ -274,7 +274,9 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
   protected JScrollBar positionScrollBar;
 
 
+  protected Action moveForward;
 
+  protected Action moveBackward;
 
   /**
    * A boolean specifying whether the positionScrollBar is being changed
@@ -371,6 +373,37 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
     this.fullscreenPanel = new FullscreenPanel(contentPanel);
     fullscreenPanel.setAllowExclusiveMode(false); // Too buggy
 
+    this.moveForward = new AbstractAction() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        SwingUtilities.invokeLater(new Runnable() {
+          public void run() {
+            positionScrollBar.setValueIsAdjusting(true);
+            int lastValue = positionScrollBar.getValue();
+            int newValue = lastValue+1;
+            positionScrollBar.setValue(newValue);
+            positionScrollBar.setValueIsAdjusting(false);
+          }
+        });
+      }
+    };
+
+    this.moveBackward = new AbstractAction() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        SwingUtilities.invokeLater(new Runnable() {
+          public void run() {
+            positionScrollBar.setValueIsAdjusting(true);
+            int lastValue = positionScrollBar.getValue();
+            int newValue = lastValue-1;
+            positionScrollBar.setValue(newValue);
+            positionScrollBar.setValueIsAdjusting(false);
+          }
+        });
+      }
+    };
+
+
     init(game);
 
     setLayout(new BorderLayout());
@@ -455,10 +488,7 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
     // We're not adding them because the layout depends on the size, which is unknown at this point.
     // See the doLayout() method.
   }
-  
-  
-  
-  
+
   /**
    * A mouse listener which pauses other plugins when the mouse moves over the
    * board in order to give the board maximum preference.
@@ -562,7 +592,6 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
 
     positionScrollBar = createPositionScrollBar();
     positionScrollBar.addAdjustmentListener(this);
-
     updateClockActiveness();
   }
 
@@ -618,6 +647,13 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
     contentPanel.registerKeyboardAction(escapeListener, 
       KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_FOCUSED);
 
+    InputMap contentPanelInputMap = contentPanel.getInputMap();
+    contentPanelInputMap.put(KeyStroke.getKeyStroke("RIGHT"), "forward");
+    ActionMap contentPanelActionMap = contentPanel.getActionMap();
+    contentPanelActionMap.put("forward", moveForward);
+
+    contentPanelInputMap.put(KeyStroke.getKeyStroke("LEFT"), "backward");
+    contentPanelActionMap.put("backward", moveBackward);
     board.addMouseListener(new MouseAdapter(){
       public void mousePressed(MouseEvent evt){
         if (!contentPanel.hasFocus())
