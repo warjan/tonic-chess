@@ -168,8 +168,16 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
 
   protected JLabel blackLabel;
 
+  /**
+   * Popup menu for issuing commands related to player's names.
+   */
 
+  protected JPopupMenu labelsPopupMenu;
 
+  /**
+   * Popup menu listener for labelsPopupMenu.
+   */
+  protected MouseListener popupMenuListener;
 
   /**
    * The Container of the action buttons (the button panel).
@@ -551,13 +559,17 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
    */
 
   protected void createComponents(Game game){
+    popupMenuListener = createPopMenuListener();
     board = createBoard(game);
     initBoard(game, board);
     board.getPosition().addMoveListener(this);
-    
+
     gameLabel = createGameLabel(game);
+    labelsPopupMenu = createLabelsPopMenu();
     whiteLabel = createWhiteLabel(game);
+    whiteLabel.addMouseListener(popupMenuListener);
     blackLabel = createBlackLabel(game);
+    blackLabel.addMouseListener(popupMenuListener);
     fullscreenButton = createFullscreenButton();
     flipBoardButton = createFlipBoardButton();
     whiteClock = createWhiteClock(game);
@@ -595,7 +607,47 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
     updateClockActiveness();
   }
 
+  private MouseListener createPopMenuListener() {
+    return new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {
+        maybeShowPopup(e);
+      }
 
+      @Override
+      public void mouseReleased(MouseEvent e) {
+        maybeShowPopup(e);
+      }
+
+      private void maybeShowPopup(MouseEvent e) {
+        if (e.isPopupTrigger()) {
+          labelsPopupMenu.show(e.getComponent(), e.getX(), e.getY());
+        }
+      }
+    };
+  }
+
+  private JPopupMenu createLabelsPopMenu() {
+    final JPopupMenu popMenu = new JPopupMenu();
+    JMenuItem fingerMenuItem = new JMenuItem(new AbstractAction("finger") {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JLabel label = (JLabel) popMenu.getInvoker();
+        boardManager.getConn().sendCommand("finger " + label.getText());
+      }
+    });
+    JMenuItem varsMenuItem = new JMenuItem(new AbstractAction("variables") {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JLabel label = (JLabel) popMenu.getInvoker();
+        boardManager.getConn().sendCommand("vars " + label.getText());
+      }
+    });
+    popMenu.add(fingerMenuItem);
+    popMenu.add(varsMenuItem);
+
+    return popMenu;
+  };
 
 
   /**
