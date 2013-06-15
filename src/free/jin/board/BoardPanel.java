@@ -1256,9 +1256,6 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
       infoBoxButtonPanel.add(flipBoardButton);
 
       if (isVerticalLayout){
-        
-        
-          
         topInfoBox = new JPanel();
         topInfoBox.setBorder(new EmptyBorder(5,5,5,5));
         topInfoBox.setLayout(new BoxLayout(topInfoBox, BoxLayout.X_AXIS));
@@ -1351,14 +1348,19 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
         
         Container fullscreenButtonWrapper = 
           SquareLayout.createSquareContainer(fullscreenButton);
+        Container flipBoardButtonWrapper =
+                SquareLayout.createSquareContainer(flipBoardButton);
+        JPanel boardPanelButtonsPanel = new JPanel();
+        boardPanelButtonsPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        boardPanelButtonsPanel.add(flipBoardButtonWrapper);
+        boardPanelButtonsPanel.add(fullscreenButtonWrapper);
 
         if (flipped){
-          whiteLabelBox.add(fullscreenButtonWrapper, BorderLayout.EAST);
-          
+          whiteLabelBox.add(boardPanelButtonsPanel, BorderLayout.EAST);
           whiteLabelBox.add(infoBoxButtonPanel, BorderLayout.WEST);
         }
         else{
-          blackLabelBox.add(fullscreenButtonWrapper, BorderLayout.EAST);
+          blackLabelBox.add(boardPanelButtonsPanel, BorderLayout.EAST);
           
           blackLabelBox.add(infoBoxButtonPanel, BorderLayout.WEST);
         }
