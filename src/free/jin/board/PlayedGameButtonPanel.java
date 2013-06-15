@@ -308,6 +308,18 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
 
     private JPanel rematchButtonPanel;
 
+  /**
+   * Button for examining last played game.
+   */
+
+    private JButton examineLastButton;
+
+  /**
+   * Panel for button for examining last game.
+   */
+
+    private JPanel examineLastButtonPanel;
+
     private GameListener gameListener = new GameAdapter() {
 
 
@@ -367,6 +379,9 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
         if (rematchButton != null) {
           buttonsFlowPanel.add(rematchButtonPanel);
         }
+        if (examineLastButton != null) {
+          buttonsFlowPanel.add(examineLastButtonPanel);
+        }
         if (abortButton != null)
           buttonsFlowPanel.remove(abortButtonPanel);
         if (adjournButton != null)
@@ -395,7 +410,12 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
 
 
   };
-
+  private ActionListener examineLastGameListener = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      plugin.getConn().sendCommand("exl");
+    }
+  };
 
 
   /**
@@ -560,6 +580,9 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
 
     rematchButton = new JButton("Rematch");
     rematchButton.addActionListener(rematchActionListener);
+
+    examineLastButton = new JButton("Examine");
+    examineLastButton.addActionListener(examineLastGameListener);
   }
 
 
@@ -824,6 +847,10 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
     seekButtonPanel.add(seekButton, BorderLayout.CENTER);
     seekButtonPanel.setBorder(this.OFFER_STATE_BORDER);
 
+    examineLastButtonPanel = new JPanel(new BorderLayout());
+    examineLastButtonPanel.add(examineLastButton, BorderLayout.CENTER);
+    examineLastButtonPanel.setBorder(this.OFFER_STATE_BORDER);
+
     drawButtonPanel = new JPanel(new BorderLayout());
     drawButtonPanel.add(drawButton, BorderLayout.CENTER);
     buttonsFlowPanel.add(drawButtonPanel);
@@ -875,6 +902,8 @@ public class PlayedGameButtonPanel extends FixedJPanel implements ActionListener
        plugin.getConn().sendCommand("rematch");
     }
   };
+
+
 
   /**
    * ActionListener implementation. Executes the appropriate command depending
