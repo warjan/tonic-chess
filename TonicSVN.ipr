@@ -370,21 +370,6 @@
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="lnfs">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/synthetica.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/metouia.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/kunststoff.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/substance.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/PgsLookAndFeel.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/squareness.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/liquid.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/ilf-gpl.jar!/" />
-        <root url="jar://$PROJECT_DIR$/resources/lnfs/looks-2.0.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
     <library name="lzma">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/resources/libs/lzma.jar!/" />
@@ -603,6 +588,11 @@
         <entry key="SECURITY" value="true" />
         <entry key="STYLE" value="true" />
       </map>
+    </option>
+    <option name="_enabledModuleConfigs">
+      <list>
+        <option value="TonicSVN" />
+      </list>
     </option>
     <option name="_annotationTypeSettings">
       <map>
