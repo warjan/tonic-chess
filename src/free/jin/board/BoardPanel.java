@@ -800,7 +800,7 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
 
   protected JLabel createWhiteLabel(Game game){
     JLabel whiteLabel = new JLabel(createWhiteLabelText(game));
-    whiteLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+    whiteLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
     return whiteLabel;
   }
 
@@ -824,10 +824,8 @@ public class BoardPanel extends FixedJPanel implements MoveListener, GameListene
 
   protected JLabel createBlackLabel(Game game){
     JLabel blackLabel = new JLabel(createBlackLabelText(game));
-    String blackLabelFont = (String)boardManager.getPrefs().getString("blacklabel.font-family", "Serif");
-    int blackLabelFontSize = boardManager.getPrefs().getInt("blacklabel.font-size", 20);
 
-    blackLabel.setFont(new Font(blackLabelFont, Font.BOLD, blackLabelFontSize));
+    blackLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
     return blackLabel;
   }
 
