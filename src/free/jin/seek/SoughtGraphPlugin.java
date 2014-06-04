@@ -21,24 +21,20 @@
 
 package free.jin.seek;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Toolkit;
-import java.net.URL;
-
 import free.jin.Connection;
 import free.jin.SeekConnection;
 import free.jin.event.ConnectionListener;
 import free.jin.event.SeekEvent;
 import free.jin.event.SeekListener;
-import free.jin.plugin.Plugin;
-import free.jin.plugin.PluginContext;
-import free.jin.plugin.PluginUIContainer;
-import free.jin.plugin.PluginUIEvent;
-import free.jin.plugin.PluginUIListener;
+import free.jin.plugin.*;
 import free.jin.seek.event.SeekSelectionEvent;
 import free.jin.seek.event.SeekSelectionListener;
+import free.jin.seek.prefs.SoughtGraphPrefsPanel;
+import free.jin.ui.PreferencesPanel;
 import free.jin.ui.UIProvider;
+
+import java.awt.*;
+import java.net.URL;
 
 
 /**
@@ -166,7 +162,25 @@ public class SoughtGraphPlugin extends Plugin implements SeekListener, SeekSelec
   public void pluginUIDeactivated(PluginUIEvent evt){}
 
 
+  /**
+   * Overrides <code>hasPreverencesUI</code> to return whether the plugin
+   * will display a preferences UI (the setting is taken from the
+   * <pre>"preferences.show"</pre> property.
+   * @return boolean value indicating whether this plugin have ui for setting preferences
+   */
 
+  public boolean hasPreferencesUI() {
+    return getPrefs().getBool("preferences.show", true);
+  }
+
+  /**
+   * This method returns preferences UI for this plugin.
+   * @return instance of ChannelsManagerPrefsPanel
+   */
+
+  public PreferencesPanel getPreferencesUI() {
+    return new SoughtGraphPrefsPanel(this);
+  }
 
   /**
    * Registers the necessary listeners.

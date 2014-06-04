@@ -15,4 +15,8 @@ medium-category.name = Blitz
 slow-category.name = Standard
 category-font.size = integer;12
 
-background.image = background.gif
+background.image = none
+background.image.show = boolean;false
+
+#has this plugin preferences?
+preferences.show = boolean;true
